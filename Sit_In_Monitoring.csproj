@@ -102,5 +102,11 @@
   <ItemGroup>
     <None Include="images\dntsLogo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="images\user %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="images\background.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -73,6 +73,16 @@ namespace Sit_In_Monitoring.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap background {
+            get {
+                object obj = ResourceManager.GetObject("background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap dntsLogo {
             get {
                 object obj = ResourceManager.GetObject("dntsLogo", resourceCulture);
@@ -86,6 +96,16 @@ namespace Sit_In_Monitoring.Properties {
         internal static System.Drawing.Bitmap e_png_palihog_removebg_preview {
             get {
                 object obj = ResourceManager.GetObject("e_png_palihog-removebg-preview", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user__1_ {
+            get {
+                object obj = ResourceManager.GetObject("user (1)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

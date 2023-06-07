@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -61,6 +61,10 @@
             this.l4 = new System.Windows.Forms.Panel();
             this.placeholder5 = new System.Windows.Forms.Label();
             this.txtSection = new System.Windows.Forms.TextBox();
+            this.mrg7 = new System.Windows.Forms.Panel();
+            this.l7 = new System.Windows.Forms.Panel();
+            this.placeholder8 = new System.Windows.Forms.Label();
+            this.txtMiddleInitial = new System.Windows.Forms.TextBox();
             this.mrg2 = new System.Windows.Forms.Panel();
             this.l2 = new System.Windows.Forms.Panel();
             this.placeholder2 = new System.Windows.Forms.Label();
@@ -71,9 +75,6 @@
             this.txtStudentID = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.exitButton = new System.Windows.Forms.Button();
             this.CLOCK = new System.Windows.Forms.Timer(this.components);
             this.UI = new System.Windows.Forms.Timer(this.components);
             this.pnlConfirmExit = new System.Windows.Forms.Panel();
@@ -91,10 +92,26 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.pnlStudentInfo = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.btnDelete = new ItachiUIBunifu.ButtonBunifuItachi();
             this.btnEdit = new ItachiUIBunifu.ButtonBunifuItachi();
             this.btnPrint = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.displayNumOfSitIns = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.displayBalance = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.displaySection = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.displayName = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.displayID = new System.Windows.Forms.Label();
             this.mrg6 = new System.Windows.Forms.Panel();
             this.l6 = new System.Windows.Forms.Panel();
             this.placeholder7 = new System.Windows.Forms.Label();
@@ -111,12 +128,9 @@
             this.lTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.hideRecords = new System.Windows.Forms.Button();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
+            this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.exitButton = new System.Windows.Forms.Button();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -128,12 +142,12 @@
             this.l3.SuspendLayout();
             this.mrg4.SuspendLayout();
             this.l4.SuspendLayout();
+            this.mrg7.SuspendLayout();
+            this.l7.SuspendLayout();
             this.mrg2.SuspendLayout();
             this.l2.SuspendLayout();
             this.mrg1.SuspendLayout();
             this.l1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).BeginInit();
-            this.panel1.SuspendLayout();
             this.pnlConfirmExit.SuspendLayout();
             this.pnlDesign.SuspendLayout();
             this.borderpass.SuspendLayout();
@@ -141,38 +155,47 @@
             this.pnlRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).BeginInit();
             this.pnlStudentInfo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel7.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel3.SuspendLayout();
             this.mrg6.SuspendLayout();
             this.l6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsView)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTime
             // 
             this.lblTime.AutoSize = true;
-            this.lblTime.Font = new System.Drawing.Font("Century Gothic", 35.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTime.Font = new System.Drawing.Font("Century Gothic", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.lblTime.Location = new System.Drawing.Point(59, -2);
+            this.lblTime.Location = new System.Drawing.Point(66, 4);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(232, 56);
+            this.lblTime.Size = new System.Drawing.Size(220, 51);
             this.lblTime.TabIndex = 1;
             this.lblTime.Text = "00:00:00ff";
             this.lblTime.Click += new System.EventHandler(this.CalendarClick);
             // 
             // tm2
             // 
-            this.tm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.tm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(103)))), ((int)(((byte)(117)))));
             this.tm2.Controls.Add(this.tm1);
-            this.tm2.Location = new System.Drawing.Point(27, 166);
+            this.tm2.Location = new System.Drawing.Point(23, 116);
             this.tm2.Name = "tm2";
             this.tm2.Size = new System.Drawing.Size(422, 92);
             this.tm2.TabIndex = 3;
             // 
             // tm1
             // 
-            this.tm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(179)))), ((int)(((byte)(199)))));
-            this.tm1.Controls.Add(this.dateToday);
+            this.tm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
             this.tm1.Controls.Add(this.lblTime);
+            this.tm1.Controls.Add(this.dateToday);
             this.tm1.Location = new System.Drawing.Point(6, 6);
             this.tm1.Name = "tm1";
             this.tm1.Size = new System.Drawing.Size(408, 80);
@@ -183,11 +206,11 @@
             this.dateToday.BorderColor = System.Drawing.Color.Aqua;
             this.dateToday.BorderSize = 0;
             this.dateToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.dateToday.Location = new System.Drawing.Point(82, 46);
+            this.dateToday.Location = new System.Drawing.Point(82, 43);
             this.dateToday.MinimumSize = new System.Drawing.Size(4, 35);
             this.dateToday.Name = "dateToday";
             this.dateToday.Size = new System.Drawing.Size(234, 35);
-            this.dateToday.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(179)))), ((int)(((byte)(199)))));
+            this.dateToday.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
             this.dateToday.TabIndex = 4;
             this.dateToday.TextColor = System.Drawing.Color.White;
             // 
@@ -196,7 +219,7 @@
             this.pnlStudsRec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
             this.pnlStudsRec.Controls.Add(this.DataGrid);
             this.pnlStudsRec.Controls.Add(this.label1);
-            this.pnlStudsRec.Location = new System.Drawing.Point(468, 61);
+            this.pnlStudsRec.Location = new System.Drawing.Point(464, 64);
             this.pnlStudsRec.Name = "pnlStudsRec";
             this.pnlStudsRec.Size = new System.Drawing.Size(983, 673);
             this.pnlStudsRec.TabIndex = 4;
@@ -275,9 +298,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle4;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -300,11 +323,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Century Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label2.Font = new System.Drawing.Font("Century Gothic", 30.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label2.Location = new System.Drawing.Point(134, 45);
+            this.label2.Location = new System.Drawing.Point(96, 32);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(332, 63);
+            this.label2.Size = new System.Drawing.Size(253, 47);
             this.label2.TabIndex = 6;
             this.label2.Text = "SIT-IN FORM";
             // 
@@ -316,28 +340,29 @@
             this.pnlLoginFrame.Controls.Add(this.mrg5);
             this.pnlLoginFrame.Controls.Add(this.mrg3);
             this.pnlLoginFrame.Controls.Add(this.mrg4);
+            this.pnlLoginFrame.Controls.Add(this.mrg7);
             this.pnlLoginFrame.Controls.Add(this.mrg2);
             this.pnlLoginFrame.Controls.Add(this.mrg1);
             this.pnlLoginFrame.Controls.Add(this.label5);
-            this.pnlLoginFrame.Location = new System.Drawing.Point(28, 278);
+            this.pnlLoginFrame.Location = new System.Drawing.Point(24, 219);
             this.pnlLoginFrame.Name = "pnlLoginFrame";
-            this.pnlLoginFrame.Size = new System.Drawing.Size(418, 456);
+            this.pnlLoginFrame.Size = new System.Drawing.Size(422, 518);
             this.pnlLoginFrame.TabIndex = 4;
             // 
             // btnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.btnSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
             this.btnSearch.BorderRadius = 10;
             this.btnSearch.BorderSize = 0;
             this.btnSearch.FlatAppearance.BorderSize = 0;
             this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(272, 68);
+            this.btnSearch.Location = new System.Drawing.Point(279, 101);
             this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(115, 53);
+            this.btnSearch.Size = new System.Drawing.Size(115, 45);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "SEARCH";
             this.btnSearch.TextColor = System.Drawing.Color.White;
@@ -346,18 +371,18 @@
             // 
             // btnStart
             // 
-            this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnStart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnStart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.btnStart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.btnStart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
             this.btnStart.BorderRadius = 10;
             this.btnStart.BorderSize = 0;
             this.btnStart.FlatAppearance.BorderSize = 0;
             this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(59, 377);
+            this.btnStart.Location = new System.Drawing.Point(31, 371);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(301, 64);
+            this.btnStart.Size = new System.Drawing.Size(362, 48);
             this.btnStart.TabIndex = 1;
             this.btnStart.Text = "START TIME";
             this.btnStart.TextColor = System.Drawing.Color.White;
@@ -368,9 +393,9 @@
             // 
             this.mrg5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg5.Controls.Add(this.l5);
-            this.mrg5.Location = new System.Drawing.Point(31, 309);
+            this.mrg5.Location = new System.Drawing.Point(34, 317);
             this.mrg5.Name = "mrg5";
-            this.mrg5.Size = new System.Drawing.Size(360, 54);
+            this.mrg5.Size = new System.Drawing.Size(360, 49);
             this.mrg5.TabIndex = 0;
             // 
             // l5
@@ -381,7 +406,7 @@
             this.l5.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.l5.Location = new System.Drawing.Point(1, 1);
             this.l5.Name = "l5";
-            this.l5.Size = new System.Drawing.Size(358, 52);
+            this.l5.Size = new System.Drawing.Size(358, 47);
             this.l5.TabIndex = 0;
             this.l5.Click += new System.EventHandler(this.qw3);
             // 
@@ -391,7 +416,7 @@
             this.placeholder6.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder6.Location = new System.Drawing.Point(100, 16);
+            this.placeholder6.Location = new System.Drawing.Point(23, 12);
             this.placeholder6.Name = "placeholder6";
             this.placeholder6.Size = new System.Drawing.Size(152, 21);
             this.placeholder6.TabIndex = 7;
@@ -402,11 +427,13 @@
             // 
             this.txtPriorityNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
             this.txtPriorityNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPriorityNum.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPriorityNum.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtPriorityNum.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPriorityNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
             this.txtPriorityNum.Location = new System.Drawing.Point(23, 10);
             this.txtPriorityNum.MaxLength = 22;
             this.txtPriorityNum.Name = "txtPriorityNum";
-            this.txtPriorityNum.Size = new System.Drawing.Size(312, 32);
+            this.txtPriorityNum.Size = new System.Drawing.Size(312, 27);
             this.txtPriorityNum.TabIndex = 0;
             this.txtPriorityNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPriorityNum.TextChanged += new System.EventHandler(this.prioinput);
@@ -415,9 +442,9 @@
             // 
             this.mrg3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg3.Controls.Add(this.l3);
-            this.mrg3.Location = new System.Drawing.Point(29, 188);
+            this.mrg3.Location = new System.Drawing.Point(32, 209);
             this.mrg3.Name = "mrg3";
-            this.mrg3.Size = new System.Drawing.Size(360, 54);
+            this.mrg3.Size = new System.Drawing.Size(360, 49);
             this.mrg3.TabIndex = 0;
             // 
             // l3
@@ -428,7 +455,7 @@
             this.l3.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.l3.Location = new System.Drawing.Point(1, 1);
             this.l3.Name = "l3";
-            this.l3.Size = new System.Drawing.Size(358, 52);
+            this.l3.Size = new System.Drawing.Size(358, 47);
             this.l3.TabIndex = 0;
             this.l3.Click += new System.EventHandler(this.qw1);
             // 
@@ -438,7 +465,7 @@
             this.placeholder4.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder4.Location = new System.Drawing.Point(124, 15);
+            this.placeholder4.Location = new System.Drawing.Point(25, 11);
             this.placeholder4.Name = "placeholder4";
             this.placeholder4.Size = new System.Drawing.Size(99, 21);
             this.placeholder4.TabIndex = 7;
@@ -449,11 +476,13 @@
             // 
             this.txtStudentLastName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
             this.txtStudentLastName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStudentLastName.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentLastName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtStudentLastName.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentLastName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
             this.txtStudentLastName.Location = new System.Drawing.Point(23, 10);
             this.txtStudentLastName.MaxLength = 22;
             this.txtStudentLastName.Name = "txtStudentLastName";
-            this.txtStudentLastName.Size = new System.Drawing.Size(312, 32);
+            this.txtStudentLastName.Size = new System.Drawing.Size(312, 27);
             this.txtStudentLastName.TabIndex = 0;
             this.txtStudentLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentLastName.TextChanged += new System.EventHandler(this.lastnamehasinput);
@@ -462,9 +491,9 @@
             // 
             this.mrg4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg4.Controls.Add(this.l4);
-            this.mrg4.Location = new System.Drawing.Point(30, 249);
+            this.mrg4.Location = new System.Drawing.Point(33, 263);
             this.mrg4.Name = "mrg4";
-            this.mrg4.Size = new System.Drawing.Size(360, 54);
+            this.mrg4.Size = new System.Drawing.Size(360, 49);
             this.mrg4.TabIndex = 0;
             // 
             // l4
@@ -475,7 +504,7 @@
             this.l4.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.l4.Location = new System.Drawing.Point(1, 1);
             this.l4.Name = "l4";
-            this.l4.Size = new System.Drawing.Size(358, 52);
+            this.l4.Size = new System.Drawing.Size(358, 47);
             this.l4.TabIndex = 0;
             this.l4.Click += new System.EventHandler(this.qw2);
             // 
@@ -485,7 +514,7 @@
             this.placeholder5.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder5.Location = new System.Drawing.Point(132, 17);
+            this.placeholder5.Location = new System.Drawing.Point(24, 12);
             this.placeholder5.Name = "placeholder5";
             this.placeholder5.Size = new System.Drawing.Size(79, 21);
             this.placeholder5.TabIndex = 7;
@@ -496,22 +525,73 @@
             // 
             this.txtSection.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
             this.txtSection.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSection.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSection.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSection.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
             this.txtSection.Location = new System.Drawing.Point(23, 10);
             this.txtSection.MaxLength = 22;
             this.txtSection.Name = "txtSection";
-            this.txtSection.Size = new System.Drawing.Size(312, 32);
+            this.txtSection.Size = new System.Drawing.Size(312, 27);
             this.txtSection.TabIndex = 0;
             this.txtSection.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSection.TextChanged += new System.EventHandler(this.sectioninput);
+            // 
+            // mrg7
+            // 
+            this.mrg7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
+            this.mrg7.Controls.Add(this.l7);
+            this.mrg7.Location = new System.Drawing.Point(315, 155);
+            this.mrg7.Name = "mrg7";
+            this.mrg7.Size = new System.Drawing.Size(79, 49);
+            this.mrg7.TabIndex = 0;
+            // 
+            // l7
+            // 
+            this.l7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.l7.Controls.Add(this.placeholder8);
+            this.l7.Controls.Add(this.txtMiddleInitial);
+            this.l7.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.l7.Location = new System.Drawing.Point(1, 1);
+            this.l7.Name = "l7";
+            this.l7.Size = new System.Drawing.Size(77, 47);
+            this.l7.TabIndex = 0;
+            this.l7.Click += new System.EventHandler(this.inClick);
+            // 
+            // placeholder8
+            // 
+            this.placeholder8.AutoSize = true;
+            this.placeholder8.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.placeholder8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placeholder8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.placeholder8.Location = new System.Drawing.Point(20, 12);
+            this.placeholder8.Name = "placeholder8";
+            this.placeholder8.Size = new System.Drawing.Size(38, 21);
+            this.placeholder8.TabIndex = 7;
+            this.placeholder8.Text = "M.I.";
+            this.placeholder8.Click += new System.EventHandler(this.inClick);
+            // 
+            // txtMiddleInitial
+            // 
+            this.txtMiddleInitial.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.txtMiddleInitial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtMiddleInitial.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtMiddleInitial.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMiddleInitial.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.txtMiddleInitial.Location = new System.Drawing.Point(20, 10);
+            this.txtMiddleInitial.MaxLength = 1;
+            this.txtMiddleInitial.Name = "txtMiddleInitial";
+            this.txtMiddleInitial.Size = new System.Drawing.Size(38, 27);
+            this.txtMiddleInitial.TabIndex = 0;
+            this.txtMiddleInitial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtMiddleInitial.TextChanged += new System.EventHandler(this.initialHasInput);
             // 
             // mrg2
             // 
             this.mrg2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg2.Controls.Add(this.l2);
-            this.mrg2.Location = new System.Drawing.Point(28, 128);
+            this.mrg2.Location = new System.Drawing.Point(31, 155);
             this.mrg2.Name = "mrg2";
-            this.mrg2.Size = new System.Drawing.Size(360, 54);
+            this.mrg2.Size = new System.Drawing.Size(278, 49);
             this.mrg2.TabIndex = 0;
             // 
             // l2
@@ -522,7 +602,7 @@
             this.l2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.l2.Location = new System.Drawing.Point(1, 1);
             this.l2.Name = "l2";
-            this.l2.Size = new System.Drawing.Size(358, 52);
+            this.l2.Size = new System.Drawing.Size(276, 47);
             this.l2.TabIndex = 0;
             this.l2.Click += new System.EventHandler(this.userClick2);
             // 
@@ -532,7 +612,7 @@
             this.placeholder2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder2.Location = new System.Drawing.Point(125, 17);
+            this.placeholder2.Location = new System.Drawing.Point(26, 12);
             this.placeholder2.Name = "placeholder2";
             this.placeholder2.Size = new System.Drawing.Size(102, 21);
             this.placeholder2.TabIndex = 7;
@@ -543,11 +623,13 @@
             // 
             this.txtStudentName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
             this.txtStudentName.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStudentName.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtStudentName.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
             this.txtStudentName.Location = new System.Drawing.Point(23, 10);
             this.txtStudentName.MaxLength = 22;
             this.txtStudentName.Name = "txtStudentName";
-            this.txtStudentName.Size = new System.Drawing.Size(312, 32);
+            this.txtStudentName.Size = new System.Drawing.Size(230, 27);
             this.txtStudentName.TabIndex = 0;
             this.txtStudentName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentName.TextChanged += new System.EventHandler(this.fullNameHasInput);
@@ -556,9 +638,9 @@
             // 
             this.mrg1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg1.Controls.Add(this.l1);
-            this.mrg1.Location = new System.Drawing.Point(28, 68);
+            this.mrg1.Location = new System.Drawing.Point(31, 101);
             this.mrg1.Name = "mrg1";
-            this.mrg1.Size = new System.Drawing.Size(238, 54);
+            this.mrg1.Size = new System.Drawing.Size(238, 49);
             this.mrg1.TabIndex = 0;
             // 
             // l1
@@ -569,7 +651,7 @@
             this.l1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.l1.Location = new System.Drawing.Point(1, 1);
             this.l1.Name = "l1";
-            this.l1.Size = new System.Drawing.Size(236, 52);
+            this.l1.Size = new System.Drawing.Size(236, 47);
             this.l1.TabIndex = 0;
             this.l1.Click += new System.EventHandler(this.userClick);
             // 
@@ -579,7 +661,7 @@
             this.placeholder1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder1.Location = new System.Drawing.Point(28, 16);
+            this.placeholder1.Location = new System.Drawing.Point(26, 12);
             this.placeholder1.Name = "placeholder1";
             this.placeholder1.Size = new System.Drawing.Size(169, 21);
             this.placeholder1.TabIndex = 7;
@@ -590,80 +672,39 @@
             // 
             this.txtStudentID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
             this.txtStudentID.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtStudentID.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentID.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtStudentID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
             this.txtStudentID.Location = new System.Drawing.Point(23, 10);
             this.txtStudentID.MaxLength = 11;
             this.txtStudentID.Name = "txtStudentID";
-            this.txtStudentID.Size = new System.Drawing.Size(190, 32);
+            this.txtStudentID.Size = new System.Drawing.Size(190, 27);
             this.txtStudentID.TabIndex = 0;
             this.txtStudentID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentID.TextChanged += new System.EventHandler(this.idNumberHasInput);
+            this.txtStudentID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForBadInput);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label5.Location = new System.Drawing.Point(96, 23);
+            this.label5.Location = new System.Drawing.Point(110, 34);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(227, 36);
+            this.label5.Size = new System.Drawing.Size(196, 30);
             this.label5.TabIndex = 6;
             this.label5.Text = "STUDENT LOGIN";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label3.Location = new System.Drawing.Point(149, 100);
+            this.label3.Location = new System.Drawing.Point(101, 73);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(294, 15);
+            this.label3.Size = new System.Drawing.Size(244, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "DEPARTMENT OF NETWORK AND TECHNICAL SERVICES";
-            // 
-            // pictureBoxBunifuItachi1
-            // 
-            this.pictureBoxBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
-            this.pictureBoxBunifuItachi1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
-            this.pictureBoxBunifuItachi1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.pictureBoxBunifuItachi1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.pictureBoxBunifuItachi1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.pictureBoxBunifuItachi1.BorderSize = 5;
-            this.pictureBoxBunifuItachi1.GradientAngle = 50F;
-            this.pictureBoxBunifuItachi1.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
-            this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(12, 11);
-            this.pictureBoxBunifuItachi1.Name = "pictureBoxBunifuItachi1";
-            this.pictureBoxBunifuItachi1.Size = new System.Drawing.Size(132, 132);
-            this.pictureBoxBunifuItachi1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxBunifuItachi1.TabIndex = 5;
-            this.pictureBoxBunifuItachi1.TabStop = false;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.exitButton);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1472, 40);
-            this.panel1.TabIndex = 0;
-            // 
-            // exitButton
-            // 
-            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.exitButton.FlatAppearance.BorderSize = 0;
-            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(140)))));
-            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
-            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(1428, 0);
-            this.exitButton.Name = "exitButton";
-            this.exitButton.Size = new System.Drawing.Size(44, 40);
-            this.exitButton.TabIndex = 0;
-            this.exitButton.Text = "X";
-            this.exitButton.UseVisualStyleBackColor = false;
-            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // CLOCK
             // 
@@ -817,6 +858,8 @@
             // 
             // pnlRecords
             // 
+            this.pnlRecords.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
+            this.pnlRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRecords.Controls.Add(this.label6);
             this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
@@ -826,7 +869,7 @@
             this.pnlRecords.Controls.Add(this.label9);
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
-            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -834,9 +877,10 @@
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label6.Location = new System.Drawing.Point(90, 94);
+            this.label6.Location = new System.Drawing.Point(100, 70);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(294, 15);
             this.label6.TabIndex = 11;
@@ -852,7 +896,7 @@
             this.pictureBoxBunifuItachi2.BorderSize = 5;
             this.pictureBoxBunifuItachi2.GradientAngle = 50F;
             this.pictureBoxBunifuItachi2.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
-            this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(12, 36);
+            this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(22, 19);
             this.pictureBoxBunifuItachi2.Name = "pictureBoxBunifuItachi2";
             this.pictureBoxBunifuItachi2.Size = new System.Drawing.Size(72, 72);
             this.pictureBoxBunifuItachi2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -861,21 +905,39 @@
             // 
             // pnlStudentInfo
             // 
-            this.pnlStudentInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.pnlStudentInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.pnlStudentInfo.Controls.Add(this.pictureBox1);
             this.pnlStudentInfo.Controls.Add(this.btnDelete);
             this.pnlStudentInfo.Controls.Add(this.btnEdit);
             this.pnlStudentInfo.Controls.Add(this.btnPrint);
-            this.pnlStudentInfo.Controls.Add(this.label13);
             this.pnlStudentInfo.Controls.Add(this.label11);
-            this.pnlStudentInfo.Controls.Add(this.label8);
+            this.pnlStudentInfo.Controls.Add(this.label14);
             this.pnlStudentInfo.Controls.Add(this.label12);
             this.pnlStudentInfo.Controls.Add(this.label10);
             this.pnlStudentInfo.Controls.Add(this.label7);
+            this.pnlStudentInfo.Controls.Add(this.panel7);
             this.pnlStudentInfo.Controls.Add(this.label15);
+            this.pnlStudentInfo.Controls.Add(this.panel6);
+            this.pnlStudentInfo.Controls.Add(this.panel5);
+            this.pnlStudentInfo.Controls.Add(this.panel4);
+            this.pnlStudentInfo.Controls.Add(this.panel3);
             this.pnlStudentInfo.Location = new System.Drawing.Point(24, 115);
             this.pnlStudentInfo.Name = "pnlStudentInfo";
             this.pnlStudentInfo.Size = new System.Drawing.Size(565, 619);
             this.pnlStudentInfo.TabIndex = 15;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::Sit_In_Monitoring.Properties.Resources.user__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(188, 65);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(188, 185);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
             // 
             // btnDelete
             // 
@@ -888,9 +950,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(425, 478);
+            this.btnDelete.Location = new System.Drawing.Point(398, 516);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(129, 40);
+            this.btnDelete.Size = new System.Drawing.Size(100, 30);
             this.btnDelete.TabIndex = 1;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.TextColor = System.Drawing.Color.White;
@@ -908,9 +970,9 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(425, 523);
+            this.btnEdit.Location = new System.Drawing.Point(398, 485);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(129, 40);
+            this.btnEdit.Size = new System.Drawing.Size(100, 30);
             this.btnEdit.TabIndex = 1;
             this.btnEdit.Text = "EDIT";
             this.btnEdit.TextColor = System.Drawing.Color.White;
@@ -928,25 +990,180 @@
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnPrint.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(425, 567);
+            this.btnPrint.Location = new System.Drawing.Point(398, 547);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(129, 40);
+            this.btnPrint.Size = new System.Drawing.Size(100, 30);
             this.btnPrint.TabIndex = 1;
             this.btnPrint.Text = "PRINT";
             this.btnPrint.TextColor = System.Drawing.Color.White;
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label11.Location = new System.Drawing.Point(71, 422);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(152, 19);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "Number of Sit-ins:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label14.Location = new System.Drawing.Point(71, 393);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(174, 19);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Remaining Balance:";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label12.Location = new System.Drawing.Point(71, 362);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(74, 19);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Section:";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label10.Location = new System.Drawing.Point(71, 333);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(129, 19);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Student Name:";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label7.Location = new System.Drawing.Point(71, 304);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(95, 19);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Student ID:";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.displayNumOfSitIns);
+            this.panel7.Location = new System.Drawing.Point(143, 423);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(351, 28);
+            this.panel7.TabIndex = 7;
+            // 
+            // displayNumOfSitIns
+            // 
+            this.displayNumOfSitIns.AutoSize = true;
+            this.displayNumOfSitIns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displayNumOfSitIns.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayNumOfSitIns.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displayNumOfSitIns.Location = new System.Drawing.Point(312, 0);
+            this.displayNumOfSitIns.Name = "displayNumOfSitIns";
+            this.displayNumOfSitIns.Size = new System.Drawing.Size(39, 19);
+            this.displayNumOfSitIns.TabIndex = 6;
+            this.displayNumOfSitIns.Text = "<v>";
+            // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label15.Location = new System.Drawing.Point(167, 8);
+            this.label15.Location = new System.Drawing.Point(182, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(204, 36);
             this.label15.TabIndex = 6;
             this.label15.Text = "STUDENT INFO";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.displayBalance);
+            this.panel6.Location = new System.Drawing.Point(143, 394);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(351, 28);
+            this.panel6.TabIndex = 7;
+            // 
+            // displayBalance
+            // 
+            this.displayBalance.AutoSize = true;
+            this.displayBalance.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displayBalance.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displayBalance.Location = new System.Drawing.Point(155, 0);
+            this.displayBalance.Name = "displayBalance";
+            this.displayBalance.Size = new System.Drawing.Size(196, 19);
+            this.displayBalance.TabIndex = 6;
+            this.displayBalance.Text = "<60 hours, 00 minutes>";
+            // 
+            // panel5
+            // 
+            this.panel5.Controls.Add(this.displaySection);
+            this.panel5.Location = new System.Drawing.Point(143, 362);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(351, 28);
+            this.panel5.TabIndex = 7;
+            // 
+            // displaySection
+            // 
+            this.displaySection.AutoSize = true;
+            this.displaySection.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displaySection.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displaySection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displaySection.Location = new System.Drawing.Point(241, 0);
+            this.displaySection.Name = "displaySection";
+            this.displaySection.Size = new System.Drawing.Size(110, 19);
+            this.displaySection.TabIndex = 6;
+            this.displaySection.Text = "<sect - 100>";
+            // 
+            // panel4
+            // 
+            this.panel4.Controls.Add(this.displayName);
+            this.panel4.Location = new System.Drawing.Point(143, 333);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(351, 28);
+            this.panel4.TabIndex = 7;
+            // 
+            // displayName
+            // 
+            this.displayName.AutoSize = true;
+            this.displayName.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displayName.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayName.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displayName.Location = new System.Drawing.Point(201, 0);
+            this.displayName.Name = "displayName";
+            this.displayName.Size = new System.Drawing.Size(150, 19);
+            this.displayName.TabIndex = 6;
+            this.displayName.Text = "<Marx, Seiya M.>";
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.displayID);
+            this.panel3.Location = new System.Drawing.Point(143, 302);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(351, 28);
+            this.panel3.TabIndex = 7;
+            // 
+            // displayID
+            // 
+            this.displayID.AutoSize = true;
+            this.displayID.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displayID.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displayID.Location = new System.Drawing.Point(225, 0);
+            this.displayID.Name = "displayID";
+            this.displayID.Size = new System.Drawing.Size(126, 19);
+            this.displayID.TabIndex = 6;
+            this.displayID.Text = "<00-0000000>";
             // 
             // mrg6
             // 
@@ -1018,9 +1235,10 @@
             // label9
             // 
             this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label9.Font = new System.Drawing.Font("Century Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label9.Location = new System.Drawing.Point(78, 40);
+            this.label9.Location = new System.Drawing.Point(88, 16);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(268, 63);
             this.label9.TabIndex = 10;
@@ -1120,87 +1338,67 @@
             this.hideRecords.UseVisualStyleBackColor = false;
             this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
             // 
-            // label7
+            // pictureBoxBunifuItachi1
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label7.Location = new System.Drawing.Point(50, 308);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(121, 25);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Student ID:";
+            this.pictureBoxBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.pictureBoxBunifuItachi1.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pictureBoxBunifuItachi1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.pictureBoxBunifuItachi1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pictureBoxBunifuItachi1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.pictureBoxBunifuItachi1.BorderSize = 5;
+            this.pictureBoxBunifuItachi1.GradientAngle = 50F;
+            this.pictureBoxBunifuItachi1.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
+            this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(23, 20);
+            this.pictureBoxBunifuItachi1.Name = "pictureBoxBunifuItachi1";
+            this.pictureBoxBunifuItachi1.Size = new System.Drawing.Size(72, 72);
+            this.pictureBoxBunifuItachi1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBunifuItachi1.TabIndex = 5;
+            this.pictureBoxBunifuItachi1.TabStop = false;
             // 
-            // label8
+            // panel1
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label8.Location = new System.Drawing.Point(178, 307);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(146, 25);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "<id-number>";
+            this.panel1.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.exitButton);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1472, 40);
+            this.panel1.TabIndex = 0;
             // 
-            // label10
+            // exitButton
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label10.Location = new System.Drawing.Point(50, 336);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(163, 25);
-            this.label10.TabIndex = 6;
-            this.label10.Text = "Student Name:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label11.Location = new System.Drawing.Point(214, 337);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(98, 25);
-            this.label11.TabIndex = 6;
-            this.label11.Text = "<name>";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label12.Location = new System.Drawing.Point(50, 366);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(92, 25);
-            this.label12.TabIndex = 6;
-            this.label12.Text = "Section:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label13.Location = new System.Drawing.Point(147, 367);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(98, 25);
-            this.label13.TabIndex = 6;
-            this.label13.Text = "<name>";
+            this.exitButton.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.exitButton.FlatAppearance.BorderSize = 0;
+            this.exitButton.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(140)))));
+            this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
+            this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.exitButton.Location = new System.Drawing.Point(1428, 0);
+            this.exitButton.Name = "exitButton";
+            this.exitButton.Size = new System.Drawing.Size(44, 40);
+            this.exitButton.TabIndex = 0;
+            this.exitButton.Text = "X";
+            this.exitButton.UseVisualStyleBackColor = false;
+            this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
+            this.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1472, 759);
             this.Controls.Add(this.pnlRecords);
-            this.Controls.Add(this.pnlConfirmExit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxBunifuItachi1);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.pnlConfirmExit);
             this.Controls.Add(this.pnlLoginFrame);
             this.Controls.Add(this.tm2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlStudsRec);
-            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -1226,14 +1424,15 @@
             this.mrg4.ResumeLayout(false);
             this.l4.ResumeLayout(false);
             this.l4.PerformLayout();
+            this.mrg7.ResumeLayout(false);
+            this.l7.ResumeLayout(false);
+            this.l7.PerformLayout();
             this.mrg2.ResumeLayout(false);
             this.l2.ResumeLayout(false);
             this.l2.PerformLayout();
             this.mrg1.ResumeLayout(false);
             this.l1.ResumeLayout(false);
             this.l1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).EndInit();
-            this.panel1.ResumeLayout(false);
             this.pnlConfirmExit.ResumeLayout(false);
             this.pnlConfirmExit.PerformLayout();
             this.pnlDesign.ResumeLayout(false);
@@ -1246,11 +1445,24 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).EndInit();
             this.pnlStudentInfo.ResumeLayout(false);
             this.pnlStudentInfo.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.mrg6.ResumeLayout(false);
             this.l6.ResumeLayout(false);
             this.l6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsView)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1339,12 +1551,26 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label displayID;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Label displayBalance;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Label displaySection;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.Label displayName;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Panel panel7;
+        private System.Windows.Forms.Label displayNumOfSitIns;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label placeholder8;
+        private System.Windows.Forms.Panel mrg7;
+        private System.Windows.Forms.Panel l7;
+        private System.Windows.Forms.TextBox txtMiddleInitial;
     }
 }
 

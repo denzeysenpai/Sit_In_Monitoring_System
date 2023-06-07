@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Runtime.InteropServices;
@@ -14,8 +13,9 @@ namespace Sit_In_Monitoring
         Color notClicked;
         Color Clicked;
         bool exitApp;
-
-
+        int attemptsOfLogin;
+        string password;
+        Color buttonColors;
         public Form1()
         {
             InitializeComponent();
@@ -26,6 +26,8 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnlStudsRec, 16);
             Design.RoundCorner(borderpass, 10);
             Design.RoundCorner(pnlDesign, 14);
+
+
             Design.RoundCorner(pass, 12);
             Design.RoundCorner(mrg1, 12);
             Design.RoundCorner(mrg2, 12);
@@ -33,24 +35,32 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(mrg4, 12);
             Design.RoundCorner(mrg5, 12);
             Design.RoundCorner(mrg6, 12);
-            Design.RoundCorner(this, 25);
-            Design.RoundCorner(pnlStudentInfo, 15);
-            Design.RoundCorner(DataGrid, 15);
-            Design.RoundCorner(recordsView, 15);
+            Design.RoundCorner(mrg7, 12);
+
+
             Design.RoundCorner(tm1, 15);
             Design.RoundCorner(tm2, 16);
+
+
             Design.RoundCorner(l1, 11);
             Design.RoundCorner(l2, 11);
             Design.RoundCorner(l3, 11);
             Design.RoundCorner(l4, 11);
             Design.RoundCorner(l5, 11);
             Design.RoundCorner(l6, 11);
+            Design.RoundCorner(l7, 11);
+
+
+            Design.RoundCorner(this, 25);
+            Design.RoundCorner(DataGrid, 15);
+            Design.RoundCorner(recordsView, 15);
+            Design.RoundCorner(pnlStudentInfo, 15);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Clicked = Color.FromArgb(4, 146, 191);
+            Clicked = Color.FromArgb(65, 205, 242);
             notClicked = Color.FromArgb(210, 242, 250);
-
+            
             mrg1.BackColor = notClicked;
             mrg2.BackColor = notClicked;
 
@@ -60,12 +70,27 @@ namespace Sit_In_Monitoring
             pnlConfirmExit.Location = new Point(446, 204);
             pnlRecords.Location = new Point(0, 0);
             pnlRecords.Hide();
+
+            Display_Student_Info("00-0000000","---- ----","-","-------","---- - ---", 0, 0, 0);
+            attemptsOfLogin = 0;
+            password = "hehe";
+
+            buttonColors = Color.FromArgb(8, 136, 194);
+
+            btnCancelIn.BackColor = buttonColors;
+            btnConfirm.BackColor = buttonColors;
+            btnDelete.BackColor = buttonColors;
+            btnEdit.BackColor = buttonColors;
+            btnPrint.BackColor = buttonColors;
+            btnSearch.BackColor = buttonColors;
+            btnSearchInRecords.BackColor = buttonColors;
+            btnStart.BackColor = buttonColors;    
         }
 
 
 
         /// <summary>
-        /// HEHE ORASAN
+        /// HEKHOK ORASAN
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -83,96 +108,46 @@ namespace Sit_In_Monitoring
         /// </summary>
         private void TextBoxFocus(object sender, EventArgs e)
         {
-            // Border highlight
 
-            if (txtStudentID.Focused)
+            /// Main Behaviour for Textbox User Interface - Mark
+            void TextBoxBehaviour(Control txtbx, Control mrgin, Control placeholders)
             {
-                mrg1.BackColor = Clicked;
-                placeholder1.Hide();
-            }
-            else
-            {
-                mrg1.BackColor = notClicked;
-                placeholder1.Show();
+                if (txtbx.Focused)
+                {
+                    mrgin.BackColor = Clicked;
+                    placeholders.Hide();
+                }
+                else
+                {
+                    mrgin.BackColor = notClicked;
+                    placeholders.Show();
+                }
             }
 
-            // Border highlight
-
-            if (txtStudentName.Focused)
-            {
-                mrg2.BackColor = Clicked;
-                placeholder2.Hide();
-            }
-            else
-            {
-                mrg2.BackColor = notClicked;
-                placeholder2.Show();
-            }
 
             // Border highlight
+            TextBoxBehaviour(txtStudentID, mrg1, placeholder1);
 
-            if (txtPass.Focused)
-            {
-                borderpass.BackColor = Clicked;
-                placeholder3.Hide();
-            }
-            else
-            {
-                borderpass.BackColor = notClicked;
-                placeholder3.Show();
-            }
+            // Border highlight
+            TextBoxBehaviour(txtStudentName, mrg2, placeholder2);
+
+            // Border highlight
+            TextBoxBehaviour(txtPass, borderpass, placeholder3);
 
             // Last name
-
-            if (txtStudentLastName.Focused)
-            {
-                mrg3.BackColor = Clicked;
-                placeholder4.Hide();
-            }
-            else
-            {
-                mrg3.BackColor = notClicked;
-                placeholder4.Show();
-            }
+            TextBoxBehaviour(txtStudentLastName, mrg3, placeholder4);
 
             // Section
-
-            if (txtSection.Focused)
-            {
-                mrg4.BackColor = Clicked;
-                placeholder5.Hide();
-            }
-            else
-            {
-                mrg4.BackColor = notClicked;
-                placeholder5.Show();
-            }
+            TextBoxBehaviour(txtSection, mrg4, placeholder5);
 
             // Priority num
-
-            if (txtPriorityNum.Focused)
-            {
-                mrg5.BackColor = Clicked;
-                placeholder6.Hide();
-            }
-            else
-            {
-                mrg5.BackColor = notClicked;
-                placeholder6.Show();
-            }
+            TextBoxBehaviour(txtPriorityNum, mrg5, placeholder6);
 
             // Search
+            TextBoxBehaviour(txtSearchId, mrg6, placeholder7);
 
-            if (txtSearchId.Focused)
-            {
-                mrg6.BackColor = Clicked;
-                placeholder7.Hide();
-            }
-            else
-            {
-                mrg6.BackColor = notClicked;
-                placeholder7.Show();
-            }
+            // Middle Initial
+            TextBoxBehaviour(txtMiddleInitial, mrg7, placeholder8);
         }
 
 
@@ -199,27 +174,23 @@ namespace Sit_In_Monitoring
 
         private void btnConfirm_Click(object sender, EventArgs e)
         {
-            // Check if user input pass is correct
+            if (attemptsOfLogin > 10)
+                MessageBox.Show($"Please contact an assistant! \nAfter ({attemptsOfLogin}), you have failed to input the correct password!", "Password Incorrect!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            else if (attemptsOfLogin < 10)
+            {
+                attemptsOfLogin += 1;
 
-            if (txtPass.Text == "hehe")
-            {
-                exitApp = true;
-            }
-            else
-            {
-                exitApp = false;
-                MessageBox.Show("Please contact an assistant!", "Password Incorrect!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-        }
-
-        private void ENVI_EXIT(object sender, EventArgs e)
-        {
-            if (exitApp)
-            {
-                this.Close();
+                if (txtPass.Text == password) // Check if user input pass is correct // please change implementation during finalization - Mark
+                {
+                    attemptsOfLogin = 0;
+                    exitApp = true;
+                }
+                else
+                    exitApp = false;
             }
         }
 
+        private void ENVI_EXIT(object sender, EventArgs e) { if (exitApp) this.Close(); }
         private void btnCancelIn_Click(object sender, EventArgs e)
         {
             exitApp = false;
@@ -236,11 +207,9 @@ namespace Sit_In_Monitoring
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1 && e.Control)
-            {
                 pnlRecords.Show();
-            }
         }
-        public void addStudent()
+        public void AddStudent()
         {
             conn.Open();
             SqlCommand cmd = new SqlCommand("INSERT INTO Student VALUES(@studentId,@firstName,@lastName,@section)", conn);
@@ -257,7 +226,7 @@ namespace Sit_In_Monitoring
             //            join s in sit.Students on cs.personid equals s.personid
             //            where s.studentid = 
             //EZ - 6/7/2023
-                        
+
 
 
             //SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM sit_in_table", conn);
@@ -286,7 +255,7 @@ namespace Sit_In_Monitoring
 
 
 
-            addStudent();
+            AddStudent();
             //try
             //{
             //    conn.Open();
@@ -352,6 +321,7 @@ namespace Sit_In_Monitoring
             }
         }
 
+
         #region Behavior UI
         private void idNumberHasInput(object sender, EventArgs e) => CheckForInput(txtStudentID, placeholder1);
         private void fullNameHasInput(object sender, EventArgs e) => CheckForInput(txtStudentName, placeholder2);
@@ -360,6 +330,7 @@ namespace Sit_In_Monitoring
         private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
         private void prioinput(object sender, EventArgs e) => CheckForInput(txtPriorityNum, placeholder6);
         private void searchedchanged(object sender, EventArgs e) => CheckForInput(txtSearchId, placeholder7);
+        private void initialHasInput(object sender, EventArgs e) => CheckForInput(txtMiddleInitial, placeholder8);
 
         // Text Focus
         private void idClick(object sender, EventArgs e) => txtStudentID.Focus();
@@ -375,10 +346,38 @@ namespace Sit_In_Monitoring
         private void qw2(object sender, EventArgs e) => txtSection.Focus();
         private void qw3(object sender, EventArgs e) => txtPriorityNum.Focus();
         private void placeholder7click(object sender, EventArgs e) => txtSearchId.Focus();
+        private void inClick(object sender, EventArgs e) => txtMiddleInitial.Focus();
 
         #endregion
 
 
+
+        // USE THIS TO DISPLAY INFO IN SEARCHED RECORDS
+
+
+        /// <summary>
+        /// Displays the student info in correct format
+        /// </summary>
+        /// <param name="stud_ID">Student ID to display</param>
+        /// <param name="stud_fName">Student's First Name</param>
+        /// <param name="stud_mInitial">Student's Middle Initial</param>
+        /// <param name="stud_lName">Student's Last Name</param>
+        /// <param name="stud_Sect">Section</param>
+        /// <param name="remaining_Hours">Remaining Hours the student has</param>
+        /// <param name="remaining_Minutes">Remaining minutes the student has</param>
+        /// <param name="num_of_sit_ins">Number of sit-ins recorded</param>
+        private void Display_Student_Info(string stud_ID, string stud_fName, string stud_mInitial, string stud_lName, string stud_Sect, int remaining_Hours, int remaining_Minutes, int num_of_sit_ins)
+        {
+            // MARK - 6/7/2023 - 8:56 PM
+            string FullName = $"{stud_fName}, {stud_fName} {stud_mInitial}.";
+            string RemainingBalance = $"{remaining_Hours} Hours, {remaining_Minutes} Minutes";
+
+            displayID.Text = stud_ID;
+            displayName.Text = FullName;
+            displaySection.Text = stud_Sect;
+            displayBalance.Text = RemainingBalance;
+            displayNumOfSitIns.Text = num_of_sit_ins.ToString();
+        }
 
 
 
@@ -411,6 +410,14 @@ namespace Sit_In_Monitoring
         private void btnSearchInRecords_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CheckForBadInput(object sender, KeyPressEventArgs e)
+        {
+            if (char.IsLetter(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
     class SeiyaMarx
