@@ -29,19 +29,13 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
             this.dateToday = new ItachiUIBunifu.DateTimePickerBunifuItachi();
             this.pnlStudsRec = new System.Windows.Forms.Panel();
             this.DataGrid = new System.Windows.Forms.DataGridView();
-            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FULLNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLoginFrame = new System.Windows.Forms.Panel();
@@ -86,27 +80,37 @@
             this.mensahe = new System.Windows.Forms.Label();
             this.ENVIRONMENT = new System.Windows.Forms.Timer(this.components);
             this.pnlRecords = new System.Windows.Forms.Panel();
-            this.recordsView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.hideRecords = new System.Windows.Forms.Button();
-            this.buttonBunifuItachi1 = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.buttonBunifuItachi4 = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.buttonBunifuItachi2 = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.buttonBunifuItachi3 = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.label15 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonBunifuItachi1 = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.buttonBunifuItachi3 = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.label15 = new System.Windows.Forms.Label();
-            this.buttonBunifuItachi2 = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.buttonBunifuItachi4 = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.hideRecords = new System.Windows.Forms.Button();
+            this.recordsView = new System.Windows.Forms.DataGridView();
+            this.lDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lStudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lTimeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -129,12 +133,12 @@
             this.borderpass.SuspendLayout();
             this.pass.SuspendLayout();
             this.pnlRecords.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recordsView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).BeginInit();
-            this.panel2.SuspendLayout();
+            this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel4.SuspendLayout();
-            this.panel5.SuspendLayout();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsView)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
@@ -200,7 +204,9 @@
             this.DataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DATE,
             this.STUDENT_ID,
-            this.FULLNAME,
+            this.FIRSTNAME,
+            this.LASTNAME,
+            this.cSection,
             this.TIME_IN,
             this.TIME_OUT,
             this.LOG_OUT});
@@ -210,53 +216,6 @@
             this.DataGrid.Size = new System.Drawing.Size(941, 597);
             this.DataGrid.TabIndex = 0;
             this.DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellContentClick);
-            // 
-            // DATE
-            // 
-            this.DATE.Frozen = true;
-            this.DATE.HeaderText = "DATE";
-            this.DATE.Name = "DATE";
-            this.DATE.ReadOnly = true;
-            this.DATE.Width = 70;
-            // 
-            // STUDENT_ID
-            // 
-            this.STUDENT_ID.Frozen = true;
-            this.STUDENT_ID.HeaderText = "STUDENT ID";
-            this.STUDENT_ID.Name = "STUDENT_ID";
-            this.STUDENT_ID.Width = 170;
-            // 
-            // FULLNAME
-            // 
-            this.FULLNAME.Frozen = true;
-            this.FULLNAME.HeaderText = "FULLNAME";
-            this.FULLNAME.Name = "FULLNAME";
-            this.FULLNAME.Width = 360;
-            // 
-            // TIME_IN
-            // 
-            this.TIME_IN.Frozen = true;
-            this.TIME_IN.HeaderText = "TIME IN";
-            this.TIME_IN.Name = "TIME_IN";
-            // 
-            // TIME_OUT
-            // 
-            this.TIME_OUT.Frozen = true;
-            this.TIME_OUT.HeaderText = "TIME OUT";
-            this.TIME_OUT.Name = "TIME_OUT";
-            // 
-            // LOG_OUT
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
-            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LOG_OUT.Frozen = true;
-            this.LOG_OUT.HeaderText = "LOG OUT";
-            this.LOG_OUT.Name = "LOG_OUT";
-            this.LOG_OUT.Text = "LOG OUT";
-            this.LOG_OUT.ToolTipText = "Log out student";
-            this.LOG_OUT.UseColumnTextForButtonValue = true;
             // 
             // label1
             // 
@@ -789,70 +748,19 @@
             // 
             // pnlRecords
             // 
+            this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRecords.Controls.Add(this.label6);
             this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
             this.pnlRecords.Controls.Add(this.panel5);
             this.pnlRecords.Controls.Add(this.panel3);
             this.pnlRecords.Controls.Add(this.buttonBunifuItachi1);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Controls.Add(this.panel2);
             this.pnlRecords.Controls.Add(this.recordsView);
-            this.pnlRecords.Location = new System.Drawing.Point(0, 1);
+            this.pnlRecords.Controls.Add(this.panel2);
+            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
-            // 
-            // recordsView
-            // 
-            this.recordsView.AllowUserToAddRows = false;
-            this.recordsView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.recordsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.recordsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.recordsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5});
-            this.recordsView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.recordsView.Location = new System.Drawing.Point(606, 115);
-            this.recordsView.Name = "recordsView";
-            this.recordsView.Size = new System.Drawing.Size(841, 619);
-            this.recordsView.TabIndex = 12;
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.Frozen = true;
-            this.dataGridViewTextBoxColumn2.HeaderText = "STUDENT ID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.Width = 170;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.Frozen = true;
-            this.dataGridViewTextBoxColumn3.HeaderText = "FULLNAME";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.Width = 360;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.Frozen = true;
-            this.dataGridViewTextBoxColumn4.HeaderText = "TIME IN";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.Frozen = true;
-            this.dataGridViewTextBoxColumn5.HeaderText = "TIME OUT";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
             // label6
             // 
@@ -882,51 +790,85 @@
             this.pictureBoxBunifuItachi2.TabIndex = 9;
             this.pictureBoxBunifuItachi2.TabStop = false;
             // 
-            // panel2
+            // panel5
             // 
-            this.panel2.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.hideRecords);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1472, 40);
-            this.panel2.TabIndex = 8;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.panel5.Controls.Add(this.buttonBunifuItachi4);
+            this.panel5.Controls.Add(this.buttonBunifuItachi2);
+            this.panel5.Controls.Add(this.buttonBunifuItachi3);
+            this.panel5.Controls.Add(this.label15);
+            this.panel5.Location = new System.Drawing.Point(24, 115);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(565, 619);
+            this.panel5.TabIndex = 15;
             // 
-            // hideRecords
+            // buttonBunifuItachi4
             // 
-            this.hideRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.hideRecords.FlatAppearance.BorderSize = 0;
-            this.hideRecords.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(140)))));
-            this.hideRecords.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
-            this.hideRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hideRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hideRecords.Location = new System.Drawing.Point(1381, 0);
-            this.hideRecords.Name = "hideRecords";
-            this.hideRecords.Size = new System.Drawing.Size(91, 40);
-            this.hideRecords.TabIndex = 0;
-            this.hideRecords.Text = "GO BACK";
-            this.hideRecords.UseVisualStyleBackColor = false;
-            this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
+            this.buttonBunifuItachi4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi4.BorderRadius = 10;
+            this.buttonBunifuItachi4.BorderSize = 0;
+            this.buttonBunifuItachi4.FlatAppearance.BorderSize = 0;
+            this.buttonBunifuItachi4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBunifuItachi4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBunifuItachi4.ForeColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi4.Location = new System.Drawing.Point(425, 478);
+            this.buttonBunifuItachi4.Name = "buttonBunifuItachi4";
+            this.buttonBunifuItachi4.Size = new System.Drawing.Size(129, 40);
+            this.buttonBunifuItachi4.TabIndex = 1;
+            this.buttonBunifuItachi4.Text = "DELETE";
+            this.buttonBunifuItachi4.TextColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi4.UseVisualStyleBackColor = false;
             // 
-            // buttonBunifuItachi1
+            // buttonBunifuItachi2
             // 
-            this.buttonBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi1.BorderRadius = 10;
-            this.buttonBunifuItachi1.BorderSize = 0;
-            this.buttonBunifuItachi1.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi1.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi1.Location = new System.Drawing.Point(1300, 60);
-            this.buttonBunifuItachi1.Name = "buttonBunifuItachi1";
-            this.buttonBunifuItachi1.Size = new System.Drawing.Size(146, 44);
-            this.buttonBunifuItachi1.TabIndex = 13;
-            this.buttonBunifuItachi1.Text = "SEARCH";
-            this.buttonBunifuItachi1.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi1.UseVisualStyleBackColor = false;
+            this.buttonBunifuItachi2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi2.BorderRadius = 10;
+            this.buttonBunifuItachi2.BorderSize = 0;
+            this.buttonBunifuItachi2.FlatAppearance.BorderSize = 0;
+            this.buttonBunifuItachi2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBunifuItachi2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBunifuItachi2.ForeColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi2.Location = new System.Drawing.Point(425, 523);
+            this.buttonBunifuItachi2.Name = "buttonBunifuItachi2";
+            this.buttonBunifuItachi2.Size = new System.Drawing.Size(129, 40);
+            this.buttonBunifuItachi2.TabIndex = 1;
+            this.buttonBunifuItachi2.Text = "EDIT";
+            this.buttonBunifuItachi2.TextColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi2.UseVisualStyleBackColor = false;
+            // 
+            // buttonBunifuItachi3
+            // 
+            this.buttonBunifuItachi3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi3.BorderRadius = 10;
+            this.buttonBunifuItachi3.BorderSize = 0;
+            this.buttonBunifuItachi3.FlatAppearance.BorderSize = 0;
+            this.buttonBunifuItachi3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBunifuItachi3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBunifuItachi3.ForeColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi3.Location = new System.Drawing.Point(425, 567);
+            this.buttonBunifuItachi3.Name = "buttonBunifuItachi3";
+            this.buttonBunifuItachi3.Size = new System.Drawing.Size(129, 40);
+            this.buttonBunifuItachi3.TabIndex = 1;
+            this.buttonBunifuItachi3.Text = "PRINT";
+            this.buttonBunifuItachi3.TextColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi3.UseVisualStyleBackColor = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label15.Location = new System.Drawing.Point(167, 18);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(204, 36);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "STUDENT INFO";
             // 
             // panel3
             // 
@@ -972,6 +914,25 @@
             this.textBox1.TabIndex = 0;
             this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // buttonBunifuItachi1
+            // 
+            this.buttonBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.buttonBunifuItachi1.BorderRadius = 10;
+            this.buttonBunifuItachi1.BorderSize = 0;
+            this.buttonBunifuItachi1.FlatAppearance.BorderSize = 0;
+            this.buttonBunifuItachi1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonBunifuItachi1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonBunifuItachi1.ForeColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi1.Location = new System.Drawing.Point(1300, 60);
+            this.buttonBunifuItachi1.Name = "buttonBunifuItachi1";
+            this.buttonBunifuItachi1.Size = new System.Drawing.Size(146, 44);
+            this.buttonBunifuItachi1.TabIndex = 13;
+            this.buttonBunifuItachi1.Text = "SEARCH";
+            this.buttonBunifuItachi1.TextColor = System.Drawing.Color.White;
+            this.buttonBunifuItachi1.UseVisualStyleBackColor = false;
+            // 
             // label9
             // 
             this.label9.AutoSize = true;
@@ -983,85 +944,162 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "RECORDS";
             // 
-            // panel5
+            // panel2
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.panel5.Controls.Add(this.buttonBunifuItachi4);
-            this.panel5.Controls.Add(this.buttonBunifuItachi2);
-            this.panel5.Controls.Add(this.buttonBunifuItachi3);
-            this.panel5.Controls.Add(this.label15);
-            this.panel5.Location = new System.Drawing.Point(24, 115);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(565, 619);
-            this.panel5.TabIndex = 15;
+            this.panel2.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.hideRecords);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1470, 40);
+            this.panel2.TabIndex = 8;
             // 
-            // buttonBunifuItachi3
+            // hideRecords
             // 
-            this.buttonBunifuItachi3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi3.BorderRadius = 10;
-            this.buttonBunifuItachi3.BorderSize = 0;
-            this.buttonBunifuItachi3.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi3.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi3.Location = new System.Drawing.Point(425, 567);
-            this.buttonBunifuItachi3.Name = "buttonBunifuItachi3";
-            this.buttonBunifuItachi3.Size = new System.Drawing.Size(129, 40);
-            this.buttonBunifuItachi3.TabIndex = 1;
-            this.buttonBunifuItachi3.Text = "PRINT";
-            this.buttonBunifuItachi3.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi3.UseVisualStyleBackColor = false;
+            this.hideRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hideRecords.FlatAppearance.BorderSize = 0;
+            this.hideRecords.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(140)))));
+            this.hideRecords.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
+            this.hideRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hideRecords.Location = new System.Drawing.Point(1381, 0);
+            this.hideRecords.Name = "hideRecords";
+            this.hideRecords.Size = new System.Drawing.Size(91, 40);
+            this.hideRecords.TabIndex = 0;
+            this.hideRecords.Text = "GO BACK";
+            this.hideRecords.UseVisualStyleBackColor = false;
+            this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
             // 
-            // label15
+            // recordsView
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label15.Location = new System.Drawing.Point(167, 18);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(204, 36);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "STUDENT INFO";
+            this.recordsView.AllowUserToAddRows = false;
+            this.recordsView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.recordsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.recordsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recordsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.lDate,
+            this.lStudentId,
+            this.lFirstName,
+            this.lLastName,
+            this.lSection,
+            this.lTimeIn,
+            this.lTimeOut});
+            this.recordsView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.recordsView.Location = new System.Drawing.Point(606, 115);
+            this.recordsView.Name = "recordsView";
+            this.recordsView.Size = new System.Drawing.Size(841, 619);
+            this.recordsView.TabIndex = 12;
             // 
-            // buttonBunifuItachi2
+            // lDate
             // 
-            this.buttonBunifuItachi2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi2.BorderRadius = 10;
-            this.buttonBunifuItachi2.BorderSize = 0;
-            this.buttonBunifuItachi2.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi2.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi2.Location = new System.Drawing.Point(425, 523);
-            this.buttonBunifuItachi2.Name = "buttonBunifuItachi2";
-            this.buttonBunifuItachi2.Size = new System.Drawing.Size(129, 40);
-            this.buttonBunifuItachi2.TabIndex = 1;
-            this.buttonBunifuItachi2.Text = "EDIT";
-            this.buttonBunifuItachi2.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi2.UseVisualStyleBackColor = false;
+            this.lDate.Frozen = true;
+            this.lDate.HeaderText = "DATE";
+            this.lDate.Name = "lDate";
+            this.lDate.ReadOnly = true;
+            this.lDate.Width = 70;
             // 
-            // buttonBunifuItachi4
+            // lStudentId
             // 
-            this.buttonBunifuItachi4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi4.BorderRadius = 10;
-            this.buttonBunifuItachi4.BorderSize = 0;
-            this.buttonBunifuItachi4.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi4.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi4.Location = new System.Drawing.Point(425, 478);
-            this.buttonBunifuItachi4.Name = "buttonBunifuItachi4";
-            this.buttonBunifuItachi4.Size = new System.Drawing.Size(129, 40);
-            this.buttonBunifuItachi4.TabIndex = 1;
-            this.buttonBunifuItachi4.Text = "DELETE";
-            this.buttonBunifuItachi4.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi4.UseVisualStyleBackColor = false;
+            this.lStudentId.Frozen = true;
+            this.lStudentId.HeaderText = "STUDENT ID";
+            this.lStudentId.Name = "lStudentId";
+            this.lStudentId.Width = 116;
+            // 
+            // lFirstName
+            // 
+            this.lFirstName.Frozen = true;
+            this.lFirstName.HeaderText = "FIRST NAME";
+            this.lFirstName.Name = "lFirstName";
+            this.lFirstName.Width = 160;
+            // 
+            // lLastName
+            // 
+            this.lLastName.Frozen = true;
+            this.lLastName.HeaderText = "LAST NAME";
+            this.lLastName.Name = "lLastName";
+            this.lLastName.Width = 160;
+            // 
+            // lSection
+            // 
+            this.lSection.Frozen = true;
+            this.lSection.HeaderText = "SECTION";
+            this.lSection.Name = "lSection";
+            // 
+            // lTimeIn
+            // 
+            this.lTimeIn.Frozen = true;
+            this.lTimeIn.HeaderText = "TIME IN";
+            this.lTimeIn.Name = "lTimeIn";
+            // 
+            // lTimeOut
+            // 
+            this.lTimeOut.Frozen = true;
+            this.lTimeOut.HeaderText = "TIME OUT";
+            this.lTimeOut.Name = "lTimeOut";
+            // 
+            // DATE
+            // 
+            this.DATE.Frozen = true;
+            this.DATE.HeaderText = "DATE";
+            this.DATE.Name = "DATE";
+            this.DATE.ReadOnly = true;
+            this.DATE.Width = 120;
+            // 
+            // STUDENT_ID
+            // 
+            this.STUDENT_ID.Frozen = true;
+            this.STUDENT_ID.HeaderText = "STUDENT ID";
+            this.STUDENT_ID.Name = "STUDENT_ID";
+            this.STUDENT_ID.Width = 115;
+            // 
+            // FIRSTNAME
+            // 
+            this.FIRSTNAME.Frozen = true;
+            this.FIRSTNAME.HeaderText = "FIRST NAME";
+            this.FIRSTNAME.Name = "FIRSTNAME";
+            this.FIRSTNAME.Width = 135;
+            // 
+            // LASTNAME
+            // 
+            this.LASTNAME.Frozen = true;
+            this.LASTNAME.HeaderText = "LAST NAME";
+            this.LASTNAME.Name = "LASTNAME";
+            this.LASTNAME.Width = 135;
+            // 
+            // cSection
+            // 
+            this.cSection.Frozen = true;
+            this.cSection.HeaderText = "SECTION";
+            this.cSection.Name = "cSection";
+            this.cSection.Width = 75;
+            // 
+            // TIME_IN
+            // 
+            this.TIME_IN.Frozen = true;
+            this.TIME_IN.HeaderText = "TIME IN";
+            this.TIME_IN.Name = "TIME_IN";
+            this.TIME_IN.Width = 110;
+            // 
+            // TIME_OUT
+            // 
+            this.TIME_OUT.Frozen = true;
+            this.TIME_OUT.HeaderText = "TIME OUT";
+            this.TIME_OUT.Name = "TIME_OUT";
+            this.TIME_OUT.Width = 110;
+            // 
+            // LOG_OUT
+            // 
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle4;
+            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LOG_OUT.Frozen = true;
+            this.LOG_OUT.HeaderText = "LOG OUT";
+            this.LOG_OUT.Name = "LOG_OUT";
+            this.LOG_OUT.Text = "LOG OUT";
+            this.LOG_OUT.ToolTipText = "Log out student";
+            this.LOG_OUT.UseColumnTextForButtonValue = true;
             // 
             // Form1
             // 
@@ -1074,10 +1112,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxBunifuItachi1);
             this.Controls.Add(this.pnlLoginFrame);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.pnlStudsRec);
             this.Controls.Add(this.tm2);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlStudsRec);
+            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -1120,14 +1158,14 @@
             this.pass.PerformLayout();
             this.pnlRecords.ResumeLayout(false);
             this.pnlRecords.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.recordsView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).EndInit();
-            this.panel2.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.recordsView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1171,19 +1209,7 @@
         private System.Windows.Forms.Label placeholder3;
         private System.Windows.Forms.TextBox txtPass;
         private System.Windows.Forms.Timer ENVIRONMENT;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FULLNAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
-        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
         private System.Windows.Forms.Panel pnlRecords;
-        private System.Windows.Forms.DataGridView recordsView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
         private System.Windows.Forms.Label label6;
         private ItachiUIBunifu.PictureBoxBunifuItachi pictureBoxBunifuItachi2;
         private System.Windows.Forms.Panel panel2;
@@ -1212,6 +1238,22 @@
         private System.Windows.Forms.Label label9;
         private ItachiUIBunifu.ButtonBunifuItachi buttonBunifuItachi4;
         private ItachiUIBunifu.ButtonBunifuItachi buttonBunifuItachi2;
+        private System.Windows.Forms.DataGridView recordsView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lStudentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIRSTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LASTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
+        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
     }
 }
 
