@@ -27,21 +27,28 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(borderpass, 10);
             Design.RoundCorner(pnlDesign, 14);
             Design.RoundCorner(pass, 10);
-            Design.RoundCorner(mrgn, 10);
-            Design.RoundCorner(mrgl, 10);
+            Design.RoundCorner(mrg1, 10);
+            Design.RoundCorner(mrg2, 10);
+            Design.RoundCorner(mrg3, 10);
+            Design.RoundCorner(mrg4, 10);
+            Design.RoundCorner(mrg5, 10);
             Design.RoundCorner(this, 25);
             Design.RoundCorner(tm1, 15);
             Design.RoundCorner(tm2, 16);
             Design.RoundCorner(l1, 9);
             Design.RoundCorner(l2, 9);
+            Design.RoundCorner(l3, 9);
+            Design.RoundCorner(l4, 9);
+            Design.RoundCorner(l5, 9);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             Clicked = Color.FromArgb(4, 146, 191);
             notClicked = Color.FromArgb(210, 242, 250);
 
-            mrgl.BackColor = notClicked;
-            mrgn.BackColor = notClicked;
+            mrg1.BackColor = notClicked;
+            mrg2.BackColor = notClicked;
+
             pnlConfirmExit.Hide();
             exitApp = false;
             Update_Data();
@@ -75,12 +82,12 @@ namespace Sit_In_Monitoring
 
             if (txtStudentID.Focused)
             {
-                mrgl.BackColor = Clicked;
+                mrg1.BackColor = Clicked;
                 placeholder1.Hide();
             }
             else
             {
-                mrgl.BackColor = notClicked;
+                mrg1.BackColor = notClicked;
                 placeholder1.Show();
             }
 
@@ -88,12 +95,12 @@ namespace Sit_In_Monitoring
 
             if (txtStudentName.Focused)
             {
-                mrgn.BackColor = Clicked;
+                mrg2.BackColor = Clicked;
                 placeholder2.Hide();
             }
             else
             {
-                mrgn.BackColor = notClicked;
+                mrg2.BackColor = notClicked;
                 placeholder2.Show();
             }
 
@@ -110,6 +117,45 @@ namespace Sit_In_Monitoring
                 placeholder3.Show();
             }
 
+            // Last name
+
+            if (txtStudentLastName.Focused)
+            {
+                mrg3.BackColor = Clicked;
+                placeholder4.Hide();
+            }
+            else
+            {
+                mrg3.BackColor = notClicked;
+                placeholder4.Show();
+            }
+
+            // Section
+
+            if (txtSection.Focused)
+            {
+                mrg4.BackColor = Clicked;
+                placeholder5.Hide();
+            }
+            else
+            {
+                mrg4.BackColor = notClicked;
+                placeholder5.Show();
+            }
+
+
+            // Priority num
+
+            if (txtPriorityNum.Focused)
+            {
+                mrg5.BackColor = Clicked;
+                placeholder6.Hide();
+            }
+            else
+            {
+                mrg5.BackColor = notClicked;
+                placeholder6.Show();
+            }
         }
 
 
@@ -122,6 +168,7 @@ namespace Sit_In_Monitoring
         {
             if (ctr.Text == string.Empty || ctr.Text == null) { placeholder.BringToFront(); } else { placeholder.SendToBack(); }
         }
+
         private void FormWillBeClosed(object sender, FormClosingEventArgs e)
         {
             pnlConfirmExit.Show();
@@ -269,19 +316,39 @@ namespace Sit_In_Monitoring
                 Update_Data();
             }
         }
+
+        #region Behavior UI
         private void idNumberHasInput(object sender, EventArgs e) => CheckForInput(txtStudentID, placeholder1);
         private void fullNameHasInput(object sender, EventArgs e) => CheckForInput(txtStudentName, placeholder2);
         private void PassHasInput(object sender, EventArgs e) => CheckForInput(txtPass, placeholder3);
+        private void lastnamehasinput(object sender, EventArgs e) => CheckForInput(txtStudentLastName, placeholder4);
+        private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
+        private void prioinput(object sender, EventArgs e) => CheckForInput(txtPriorityNum, placeholder6);
+
+        //
         private void idClick(object sender, EventArgs e) => txtStudentID.Focus();
         private void fullNameClick(object sender, EventArgs e) => txtStudentName.Focus();
         private void userClick(object sender, EventArgs e) => txtStudentID.Focus();
         private void userClick2(object sender, EventArgs e) => txtStudentName.Focus();
         private void idClick2(object sender, EventArgs e) => txtPass.Focus();
         private void passClick(object sender, EventArgs e) => txtPass.Focus();
+        private void lnclick(object sender, EventArgs e) => txtStudentLastName.Focus();
+        private void seclick(object sender, EventArgs e) => txtSection.Focus();
+        private void prnumclick(object sender, EventArgs e) => txtPriorityNum.Focus();
+        private void qw1(object sender, EventArgs e) => txtStudentLastName.Focus();
+        private void qw2(object sender, EventArgs e) => txtSection.Focus();
+        private void qw3(object sender, EventArgs e) => txtPriorityNum.Focus();
+
+        #endregion
 
         private void hideRecords_Click(object sender, EventArgs e)
         {
             pnlRecords.Visible = false;
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+
         }
     }
     class SeiyaMarx
