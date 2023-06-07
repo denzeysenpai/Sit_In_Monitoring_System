@@ -9,7 +9,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=LAB5-PC09\\ACTSTUDENT;Initial Catalog=monitoring;Integrated Security=True");
+        SqlConnection conn = new SqlConnection("Data Source=LAB5-PC10\\ACTSTUDENT;Initial Catalog=monitoring;Integrated Security=True");
         readonly SeiyaMarx Design = new SeiyaMarx();
         Color notClicked;
         Color Clicked;
@@ -223,24 +223,41 @@ namespace Sit_In_Monitoring
                 pnlRecords.Show();
             }
         }
+        public void addStudent()
+        {
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO Student VALUES(@studentId,@firstName,@lastName,@section)", conn);
+            cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+            cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
+            cmd.Parameters.AddWithValue("@lastName", txtStudentLastName.Text);
+            cmd.Parameters.AddWithValue("@section", txtSection.Text);
 
+        }
         public void Update_Data() // display the data register
         {
-            SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM sit_in_table", conn);
-            DataTable dt = new DataTable();
-            sda.Fill(dt);
-            DataGrid.Rows.Clear();
+            //SitInMonitoringEntities sit = new SitInMonitoringEntities();
+            //var query = from cs in sit.currentSessions
+            //            join s in sit.Students on cs.personid equals s.personid
+            //            where s.studentid = 
+            //EZ - 6/7/2023
+                        
 
-            foreach (DataRow dr in dt.Rows)
-            {
-                int n = DataGrid.Rows.Add();
-                int m = recordsView.Rows.Add();
-                for (int i = 0; i < 5; i++)
-                {
-                    DataGrid.Rows[n].Cells[i].Value = dr[i].ToString();
-                    recordsView.Rows[m].Cells[i].Value = dr[i].ToString();
-                }
-            }
+
+            //SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM sit_in_table", conn);
+            //DataTable dt = new DataTable();
+            //sda.Fill(dt);
+            //DataGrid.Rows.Clear();
+
+            //foreach (DataRow dr in dt.Rows)
+            //{
+            //    int n = DataGrid.Rows.Add();
+            //    int m = recordsView.Rows.Add();
+            //    for (int i = 0; i < 5; i++)
+            //    {
+            //        DataGrid.Rows[n].Cells[i].Value = dr[i].ToString();
+            //        recordsView.Rows[m].Cells[i].Value = dr[i].ToString();
+            //    }
+            //}
         }
 
 
@@ -251,29 +268,31 @@ namespace Sit_In_Monitoring
             string date = $"{val.Date: MM/dd/yyyy}";
 
 
-            try
-            {
-                conn.Open();
-                SqlCommand cmd = new SqlCommand("INSERT INTO sit_in_table VALUES(@date_time, @student_id, @student_full_name, @time_in, @time_out)", conn);
-                cmd.Parameters.AddWithValue("@date_time", date);
-                cmd.Parameters.AddWithValue("@student_id", txtStudentID.Text.ToString());
-                cmd.Parameters.AddWithValue("@student_full_name", txtStudentName.Text.ToString());
-                cmd.Parameters.AddWithValue("@time_in", time1);
-                cmd.Parameters.AddWithValue("@time_out", string.Empty);
-                cmd.ExecuteNonQuery();
-                MessageBox.Show("Successfully Logged In!");
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+
+            addStudent();
+            //try
+            //{
+            //    conn.Open();
+            //    SqlCommand cmd = new SqlCommand("INSERT INTO sit_in_table VALUES(@date_time, @student_id, @student_full_name, @time_in, @time_out)", conn);
+            //    cmd.Parameters.AddWithValue("@date_time", date);
+            //    cmd.Parameters.AddWithValue("@student_id", txtStudentID.Text.ToString());
+            //    cmd.Parameters.AddWithValue("@student_full_name", txtStudentName.Text.ToString());
+            //    cmd.Parameters.AddWithValue("@time_in", time1);
+            //    cmd.Parameters.AddWithValue("@time_out", string.Empty);
+            //    cmd.ExecuteNonQuery();
+            //    MessageBox.Show("Successfully Logged In!");
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
 
 
-            conn.Close();
-            Update_Data();
+            //conn.Close();
+            //Update_Data();
 
-            txtStudentID.Text = string.Empty;
-            txtStudentName.Text = string.Empty;
+            //txtStudentID.Text = string.Empty;
+            //txtStudentName.Text = string.Empty;
         }
         private void DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e) // Update data during log out
         {
@@ -285,7 +304,6 @@ namespace Sit_In_Monitoring
             {
                 DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
                 string studentId = row.Cells["STUDENT_ID"].Value.ToString();
-
 
                 try
                 {
