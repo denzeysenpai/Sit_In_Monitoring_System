@@ -4,7 +4,6 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using System.Windows.Forms.VisualStyles;
 
 namespace Sit_In_Monitoring
 {
@@ -46,6 +45,9 @@ namespace Sit_In_Monitoring
             pnlConfirmExit.Hide();
             exitApp = false;
             Update_Data();
+            pnlConfirmExit.Location = new Point(446, 204);
+            pnlRecords.Location = new Point(0, 0);
+            pnlRecords.Hide();
         }
 
 
@@ -164,13 +166,14 @@ namespace Sit_In_Monitoring
         private void CalendarClick(object sender, EventArgs e)
         {
             dateToday.Checked = true;
+            dateToday.Select();
         }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.P && Control.ModifierKeys == Keys.Control)
+            if (e.KeyCode == Keys.F1 && e.Control)
             {
-                MessageBox.Show("Input old password", "Change Password", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                pnlRecords.Show();
             }
         }
 
@@ -184,20 +187,13 @@ namespace Sit_In_Monitoring
             foreach (DataRow dr in dt.Rows)
             {
                 int n = DataGrid.Rows.Add();
+                int m = recordsView.Rows.Add();
                 for (int i = 0; i < 5; i++)
                 {
                     DataGrid.Rows[n].Cells[i].Value = dr[i].ToString();
-
-                    if (DataGrid.Rows[n].Cells[4].Value == null) {/**/}
-                    else
-                    {
-                        DataGrid.Invalidate();
-                    }
-
+                    recordsView.Rows[m].Cells[i].Value = dr[i].ToString();
                 }
             }
-
-
         }
 
 
@@ -252,6 +248,16 @@ namespace Sit_In_Monitoring
                     cmd.Parameters.AddWithValue("@student_id", studentId);
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Logged Out Successfully!");
+
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO records_table VALUES(@date_time, @student_id, @student_full_name, @time_in, @time_out)", conn);
+                    cmd2.Parameters.AddWithValue("@date_time", time.ToString("MM/dd/yyyy"));
+                    cmd2.Parameters.AddWithValue("@student_id", txtStudentID.Text.ToString());
+                    cmd2.Parameters.AddWithValue("@student_full_name", txtStudentName.Text.ToString());
+                    cmd2.Parameters.AddWithValue("@time_in", time1);
+                    cmd2.Parameters.AddWithValue("@time_out", time1);
+                    cmd2.ExecuteNonQuery();
+
+                    DataGrid.Rows.RemoveAt(e.RowIndex);
                 }
                 catch (Exception ex)
                 {
@@ -272,6 +278,11 @@ namespace Sit_In_Monitoring
         private void userClick2(object sender, EventArgs e) => txtStudentName.Focus();
         private void idClick2(object sender, EventArgs e) => txtPass.Focus();
         private void passClick(object sender, EventArgs e) => txtPass.Focus();
+
+        private void hideRecords_Click(object sender, EventArgs e)
+        {
+            pnlRecords.Visible = false;
+        }
     }
     class SeiyaMarx
     {
@@ -281,5 +292,5 @@ namespace Sit_In_Monitoring
     }
 
 
-    
+
 }

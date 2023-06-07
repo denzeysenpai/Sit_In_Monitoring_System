@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -72,6 +72,18 @@
             this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.pnlRecords = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
+            this.label7 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.hideRecords = new System.Windows.Forms.Button();
+            this.recordsView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -87,6 +99,10 @@
             this.pnlDesign.SuspendLayout();
             this.borderpass.SuspendLayout();
             this.pass.SuspendLayout();
+            this.pnlRecords.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).BeginInit();
+            this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.recordsView)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
@@ -168,7 +184,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label1.Location = new System.Drawing.Point(398, 12);
+            this.label1.Location = new System.Drawing.Point(305, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 40);
             this.label1.TabIndex = 6;
@@ -394,7 +410,7 @@
             this.pnlConfirmExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.pnlConfirmExit.Controls.Add(this.pnlDesign);
             this.pnlConfirmExit.Controls.Add(this.mensahe);
-            this.pnlConfirmExit.Location = new System.Drawing.Point(446, 204);
+            this.pnlConfirmExit.Location = new System.Drawing.Point(1500, 204);
             this.pnlConfirmExit.Name = "pnlConfirmExit";
             this.pnlConfirmExit.Size = new System.Drawing.Size(575, 342);
             this.pnlConfirmExit.TabIndex = 8;
@@ -563,9 +579,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle2;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -574,12 +590,143 @@
             this.LOG_OUT.ToolTipText = "Log out student";
             this.LOG_OUT.UseColumnTextForButtonValue = true;
             // 
+            // pnlRecords
+            // 
+            this.pnlRecords.Controls.Add(this.recordsView);
+            this.pnlRecords.Controls.Add(this.label6);
+            this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
+            this.pnlRecords.Controls.Add(this.label7);
+            this.pnlRecords.Controls.Add(this.panel2);
+            this.pnlRecords.Location = new System.Drawing.Point(0, 597);
+            this.pnlRecords.Name = "pnlRecords";
+            this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
+            this.pnlRecords.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label6.Location = new System.Drawing.Point(168, 691);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(294, 15);
+            this.label6.TabIndex = 11;
+            this.label6.Text = "DEPARTMENT OF NETWORK AND TECHNICAL SERVICES";
+            // 
+            // pictureBoxBunifuItachi2
+            // 
+            this.pictureBoxBunifuItachi2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
+            this.pictureBoxBunifuItachi2.BorderCapStyle = System.Drawing.Drawing2D.DashCap.Flat;
+            this.pictureBoxBunifuItachi2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.pictureBoxBunifuItachi2.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pictureBoxBunifuItachi2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
+            this.pictureBoxBunifuItachi2.BorderSize = 5;
+            this.pictureBoxBunifuItachi2.GradientAngle = 50F;
+            this.pictureBoxBunifuItachi2.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
+            this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(31, 602);
+            this.pictureBoxBunifuItachi2.Name = "pictureBoxBunifuItachi2";
+            this.pictureBoxBunifuItachi2.Size = new System.Drawing.Size(132, 132);
+            this.pictureBoxBunifuItachi2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxBunifuItachi2.TabIndex = 9;
+            this.pictureBoxBunifuItachi2.TabStop = false;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label7.Location = new System.Drawing.Point(153, 636);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(332, 63);
+            this.label7.TabIndex = 10;
+            this.label7.Text = "SIT-IN FORM";
+            // 
+            // panel2
+            // 
+            this.panel2.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.hideRecords);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1472, 40);
+            this.panel2.TabIndex = 8;
+            // 
+            // hideRecords
+            // 
+            this.hideRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hideRecords.FlatAppearance.BorderSize = 0;
+            this.hideRecords.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(140)))));
+            this.hideRecords.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
+            this.hideRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hideRecords.Location = new System.Drawing.Point(1428, 0);
+            this.hideRecords.Name = "hideRecords";
+            this.hideRecords.Size = new System.Drawing.Size(44, 40);
+            this.hideRecords.TabIndex = 0;
+            this.hideRecords.Text = "X";
+            this.hideRecords.UseVisualStyleBackColor = false;
+            this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
+            // 
+            // recordsView
+            // 
+            this.recordsView.AllowUserToAddRows = false;
+            this.recordsView.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.recordsView.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.recordsView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.recordsView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5});
+            this.recordsView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.recordsView.Location = new System.Drawing.Point(594, 61);
+            this.recordsView.Name = "recordsView";
+            this.recordsView.Size = new System.Drawing.Size(841, 673);
+            this.recordsView.TabIndex = 12;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "STUDENT ID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 170;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "FULLNAME";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 360;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "TIME IN";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.Frozen = true;
+            this.dataGridViewTextBoxColumn5.HeaderText = "TIME OUT";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
             this.ClientSize = new System.Drawing.Size(1472, 759);
+            this.Controls.Add(this.pnlRecords);
             this.Controls.Add(this.pnlConfirmExit);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxBunifuItachi1);
@@ -589,6 +736,7 @@
             this.Controls.Add(this.tm2);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIT-IN FORM";
@@ -618,6 +766,11 @@
             this.borderpass.ResumeLayout(false);
             this.pass.ResumeLayout(false);
             this.pass.PerformLayout();
+            this.pnlRecords.ResumeLayout(false);
+            this.pnlRecords.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).EndInit();
+            this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.recordsView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -667,6 +820,18 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
+        private System.Windows.Forms.Panel pnlRecords;
+        private System.Windows.Forms.DataGridView recordsView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.Label label6;
+        private ItachiUIBunifu.PictureBoxBunifuItachi pictureBoxBunifuItachi2;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Button hideRecords;
     }
 }
 
