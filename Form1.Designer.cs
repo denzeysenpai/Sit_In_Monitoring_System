@@ -29,13 +29,21 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
             this.dateToday = new ItachiUIBunifu.DateTimePickerBunifuItachi();
             this.pnlStudsRec = new System.Windows.Forms.Panel();
             this.DataGrid = new System.Windows.Forms.DataGridView();
+            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLoginFrame = new System.Windows.Forms.Panel();
@@ -82,19 +90,17 @@
             this.pnlRecords = new System.Windows.Forms.Panel();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.buttonBunifuItachi4 = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.buttonBunifuItachi2 = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.buttonBunifuItachi3 = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.pnlStudentInfo = new System.Windows.Forms.Panel();
+            this.btnDelete = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.btnEdit = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.btnPrint = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label15 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.buttonBunifuItachi1 = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.mrg6 = new System.Windows.Forms.Panel();
+            this.l6 = new System.Windows.Forms.Panel();
+            this.placeholder7 = new System.Windows.Forms.Label();
+            this.txtSearchId = new System.Windows.Forms.TextBox();
+            this.btnSearchInRecords = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label9 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.hideRecords = new System.Windows.Forms.Button();
             this.recordsView = new System.Windows.Forms.DataGridView();
             this.lDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lStudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,14 +109,14 @@
             this.lSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.hideRecords = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -134,11 +140,11 @@
             this.pass.SuspendLayout();
             this.pnlRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).BeginInit();
-            this.panel5.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.pnlStudentInfo.SuspendLayout();
+            this.mrg6.SuspendLayout();
+            this.l6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsView)).BeginInit();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTime
@@ -216,6 +222,69 @@
             this.DataGrid.Size = new System.Drawing.Size(941, 597);
             this.DataGrid.TabIndex = 0;
             this.DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellContentClick);
+            // 
+            // DATE
+            // 
+            this.DATE.Frozen = true;
+            this.DATE.HeaderText = "DATE";
+            this.DATE.Name = "DATE";
+            this.DATE.ReadOnly = true;
+            this.DATE.Width = 120;
+            // 
+            // STUDENT_ID
+            // 
+            this.STUDENT_ID.Frozen = true;
+            this.STUDENT_ID.HeaderText = "STUDENT ID";
+            this.STUDENT_ID.Name = "STUDENT_ID";
+            this.STUDENT_ID.Width = 115;
+            // 
+            // FIRSTNAME
+            // 
+            this.FIRSTNAME.Frozen = true;
+            this.FIRSTNAME.HeaderText = "FIRST NAME";
+            this.FIRSTNAME.Name = "FIRSTNAME";
+            this.FIRSTNAME.Width = 135;
+            // 
+            // LASTNAME
+            // 
+            this.LASTNAME.Frozen = true;
+            this.LASTNAME.HeaderText = "LAST NAME";
+            this.LASTNAME.Name = "LASTNAME";
+            this.LASTNAME.Width = 135;
+            // 
+            // cSection
+            // 
+            this.cSection.Frozen = true;
+            this.cSection.HeaderText = "SECTION";
+            this.cSection.Name = "cSection";
+            this.cSection.Width = 75;
+            // 
+            // TIME_IN
+            // 
+            this.TIME_IN.Frozen = true;
+            this.TIME_IN.HeaderText = "TIME IN";
+            this.TIME_IN.Name = "TIME_IN";
+            this.TIME_IN.Width = 110;
+            // 
+            // TIME_OUT
+            // 
+            this.TIME_OUT.Frozen = true;
+            this.TIME_OUT.HeaderText = "TIME OUT";
+            this.TIME_OUT.Name = "TIME_OUT";
+            this.TIME_OUT.Width = 110;
+            // 
+            // LOG_OUT
+            // 
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
+            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LOG_OUT.Frozen = true;
+            this.LOG_OUT.HeaderText = "LOG OUT";
+            this.LOG_OUT.Name = "LOG_OUT";
+            this.LOG_OUT.Text = "LOG OUT";
+            this.LOG_OUT.ToolTipText = "Log out student";
+            this.LOG_OUT.UseColumnTextForButtonValue = true;
             // 
             // label1
             // 
@@ -751,13 +820,13 @@
             this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRecords.Controls.Add(this.label6);
             this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
-            this.pnlRecords.Controls.Add(this.panel5);
-            this.pnlRecords.Controls.Add(this.panel3);
-            this.pnlRecords.Controls.Add(this.buttonBunifuItachi1);
+            this.pnlRecords.Controls.Add(this.pnlStudentInfo);
+            this.pnlRecords.Controls.Add(this.mrg6);
+            this.pnlRecords.Controls.Add(this.btnSearchInRecords);
             this.pnlRecords.Controls.Add(this.label9);
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
-            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -767,7 +836,7 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label6.Location = new System.Drawing.Point(90, 95);
+            this.label6.Location = new System.Drawing.Point(90, 94);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(294, 15);
             this.label6.TabIndex = 11;
@@ -783,193 +852,179 @@
             this.pictureBoxBunifuItachi2.BorderSize = 5;
             this.pictureBoxBunifuItachi2.GradientAngle = 50F;
             this.pictureBoxBunifuItachi2.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
-            this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(12, 37);
+            this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(12, 36);
             this.pictureBoxBunifuItachi2.Name = "pictureBoxBunifuItachi2";
             this.pictureBoxBunifuItachi2.Size = new System.Drawing.Size(72, 72);
             this.pictureBoxBunifuItachi2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBoxBunifuItachi2.TabIndex = 9;
             this.pictureBoxBunifuItachi2.TabStop = false;
             // 
-            // panel5
+            // pnlStudentInfo
             // 
-            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.panel5.Controls.Add(this.buttonBunifuItachi4);
-            this.panel5.Controls.Add(this.buttonBunifuItachi2);
-            this.panel5.Controls.Add(this.buttonBunifuItachi3);
-            this.panel5.Controls.Add(this.label15);
-            this.panel5.Location = new System.Drawing.Point(24, 115);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(565, 619);
-            this.panel5.TabIndex = 15;
+            this.pnlStudentInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.pnlStudentInfo.Controls.Add(this.btnDelete);
+            this.pnlStudentInfo.Controls.Add(this.btnEdit);
+            this.pnlStudentInfo.Controls.Add(this.btnPrint);
+            this.pnlStudentInfo.Controls.Add(this.label13);
+            this.pnlStudentInfo.Controls.Add(this.label11);
+            this.pnlStudentInfo.Controls.Add(this.label8);
+            this.pnlStudentInfo.Controls.Add(this.label12);
+            this.pnlStudentInfo.Controls.Add(this.label10);
+            this.pnlStudentInfo.Controls.Add(this.label7);
+            this.pnlStudentInfo.Controls.Add(this.label15);
+            this.pnlStudentInfo.Location = new System.Drawing.Point(24, 115);
+            this.pnlStudentInfo.Name = "pnlStudentInfo";
+            this.pnlStudentInfo.Size = new System.Drawing.Size(565, 619);
+            this.pnlStudentInfo.TabIndex = 15;
             // 
-            // buttonBunifuItachi4
+            // btnDelete
             // 
-            this.buttonBunifuItachi4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi4.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi4.BorderRadius = 10;
-            this.buttonBunifuItachi4.BorderSize = 0;
-            this.buttonBunifuItachi4.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi4.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi4.Location = new System.Drawing.Point(425, 478);
-            this.buttonBunifuItachi4.Name = "buttonBunifuItachi4";
-            this.buttonBunifuItachi4.Size = new System.Drawing.Size(129, 40);
-            this.buttonBunifuItachi4.TabIndex = 1;
-            this.buttonBunifuItachi4.Text = "DELETE";
-            this.buttonBunifuItachi4.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi4.UseVisualStyleBackColor = false;
+            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnDelete.BorderRadius = 10;
+            this.btnDelete.BorderSize = 0;
+            this.btnDelete.FlatAppearance.BorderSize = 0;
+            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.ForeColor = System.Drawing.Color.White;
+            this.btnDelete.Location = new System.Drawing.Point(425, 478);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(129, 40);
+            this.btnDelete.TabIndex = 1;
+            this.btnDelete.Text = "DELETE";
+            this.btnDelete.TextColor = System.Drawing.Color.White;
+            this.btnDelete.UseVisualStyleBackColor = false;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
-            // buttonBunifuItachi2
+            // btnEdit
             // 
-            this.buttonBunifuItachi2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi2.BorderRadius = 10;
-            this.buttonBunifuItachi2.BorderSize = 0;
-            this.buttonBunifuItachi2.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi2.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi2.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi2.Location = new System.Drawing.Point(425, 523);
-            this.buttonBunifuItachi2.Name = "buttonBunifuItachi2";
-            this.buttonBunifuItachi2.Size = new System.Drawing.Size(129, 40);
-            this.buttonBunifuItachi2.TabIndex = 1;
-            this.buttonBunifuItachi2.Text = "EDIT";
-            this.buttonBunifuItachi2.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi2.UseVisualStyleBackColor = false;
+            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnEdit.BorderRadius = 10;
+            this.btnEdit.BorderSize = 0;
+            this.btnEdit.FlatAppearance.BorderSize = 0;
+            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.ForeColor = System.Drawing.Color.White;
+            this.btnEdit.Location = new System.Drawing.Point(425, 523);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(129, 40);
+            this.btnEdit.TabIndex = 1;
+            this.btnEdit.Text = "EDIT";
+            this.btnEdit.TextColor = System.Drawing.Color.White;
+            this.btnEdit.UseVisualStyleBackColor = false;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
-            // buttonBunifuItachi3
+            // btnPrint
             // 
-            this.buttonBunifuItachi3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi3.BorderRadius = 10;
-            this.buttonBunifuItachi3.BorderSize = 0;
-            this.buttonBunifuItachi3.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi3.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi3.Location = new System.Drawing.Point(425, 567);
-            this.buttonBunifuItachi3.Name = "buttonBunifuItachi3";
-            this.buttonBunifuItachi3.Size = new System.Drawing.Size(129, 40);
-            this.buttonBunifuItachi3.TabIndex = 1;
-            this.buttonBunifuItachi3.Text = "PRINT";
-            this.buttonBunifuItachi3.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi3.UseVisualStyleBackColor = false;
+            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnPrint.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnPrint.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnPrint.BorderRadius = 10;
+            this.btnPrint.BorderSize = 0;
+            this.btnPrint.FlatAppearance.BorderSize = 0;
+            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrint.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrint.ForeColor = System.Drawing.Color.White;
+            this.btnPrint.Location = new System.Drawing.Point(425, 567);
+            this.btnPrint.Name = "btnPrint";
+            this.btnPrint.Size = new System.Drawing.Size(129, 40);
+            this.btnPrint.TabIndex = 1;
+            this.btnPrint.Text = "PRINT";
+            this.btnPrint.TextColor = System.Drawing.Color.White;
+            this.btnPrint.UseVisualStyleBackColor = false;
+            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
             // label15
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label15.Location = new System.Drawing.Point(167, 18);
+            this.label15.Location = new System.Drawing.Point(167, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(204, 36);
             this.label15.TabIndex = 6;
             this.label15.Text = "STUDENT INFO";
             // 
-            // panel3
+            // mrg6
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
-            this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(1026, 60);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(258, 44);
-            this.panel3.TabIndex = 14;
+            this.mrg6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
+            this.mrg6.Controls.Add(this.l6);
+            this.mrg6.Location = new System.Drawing.Point(1026, 60);
+            this.mrg6.Name = "mrg6";
+            this.mrg6.Size = new System.Drawing.Size(258, 44);
+            this.mrg6.TabIndex = 14;
             // 
-            // panel4
+            // l6
             // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
-            this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.textBox1);
-            this.panel4.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.panel4.Location = new System.Drawing.Point(1, 1);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(256, 42);
-            this.panel4.TabIndex = 0;
+            this.l6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.l6.Controls.Add(this.placeholder7);
+            this.l6.Controls.Add(this.txtSearchId);
+            this.l6.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.l6.Location = new System.Drawing.Point(1, 1);
+            this.l6.Name = "l6";
+            this.l6.Size = new System.Drawing.Size(256, 42);
+            this.l6.TabIndex = 0;
+            this.l6.Click += new System.EventHandler(this.placeholder7click);
             // 
-            // label8
+            // placeholder7
             // 
-            this.label8.AutoSize = true;
-            this.label8.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.label8.Location = new System.Drawing.Point(45, 11);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(169, 21);
-            this.label8.TabIndex = 7;
-            this.label8.Text = "STUDENT ID NUMBER";
+            this.placeholder7.AutoSize = true;
+            this.placeholder7.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.placeholder7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.placeholder7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.placeholder7.Location = new System.Drawing.Point(45, 11);
+            this.placeholder7.Name = "placeholder7";
+            this.placeholder7.Size = new System.Drawing.Size(169, 21);
+            this.placeholder7.TabIndex = 7;
+            this.placeholder7.Text = "STUDENT ID NUMBER";
+            this.placeholder7.Click += new System.EventHandler(this.placeholder7click);
             // 
-            // textBox1
+            // txtSearchId
             // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(23, 5);
-            this.textBox1.MaxLength = 11;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(210, 32);
-            this.textBox1.TabIndex = 0;
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSearchId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.txtSearchId.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSearchId.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchId.Location = new System.Drawing.Point(23, 5);
+            this.txtSearchId.MaxLength = 11;
+            this.txtSearchId.Name = "txtSearchId";
+            this.txtSearchId.Size = new System.Drawing.Size(210, 32);
+            this.txtSearchId.TabIndex = 0;
+            this.txtSearchId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtSearchId.TextChanged += new System.EventHandler(this.searchedchanged);
             // 
-            // buttonBunifuItachi1
+            // btnSearchInRecords
             // 
-            this.buttonBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.buttonBunifuItachi1.BorderRadius = 10;
-            this.buttonBunifuItachi1.BorderSize = 0;
-            this.buttonBunifuItachi1.FlatAppearance.BorderSize = 0;
-            this.buttonBunifuItachi1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonBunifuItachi1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonBunifuItachi1.ForeColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi1.Location = new System.Drawing.Point(1300, 60);
-            this.buttonBunifuItachi1.Name = "buttonBunifuItachi1";
-            this.buttonBunifuItachi1.Size = new System.Drawing.Size(146, 44);
-            this.buttonBunifuItachi1.TabIndex = 13;
-            this.buttonBunifuItachi1.Text = "SEARCH";
-            this.buttonBunifuItachi1.TextColor = System.Drawing.Color.White;
-            this.buttonBunifuItachi1.UseVisualStyleBackColor = false;
+            this.btnSearchInRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnSearchInRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnSearchInRecords.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.btnSearchInRecords.BorderRadius = 10;
+            this.btnSearchInRecords.BorderSize = 0;
+            this.btnSearchInRecords.FlatAppearance.BorderSize = 0;
+            this.btnSearchInRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchInRecords.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchInRecords.ForeColor = System.Drawing.Color.White;
+            this.btnSearchInRecords.Location = new System.Drawing.Point(1300, 60);
+            this.btnSearchInRecords.Name = "btnSearchInRecords";
+            this.btnSearchInRecords.Size = new System.Drawing.Size(146, 44);
+            this.btnSearchInRecords.TabIndex = 13;
+            this.btnSearchInRecords.Text = "SEARCH";
+            this.btnSearchInRecords.TextColor = System.Drawing.Color.White;
+            this.btnSearchInRecords.UseVisualStyleBackColor = false;
+            this.btnSearchInRecords.Click += new System.EventHandler(this.btnSearchInRecords_Click);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Century Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label9.Location = new System.Drawing.Point(78, 41);
+            this.label9.Location = new System.Drawing.Point(78, 40);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(268, 63);
             this.label9.TabIndex = 10;
             this.label9.Text = "RECORDS";
-            // 
-            // panel2
-            // 
-            this.panel2.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
-            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel2.Controls.Add(this.hideRecords);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 0);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1470, 40);
-            this.panel2.TabIndex = 8;
-            // 
-            // hideRecords
-            // 
-            this.hideRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.hideRecords.FlatAppearance.BorderSize = 0;
-            this.hideRecords.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(140)))));
-            this.hideRecords.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
-            this.hideRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.hideRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hideRecords.Location = new System.Drawing.Point(1381, 0);
-            this.hideRecords.Name = "hideRecords";
-            this.hideRecords.Size = new System.Drawing.Size(91, 40);
-            this.hideRecords.TabIndex = 0;
-            this.hideRecords.Text = "GO BACK";
-            this.hideRecords.UseVisualStyleBackColor = false;
-            this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
             // 
             // recordsView
             // 
@@ -1038,68 +1093,98 @@
             this.lTimeOut.HeaderText = "TIME OUT";
             this.lTimeOut.Name = "lTimeOut";
             // 
-            // DATE
+            // panel2
             // 
-            this.DATE.Frozen = true;
-            this.DATE.HeaderText = "DATE";
-            this.DATE.Name = "DATE";
-            this.DATE.ReadOnly = true;
-            this.DATE.Width = 120;
+            this.panel2.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
+            this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel2.Controls.Add(this.hideRecords);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel2.Location = new System.Drawing.Point(0, 0);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1470, 40);
+            this.panel2.TabIndex = 8;
             // 
-            // STUDENT_ID
+            // hideRecords
             // 
-            this.STUDENT_ID.Frozen = true;
-            this.STUDENT_ID.HeaderText = "STUDENT ID";
-            this.STUDENT_ID.Name = "STUDENT_ID";
-            this.STUDENT_ID.Width = 115;
+            this.hideRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.hideRecords.FlatAppearance.BorderSize = 0;
+            this.hideRecords.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(125)))), ((int)(((byte)(140)))));
+            this.hideRecords.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
+            this.hideRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.hideRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.hideRecords.Location = new System.Drawing.Point(1381, 0);
+            this.hideRecords.Name = "hideRecords";
+            this.hideRecords.Size = new System.Drawing.Size(91, 40);
+            this.hideRecords.TabIndex = 0;
+            this.hideRecords.Text = "GO BACK";
+            this.hideRecords.UseVisualStyleBackColor = false;
+            this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
             // 
-            // FIRSTNAME
+            // label7
             // 
-            this.FIRSTNAME.Frozen = true;
-            this.FIRSTNAME.HeaderText = "FIRST NAME";
-            this.FIRSTNAME.Name = "FIRSTNAME";
-            this.FIRSTNAME.Width = 135;
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label7.Location = new System.Drawing.Point(50, 308);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(121, 25);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Student ID:";
             // 
-            // LASTNAME
+            // label8
             // 
-            this.LASTNAME.Frozen = true;
-            this.LASTNAME.HeaderText = "LAST NAME";
-            this.LASTNAME.Name = "LASTNAME";
-            this.LASTNAME.Width = 135;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label8.Location = new System.Drawing.Point(178, 307);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(146, 25);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "<id-number>";
             // 
-            // cSection
+            // label10
             // 
-            this.cSection.Frozen = true;
-            this.cSection.HeaderText = "SECTION";
-            this.cSection.Name = "cSection";
-            this.cSection.Width = 75;
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label10.Location = new System.Drawing.Point(50, 336);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(163, 25);
+            this.label10.TabIndex = 6;
+            this.label10.Text = "Student Name:";
             // 
-            // TIME_IN
+            // label11
             // 
-            this.TIME_IN.Frozen = true;
-            this.TIME_IN.HeaderText = "TIME IN";
-            this.TIME_IN.Name = "TIME_IN";
-            this.TIME_IN.Width = 110;
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label11.Location = new System.Drawing.Point(214, 337);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(98, 25);
+            this.label11.TabIndex = 6;
+            this.label11.Text = "<name>";
             // 
-            // TIME_OUT
+            // label12
             // 
-            this.TIME_OUT.Frozen = true;
-            this.TIME_OUT.HeaderText = "TIME OUT";
-            this.TIME_OUT.Name = "TIME_OUT";
-            this.TIME_OUT.Width = 110;
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label12.Location = new System.Drawing.Point(50, 366);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(92, 25);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "Section:";
             // 
-            // LOG_OUT
+            // label13
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle4;
-            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LOG_OUT.Frozen = true;
-            this.LOG_OUT.HeaderText = "LOG OUT";
-            this.LOG_OUT.Name = "LOG_OUT";
-            this.LOG_OUT.Text = "LOG OUT";
-            this.LOG_OUT.ToolTipText = "Log out student";
-            this.LOG_OUT.UseColumnTextForButtonValue = true;
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label13.Location = new System.Drawing.Point(147, 367);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(98, 25);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "<name>";
             // 
             // Form1
             // 
@@ -1159,13 +1244,13 @@
             this.pnlRecords.ResumeLayout(false);
             this.pnlRecords.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).EndInit();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.pnlStudentInfo.ResumeLayout(false);
+            this.pnlStudentInfo.PerformLayout();
+            this.mrg6.ResumeLayout(false);
+            this.l6.ResumeLayout(false);
+            this.l6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsView)).EndInit();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1227,17 +1312,17 @@
         private System.Windows.Forms.Panel l4;
         private System.Windows.Forms.Label placeholder5;
         private System.Windows.Forms.TextBox txtSection;
-        private System.Windows.Forms.Panel panel5;
-        private ItachiUIBunifu.ButtonBunifuItachi buttonBunifuItachi3;
+        private System.Windows.Forms.Panel pnlStudentInfo;
+        private ItachiUIBunifu.ButtonBunifuItachi btnPrint;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox1;
-        private ItachiUIBunifu.ButtonBunifuItachi buttonBunifuItachi1;
+        private System.Windows.Forms.Panel mrg6;
+        private System.Windows.Forms.Panel l6;
+        private System.Windows.Forms.Label placeholder7;
+        private System.Windows.Forms.TextBox txtSearchId;
+        private ItachiUIBunifu.ButtonBunifuItachi btnSearchInRecords;
         private System.Windows.Forms.Label label9;
-        private ItachiUIBunifu.ButtonBunifuItachi buttonBunifuItachi4;
-        private ItachiUIBunifu.ButtonBunifuItachi buttonBunifuItachi2;
+        private ItachiUIBunifu.ButtonBunifuItachi btnDelete;
+        private ItachiUIBunifu.ButtonBunifuItachi btnEdit;
         private System.Windows.Forms.DataGridView recordsView;
         private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn lStudentId;
@@ -1254,6 +1339,12 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label7;
     }
 }
 

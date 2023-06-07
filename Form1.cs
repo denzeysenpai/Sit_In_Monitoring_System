@@ -26,20 +26,25 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnlStudsRec, 16);
             Design.RoundCorner(borderpass, 10);
             Design.RoundCorner(pnlDesign, 14);
-            Design.RoundCorner(pass, 10);
-            Design.RoundCorner(mrg1, 10);
-            Design.RoundCorner(mrg2, 10);
-            Design.RoundCorner(mrg3, 10);
-            Design.RoundCorner(mrg4, 10);
-            Design.RoundCorner(mrg5, 10);
+            Design.RoundCorner(pass, 12);
+            Design.RoundCorner(mrg1, 12);
+            Design.RoundCorner(mrg2, 12);
+            Design.RoundCorner(mrg3, 12);
+            Design.RoundCorner(mrg4, 12);
+            Design.RoundCorner(mrg5, 12);
+            Design.RoundCorner(mrg6, 12);
             Design.RoundCorner(this, 25);
+            Design.RoundCorner(pnlStudentInfo, 15);
+            Design.RoundCorner(DataGrid, 15);
+            Design.RoundCorner(recordsView, 15);
             Design.RoundCorner(tm1, 15);
             Design.RoundCorner(tm2, 16);
-            Design.RoundCorner(l1, 9);
-            Design.RoundCorner(l2, 9);
-            Design.RoundCorner(l3, 9);
-            Design.RoundCorner(l4, 9);
-            Design.RoundCorner(l5, 9);
+            Design.RoundCorner(l1, 11);
+            Design.RoundCorner(l2, 11);
+            Design.RoundCorner(l3, 11);
+            Design.RoundCorner(l4, 11);
+            Design.RoundCorner(l5, 11);
+            Design.RoundCorner(l6, 11);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -143,7 +148,6 @@ namespace Sit_In_Monitoring
                 placeholder5.Show();
             }
 
-
             // Priority num
 
             if (txtPriorityNum.Focused)
@@ -155,6 +159,19 @@ namespace Sit_In_Monitoring
             {
                 mrg5.BackColor = notClicked;
                 placeholder6.Show();
+            }
+
+            // Search
+
+            if (txtSearchId.Focused)
+            {
+                mrg6.BackColor = Clicked;
+                placeholder7.Hide();
+            }
+            else
+            {
+                mrg6.BackColor = notClicked;
+                placeholder7.Show();
             }
         }
 
@@ -342,8 +359,9 @@ namespace Sit_In_Monitoring
         private void lastnamehasinput(object sender, EventArgs e) => CheckForInput(txtStudentLastName, placeholder4);
         private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
         private void prioinput(object sender, EventArgs e) => CheckForInput(txtPriorityNum, placeholder6);
+        private void searchedchanged(object sender, EventArgs e) => CheckForInput(txtSearchId, placeholder7);
 
-        //
+        // Text Focus
         private void idClick(object sender, EventArgs e) => txtStudentID.Focus();
         private void fullNameClick(object sender, EventArgs e) => txtStudentName.Focus();
         private void userClick(object sender, EventArgs e) => txtStudentID.Focus();
@@ -356,15 +374,41 @@ namespace Sit_In_Monitoring
         private void qw1(object sender, EventArgs e) => txtStudentLastName.Focus();
         private void qw2(object sender, EventArgs e) => txtSection.Focus();
         private void qw3(object sender, EventArgs e) => txtPriorityNum.Focus();
+        private void placeholder7click(object sender, EventArgs e) => txtSearchId.Focus();
 
         #endregion
 
+
+
+
+
+        // RECORDS PAGE FUNCTIONS
         private void hideRecords_Click(object sender, EventArgs e)
         {
             pnlRecords.Visible = false;
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSearchInRecords_Click(object sender, EventArgs e)
         {
 
         }
