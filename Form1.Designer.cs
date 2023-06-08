@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -39,6 +39,7 @@
             this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MI = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -234,6 +235,7 @@
             this.DATE,
             this.STUDENT_ID,
             this.FIRSTNAME,
+            this.MI,
             this.LASTNAME,
             this.cSection,
             this.TIME_IN,
@@ -259,7 +261,6 @@
             this.STUDENT_ID.Frozen = true;
             this.STUDENT_ID.HeaderText = "STUDENT ID";
             this.STUDENT_ID.Name = "STUDENT_ID";
-            this.STUDENT_ID.Width = 115;
             // 
             // FIRSTNAME
             // 
@@ -267,6 +268,13 @@
             this.FIRSTNAME.HeaderText = "FIRST NAME";
             this.FIRSTNAME.Name = "FIRSTNAME";
             this.FIRSTNAME.Width = 135;
+            // 
+            // MI
+            // 
+            this.MI.Frozen = true;
+            this.MI.HeaderText = "M.I";
+            this.MI.Name = "MI";
+            this.MI.Width = 40;
             // 
             // LASTNAME
             // 
@@ -298,9 +306,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -383,7 +391,7 @@
             this.BtnStart.Location = new System.Drawing.Point(32, 371);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(362, 48);
-            this.BtnStart.TabIndex = 1;
+            this.BtnStart.TabIndex = 7;
             this.BtnStart.Text = "START TIME";
             this.BtnStart.TextColor = System.Drawing.Color.White;
             this.BtnStart.UseVisualStyleBackColor = false;
@@ -407,7 +415,7 @@
             this.l5.Location = new System.Drawing.Point(1, 1);
             this.l5.Name = "l5";
             this.l5.Size = new System.Drawing.Size(358, 47);
-            this.l5.TabIndex = 0;
+            this.l5.TabIndex = 6;
             this.l5.Click += new System.EventHandler(this.qw3);
             // 
             // placeholder6
@@ -419,7 +427,7 @@
             this.placeholder6.Location = new System.Drawing.Point(23, 12);
             this.placeholder6.Name = "placeholder6";
             this.placeholder6.Size = new System.Drawing.Size(152, 21);
-            this.placeholder6.TabIndex = 7;
+            this.placeholder6.TabIndex = 6;
             this.placeholder6.Text = "PRIORITY NUMBER";
             this.placeholder6.Click += new System.EventHandler(this.prnumclick);
             // 
@@ -434,7 +442,7 @@
             this.txtPriorityNum.MaxLength = 22;
             this.txtPriorityNum.Name = "txtPriorityNum";
             this.txtPriorityNum.Size = new System.Drawing.Size(312, 27);
-            this.txtPriorityNum.TabIndex = 0;
+            this.txtPriorityNum.TabIndex = 26;
             this.txtPriorityNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPriorityNum.TextChanged += new System.EventHandler(this.prioinput);
             // 
@@ -456,7 +464,7 @@
             this.l3.Location = new System.Drawing.Point(1, 1);
             this.l3.Name = "l3";
             this.l3.Size = new System.Drawing.Size(358, 47);
-            this.l3.TabIndex = 0;
+            this.l3.TabIndex = 4;
             this.l3.Click += new System.EventHandler(this.qw1);
             // 
             // placeholder4
@@ -468,7 +476,7 @@
             this.placeholder4.Location = new System.Drawing.Point(25, 11);
             this.placeholder4.Name = "placeholder4";
             this.placeholder4.Size = new System.Drawing.Size(99, 21);
-            this.placeholder4.TabIndex = 7;
+            this.placeholder4.TabIndex = 4;
             this.placeholder4.Text = "LAST NAME";
             this.placeholder4.Click += new System.EventHandler(this.lnclick);
             // 
@@ -483,7 +491,7 @@
             this.txtStudentLastName.MaxLength = 22;
             this.txtStudentLastName.Name = "txtStudentLastName";
             this.txtStudentLastName.Size = new System.Drawing.Size(312, 27);
-            this.txtStudentLastName.TabIndex = 0;
+            this.txtStudentLastName.TabIndex = 24;
             this.txtStudentLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentLastName.TextChanged += new System.EventHandler(this.lastnamehasinput);
             // 
@@ -505,7 +513,7 @@
             this.l4.Location = new System.Drawing.Point(1, 1);
             this.l4.Name = "l4";
             this.l4.Size = new System.Drawing.Size(358, 47);
-            this.l4.TabIndex = 0;
+            this.l4.TabIndex = 5;
             this.l4.Click += new System.EventHandler(this.qw2);
             // 
             // placeholder5
@@ -517,7 +525,7 @@
             this.placeholder5.Location = new System.Drawing.Point(24, 12);
             this.placeholder5.Name = "placeholder5";
             this.placeholder5.Size = new System.Drawing.Size(79, 21);
-            this.placeholder5.TabIndex = 7;
+            this.placeholder5.TabIndex = 5;
             this.placeholder5.Text = "SECTION";
             this.placeholder5.Click += new System.EventHandler(this.seclick);
             // 
@@ -532,7 +540,7 @@
             this.txtSection.MaxLength = 22;
             this.txtSection.Name = "txtSection";
             this.txtSection.Size = new System.Drawing.Size(312, 27);
-            this.txtSection.TabIndex = 0;
+            this.txtSection.TabIndex = 25;
             this.txtSection.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSection.TextChanged += new System.EventHandler(this.sectioninput);
             // 
@@ -554,7 +562,7 @@
             this.l7.Location = new System.Drawing.Point(1, 1);
             this.l7.Name = "l7";
             this.l7.Size = new System.Drawing.Size(77, 47);
-            this.l7.TabIndex = 0;
+            this.l7.TabIndex = 3;
             this.l7.Click += new System.EventHandler(this.inClick);
             // 
             // placeholder8
@@ -566,7 +574,7 @@
             this.placeholder8.Location = new System.Drawing.Point(20, 12);
             this.placeholder8.Name = "placeholder8";
             this.placeholder8.Size = new System.Drawing.Size(38, 21);
-            this.placeholder8.TabIndex = 7;
+            this.placeholder8.TabIndex = 3;
             this.placeholder8.Text = "M.I.";
             this.placeholder8.Click += new System.EventHandler(this.inClick);
             // 
@@ -581,7 +589,7 @@
             this.txtMiddleInitial.MaxLength = 1;
             this.txtMiddleInitial.Name = "txtMiddleInitial";
             this.txtMiddleInitial.Size = new System.Drawing.Size(38, 27);
-            this.txtMiddleInitial.TabIndex = 0;
+            this.txtMiddleInitial.TabIndex = 23;
             this.txtMiddleInitial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtMiddleInitial.TextChanged += new System.EventHandler(this.initialHasInput);
             // 
@@ -603,7 +611,7 @@
             this.l2.Location = new System.Drawing.Point(1, 1);
             this.l2.Name = "l2";
             this.l2.Size = new System.Drawing.Size(276, 47);
-            this.l2.TabIndex = 0;
+            this.l2.TabIndex = 2;
             this.l2.Click += new System.EventHandler(this.userClick2);
             // 
             // placeholder2
@@ -615,7 +623,7 @@
             this.placeholder2.Location = new System.Drawing.Point(26, 12);
             this.placeholder2.Name = "placeholder2";
             this.placeholder2.Size = new System.Drawing.Size(102, 21);
-            this.placeholder2.TabIndex = 7;
+            this.placeholder2.TabIndex = 2;
             this.placeholder2.Text = "FIRST NAME";
             this.placeholder2.Click += new System.EventHandler(this.fullNameClick);
             // 
@@ -630,7 +638,7 @@
             this.txtStudentName.MaxLength = 22;
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(230, 27);
-            this.txtStudentName.TabIndex = 0;
+            this.txtStudentName.TabIndex = 22;
             this.txtStudentName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentName.TextChanged += new System.EventHandler(this.fullNameHasInput);
             // 
@@ -664,7 +672,7 @@
             this.placeholder1.Location = new System.Drawing.Point(26, 12);
             this.placeholder1.Name = "placeholder1";
             this.placeholder1.Size = new System.Drawing.Size(169, 21);
-            this.placeholder1.TabIndex = 7;
+            this.placeholder1.TabIndex = 0;
             this.placeholder1.Text = "STUDENT ID NUMBER";
             this.placeholder1.Click += new System.EventHandler(this.idClick);
             // 
@@ -678,7 +686,7 @@
             this.txtStudentID.MaxLength = 11;
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(190, 27);
-            this.txtStudentID.TabIndex = 0;
+            this.txtStudentID.TabIndex = 20;
             this.txtStudentID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentID.TextChanged += new System.EventHandler(this.idNumberHasInput);
             this.txtStudentID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForBadInput);
@@ -1543,14 +1551,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lSection;
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIRSTNAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LASTNAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cSection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
-        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
@@ -1571,6 +1571,15 @@
         private System.Windows.Forms.Panel mrg7;
         private System.Windows.Forms.Panel l7;
         private System.Windows.Forms.TextBox txtMiddleInitial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIRSTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LASTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
+        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
     }
 }
 
