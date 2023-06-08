@@ -39,12 +39,9 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(mrg6, g1);
             Design.RoundCorner(mrg7, g1);
 
-
-            Design.RoundCorner(tm1, 16);
-            Design.RoundCorner(tm2, 16);
-
-
             int g2 = 16;
+            Design.RoundCorner(tm1, g2);
+            Design.RoundCorner(tm2, g2);
             Design.RoundCorner(l1, g2);
             Design.RoundCorner(l2, g2);
             Design.RoundCorner(l3, g2);
@@ -52,7 +49,6 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(l5, g2);
             Design.RoundCorner(l6, g2);
             Design.RoundCorner(l7, g2);
-
 
             Design.RoundCorner(this, 25);
             Design.RoundCorner(DataGrid, 15);
@@ -67,6 +63,7 @@ namespace Sit_In_Monitoring
             pnlConfirmExit.Hide();
             exitApp = false;
             Update_Data();
+
             pnlConfirmExit.Location = new Point(446, 204);
             pnlRecords.Location = new Point(0, 0);
             pnlRecords.Hide();
@@ -77,16 +74,15 @@ namespace Sit_In_Monitoring
 
             buttonColors = Color.FromArgb(8, 136, 194);
 
-            BtnEdit.BackColor = buttonColors;
-            BtnStart.BackColor = buttonColors;
-            BtnPrint.BackColor = buttonColors;
+            BtnSearchInRecords.BackColor = buttonColors;
+            BtnCancelIn.BackColor = buttonColors;
+            BtnConfirm.BackColor = buttonColors;
             BtnDelete.BackColor = buttonColors;
             BtnSearch.BackColor = buttonColors;
-            BtnConfirm.BackColor = buttonColors;
-            BtnCancelIn.BackColor = buttonColors;
-            BtnSearchInRecords.BackColor = buttonColors;
+            BtnPrint.BackColor = buttonColors;
+            BtnStart.BackColor = buttonColors;
+            BtnEdit.BackColor = buttonColors;
         }
-
 
 
         /// <summary>
@@ -95,12 +91,7 @@ namespace Sit_In_Monitoring
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void ORASAN(object sender, EventArgs e)
-        {
-            DateTime timedate = DateTime.Now;
-            String time_of_day = timedate.ToString("hh:mm:ss tt");
-            lblTime.Text = time_of_day;
-        }
-
+            => lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
 
 
         /// <summary>
@@ -108,12 +99,8 @@ namespace Sit_In_Monitoring
         /// </summary>
         private void TextBoxFocus(object sender, EventArgs e)
         {
-
-            /// Main Behaviour for Textbox User Interface - Mark
             void TextBoxBehaviour(Control txtbx, Control mrgin, Control placeholders) =>
                 placeholders.Visible = (mrgin.BackColor = txtbx.Focused ? Clicked : notClicked) == notClicked;
-
-
 
             // Border highlight
             TextBoxBehaviour(txtStudentID, mrg1, placeholder1);
@@ -153,8 +140,6 @@ namespace Sit_In_Monitoring
 
         private void FormWillBeClosed(object sender, FormClosingEventArgs e)
             => pnlConfirmExit.Visible = e.Cancel = !exitApp;
-        private void exitButton_Click(object sender, EventArgs e)
-            => pnlConfirmExit.Show();
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
             if (attemptsOfLogin > 9 && txtPass.Text != password)
@@ -163,6 +148,8 @@ namespace Sit_In_Monitoring
                 attemptsOfLogin = (exitApp = txtPass.Text == password) ? 0 : attemptsOfLogin + 1;
         }
         private void ENVI_EXIT(object sender, EventArgs e) { if (exitApp) this.Close(); }
+        private void exitButton_Click(object sender, EventArgs e)
+            => pnlConfirmExit.Show();
         private void BtnCancelIn_Click(object sender, EventArgs e)
         {
             pnlConfirmExit.Visible = exitApp = false;
@@ -341,6 +328,7 @@ namespace Sit_In_Monitoring
             // MARK - 6/7/2023 - 8:56 PM
             string FullName = $"{stud_fName}, {stud_fName} {stud_mInitial}.";
             string RemainingBalance = $"{remaining_Hours} Hours, {remaining_Minutes} Minutes";
+
 
             displayID.Text = stud_ID;
             displayName.Text = FullName;

@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -173,11 +173,11 @@
             // 
             this.lblTime.AutoSize = true;
             this.lblTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.lblTime.Font = new System.Drawing.Font("Century Gothic", 33F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.lblTime.Location = new System.Drawing.Point(66, 4);
+            this.lblTime.Location = new System.Drawing.Point(80, 5);
             this.lblTime.Name = "lblTime";
-            this.lblTime.Size = new System.Drawing.Size(220, 51);
+            this.lblTime.Size = new System.Drawing.Size(196, 47);
             this.lblTime.TabIndex = 1;
             this.lblTime.Text = "00:00:00ff";
             this.lblTime.Click += new System.EventHandler(this.CalendarClick);
@@ -186,9 +186,9 @@
             // 
             this.tm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(103)))), ((int)(((byte)(117)))));
             this.tm2.Controls.Add(this.tm1);
-            this.tm2.Location = new System.Drawing.Point(27, 109);
+            this.tm2.Location = new System.Drawing.Point(23, 109);
             this.tm2.Name = "tm2";
-            this.tm2.Size = new System.Drawing.Size(422, 92);
+            this.tm2.Size = new System.Drawing.Size(426, 92);
             this.tm2.TabIndex = 3;
             // 
             // tm1
@@ -196,20 +196,20 @@
             this.tm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
             this.tm1.Controls.Add(this.lblTime);
             this.tm1.Controls.Add(this.dateToday);
-            this.tm1.Location = new System.Drawing.Point(6, 6);
+            this.tm1.Location = new System.Drawing.Point(8, 6);
             this.tm1.Name = "tm1";
-            this.tm1.Size = new System.Drawing.Size(408, 80);
+            this.tm1.Size = new System.Drawing.Size(409, 80);
             this.tm1.TabIndex = 3;
             // 
             // dateToday
             // 
             this.dateToday.BorderColor = System.Drawing.Color.Aqua;
             this.dateToday.BorderSize = 0;
-            this.dateToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.5F);
-            this.dateToday.Location = new System.Drawing.Point(82, 43);
+            this.dateToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateToday.Location = new System.Drawing.Point(108, 47);
             this.dateToday.MinimumSize = new System.Drawing.Size(4, 35);
             this.dateToday.Name = "dateToday";
-            this.dateToday.Size = new System.Drawing.Size(234, 35);
+            this.dateToday.Size = new System.Drawing.Size(178, 35);
             this.dateToday.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
             this.dateToday.TabIndex = 4;
             this.dateToday.TextColor = System.Drawing.Color.White;
@@ -298,9 +298,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle6;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -344,9 +344,9 @@
             this.pnlLoginFrame.Controls.Add(this.mrg2);
             this.pnlLoginFrame.Controls.Add(this.mrg1);
             this.pnlLoginFrame.Controls.Add(this.label5);
-            this.pnlLoginFrame.Location = new System.Drawing.Point(28, 216);
+            this.pnlLoginFrame.Location = new System.Drawing.Point(23, 216);
             this.pnlLoginFrame.Name = "pnlLoginFrame";
-            this.pnlLoginFrame.Size = new System.Drawing.Size(422, 518);
+            this.pnlLoginFrame.Size = new System.Drawing.Size(427, 518);
             this.pnlLoginFrame.TabIndex = 4;
             // 
             // BtnSearch
@@ -360,7 +360,7 @@
             this.BtnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSearch.ForeColor = System.Drawing.Color.White;
-            this.BtnSearch.Location = new System.Drawing.Point(279, 101);
+            this.BtnSearch.Location = new System.Drawing.Point(280, 101);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(115, 45);
             this.BtnSearch.TabIndex = 1;
@@ -380,7 +380,7 @@
             this.BtnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStart.ForeColor = System.Drawing.Color.White;
-            this.BtnStart.Location = new System.Drawing.Point(31, 371);
+            this.BtnStart.Location = new System.Drawing.Point(32, 371);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(362, 48);
             this.BtnStart.TabIndex = 1;
@@ -393,7 +393,7 @@
             // 
             this.mrg5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg5.Controls.Add(this.l5);
-            this.mrg5.Location = new System.Drawing.Point(34, 317);
+            this.mrg5.Location = new System.Drawing.Point(35, 317);
             this.mrg5.Name = "mrg5";
             this.mrg5.Size = new System.Drawing.Size(360, 49);
             this.mrg5.TabIndex = 0;
@@ -442,7 +442,7 @@
             // 
             this.mrg3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg3.Controls.Add(this.l3);
-            this.mrg3.Location = new System.Drawing.Point(32, 209);
+            this.mrg3.Location = new System.Drawing.Point(33, 209);
             this.mrg3.Name = "mrg3";
             this.mrg3.Size = new System.Drawing.Size(360, 49);
             this.mrg3.TabIndex = 0;
@@ -491,7 +491,7 @@
             // 
             this.mrg4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg4.Controls.Add(this.l4);
-            this.mrg4.Location = new System.Drawing.Point(33, 263);
+            this.mrg4.Location = new System.Drawing.Point(34, 263);
             this.mrg4.Name = "mrg4";
             this.mrg4.Size = new System.Drawing.Size(360, 49);
             this.mrg4.TabIndex = 0;
@@ -540,7 +540,7 @@
             // 
             this.mrg7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg7.Controls.Add(this.l7);
-            this.mrg7.Location = new System.Drawing.Point(315, 155);
+            this.mrg7.Location = new System.Drawing.Point(316, 155);
             this.mrg7.Name = "mrg7";
             this.mrg7.Size = new System.Drawing.Size(79, 49);
             this.mrg7.TabIndex = 0;
@@ -589,7 +589,7 @@
             // 
             this.mrg2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg2.Controls.Add(this.l2);
-            this.mrg2.Location = new System.Drawing.Point(31, 155);
+            this.mrg2.Location = new System.Drawing.Point(32, 155);
             this.mrg2.Name = "mrg2";
             this.mrg2.Size = new System.Drawing.Size(278, 49);
             this.mrg2.TabIndex = 0;
@@ -638,7 +638,7 @@
             // 
             this.mrg1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg1.Controls.Add(this.l1);
-            this.mrg1.Location = new System.Drawing.Point(31, 101);
+            this.mrg1.Location = new System.Drawing.Point(32, 101);
             this.mrg1.Name = "mrg1";
             this.mrg1.Size = new System.Drawing.Size(238, 49);
             this.mrg1.TabIndex = 0;
@@ -688,7 +688,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label5.Location = new System.Drawing.Point(110, 34);
+            this.label5.Location = new System.Drawing.Point(111, 34);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(196, 30);
             this.label5.TabIndex = 6;
@@ -869,7 +869,7 @@
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -931,7 +931,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::Sit_In_Monitoring.Properties.Resources.user__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(188, 65);
+            this.pictureBox1.Location = new System.Drawing.Point(187, 65);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(188, 185);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
