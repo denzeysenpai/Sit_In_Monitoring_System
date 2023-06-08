@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -47,8 +47,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLoginFrame = new System.Windows.Forms.Panel();
-            this.btnSearch = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.btnStart = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnSearch = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnStart = new ItachiUIBunifu.ButtonBunifuItachi();
             this.mrg5 = new System.Windows.Forms.Panel();
             this.l5 = new System.Windows.Forms.Panel();
             this.placeholder6 = new System.Windows.Forms.Label();
@@ -79,9 +79,9 @@
             this.UI = new System.Windows.Forms.Timer(this.components);
             this.pnlConfirmExit = new System.Windows.Forms.Panel();
             this.pnlDesign = new System.Windows.Forms.Panel();
-            this.btnCancelIn = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnCancelIn = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnConfirm = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnConfirm = new ItachiUIBunifu.ButtonBunifuItachi();
             this.borderpass = new System.Windows.Forms.Panel();
             this.pass = new System.Windows.Forms.Panel();
             this.placeholder3 = new System.Windows.Forms.Label();
@@ -93,9 +93,9 @@
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.pnlStudentInfo = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnDelete = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.btnEdit = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.btnPrint = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnDelete = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnEdit = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnPrint = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -116,8 +116,7 @@
             this.l6 = new System.Windows.Forms.Panel();
             this.placeholder7 = new System.Windows.Forms.Label();
             this.txtSearchId = new System.Windows.Forms.TextBox();
-            this.btnSearchInRecords = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.label9 = new System.Windows.Forms.Label();
+            this.BtnSearchInRecords = new ItachiUIBunifu.ButtonBunifuItachi();
             this.recordsView = new System.Windows.Forms.DataGridView();
             this.lDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lStudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,6 +127,7 @@
             this.lTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.hideRecords = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
@@ -186,7 +186,7 @@
             // 
             this.tm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(103)))), ((int)(((byte)(117)))));
             this.tm2.Controls.Add(this.tm1);
-            this.tm2.Location = new System.Drawing.Point(23, 116);
+            this.tm2.Location = new System.Drawing.Point(27, 109);
             this.tm2.Name = "tm2";
             this.tm2.Size = new System.Drawing.Size(422, 92);
             this.tm2.TabIndex = 3;
@@ -219,7 +219,7 @@
             this.pnlStudsRec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
             this.pnlStudsRec.Controls.Add(this.DataGrid);
             this.pnlStudsRec.Controls.Add(this.label1);
-            this.pnlStudsRec.Location = new System.Drawing.Point(464, 64);
+            this.pnlStudsRec.Location = new System.Drawing.Point(464, 61);
             this.pnlStudsRec.Name = "pnlStudsRec";
             this.pnlStudsRec.Size = new System.Drawing.Size(983, 673);
             this.pnlStudsRec.TabIndex = 4;
@@ -240,7 +240,7 @@
             this.TIME_OUT,
             this.LOG_OUT});
             this.DataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.DataGrid.Location = new System.Drawing.Point(25, 62);
+            this.DataGrid.Location = new System.Drawing.Point(21, 61);
             this.DataGrid.Name = "DataGrid";
             this.DataGrid.Size = new System.Drawing.Size(941, 597);
             this.DataGrid.TabIndex = 0;
@@ -298,9 +298,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -314,7 +314,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label1.Location = new System.Drawing.Point(305, 14);
+            this.label1.Location = new System.Drawing.Point(305, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 40);
             this.label1.TabIndex = 6;
@@ -326,7 +326,7 @@
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label2.Font = new System.Drawing.Font("Century Gothic", 30.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label2.Location = new System.Drawing.Point(96, 32);
+            this.label2.Location = new System.Drawing.Point(96, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(253, 47);
             this.label2.TabIndex = 6;
@@ -335,8 +335,8 @@
             // pnlLoginFrame
             // 
             this.pnlLoginFrame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.pnlLoginFrame.Controls.Add(this.btnSearch);
-            this.pnlLoginFrame.Controls.Add(this.btnStart);
+            this.pnlLoginFrame.Controls.Add(this.BtnSearch);
+            this.pnlLoginFrame.Controls.Add(this.BtnStart);
             this.pnlLoginFrame.Controls.Add(this.mrg5);
             this.pnlLoginFrame.Controls.Add(this.mrg3);
             this.pnlLoginFrame.Controls.Add(this.mrg4);
@@ -344,50 +344,50 @@
             this.pnlLoginFrame.Controls.Add(this.mrg2);
             this.pnlLoginFrame.Controls.Add(this.mrg1);
             this.pnlLoginFrame.Controls.Add(this.label5);
-            this.pnlLoginFrame.Location = new System.Drawing.Point(24, 219);
+            this.pnlLoginFrame.Location = new System.Drawing.Point(28, 216);
             this.pnlLoginFrame.Name = "pnlLoginFrame";
             this.pnlLoginFrame.Size = new System.Drawing.Size(422, 518);
             this.pnlLoginFrame.TabIndex = 4;
             // 
-            // btnSearch
+            // BtnSearch
             // 
-            this.btnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.btnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.btnSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.btnSearch.BorderRadius = 10;
-            this.btnSearch.BorderSize = 0;
-            this.btnSearch.FlatAppearance.BorderSize = 0;
-            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.ForeColor = System.Drawing.Color.White;
-            this.btnSearch.Location = new System.Drawing.Point(279, 101);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(115, 45);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "SEARCH";
-            this.btnSearch.TextColor = System.Drawing.Color.White;
-            this.btnSearch.UseVisualStyleBackColor = false;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            this.BtnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnSearch.BorderRadius = 10;
+            this.BtnSearch.BorderSize = 0;
+            this.BtnSearch.FlatAppearance.BorderSize = 0;
+            this.BtnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSearch.ForeColor = System.Drawing.Color.White;
+            this.BtnSearch.Location = new System.Drawing.Point(279, 101);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(115, 45);
+            this.BtnSearch.TabIndex = 1;
+            this.BtnSearch.Text = "SEARCH";
+            this.BtnSearch.TextColor = System.Drawing.Color.White;
+            this.BtnSearch.UseVisualStyleBackColor = false;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
-            // btnStart
+            // BtnStart
             // 
-            this.btnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.btnStart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.btnStart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.btnStart.BorderRadius = 10;
-            this.btnStart.BorderSize = 0;
-            this.btnStart.FlatAppearance.BorderSize = 0;
-            this.btnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStart.ForeColor = System.Drawing.Color.White;
-            this.btnStart.Location = new System.Drawing.Point(31, 371);
-            this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(362, 48);
-            this.btnStart.TabIndex = 1;
-            this.btnStart.Text = "START TIME";
-            this.btnStart.TextColor = System.Drawing.Color.White;
-            this.btnStart.UseVisualStyleBackColor = false;
-            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
+            this.BtnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnStart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnStart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnStart.BorderRadius = 10;
+            this.BtnStart.BorderSize = 0;
+            this.BtnStart.FlatAppearance.BorderSize = 0;
+            this.BtnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnStart.ForeColor = System.Drawing.Color.White;
+            this.BtnStart.Location = new System.Drawing.Point(31, 371);
+            this.BtnStart.Name = "BtnStart";
+            this.BtnStart.Size = new System.Drawing.Size(362, 48);
+            this.BtnStart.TabIndex = 1;
+            this.BtnStart.Text = "START TIME";
+            this.BtnStart.TextColor = System.Drawing.Color.White;
+            this.BtnStart.UseVisualStyleBackColor = false;
+            this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
             // mrg5
             // 
@@ -700,7 +700,7 @@
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label3.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label3.Location = new System.Drawing.Point(101, 73);
+            this.label3.Location = new System.Drawing.Point(101, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(244, 13);
             this.label3.TabIndex = 7;
@@ -731,34 +731,34 @@
             // pnlDesign
             // 
             this.pnlDesign.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.pnlDesign.Controls.Add(this.btnCancelIn);
+            this.pnlDesign.Controls.Add(this.BtnCancelIn);
             this.pnlDesign.Controls.Add(this.label4);
-            this.pnlDesign.Controls.Add(this.btnConfirm);
+            this.pnlDesign.Controls.Add(this.BtnConfirm);
             this.pnlDesign.Controls.Add(this.borderpass);
             this.pnlDesign.Location = new System.Drawing.Point(8, 35);
             this.pnlDesign.Name = "pnlDesign";
             this.pnlDesign.Size = new System.Drawing.Size(559, 299);
             this.pnlDesign.TabIndex = 8;
             // 
-            // btnCancelIn
+            // BtnCancelIn
             // 
-            this.btnCancelIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnCancelIn.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnCancelIn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnCancelIn.BorderRadius = 10;
-            this.btnCancelIn.BorderSize = 0;
-            this.btnCancelIn.FlatAppearance.BorderSize = 0;
-            this.btnCancelIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelIn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelIn.ForeColor = System.Drawing.Color.White;
-            this.btnCancelIn.Location = new System.Drawing.Point(125, 200);
-            this.btnCancelIn.Name = "btnCancelIn";
-            this.btnCancelIn.Size = new System.Drawing.Size(299, 44);
-            this.btnCancelIn.TabIndex = 2;
-            this.btnCancelIn.Text = "CANCEL";
-            this.btnCancelIn.TextColor = System.Drawing.Color.White;
-            this.btnCancelIn.UseVisualStyleBackColor = false;
-            this.btnCancelIn.Click += new System.EventHandler(this.btnCancelIn_Click);
+            this.BtnCancelIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnCancelIn.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnCancelIn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnCancelIn.BorderRadius = 10;
+            this.BtnCancelIn.BorderSize = 0;
+            this.BtnCancelIn.FlatAppearance.BorderSize = 0;
+            this.BtnCancelIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelIn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelIn.ForeColor = System.Drawing.Color.White;
+            this.BtnCancelIn.Location = new System.Drawing.Point(125, 200);
+            this.BtnCancelIn.Name = "BtnCancelIn";
+            this.BtnCancelIn.Size = new System.Drawing.Size(299, 44);
+            this.BtnCancelIn.TabIndex = 2;
+            this.BtnCancelIn.Text = "CANCEL";
+            this.BtnCancelIn.TextColor = System.Drawing.Color.White;
+            this.BtnCancelIn.UseVisualStyleBackColor = false;
+            this.BtnCancelIn.Click += new System.EventHandler(this.BtnCancelIn_Click);
             // 
             // label4
             // 
@@ -771,25 +771,25 @@
             this.label4.TabIndex = 7;
             this.label4.Text = "INPUT PASSWORD TO EXIT";
             // 
-            // btnConfirm
+            // BtnConfirm
             // 
-            this.btnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnConfirm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnConfirm.BorderRadius = 10;
-            this.btnConfirm.BorderSize = 0;
-            this.btnConfirm.FlatAppearance.BorderSize = 0;
-            this.btnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirm.ForeColor = System.Drawing.Color.White;
-            this.btnConfirm.Location = new System.Drawing.Point(125, 152);
-            this.btnConfirm.Name = "btnConfirm";
-            this.btnConfirm.Size = new System.Drawing.Size(299, 44);
-            this.btnConfirm.TabIndex = 1;
-            this.btnConfirm.Text = "CONFIRM";
-            this.btnConfirm.TextColor = System.Drawing.Color.White;
-            this.btnConfirm.UseVisualStyleBackColor = false;
-            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            this.BtnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnConfirm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnConfirm.BorderRadius = 10;
+            this.BtnConfirm.BorderSize = 0;
+            this.BtnConfirm.FlatAppearance.BorderSize = 0;
+            this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConfirm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConfirm.ForeColor = System.Drawing.Color.White;
+            this.BtnConfirm.Location = new System.Drawing.Point(125, 152);
+            this.BtnConfirm.Name = "BtnConfirm";
+            this.BtnConfirm.Size = new System.Drawing.Size(299, 44);
+            this.BtnConfirm.TabIndex = 1;
+            this.BtnConfirm.Text = "CONFIRM";
+            this.BtnConfirm.TextColor = System.Drawing.Color.White;
+            this.BtnConfirm.UseVisualStyleBackColor = false;
+            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
             // 
             // borderpass
             // 
@@ -865,10 +865,10 @@
             this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
             this.pnlRecords.Controls.Add(this.pnlStudentInfo);
             this.pnlRecords.Controls.Add(this.mrg6);
-            this.pnlRecords.Controls.Add(this.btnSearchInRecords);
-            this.pnlRecords.Controls.Add(this.label9);
+            this.pnlRecords.Controls.Add(this.BtnSearchInRecords);
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
+            this.pnlRecords.Controls.Add(this.label9);
             this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
@@ -878,11 +878,11 @@
             // 
             this.label6.AutoSize = true;
             this.label6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label6.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label6.Location = new System.Drawing.Point(100, 70);
+            this.label6.Location = new System.Drawing.Point(100, 83);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(294, 15);
+            this.label6.Size = new System.Drawing.Size(244, 13);
             this.label6.TabIndex = 11;
             this.label6.Text = "DEPARTMENT OF NETWORK AND TECHNICAL SERVICES";
             // 
@@ -896,7 +896,7 @@
             this.pictureBoxBunifuItachi2.BorderSize = 5;
             this.pictureBoxBunifuItachi2.GradientAngle = 50F;
             this.pictureBoxBunifuItachi2.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
-            this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(22, 19);
+            this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(22, 26);
             this.pictureBoxBunifuItachi2.Name = "pictureBoxBunifuItachi2";
             this.pictureBoxBunifuItachi2.Size = new System.Drawing.Size(72, 72);
             this.pictureBoxBunifuItachi2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -907,9 +907,9 @@
             // 
             this.pnlStudentInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
             this.pnlStudentInfo.Controls.Add(this.pictureBox1);
-            this.pnlStudentInfo.Controls.Add(this.btnDelete);
-            this.pnlStudentInfo.Controls.Add(this.btnEdit);
-            this.pnlStudentInfo.Controls.Add(this.btnPrint);
+            this.pnlStudentInfo.Controls.Add(this.BtnDelete);
+            this.pnlStudentInfo.Controls.Add(this.BtnEdit);
+            this.pnlStudentInfo.Controls.Add(this.BtnPrint);
             this.pnlStudentInfo.Controls.Add(this.label11);
             this.pnlStudentInfo.Controls.Add(this.label14);
             this.pnlStudentInfo.Controls.Add(this.label12);
@@ -939,65 +939,65 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.WaitOnLoad = true;
             // 
-            // btnDelete
+            // BtnDelete
             // 
-            this.btnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnDelete.BorderRadius = 10;
-            this.btnDelete.BorderSize = 0;
-            this.btnDelete.FlatAppearance.BorderSize = 0;
-            this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(398, 516);
-            this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(100, 30);
-            this.btnDelete.TabIndex = 1;
-            this.btnDelete.Text = "DELETE";
-            this.btnDelete.TextColor = System.Drawing.Color.White;
-            this.btnDelete.UseVisualStyleBackColor = false;
-            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            this.BtnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnDelete.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnDelete.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnDelete.BorderRadius = 10;
+            this.BtnDelete.BorderSize = 0;
+            this.BtnDelete.FlatAppearance.BorderSize = 0;
+            this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnDelete.ForeColor = System.Drawing.Color.White;
+            this.BtnDelete.Location = new System.Drawing.Point(398, 516);
+            this.BtnDelete.Name = "BtnDelete";
+            this.BtnDelete.Size = new System.Drawing.Size(100, 30);
+            this.BtnDelete.TabIndex = 1;
+            this.BtnDelete.Text = "DELETE";
+            this.BtnDelete.TextColor = System.Drawing.Color.White;
+            this.BtnDelete.UseVisualStyleBackColor = false;
+            this.BtnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
-            // btnEdit
+            // BtnEdit
             // 
-            this.btnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnEdit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnEdit.BorderRadius = 10;
-            this.btnEdit.BorderSize = 0;
-            this.btnEdit.FlatAppearance.BorderSize = 0;
-            this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(398, 485);
-            this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(100, 30);
-            this.btnEdit.TabIndex = 1;
-            this.btnEdit.Text = "EDIT";
-            this.btnEdit.TextColor = System.Drawing.Color.White;
-            this.btnEdit.UseVisualStyleBackColor = false;
-            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            this.BtnEdit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnEdit.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnEdit.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnEdit.BorderRadius = 10;
+            this.BtnEdit.BorderSize = 0;
+            this.BtnEdit.FlatAppearance.BorderSize = 0;
+            this.BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnEdit.ForeColor = System.Drawing.Color.White;
+            this.BtnEdit.Location = new System.Drawing.Point(398, 485);
+            this.BtnEdit.Name = "BtnEdit";
+            this.BtnEdit.Size = new System.Drawing.Size(100, 30);
+            this.BtnEdit.TabIndex = 1;
+            this.BtnEdit.Text = "EDIT";
+            this.BtnEdit.TextColor = System.Drawing.Color.White;
+            this.BtnEdit.UseVisualStyleBackColor = false;
+            this.BtnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
-            // btnPrint
+            // BtnPrint
             // 
-            this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnPrint.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnPrint.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnPrint.BorderRadius = 10;
-            this.btnPrint.BorderSize = 0;
-            this.btnPrint.FlatAppearance.BorderSize = 0;
-            this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrint.ForeColor = System.Drawing.Color.White;
-            this.btnPrint.Location = new System.Drawing.Point(398, 547);
-            this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(100, 30);
-            this.btnPrint.TabIndex = 1;
-            this.btnPrint.Text = "PRINT";
-            this.btnPrint.TextColor = System.Drawing.Color.White;
-            this.btnPrint.UseVisualStyleBackColor = false;
-            this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
+            this.BtnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnPrint.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnPrint.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnPrint.BorderRadius = 10;
+            this.BtnPrint.BorderSize = 0;
+            this.BtnPrint.FlatAppearance.BorderSize = 0;
+            this.BtnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnPrint.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnPrint.ForeColor = System.Drawing.Color.White;
+            this.BtnPrint.Location = new System.Drawing.Point(398, 547);
+            this.BtnPrint.Name = "BtnPrint";
+            this.BtnPrint.Size = new System.Drawing.Size(100, 30);
+            this.BtnPrint.TabIndex = 1;
+            this.BtnPrint.Text = "PRINT";
+            this.BtnPrint.TextColor = System.Drawing.Color.White;
+            this.BtnPrint.UseVisualStyleBackColor = false;
+            this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
             // label11
             // 
@@ -1212,37 +1212,25 @@
             this.txtSearchId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearchId.TextChanged += new System.EventHandler(this.searchedchanged);
             // 
-            // btnSearchInRecords
+            // BtnSearchInRecords
             // 
-            this.btnSearchInRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnSearchInRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnSearchInRecords.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.btnSearchInRecords.BorderRadius = 10;
-            this.btnSearchInRecords.BorderSize = 0;
-            this.btnSearchInRecords.FlatAppearance.BorderSize = 0;
-            this.btnSearchInRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchInRecords.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchInRecords.ForeColor = System.Drawing.Color.White;
-            this.btnSearchInRecords.Location = new System.Drawing.Point(1300, 60);
-            this.btnSearchInRecords.Name = "btnSearchInRecords";
-            this.btnSearchInRecords.Size = new System.Drawing.Size(146, 44);
-            this.btnSearchInRecords.TabIndex = 13;
-            this.btnSearchInRecords.Text = "SEARCH";
-            this.btnSearchInRecords.TextColor = System.Drawing.Color.White;
-            this.btnSearchInRecords.UseVisualStyleBackColor = false;
-            this.btnSearchInRecords.Click += new System.EventHandler(this.btnSearchInRecords_Click);
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label9.Location = new System.Drawing.Point(88, 16);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(268, 63);
-            this.label9.TabIndex = 10;
-            this.label9.Text = "RECORDS";
+            this.BtnSearchInRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnSearchInRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnSearchInRecords.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnSearchInRecords.BorderRadius = 10;
+            this.BtnSearchInRecords.BorderSize = 0;
+            this.BtnSearchInRecords.FlatAppearance.BorderSize = 0;
+            this.BtnSearchInRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSearchInRecords.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSearchInRecords.ForeColor = System.Drawing.Color.White;
+            this.BtnSearchInRecords.Location = new System.Drawing.Point(1300, 60);
+            this.BtnSearchInRecords.Name = "BtnSearchInRecords";
+            this.BtnSearchInRecords.Size = new System.Drawing.Size(146, 44);
+            this.BtnSearchInRecords.TabIndex = 13;
+            this.BtnSearchInRecords.Text = "SEARCH";
+            this.BtnSearchInRecords.TextColor = System.Drawing.Color.White;
+            this.BtnSearchInRecords.UseVisualStyleBackColor = false;
+            this.BtnSearchInRecords.Click += new System.EventHandler(this.BtnSearchInRecords_Click);
             // 
             // recordsView
             // 
@@ -1338,6 +1326,18 @@
             this.hideRecords.UseVisualStyleBackColor = false;
             this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 39.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label9.Location = new System.Drawing.Point(88, 29);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(268, 63);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "RECORDS";
+            // 
             // pictureBoxBunifuItachi1
             // 
             this.pictureBoxBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
@@ -1348,7 +1348,7 @@
             this.pictureBoxBunifuItachi1.BorderSize = 5;
             this.pictureBoxBunifuItachi1.GradientAngle = 50F;
             this.pictureBoxBunifuItachi1.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
-            this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(23, 20);
+            this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(23, 27);
             this.pictureBoxBunifuItachi1.Name = "pictureBoxBunifuItachi1";
             this.pictureBoxBunifuItachi1.Size = new System.Drawing.Size(72, 72);
             this.pictureBoxBunifuItachi1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1393,12 +1393,12 @@
             this.Controls.Add(this.pnlRecords);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxBunifuItachi1);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.pnlConfirmExit);
             this.Controls.Add(this.pnlLoginFrame);
             this.Controls.Add(this.tm2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlStudsRec);
+            this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Name = "Form1";
@@ -1490,7 +1490,7 @@
         private System.Windows.Forms.Timer CLOCK;
         private System.Windows.Forms.Timer UI;
         private System.Windows.Forms.Label placeholder1;
-        private ItachiUIBunifu.ButtonBunifuItachi btnStart;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnStart;
         private System.Windows.Forms.Label placeholder2;
         private System.Windows.Forms.DataGridView DataGrid;
         private System.Windows.Forms.Label label5;
@@ -1498,8 +1498,8 @@
         private System.Windows.Forms.Panel pnlConfirmExit;
         private System.Windows.Forms.Panel pnlDesign;
         private System.Windows.Forms.Label mensahe;
-        private ItachiUIBunifu.ButtonBunifuItachi btnCancelIn;
-        private ItachiUIBunifu.ButtonBunifuItachi btnConfirm;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnCancelIn;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnConfirm;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel borderpass;
         private System.Windows.Forms.Panel pass;
@@ -1511,7 +1511,7 @@
         private ItachiUIBunifu.PictureBoxBunifuItachi pictureBoxBunifuItachi2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button hideRecords;
-        private ItachiUIBunifu.ButtonBunifuItachi btnSearch;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnSearch;
         private System.Windows.Forms.Panel mrg5;
         private System.Windows.Forms.Panel l5;
         private System.Windows.Forms.Label placeholder6;
@@ -1525,16 +1525,16 @@
         private System.Windows.Forms.Label placeholder5;
         private System.Windows.Forms.TextBox txtSection;
         private System.Windows.Forms.Panel pnlStudentInfo;
-        private ItachiUIBunifu.ButtonBunifuItachi btnPrint;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnPrint;
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Panel mrg6;
         private System.Windows.Forms.Panel l6;
         private System.Windows.Forms.Label placeholder7;
         private System.Windows.Forms.TextBox txtSearchId;
-        private ItachiUIBunifu.ButtonBunifuItachi btnSearchInRecords;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnSearchInRecords;
         private System.Windows.Forms.Label label9;
-        private ItachiUIBunifu.ButtonBunifuItachi btnDelete;
-        private ItachiUIBunifu.ButtonBunifuItachi btnEdit;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnDelete;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnEdit;
         private System.Windows.Forms.DataGridView recordsView;
         private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn lStudentId;

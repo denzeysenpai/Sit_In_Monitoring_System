@@ -8,14 +8,16 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        SqlConnection conn = new SqlConnection("Data Source=LAB5-PC10\\ACTSTUDENT;Initial Catalog=monitoring;Integrated Security=True");
+        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC10\\ACTSTUDENT;Initial Catalog=monitoring;Integrated Security=True");
         readonly SeiyaMarx Design = new SeiyaMarx();
+
+        Color buttonColors;
         Color notClicked;
         Color Clicked;
+
         bool exitApp;
-        int attemptsOfLogin;
         string password;
-        Color buttonColors;
+        int attemptsOfLogin;
         public Form1()
         {
             InitializeComponent();
@@ -27,28 +29,29 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(borderpass, 10);
             Design.RoundCorner(pnlDesign, 14);
 
+            int g1 = 14;
+            Design.RoundCorner(pass, g1);
+            Design.RoundCorner(mrg1, g1);
+            Design.RoundCorner(mrg2, g1);
+            Design.RoundCorner(mrg3, g1);
+            Design.RoundCorner(mrg4, g1);
+            Design.RoundCorner(mrg5, g1);
+            Design.RoundCorner(mrg6, g1);
+            Design.RoundCorner(mrg7, g1);
 
-            Design.RoundCorner(pass, 12);
-            Design.RoundCorner(mrg1, 12);
-            Design.RoundCorner(mrg2, 12);
-            Design.RoundCorner(mrg3, 12);
-            Design.RoundCorner(mrg4, 12);
-            Design.RoundCorner(mrg5, 12);
-            Design.RoundCorner(mrg6, 12);
-            Design.RoundCorner(mrg7, 12);
 
-
-            Design.RoundCorner(tm1, 15);
+            Design.RoundCorner(tm1, 16);
             Design.RoundCorner(tm2, 16);
 
 
-            Design.RoundCorner(l1, 11);
-            Design.RoundCorner(l2, 11);
-            Design.RoundCorner(l3, 11);
-            Design.RoundCorner(l4, 11);
-            Design.RoundCorner(l5, 11);
-            Design.RoundCorner(l6, 11);
-            Design.RoundCorner(l7, 11);
+            int g2 = 16;
+            Design.RoundCorner(l1, g2);
+            Design.RoundCorner(l2, g2);
+            Design.RoundCorner(l3, g2);
+            Design.RoundCorner(l4, g2);
+            Design.RoundCorner(l5, g2);
+            Design.RoundCorner(l6, g2);
+            Design.RoundCorner(l7, g2);
 
 
             Design.RoundCorner(this, 25);
@@ -58,11 +61,8 @@ namespace Sit_In_Monitoring
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            Clicked = Color.FromArgb(65, 205, 242);
             notClicked = Color.FromArgb(210, 242, 250);
-            
-            mrg1.BackColor = notClicked;
-            mrg2.BackColor = notClicked;
+            Clicked = Color.FromArgb(65, 205, 242);
 
             pnlConfirmExit.Hide();
             exitApp = false;
@@ -71,20 +71,20 @@ namespace Sit_In_Monitoring
             pnlRecords.Location = new Point(0, 0);
             pnlRecords.Hide();
 
-            Display_Student_Info("00-0000000","---- ----","-","-------","---- - ---", 0, 0, 0);
+            Display_Student_Info("00-0000000", "---- ----", "-", "-------", "---- - ---", 0, 0, 0);
             attemptsOfLogin = 0;
             password = "hehe";
 
             buttonColors = Color.FromArgb(8, 136, 194);
 
-            btnCancelIn.BackColor = buttonColors;
-            btnConfirm.BackColor = buttonColors;
-            btnDelete.BackColor = buttonColors;
-            btnEdit.BackColor = buttonColors;
-            btnPrint.BackColor = buttonColors;
-            btnSearch.BackColor = buttonColors;
-            btnSearchInRecords.BackColor = buttonColors;
-            btnStart.BackColor = buttonColors;    
+            BtnEdit.BackColor = buttonColors;
+            BtnStart.BackColor = buttonColors;
+            BtnPrint.BackColor = buttonColors;
+            BtnDelete.BackColor = buttonColors;
+            BtnSearch.BackColor = buttonColors;
+            BtnConfirm.BackColor = buttonColors;
+            BtnCancelIn.BackColor = buttonColors;
+            BtnSearchInRecords.BackColor = buttonColors;
         }
 
 
@@ -110,19 +110,9 @@ namespace Sit_In_Monitoring
         {
 
             /// Main Behaviour for Textbox User Interface - Mark
-            void TextBoxBehaviour(Control txtbx, Control mrgin, Control placeholders)
-            {
-                if (txtbx.Focused)
-                {
-                    mrgin.BackColor = Clicked;
-                    placeholders.Hide();
-                }
-                else
-                {
-                    mrgin.BackColor = notClicked;
-                    placeholders.Show();
-                }
-            }
+            void TextBoxBehaviour(Control txtbx, Control mrgin, Control placeholders) =>
+                placeholders.Visible = (mrgin.BackColor = txtbx.Focused ? Clicked : notClicked) == notClicked;
+
 
 
             // Border highlight
@@ -162,41 +152,24 @@ namespace Sit_In_Monitoring
         }
 
         private void FormWillBeClosed(object sender, FormClosingEventArgs e)
-        {
-            pnlConfirmExit.Show();
-            if (exitApp == false) { e.Cancel = true; }
-        }
-
+            => pnlConfirmExit.Visible = e.Cancel = !exitApp;
         private void exitButton_Click(object sender, EventArgs e)
+            => pnlConfirmExit.Show();
+        private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            pnlConfirmExit.Show();
-        }
-
-        private void btnConfirm_Click(object sender, EventArgs e)
-        {
-            if (attemptsOfLogin > 10)
+            if (attemptsOfLogin > 9 && txtPass.Text != password)
                 MessageBox.Show($"Please contact an assistant! \nAfter ({attemptsOfLogin}), you have failed to input the correct password!", "Password Incorrect!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            else if (attemptsOfLogin < 10)
-            {
-                attemptsOfLogin += 1;
-
-                if (txtPass.Text == password) // Check if user input pass is correct // please change implementation during finalization - Mark
-                {
-                    attemptsOfLogin = 0;
-                    exitApp = true;
-                }
-                else
-                    exitApp = false;
-            }
+            else
+                attemptsOfLogin = (exitApp = txtPass.Text == password) ? 0 : attemptsOfLogin + 1;
         }
-
         private void ENVI_EXIT(object sender, EventArgs e) { if (exitApp) this.Close(); }
-        private void btnCancelIn_Click(object sender, EventArgs e)
+        private void BtnCancelIn_Click(object sender, EventArgs e)
         {
-            exitApp = false;
-            pnlConfirmExit.Hide();
+            pnlConfirmExit.Visible = exitApp = false;
             txtPass.Text = string.Empty;
         }
+        private void KeyIsDown(object sender, KeyEventArgs e)
+             => pnlRecords.Visible = (e.KeyCode == Keys.F1 && e.Control);
 
         private void CalendarClick(object sender, EventArgs e)
         {
@@ -204,11 +177,7 @@ namespace Sit_In_Monitoring
             dateToday.Select();
         }
 
-        private void KeyIsDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F1 && e.Control)
-                pnlRecords.Show();
-        }
+
         public void AddStudent()
         {
             conn.Open();
@@ -217,7 +186,6 @@ namespace Sit_In_Monitoring
             cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
             cmd.Parameters.AddWithValue("@lastName", txtStudentLastName.Text);
             cmd.Parameters.AddWithValue("@section", txtSection.Text);
-
         }
         public void Update_Data() // display the data register
         {
@@ -247,7 +215,7 @@ namespace Sit_In_Monitoring
         }
 
 
-        private void btnStart_Click(object sender, EventArgs e) //Update data during log in
+        private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
             DateTime val = DateTime.Now;
             string time1 = val.ToString("hh:mm:ss tt");
@@ -323,6 +291,9 @@ namespace Sit_In_Monitoring
 
 
         #region Behavior UI
+
+        private void CheckForBadInput(object sender, KeyPressEventArgs e) => e.Handled = char.IsLetter(e.KeyChar);
+
         private void idNumberHasInput(object sender, EventArgs e) => CheckForInput(txtStudentID, placeholder1);
         private void fullNameHasInput(object sender, EventArgs e) => CheckForInput(txtStudentName, placeholder2);
         private void PassHasInput(object sender, EventArgs e) => CheckForInput(txtPass, placeholder3);
@@ -353,7 +324,6 @@ namespace Sit_In_Monitoring
 
 
         // USE THIS TO DISPLAY INFO IN SEARCHED RECORDS
-
 
         /// <summary>
         /// Displays the student info in correct format
@@ -387,38 +357,31 @@ namespace Sit_In_Monitoring
             pnlRecords.Visible = false;
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
+        private void BtnSearch_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnDelete_Click(object sender, EventArgs e)
+        private void BtnDelete_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnEdit_Click(object sender, EventArgs e)
+        private void BtnEdit_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnPrint_Click(object sender, EventArgs e)
+        private void BtnPrint_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void btnSearchInRecords_Click(object sender, EventArgs e)
+        private void BtnSearchInRecords_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void CheckForBadInput(object sender, KeyPressEventArgs e)
-        {
-            if (char.IsLetter(e.KeyChar))
-            {
-                e.Handled = true;
-            }
-        }
     }
     class SeiyaMarx
     {
