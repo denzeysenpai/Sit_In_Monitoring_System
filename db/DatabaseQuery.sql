@@ -1,4 +1,4 @@
-﻿
+﻿using SitInMonitoring
 
 create table Students(
 personid int identity(1,1) PRIMARY KEY NOT NULL,
@@ -50,3 +50,4 @@ ON students.personid = currentsession.personid
 
 SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.studentId = cs.studentId
 
+select * from SessionLogs

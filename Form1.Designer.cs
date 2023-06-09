@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -93,26 +93,27 @@
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.pnlStudentInfo = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.BtnDelete = new ItachiUIBunifu.ButtonBunifuItachi();
             this.BtnEdit = new ItachiUIBunifu.ButtonBunifuItachi();
             this.BtnPrint = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.label15 = new System.Windows.Forms.Label();
+            this.pnlDepth = new System.Windows.Forms.Panel();
             this.label11 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
-            this.displayNumOfSitIns = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.panel6 = new System.Windows.Forms.Panel();
-            this.displayBalance = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.displaySection = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.displayName = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.displayID = new System.Windows.Forms.Label();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.displayName = new System.Windows.Forms.Label();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.displaySection = new System.Windows.Forms.Label();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.displayBalance = new System.Windows.Forms.Label();
+            this.panel7 = new System.Windows.Forms.Panel();
+            this.displayNumOfSitIns = new System.Windows.Forms.Label();
             this.mrg6 = new System.Windows.Forms.Panel();
             this.l6 = new System.Windows.Forms.Panel();
             this.placeholder7 = new System.Windows.Forms.Label();
@@ -132,7 +133,6 @@
             this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
-            this.pnlDepth = new System.Windows.Forms.Panel();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -157,19 +157,19 @@
             this.pnlRecords.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).BeginInit();
             this.pnlStudentInfo.SuspendLayout();
+            this.pnlDepth.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel7.SuspendLayout();
-            this.panel6.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
+            this.panel7.SuspendLayout();
             this.mrg6.SuspendLayout();
             this.l6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsView)).BeginInit();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).BeginInit();
             this.panel1.SuspendLayout();
-            this.pnlDepth.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTime
@@ -308,9 +308,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -926,19 +926,6 @@
             this.pnlStudentInfo.Size = new System.Drawing.Size(565, 619);
             this.pnlStudentInfo.TabIndex = 15;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::Sit_In_Monitoring.Properties.Resources.user__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(174, 9);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(188, 185);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 8;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.WaitOnLoad = true;
-            // 
             // BtnDelete
             // 
             this.BtnDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
@@ -999,6 +986,36 @@
             this.BtnPrint.UseVisualStyleBackColor = false;
             this.BtnPrint.Click += new System.EventHandler(this.BtnPrint_Click);
             // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.label15.Location = new System.Drawing.Point(182, 8);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(204, 36);
+            this.label15.TabIndex = 6;
+            this.label15.Text = "STUDENT INFO";
+            // 
+            // pnlDepth
+            // 
+            this.pnlDepth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(162)))), ((int)(((byte)(179)))));
+            this.pnlDepth.Controls.Add(this.label11);
+            this.pnlDepth.Controls.Add(this.label14);
+            this.pnlDepth.Controls.Add(this.label12);
+            this.pnlDepth.Controls.Add(this.label10);
+            this.pnlDepth.Controls.Add(this.label7);
+            this.pnlDepth.Controls.Add(this.pictureBox1);
+            this.pnlDepth.Controls.Add(this.panel3);
+            this.pnlDepth.Controls.Add(this.panel4);
+            this.pnlDepth.Controls.Add(this.panel5);
+            this.pnlDepth.Controls.Add(this.panel6);
+            this.pnlDepth.Controls.Add(this.panel7);
+            this.pnlDepth.Location = new System.Drawing.Point(10, 54);
+            this.pnlDepth.Name = "pnlDepth";
+            this.pnlDepth.Size = new System.Drawing.Size(544, 450);
+            this.pnlDepth.TabIndex = 9;
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -1054,76 +1071,38 @@
             this.label7.TabIndex = 6;
             this.label7.Text = "Student ID:";
             // 
-            // panel7
+            // pictureBox1
             // 
-            this.panel7.Controls.Add(this.displayNumOfSitIns);
-            this.panel7.Location = new System.Drawing.Point(134, 372);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(351, 28);
-            this.panel7.TabIndex = 7;
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pictureBox1.Image = global::Sit_In_Monitoring.Properties.Resources.user__1_;
+            this.pictureBox1.Location = new System.Drawing.Point(174, 9);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(188, 185);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 8;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.WaitOnLoad = true;
             // 
-            // displayNumOfSitIns
+            // panel3
             // 
-            this.displayNumOfSitIns.AutoSize = true;
-            this.displayNumOfSitIns.Dock = System.Windows.Forms.DockStyle.Right;
-            this.displayNumOfSitIns.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displayNumOfSitIns.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.displayNumOfSitIns.Location = new System.Drawing.Point(312, 0);
-            this.displayNumOfSitIns.Name = "displayNumOfSitIns";
-            this.displayNumOfSitIns.Size = new System.Drawing.Size(39, 19);
-            this.displayNumOfSitIns.TabIndex = 6;
-            this.displayNumOfSitIns.Text = "<v>";
+            this.panel3.Controls.Add(this.displayID);
+            this.panel3.Location = new System.Drawing.Point(134, 251);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(351, 28);
+            this.panel3.TabIndex = 7;
             // 
-            // label15
+            // displayID
             // 
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label15.Location = new System.Drawing.Point(182, 8);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(204, 36);
-            this.label15.TabIndex = 6;
-            this.label15.Text = "STUDENT INFO";
-            // 
-            // panel6
-            // 
-            this.panel6.Controls.Add(this.displayBalance);
-            this.panel6.Location = new System.Drawing.Point(134, 343);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(351, 28);
-            this.panel6.TabIndex = 7;
-            // 
-            // displayBalance
-            // 
-            this.displayBalance.AutoSize = true;
-            this.displayBalance.Dock = System.Windows.Forms.DockStyle.Right;
-            this.displayBalance.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displayBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.displayBalance.Location = new System.Drawing.Point(155, 0);
-            this.displayBalance.Name = "displayBalance";
-            this.displayBalance.Size = new System.Drawing.Size(196, 19);
-            this.displayBalance.TabIndex = 6;
-            this.displayBalance.Text = "<60 hours, 00 minutes>";
-            // 
-            // panel5
-            // 
-            this.panel5.Controls.Add(this.displaySection);
-            this.panel5.Location = new System.Drawing.Point(134, 311);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(351, 28);
-            this.panel5.TabIndex = 7;
-            // 
-            // displaySection
-            // 
-            this.displaySection.AutoSize = true;
-            this.displaySection.Dock = System.Windows.Forms.DockStyle.Right;
-            this.displaySection.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displaySection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.displaySection.Location = new System.Drawing.Point(241, 0);
-            this.displaySection.Name = "displaySection";
-            this.displaySection.Size = new System.Drawing.Size(110, 19);
-            this.displaySection.TabIndex = 6;
-            this.displaySection.Text = "<sect - 100>";
+            this.displayID.AutoSize = true;
+            this.displayID.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displayID.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displayID.Location = new System.Drawing.Point(225, 0);
+            this.displayID.Name = "displayID";
+            this.displayID.Size = new System.Drawing.Size(126, 19);
+            this.displayID.TabIndex = 6;
+            this.displayID.Text = "<00-0000000>";
             // 
             // panel4
             // 
@@ -1145,25 +1124,65 @@
             this.displayName.TabIndex = 6;
             this.displayName.Text = "<Marx, Seiya M.>";
             // 
-            // panel3
+            // panel5
             // 
-            this.panel3.Controls.Add(this.displayID);
-            this.panel3.Location = new System.Drawing.Point(134, 251);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(351, 28);
-            this.panel3.TabIndex = 7;
+            this.panel5.Controls.Add(this.displaySection);
+            this.panel5.Location = new System.Drawing.Point(134, 311);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(351, 28);
+            this.panel5.TabIndex = 7;
             // 
-            // displayID
+            // displaySection
             // 
-            this.displayID.AutoSize = true;
-            this.displayID.Dock = System.Windows.Forms.DockStyle.Right;
-            this.displayID.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.displayID.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.displayID.Location = new System.Drawing.Point(225, 0);
-            this.displayID.Name = "displayID";
-            this.displayID.Size = new System.Drawing.Size(126, 19);
-            this.displayID.TabIndex = 6;
-            this.displayID.Text = "<00-0000000>";
+            this.displaySection.AutoSize = true;
+            this.displaySection.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displaySection.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displaySection.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displaySection.Location = new System.Drawing.Point(241, 0);
+            this.displaySection.Name = "displaySection";
+            this.displaySection.Size = new System.Drawing.Size(110, 19);
+            this.displaySection.TabIndex = 6;
+            this.displaySection.Text = "<sect - 100>";
+            // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.displayBalance);
+            this.panel6.Location = new System.Drawing.Point(134, 343);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(351, 28);
+            this.panel6.TabIndex = 7;
+            // 
+            // displayBalance
+            // 
+            this.displayBalance.AutoSize = true;
+            this.displayBalance.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displayBalance.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayBalance.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displayBalance.Location = new System.Drawing.Point(155, 0);
+            this.displayBalance.Name = "displayBalance";
+            this.displayBalance.Size = new System.Drawing.Size(196, 19);
+            this.displayBalance.TabIndex = 6;
+            this.displayBalance.Text = "<60 hours, 00 minutes>";
+            // 
+            // panel7
+            // 
+            this.panel7.Controls.Add(this.displayNumOfSitIns);
+            this.panel7.Location = new System.Drawing.Point(134, 372);
+            this.panel7.Name = "panel7";
+            this.panel7.Size = new System.Drawing.Size(351, 28);
+            this.panel7.TabIndex = 7;
+            // 
+            // displayNumOfSitIns
+            // 
+            this.displayNumOfSitIns.AutoSize = true;
+            this.displayNumOfSitIns.Dock = System.Windows.Forms.DockStyle.Right;
+            this.displayNumOfSitIns.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.displayNumOfSitIns.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.displayNumOfSitIns.Location = new System.Drawing.Point(312, 0);
+            this.displayNumOfSitIns.Name = "displayNumOfSitIns";
+            this.displayNumOfSitIns.Size = new System.Drawing.Size(39, 19);
+            this.displayNumOfSitIns.TabIndex = 6;
+            this.displayNumOfSitIns.Text = "<v>";
             // 
             // mrg6
             // 
@@ -1382,25 +1401,6 @@
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
-            // pnlDepth
-            // 
-            this.pnlDepth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(162)))), ((int)(((byte)(179)))));
-            this.pnlDepth.Controls.Add(this.label11);
-            this.pnlDepth.Controls.Add(this.label14);
-            this.pnlDepth.Controls.Add(this.label12);
-            this.pnlDepth.Controls.Add(this.label10);
-            this.pnlDepth.Controls.Add(this.label7);
-            this.pnlDepth.Controls.Add(this.pictureBox1);
-            this.pnlDepth.Controls.Add(this.panel3);
-            this.pnlDepth.Controls.Add(this.panel4);
-            this.pnlDepth.Controls.Add(this.panel5);
-            this.pnlDepth.Controls.Add(this.panel6);
-            this.pnlDepth.Controls.Add(this.panel7);
-            this.pnlDepth.Location = new System.Drawing.Point(10, 54);
-            this.pnlDepth.Name = "pnlDepth";
-            this.pnlDepth.Size = new System.Drawing.Size(544, 450);
-            this.pnlDepth.TabIndex = 9;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1464,17 +1464,19 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).EndInit();
             this.pnlStudentInfo.ResumeLayout(false);
             this.pnlStudentInfo.PerformLayout();
+            this.pnlDepth.ResumeLayout(false);
+            this.pnlDepth.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel7.ResumeLayout(false);
-            this.panel7.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
+            this.panel5.ResumeLayout(false);
+            this.panel5.PerformLayout();
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            this.panel7.ResumeLayout(false);
+            this.panel7.PerformLayout();
             this.mrg6.ResumeLayout(false);
             this.l6.ResumeLayout(false);
             this.l6.PerformLayout();
@@ -1482,8 +1484,6 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).EndInit();
             this.panel1.ResumeLayout(false);
-            this.pnlDepth.ResumeLayout(false);
-            this.pnlDepth.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
