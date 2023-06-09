@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -132,6 +132,7 @@
             this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
+            this.pnlDepth = new System.Windows.Forms.Panel();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -168,6 +169,7 @@
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnlDepth.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTime
@@ -306,9 +308,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -877,7 +879,7 @@
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -914,21 +916,11 @@
             // pnlStudentInfo
             // 
             this.pnlStudentInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.pnlStudentInfo.Controls.Add(this.pictureBox1);
             this.pnlStudentInfo.Controls.Add(this.BtnDelete);
             this.pnlStudentInfo.Controls.Add(this.BtnEdit);
             this.pnlStudentInfo.Controls.Add(this.BtnPrint);
-            this.pnlStudentInfo.Controls.Add(this.label11);
-            this.pnlStudentInfo.Controls.Add(this.label14);
-            this.pnlStudentInfo.Controls.Add(this.label12);
-            this.pnlStudentInfo.Controls.Add(this.label10);
-            this.pnlStudentInfo.Controls.Add(this.label7);
-            this.pnlStudentInfo.Controls.Add(this.panel7);
             this.pnlStudentInfo.Controls.Add(this.label15);
-            this.pnlStudentInfo.Controls.Add(this.panel6);
-            this.pnlStudentInfo.Controls.Add(this.panel5);
-            this.pnlStudentInfo.Controls.Add(this.panel4);
-            this.pnlStudentInfo.Controls.Add(this.panel3);
+            this.pnlStudentInfo.Controls.Add(this.pnlDepth);
             this.pnlStudentInfo.Location = new System.Drawing.Point(24, 115);
             this.pnlStudentInfo.Name = "pnlStudentInfo";
             this.pnlStudentInfo.Size = new System.Drawing.Size(565, 619);
@@ -939,7 +931,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::Sit_In_Monitoring.Properties.Resources.user__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(187, 65);
+            this.pictureBox1.Location = new System.Drawing.Point(174, 9);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(188, 185);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -958,7 +950,7 @@
             this.BtnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnDelete.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnDelete.ForeColor = System.Drawing.Color.White;
-            this.BtnDelete.Location = new System.Drawing.Point(398, 516);
+            this.BtnDelete.Location = new System.Drawing.Point(442, 541);
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(100, 30);
             this.BtnDelete.TabIndex = 1;
@@ -978,7 +970,7 @@
             this.BtnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnEdit.ForeColor = System.Drawing.Color.White;
-            this.BtnEdit.Location = new System.Drawing.Point(398, 485);
+            this.BtnEdit.Location = new System.Drawing.Point(442, 510);
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(100, 30);
             this.BtnEdit.TabIndex = 1;
@@ -998,7 +990,7 @@
             this.BtnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnPrint.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnPrint.ForeColor = System.Drawing.Color.White;
-            this.BtnPrint.Location = new System.Drawing.Point(398, 547);
+            this.BtnPrint.Location = new System.Drawing.Point(442, 572);
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(100, 30);
             this.BtnPrint.TabIndex = 1;
@@ -1012,7 +1004,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label11.Location = new System.Drawing.Point(71, 422);
+            this.label11.Location = new System.Drawing.Point(62, 371);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(152, 19);
             this.label11.TabIndex = 6;
@@ -1023,7 +1015,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label14.Location = new System.Drawing.Point(71, 393);
+            this.label14.Location = new System.Drawing.Point(62, 342);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(174, 19);
             this.label14.TabIndex = 6;
@@ -1034,7 +1026,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label12.Location = new System.Drawing.Point(71, 362);
+            this.label12.Location = new System.Drawing.Point(62, 311);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 19);
             this.label12.TabIndex = 6;
@@ -1045,7 +1037,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label10.Location = new System.Drawing.Point(71, 333);
+            this.label10.Location = new System.Drawing.Point(62, 282);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 19);
             this.label10.TabIndex = 6;
@@ -1056,7 +1048,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label7.Location = new System.Drawing.Point(71, 304);
+            this.label7.Location = new System.Drawing.Point(62, 253);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 19);
             this.label7.TabIndex = 6;
@@ -1065,7 +1057,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.displayNumOfSitIns);
-            this.panel7.Location = new System.Drawing.Point(143, 423);
+            this.panel7.Location = new System.Drawing.Point(134, 372);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(351, 28);
             this.panel7.TabIndex = 7;
@@ -1096,7 +1088,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.displayBalance);
-            this.panel6.Location = new System.Drawing.Point(143, 394);
+            this.panel6.Location = new System.Drawing.Point(134, 343);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(351, 28);
             this.panel6.TabIndex = 7;
@@ -1116,7 +1108,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.displaySection);
-            this.panel5.Location = new System.Drawing.Point(143, 362);
+            this.panel5.Location = new System.Drawing.Point(134, 311);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(351, 28);
             this.panel5.TabIndex = 7;
@@ -1136,7 +1128,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.displayName);
-            this.panel4.Location = new System.Drawing.Point(143, 333);
+            this.panel4.Location = new System.Drawing.Point(134, 282);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(351, 28);
             this.panel4.TabIndex = 7;
@@ -1156,7 +1148,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.displayID);
-            this.panel3.Location = new System.Drawing.Point(143, 302);
+            this.panel3.Location = new System.Drawing.Point(134, 251);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(351, 28);
             this.panel3.TabIndex = 7;
@@ -1390,6 +1382,25 @@
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // pnlDepth
+            // 
+            this.pnlDepth.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(102)))), ((int)(((byte)(162)))), ((int)(((byte)(179)))));
+            this.pnlDepth.Controls.Add(this.label11);
+            this.pnlDepth.Controls.Add(this.label14);
+            this.pnlDepth.Controls.Add(this.label12);
+            this.pnlDepth.Controls.Add(this.label10);
+            this.pnlDepth.Controls.Add(this.label7);
+            this.pnlDepth.Controls.Add(this.pictureBox1);
+            this.pnlDepth.Controls.Add(this.panel3);
+            this.pnlDepth.Controls.Add(this.panel4);
+            this.pnlDepth.Controls.Add(this.panel5);
+            this.pnlDepth.Controls.Add(this.panel6);
+            this.pnlDepth.Controls.Add(this.panel7);
+            this.pnlDepth.Location = new System.Drawing.Point(10, 54);
+            this.pnlDepth.Name = "pnlDepth";
+            this.pnlDepth.Size = new System.Drawing.Size(544, 450);
+            this.pnlDepth.TabIndex = 9;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1471,6 +1482,8 @@
             this.panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.pnlDepth.ResumeLayout(false);
+            this.pnlDepth.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1580,6 +1593,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
+        private System.Windows.Forms.Panel pnlDepth;
     }
 }
 

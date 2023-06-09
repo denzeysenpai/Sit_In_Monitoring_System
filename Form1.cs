@@ -9,7 +9,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC10\\ACTSTUDENT;Initial Catalog=SitInMonitoringEZ;Integrated Security=True");
+        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC21\\ACTSTUDENT;Initial Catalog=master;Integrated Security=True");
         readonly SeiyaMarx Design = new SeiyaMarx();
 
         Color buttonColors;
@@ -138,6 +138,7 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(l7, g2);
 
             Design.RoundCorner(this, 25);
+            Design.RoundCorner(pnlDepth, 15);
             Design.RoundCorner(DataGrid, 15);
             Design.RoundCorner(recordsView, 15);
             Design.RoundCorner(pnlStudentInfo, 15);
@@ -171,6 +172,36 @@ namespace Sit_In_Monitoring
             BtnEdit.BackColor = buttonColors;
         }
 
+        #region Behavior UI
+
+        private void CheckForBadInput(object sender, KeyPressEventArgs e) => e.Handled = char.IsLetter(e.KeyChar);
+
+        private void idNumberHasInput(object sender, EventArgs e) => CheckForInput(txtStudentID, placeholder1);
+        private void fullNameHasInput(object sender, EventArgs e) => CheckForInput(txtStudentName, placeholder2);
+        private void PassHasInput(object sender, EventArgs e) => CheckForInput(txtPass, placeholder3);
+        private void lastnamehasinput(object sender, EventArgs e) => CheckForInput(txtStudentLastName, placeholder4);
+        private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
+        private void prioinput(object sender, EventArgs e) => CheckForInput(txtPriorityNum, placeholder6);
+        private void searchedchanged(object sender, EventArgs e) => CheckForInput(txtSearchId, placeholder7);
+        private void initialHasInput(object sender, EventArgs e) => CheckForInput(txtMiddleInitial, placeholder8);
+
+        // Text Focus
+        private void idClick(object sender, EventArgs e) => txtStudentID.Focus();
+        private void fullNameClick(object sender, EventArgs e) => txtStudentName.Focus();
+        private void userClick(object sender, EventArgs e) => txtStudentID.Focus();
+        private void userClick2(object sender, EventArgs e) => txtStudentName.Focus();
+        private void idClick2(object sender, EventArgs e) => txtPass.Focus();
+        private void passClick(object sender, EventArgs e) => txtPass.Focus();
+        private void lnclick(object sender, EventArgs e) => txtStudentLastName.Focus();
+        private void seclick(object sender, EventArgs e) => txtSection.Focus();
+        private void prnumclick(object sender, EventArgs e) => txtPriorityNum.Focus();
+        private void qw1(object sender, EventArgs e) => txtStudentLastName.Focus();
+        private void qw2(object sender, EventArgs e) => txtSection.Focus();
+        private void qw3(object sender, EventArgs e) => txtPriorityNum.Focus();
+        private void placeholder7click(object sender, EventArgs e) => txtSearchId.Focus();
+        private void inClick(object sender, EventArgs e) => txtMiddleInitial.Focus();
+
+        #endregion
 
         /// <summary>
         /// HEKHOK ORASAN
@@ -179,8 +210,6 @@ namespace Sit_In_Monitoring
         /// <param name="e"></param>
         private void ORASAN(object sender, EventArgs e)
             => lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
-
-
         /// <summary>
         /// Checks if the textbox is focused in the form
         /// </summary>
@@ -234,6 +263,11 @@ namespace Sit_In_Monitoring
             else
                 attemptsOfLogin = (exitApp = txtPass.Text == password) ? 0 : attemptsOfLogin + 1;
         }
+        /// <summary>
+        /// Exits the application
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ENVI_EXIT(object sender, EventArgs e) { if (exitApp) this.Close(); }
         private void exitButton_Click(object sender, EventArgs e)
             => pnlConfirmExit.Show();
@@ -243,7 +277,12 @@ namespace Sit_In_Monitoring
             txtPass.Text = string.Empty;
         }
         private void KeyIsDown(object sender, KeyEventArgs e)
-             => pnlRecords.Visible = (e.KeyCode == Keys.F1 && e.Control);
+        {
+            if (e.KeyCode == Keys.F1 && e.Control)
+            {
+                pnlRecords.Visible = true;
+            }
+        }
 
         private void CalendarClick(object sender, EventArgs e)
         {
@@ -253,10 +292,34 @@ namespace Sit_In_Monitoring
 
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
-            if (txtStudentID.Text == "" && txtStudentName.Text == "" && txtStudentLastName.Text == "" && txtSection.Text == "" && txtPriorityNum.Text == "")
-            {
-                MessageBox.Show("Please fill out all fields provided!");
-            }
+            string ErrorMessage = "";
+            bool ErrorInInputIsDetected = false;
+
+            bool ControlHasNullInputIn(Control txtbox) => 
+                ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
+
+
+            if (ControlHasNullInputIn(txtStudentID))
+                ErrorMessage += "Please Fill out Student ID!\n";
+
+            if (ControlHasNullInputIn(txtStudentName))
+                ErrorMessage += "Please Fill out Student First Name!\n";
+
+            if (ControlHasNullInputIn(txtMiddleInitial))
+                ErrorMessage += "Please Fill out Student Middle Initial!\n";
+
+            if (ControlHasNullInputIn(txtStudentLastName))
+                ErrorMessage += "Please Fill out Student Last Name!\n";
+
+            if (ControlHasNullInputIn(txtSection))
+                ErrorMessage += "Please Fill out Student Section!\n";
+
+            if (ControlHasNullInputIn(txtPriorityNum))
+                ErrorMessage += "Please Fill out Priority Number!\n";
+
+
+            if (ErrorInInputIsDetected)
+                MessageBox.Show($"{ErrorMessage}", "INVALID INPUT DETECTED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
             {
                 try
@@ -274,9 +337,9 @@ namespace Sit_In_Monitoring
         {
             DateTime time = DateTime.Now;
             string time1 = time.ToString("hh:mm:ss tt");
+            bool StudentLogsOut = e.RowIndex >= 0 && e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index;
 
-
-            if (e.RowIndex >= 0 && e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index)
+            if (StudentLogsOut)
             {
                 DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
                 string studentId = row.Cells["STUDENT_ID"].Value.ToString();
@@ -312,36 +375,6 @@ namespace Sit_In_Monitoring
         }
 
 
-        #region Behavior UI
-
-        private void CheckForBadInput(object sender, KeyPressEventArgs e) => e.Handled = char.IsLetter(e.KeyChar);
-
-        private void idNumberHasInput(object sender, EventArgs e) => CheckForInput(txtStudentID, placeholder1);
-        private void fullNameHasInput(object sender, EventArgs e) => CheckForInput(txtStudentName, placeholder2);
-        private void PassHasInput(object sender, EventArgs e) => CheckForInput(txtPass, placeholder3);
-        private void lastnamehasinput(object sender, EventArgs e) => CheckForInput(txtStudentLastName, placeholder4);
-        private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
-        private void prioinput(object sender, EventArgs e) => CheckForInput(txtPriorityNum, placeholder6);
-        private void searchedchanged(object sender, EventArgs e) => CheckForInput(txtSearchId, placeholder7);
-        private void initialHasInput(object sender, EventArgs e) => CheckForInput(txtMiddleInitial, placeholder8);
-
-        // Text Focus
-        private void idClick(object sender, EventArgs e) => txtStudentID.Focus();
-        private void fullNameClick(object sender, EventArgs e) => txtStudentName.Focus();
-        private void userClick(object sender, EventArgs e) => txtStudentID.Focus();
-        private void userClick2(object sender, EventArgs e) => txtStudentName.Focus();
-        private void idClick2(object sender, EventArgs e) => txtPass.Focus();
-        private void passClick(object sender, EventArgs e) => txtPass.Focus();
-        private void lnclick(object sender, EventArgs e) => txtStudentLastName.Focus();
-        private void seclick(object sender, EventArgs e) => txtSection.Focus();
-        private void prnumclick(object sender, EventArgs e) => txtPriorityNum.Focus();
-        private void qw1(object sender, EventArgs e) => txtStudentLastName.Focus();
-        private void qw2(object sender, EventArgs e) => txtSection.Focus();
-        private void qw3(object sender, EventArgs e) => txtPriorityNum.Focus();
-        private void placeholder7click(object sender, EventArgs e) => txtSearchId.Focus();
-        private void inClick(object sender, EventArgs e) => txtMiddleInitial.Focus();
-
-        #endregion
 
 
 
@@ -361,7 +394,7 @@ namespace Sit_In_Monitoring
         private void Display_Student_Info(string stud_ID, string stud_fName, string stud_mInitial, string stud_lName, string stud_Sect, int remaining_Hours, int remaining_Minutes, int num_of_sit_ins)
         {
             // MARK - 6/7/2023 - 8:56 PM
-            string FullName = $"{stud_fName}, {stud_fName} {stud_mInitial}.";
+            string FullName = $"{stud_lName}, {stud_fName} {stud_mInitial}.";
             string RemainingBalance = $"{remaining_Hours} Hours, {remaining_Minutes} Minutes";
 
 
