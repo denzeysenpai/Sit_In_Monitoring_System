@@ -1,16 +1,19 @@
 ﻿using System;
+using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC21\\ACTSTUDENT;Initial Catalog=master;Integrated Security=True");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True");
         readonly SeiyaMarx Design = new SeiyaMarx();
+        readonly DataSet ds = new DataSet();
 
         Color buttonColors;
         Color notClicked;
@@ -21,7 +24,14 @@ namespace Sit_In_Monitoring
         int attemptsOfLogin;
 
         #region ALL OF FUNCTIONS
-
+        public void clearStudentText()
+        {
+            txtStudentName.Text = string.Empty;
+            txtMiddleInitial.Text = string.Empty;
+            txtStudentLastName.Text = string.Empty;
+            txtSection.Text = string.Empty;
+            txtPriorityNum.Text = string.Empty;
+        }//DONE
         public void AddStudent()
         {
             DateTime val = DateTime.Now;
@@ -29,80 +39,120 @@ namespace Sit_In_Monitoring
             string date = $"{val.Date: MM/dd/yyyy}";
 
             conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO Students VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
-            cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-            cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
-            cmd.Parameters.AddWithValue("@middleInitial", txtMiddleInitial.Text);
-            cmd.Parameters.AddWithValue("@lastName", txtStudentLastName.Text);
-            cmd.Parameters.AddWithValue("@section", txtSection.Text);
-            cmd.Parameters.AddWithValue("@remainingTime", 60.ToString());        
-            cmd.ExecuteNonQuery();
-            cmd.Parameters.Clear();
+            SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
+            ds.Clear();
+            s.Fill(ds);
+            if (ds.Tables[0].Rows.Count > 0)
+            {
+                SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, remainingTime, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                cmd1.Parameters.AddWithValue("@date", date);
+                cmd1.Parameters.AddWithValue("@timeIn", time1);
+                cmd1.ExecuteNonQuery();
+                cmd1.Parameters.Clear();
+            }
+            else
+            {
+                SqlCommand cmd = new SqlCommand("INSERT INTO Students VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
+                cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
+                cmd.Parameters.AddWithValue("@middleInitial", txtMiddleInitial.Text);
+                cmd.Parameters.AddWithValue("@lastName", txtStudentLastName.Text);
+                cmd.Parameters.AddWithValue("@section", txtSection.Text);
+                cmd.Parameters.AddWithValue("@remainingTime", 60.ToString());
+                cmd.ExecuteNonQuery();
+                cmd.Parameters.Clear();
 
-            SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession VALUES(@studentId ,@date, @timeIn, NULL, @remainingTime)", conn);
-            cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-            cmd1.Parameters.AddWithValue("@date", date);
-            cmd1.Parameters.AddWithValue("@timeIn", time1);
-            cmd1.Parameters.AddWithValue("@remainingTime", 60.ToString());
-            cmd1.ExecuteNonQuery();
-            cmd1.Parameters.Clear();
-
+                SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, remainingTime, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                cmd1.Parameters.AddWithValue("@date", date);
+                cmd1.Parameters.AddWithValue("@timeIn", time1);
+                cmd1.ExecuteNonQuery();
+                cmd1.Parameters.Clear();
+            }
             MessageBox.Show("Student successfully sit in!");
+            Update_Data();
+            txtStudentID.Text = string.Empty;
+            clearStudentText();
+            txtStudentID.Focus();
+        }//DONE
+        public void StudentExisted()
+        {
+            if(txtStudentID.Text != "")
+            {
+                SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
+                ds.Clear();
+                s.Fill(ds);
+                if (ds.Tables[0].Rows.Count > 0)
+                {
+                    txtStudentName.Text = ds.Tables[0].Rows[0]["firstName"].ToString();
+                    txtMiddleInitial.Text = ds.Tables[0].Rows[0]["middleInitial"].ToString();
+                    txtStudentLastName.Text = ds.Tables[0].Rows[0]["lastName"].ToString();
+                    txtSection.Text = ds.Tables[0].Rows[0]["section"].ToString();
 
+                    MessageBox.Show("Student has been found!");
+                }
+                else
+                {
+                    MessageBox.Show("This student is not yet registered!");
+                    clearStudentText();
+                    txtStudentName.Focus();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please fill out student ID first!");
+                txtStudentID.Focus();
+            }
+            
+        }//DONE
+        public void Update_Data() // DONE
+        {
+            SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid", conn);
 
-            #region previous way to add student
-            //try
-            //{
-            //    conn.Open();
-            //    SqlCommand cmd = new SqlCommand("INSERT INTO sit_in_table VALUES(@date_time, @student_id, @student_full_name, @time_in, @time_out)", conn);
-            //    cmd.Parameters.AddWithValue("@date_time", date);
-            //    cmd.Parameters.AddWithValue("@student_id", txtStudentID.Text.ToString());
-            //    cmd.Parameters.AddWithValue("@student_full_name", txtStudentName.Text.ToString());
-            //    cmd.Parameters.AddWithValue("@time_in", time1);
-            //    cmd.Parameters.AddWithValue("@time_out", string.Empty);
-            //    cmd.ExecuteNonQuery();
-            //    MessageBox.Show("Successfully Logged In!");
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            DataTable dt = new DataTable();
+            s.Fill(dt);
+            DataGrid.Rows.Clear();
 
-
-            //conn.Close();
-            //Update_Data();
-
-            //txtStudentID.Text = string.Empty;
-            //txtStudentName.Text = string.Empty;
-            #endregion
+            foreach(DataRow dr in dt.Rows)
+            {
+                int cs = DataGrid.Rows.Add();
+                //int rv = recordsView.Rows.Add();
+                for(int i = 0; i < 7; i++)
+                {
+                    DataGrid.Rows[cs].Cells[i].Value = dr[i].ToString();
+                    //recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
+                }
+            }
         }
-        public void Update_Data() // display the data register
-        { 
-            //var query = from cs in sit.currentSessions
-            //            join s in sit.Students on cs.personid equals s.personid
-            //            where s.studentid = 
-            //EZ - 6/7/2023
+        public void LogoutStudent(DataGridViewCellEventArgs e)//DONE
+        {
+            DateTime date = DateTime.Now;
+            string time1 = date.ToString("hh:mm:ss tt");
+            DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
+            string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
+            conn.Open();
+            SqlCommand cmd = new SqlCommand("INSERT INTO SessionLogs SELECT cs.studentId, cs.date, cs.timeIn, @timeOut, cs.remainingTime, cs.personid FROM currentSession cs WHERE cs.studentid = @studentId", conn);
+            cmd.Parameters.AddWithValue("@timeOut", time1);
+            cmd.Parameters.AddWithValue("@studentId", studentId);
+            cmd.ExecuteNonQuery();
+            MessageBox.Show("Logged Out Successfully!");
 
-            #region prev. display
-            //SqlDataAdapter sda = new SqlDataAdapter("SELECT * FROM sit_in_table", conn);
-            //DataTable dt = new DataTable();
-            //sda.Fill(dt);
-            //DataGrid.Rows.Clear();
+            SqlCommand cmd2 = new SqlCommand("DELETE FROM currentSession WHERE studentId = @studentId", conn);
+            cmd2.Parameters.AddWithValue("@studentId", studentId);
+            cmd2.ExecuteNonQuery();
 
-            //foreach (DataRow dr in dt.Rows)
-            //{
-            //    int n = DataGrid.Rows.Add();
-            //    int m = recordsView.Rows.Add();
-            //    for (int i = 0; i < 5; i++)
-            //    {
-            //        DataGrid.Rows[n].Cells[i].Value = dr[i].ToString();
-            //        recordsView.Rows[m].Cells[i].Value = dr[i].ToString();
-            //    }
-            //}
-            #endregion
+            DataGrid.Rows.RemoveAt(e.RowIndex);
         }
+        public void DisplayLogs()
+        {
 
+        }//NEXT TO BE MADE -EZSUJERO 6/9/23
+        
+        //MARK PALIHOG KO TARONG NYA SA TAB INDEX SA TANANG TEXTBOX
+        //NYA PALIHOG NLNG PUD KO REMOVE SA PRIORITY NUMBER MARK KAY 1ST COME 1ST SERVE RAMAN DIAY TA.
+        //NYA PLEASE LANG SAD PUD KO MARK NGA E BUTANG DIRI ANG MGA LOCATIONS SA FORM IN CASE NAA KOY IPANG CHANGE, MAG ASK LNG NYA PUD KO UGMA
         #endregion
 
         public Form1()
@@ -202,7 +252,7 @@ namespace Sit_In_Monitoring
         private void inClick(object sender, EventArgs e) => txtMiddleInitial.Focus();
 
         #endregion
-
+        #region ui
         /// <summary>
         /// HEKHOK ORASAN
         /// </summary>
@@ -289,7 +339,7 @@ namespace Sit_In_Monitoring
             dateToday.Checked = true;
             dateToday.Select();
         }
-
+#endregion
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
             string ErrorMessage = "";
@@ -334,52 +384,25 @@ namespace Sit_In_Monitoring
             conn.Close();
         }
         private void DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e) // Update data during log out
-        {
-            DateTime time = DateTime.Now;
-            string time1 = time.ToString("hh:mm:ss tt");
+        {         
             bool StudentLogsOut = e.RowIndex >= 0 && e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index;
 
             if (StudentLogsOut)
             {
-                DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
-                string studentId = row.Cells["STUDENT_ID"].Value.ToString();
-
                 try
                 {
-                    conn.Open();
-                    SqlCommand cmd = new SqlCommand("UPDATE sit_in_table SET time_out = @time_out WHERE student_id = @student_id", conn);
-                    cmd.Parameters.AddWithValue("@time_out", time1);
-                    cmd.Parameters.AddWithValue("@student_id", studentId);
-                    cmd.ExecuteNonQuery();
-                    MessageBox.Show("Logged Out Successfully!");
-
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO records_table VALUES(@date_time, @student_id, @student_full_name, @time_in, @time_out)", conn);
-                    cmd2.Parameters.AddWithValue("@date_time", time.ToString("MM/dd/yyyy"));
-                    cmd2.Parameters.AddWithValue("@student_id", txtStudentID.Text.ToString());
-                    cmd2.Parameters.AddWithValue("@student_full_name", txtStudentName.Text.ToString());
-                    cmd2.Parameters.AddWithValue("@time_in", time1);
-                    cmd2.Parameters.AddWithValue("@time_out", time1);
-                    cmd2.ExecuteNonQuery();
-
-                    DataGrid.Rows.RemoveAt(e.RowIndex);
+                    LogoutStudent(e);
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
-
-
                 conn.Close();
                 Update_Data();
             }
         }
 
-
-
-
-
         // USE THIS TO DISPLAY INFO IN SEARCHED RECORDS
-
         /// <summary>
         /// Displays the student info in correct format
         /// </summary>
@@ -404,9 +427,6 @@ namespace Sit_In_Monitoring
             displayBalance.Text = RemainingBalance;
             displayNumOfSitIns.Text = num_of_sit_ins.ToString();
         }
-
-
-
         // RECORDS PAGE FUNCTIONS
         private void hideRecords_Click(object sender, EventArgs e)
         {
@@ -415,7 +435,16 @@ namespace Sit_In_Monitoring
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
+            try
+            {
+                StudentExisted();
+            }
+            catch (Exception ex)
+            {
 
+                MessageBox.Show(ex.Message);
+            }
+            conn.Close();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
