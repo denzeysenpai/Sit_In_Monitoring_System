@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -9,9 +10,19 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
+
+        SeiyaMarx TextboxMargins;
+        SeiyaMarx TextboxBodies;
+        SeiyaMarx Fifteens;
+
+        bool closeNotify;
+        bool bounce;
+        bool notify;
+        bool exitApp;
 
         Color buttonColors;
         Color notClicked;
@@ -19,11 +30,95 @@ namespace Sit_In_Monitoring
         Color CanStart;
         Color NotStart;
 
-        bool exitApp;
         string password;
+        string ReasonForPassword = "";
+
+        int count = 0;
         int attemptsOfLogin;
 
-        #region ALL OF FUNCTIONS
+        readonly int endOfNotification = 1000;
+        #endregion ATTRIBUTES
+
+        #region ALL OF FUNCTIONS // hekhokhekohok
+        public void SetNotificationOnLoad() =>
+            pnlNotification.Left = Width;
+        public void NotifySuccessfulSitIn()
+        {
+            notificationMessage.Text = "Logged-in Successfully!";
+            notify = true;
+        }
+
+        public void NotifySuccessfulLogOut()
+        {
+            notificationMessage.Text = "Logged-Out Successfully!";
+            notify = true;
+        }
+
+        public void ShowAdminPasswordInput()
+        {
+            pnlAdminLock.Show();
+            pnlAdminLock.BringToFront();
+            pnlAdminLock.Enabled = true;
+        }
+
+        public void CloseConfirmation()
+        {
+            pnlAdminLock.Hide();
+            txtPass.Text = string.Empty;
+            ReasonForPassword = "";
+        }
+
+        // just add body in local functions
+        public void ConfirmReasonForPasswordInput() // This method is only called after input matches the correct password - maki
+        {
+            void ReasonIsForExit() =>
+                exitApp = true;
+
+
+            void ReasonIsForEdit()
+            {
+                /* ADD CODE BODY FOR EDIT HERE
+                 * 
+                 */
+            }
+
+
+            void ReasonIsForDelete()
+            {
+                /* ADD CODE BODY FOR DELETE HERE
+                 * 
+                 */
+            }
+
+
+            void ReasonIsForPrint()
+            {
+                /* ADD CODE BODY FOR PRINT HERE
+                 * 
+                 */
+            }
+
+
+            void ReasonIsForRecords()
+            {
+                pnlRecords.Show();
+                pnlRecords.Enabled = true;
+                pnlRecords.Focus();
+            }
+
+
+            switch (ReasonForPassword) // DON'T CHANGE
+            {
+                case "exit": ReasonIsForExit(); break;
+                case "edit": ReasonIsForEdit(); break;
+                case "delete": ReasonIsForDelete(); break;
+                case "print": ReasonIsForPrint(); break;
+                case "records": ReasonIsForRecords(); break;
+            }
+            CloseConfirmation();
+        }
+
+
         public void EnableStart() =>
             BtnStart.Enabled = (BtnStart.BackColor = CanStart) == CanStart;
 
@@ -31,7 +126,7 @@ namespace Sit_In_Monitoring
             BtnStart.Enabled = !((BtnStart.BackColor = NotStart) == NotStart);
 
 
-        public void DefaultEnable()
+        public void DefaultEnable() // Enabling of Default Controls
         {
             txtStudentName.Enabled = false;
             txtSection.Enabled = false;
@@ -88,12 +183,13 @@ namespace Sit_In_Monitoring
                 cmd1.ExecuteNonQuery();
                 cmd1.Parameters.Clear();
             }
-            
+
             txtStudentID.Text = string.Empty;
             clearStudentText();
             txtStudentID.Focus();
-            MessageBox.Show("Student successfully sit in!");
             Update_Data();
+
+            NotifySuccessfulSitIn();
         }//DONE
         public void StudentExisted()
         {
@@ -109,7 +205,7 @@ namespace Sit_In_Monitoring
                     txtStudentLastName.Text = ds.Tables[0].Rows[0]["lastName"].ToString();
                     txtSection.Text = ds.Tables[0].Rows[0]["section"].ToString();
 
-                    DialogResult d = MessageBox.Show("Student has been found!", "Record Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult d = MessageBox.Show("Student Record Already Exists!", "Record Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (d.Equals(DialogResult.OK))
                     {
                         BtnStart.Enabled = true;
@@ -120,7 +216,7 @@ namespace Sit_In_Monitoring
                 {
                     DialogResult d = MessageBox.Show("This student is not yet registered!", "STUDENT NOT FOUND", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     clearStudentText();
-                    
+
                     if (d.Equals(DialogResult.OK))
                     {
                         txtStudentLastName.Enabled = true;
@@ -171,13 +267,13 @@ namespace Sit_In_Monitoring
             cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
             cmd.ExecuteNonQuery();
-            MessageBox.Show("Logged Out Successfully!");
 
             SqlCommand cmd2 = new SqlCommand("DELETE FROM currentSession WHERE studentId = @studentId", conn);
             cmd2.Parameters.AddWithValue("@studentId", studentId);
             cmd2.ExecuteNonQuery();
 
             DataGrid.Rows.RemoveAt(e.RowIndex);
+            NotifySuccessfulLogOut();
         }
         public void DisplayLogs()//DONE
         {
@@ -199,7 +295,7 @@ namespace Sit_In_Monitoring
         public void SearchStudent()//DONE
         {
             recordsView.Rows.Clear();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.studentid like '%"+ txtSearchId.Text +"%'", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.studentid like '%" + txtSearchId.Text + "%'", conn);
 
             DataTable dt = new DataTable();
             dt.Clear();
@@ -220,53 +316,36 @@ namespace Sit_In_Monitoring
         {
             InitializeComponent();
 
+
             // Add design
-            Design.RoundCorner(pnlConfirmExit, 18);
-            Design.RoundCorner(pnlLoginFrame, 16);
-            Design.RoundCorner(pnlStudsRec, 16);
-            Design.RoundCorner(borderpass, 10);
-            Design.RoundCorner(pnlDesign, 14);
+            TextboxMargins = new SeiyaMarx(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 25);
+            TextboxBodies = new SeiyaMarx(tm1, tm2, l1, l2, l3, l4, l6, l7, 24);
+            Fifteens = new SeiyaMarx(pnlmrgn, pnlLoginFrame, pnlStudsRec, pnlDesign, pnlDepth, DataGrid, recordsView, pnlStudentInfo, pnlDate, 15);
 
-            int g1 = 14;
-            Design.RoundCorner(pass, g1);
-            Design.RoundCorner(mrg1, g1);
-            Design.RoundCorner(mrg2, g1);
-            Design.RoundCorner(mrg3, g1);
-            Design.RoundCorner(mrg4, g1);
-            Design.RoundCorner(mrg6, g1);
-            Design.RoundCorner(mrg7, g1);
+            TextboxMargins.RoundCorner();
+            TextboxBodies.RoundCorner();
+            Fifteens.RoundCorner();
 
-            int g2 = 16;
-            Design.RoundCorner(tm1, g2);
-            Design.RoundCorner(tm2, g2);
-            Design.RoundCorner(l1, g2);
-            Design.RoundCorner(l2, g2);
-            Design.RoundCorner(l3, g2);
-            Design.RoundCorner(l4, g2);
-            Design.RoundCorner(l6, g2);
-            Design.RoundCorner(l7, g2);
-
+            Design.RoundCorner(pnlAdminLock, 18);
             Design.RoundCorner(this, 25);
-            Design.RoundCorner(pnlDepth, 15);
-            Design.RoundCorner(DataGrid, 15);
-            Design.RoundCorner(recordsView, 15);
-            Design.RoundCorner(pnlStudentInfo, 15);
-
-
+            Design.RoundCorner(pnlNotification, 50);
+            Design.RoundCorner(pnlDateMargin, 15);
+            Design.RoundCorner(pnlLoginBody, 15);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
+            // Default values on first load, may or may not change during run time
             notClicked = Color.FromArgb(210, 242, 250);
             Clicked = Color.FromArgb(65, 205, 242);
             CanStart = Color.FromArgb(7, 163, 58);
             NotStart = Color.FromArgb(65, 205, 242);
 
-            pnlConfirmExit.Hide();
+            pnlAdminLock.Hide();
             exitApp = false;
             Update_Data();
             DisplayLogs();
 
-            pnlConfirmExit.Location = new Point(446, 204);
+            pnlAdminLock.Location = new Point(446, 204);
             pnlRecords.Location = new Point(0, 0);
             pnlRecords.Hide();
 
@@ -276,9 +355,9 @@ namespace Sit_In_Monitoring
 
             buttonColors = Color.FromArgb(8, 136, 194);
 
-            BtnSearchInRecords.BackColor = buttonColors;
-            BtnCancelIn.BackColor = buttonColors;
-            BtnConfirm.BackColor = buttonColors;
+            BtnConfirm.BackColor = Color.Black;
+            BtnCancelIn.BackColor = Color.Black;
+
             BtnDelete.BackColor = buttonColors;
             BtnSearch.BackColor = buttonColors;
             BtnPrint.BackColor = buttonColors;
@@ -307,21 +386,31 @@ namespace Sit_In_Monitoring
                     ctr.Focus();
                 }
             }
-            DefaultEnable();
 
+            closeNotify = false;
+            notify = false;
+            bounce = true;
+
+            SetNotificationOnLoad();
+            DefaultEnable();
+            Update();
         }
 
         #region Behavior UI
-
+        private void idNumberHasInput(object sender, EventArgs e)
+        {
+            BtnSearch.Enabled = true;
+            BtnSearch.Text = "SEARCH";
+            CheckForInput(txtStudentID, placeholder1);
+        }
         private void CheckForBadInput(object sender, KeyPressEventArgs e) => e.Handled = char.IsLetter(e.KeyChar);
-
-        private void idNumberHasInput(object sender, EventArgs e) => CheckForInput(txtStudentID, placeholder1);
         private void fullNameHasInput(object sender, EventArgs e) => CheckForInput(txtStudentName, placeholder2);
         private void PassHasInput(object sender, EventArgs e) => CheckForInput(txtPass, placeholder3);
         private void lastnamehasinput(object sender, EventArgs e) => CheckForInput(txtStudentLastName, placeholder4);
         private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
         private void searchedchanged(object sender, EventArgs e) => CheckForInput(txtSearchId, placeholder7);
         private void initialHasInput(object sender, EventArgs e) => CheckForInput(txtMiddleInitial, placeholder8);
+
 
         // Text Focus
         private void idClick(object sender, EventArgs e) => txtStudentID.Focus();
@@ -337,15 +426,27 @@ namespace Sit_In_Monitoring
         private void placeholder7click(object sender, EventArgs e) => txtSearchId.Focus();
         private void inClick(object sender, EventArgs e) => txtMiddleInitial.Focus();
 
-        #endregion
-        #region ui
+
+        private void NotificationTimerSpecific_Tick(object sender, EventArgs e)
+        {
+            // NOTIFICATION PANEL
+
+            // Notification Animation go BrrRrRrrrR
+            closeNotify = count >= 800 ? !(notify = (count = 0) != 0) : closeNotify;
+            count = closeNotify == false && notify && pnlNotification.Left < endOfNotification + 40 ? count + 10 : count;
+            pnlNotification.Left = notify && pnlNotification.Left > endOfNotification ? pnlNotification.Left - 20 : pnlNotification.Left;
+            pnlNotification.Left = closeNotify && pnlNotification.Left < Width ? pnlNotification.Left + 20 : pnlNotification.Left;
+            closeNotify = (!closeNotify || pnlNotification.Left < Width) && closeNotify;
+            // - hehe
+        }
+
         /// <summary>
         /// HEKHOK ORASAN
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ORASAN(object sender, EventArgs e)
-            => lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
+        private void ORASAN(object sender, EventArgs e) =>
+            lblTime2.Text = lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
         /// <summary>
         /// Checks if the textbox is focused in the form
         /// </summary>
@@ -394,13 +495,24 @@ namespace Sit_In_Monitoring
         }
 
         private void FormWillBeClosed(object sender, FormClosingEventArgs e)
-            => pnlConfirmExit.Visible = e.Cancel = !exitApp;
+        {
+            ReasonForPassword = "exit";
+            pnlAdminLock.Visible = e.Cancel = !exitApp;
+        }
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
             if (attemptsOfLogin > 9 && txtPass.Text != password)
                 MessageBox.Show($"Please contact an assistant! \nAfter ({attemptsOfLogin}), you have failed to input the correct password!", "Password Incorrect!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
-                attemptsOfLogin = (exitApp = txtPass.Text == password) ? 0 : attemptsOfLogin + 1;
+            {
+                if (txtPass.Text == password)
+                {
+                    ConfirmReasonForPasswordInput();
+                    attemptsOfLogin = 0;
+                }
+                else
+                    attemptsOfLogin++;
+            }
         }
         /// <summary>
         /// Exits the application
@@ -409,32 +521,48 @@ namespace Sit_In_Monitoring
         /// <param name="e"></param>
         private void ENVI_EXIT(object sender, EventArgs e) { if (exitApp) this.Close(); }
         private void exitButton_Click(object sender, EventArgs e)
-            => pnlConfirmExit.Show();
-        private void BtnCancelIn_Click(object sender, EventArgs e)
         {
-            pnlConfirmExit.Visible = exitApp = false;
-            txtPass.Text = string.Empty;
+            ReasonForPassword = "exit";
+            ShowAdminPasswordInput();
         }
+        private void BtnCancelIn_Click(object sender, EventArgs e) =>
+            txtPass.Text = (pnlAdminLock.Visible = exitApp = false) ? string.Empty : txtPass.Text;
+
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.F1 && e.Control)
             {
-                pnlRecords.Visible = true;
+                ReasonForPassword = "records";
+                ShowAdminPasswordInput();
             }
+
+
+            // Tab Switch Code - maki hekhok // HEHEHEHEHEHEHEHE MUGANA
+            if (e.KeyCode == Keys.Tab && txtStudentID.Focused)
+                BtnSearch.Focus();
+            if (e.KeyCode == Keys.Tab && txtStudentLastName.Focused)
+                txtStudentName.Focus();
+            if (e.KeyCode == Keys.Tab && txtStudentName.Focused)
+                txtMiddleInitial.Focus();
+            if (e.KeyCode == Keys.Tab && txtStudentID.Focused)
+                txtSection.Focus();
+            if (e.KeyCode == Keys.Tab && txtSection.Focused)
+                BtnStart.Focus();
         }
 
-        private void CalendarClick(object sender, EventArgs e)
+        private void CalendarClick(object sender, EventArgs e) // Calendar in main page
         {
             dateToday.Checked = true;
             dateToday.Select();
         }
         #endregion
+
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
             string ErrorMessage = "";
-            bool ErrorInInputIsDetected = false;
+            bool ErrorInInputIsDetected = false; // this checks overall invalid input
 
-            bool ControlHasNullInputIn(Control txtbox) =>
+            bool ControlHasNullInputIn(Control txtbox) => // this specifies invalid input
                 ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
 
 
@@ -508,23 +636,26 @@ namespace Sit_In_Monitoring
             string FullName = $"{stud_lName}, {stud_fName} {stud_mInitial}.";
             string RemainingBalance = $"{remaining_Hours} Hours, {remaining_Minutes} Minutes";
 
-
             displayID.Text = stud_ID;
             displayName.Text = FullName;
             displaySection.Text = stud_Sect;
             displayBalance.Text = RemainingBalance;
             displayNumOfSitIns.Text = num_of_sit_ins.ToString();
         }
+
+
         // RECORDS PAGE FUNCTIONS
-        private void hideRecords_Click(object sender, EventArgs e)
-        {
+        private void hideRecords_Click(object sender, EventArgs e) =>
             pnlRecords.Visible = false;
-        }
+
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
             try
             {
+                // search button is disabled after search, if edit in ID is detected then button is enabled true
+                BtnSearch.Text = "-----";
+                BtnSearch.Enabled = false;
                 StudentExisted();
             }
             catch (Exception ex)
@@ -536,29 +667,26 @@ namespace Sit_In_Monitoring
 
         private void BtnDelete_Click(object sender, EventArgs e)
         {
-
+            ReasonForPassword = "delete";
+            ShowAdminPasswordInput();
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
         {
-
+            ReasonForPassword = "edit";
+            ShowAdminPasswordInput();
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-
+            ReasonForPassword = "print";
+            ShowAdminPasswordInput();
         }
 
         private void BtnSearchInRecords_Click(object sender, EventArgs e)
         {
             SearchStudent();
         }
-
-        private void pnlRecords_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void txtSearchId_KeyPress(object sender, KeyPressEventArgs e)
         {
             SearchStudent();
@@ -566,9 +694,62 @@ namespace Sit_In_Monitoring
     }
     class SeiyaMarx
     {
+        List<Control> Set = new List<Control>();
+        int radius;
+        public SeiyaMarx()
+        {
+
+        }
+        public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, int radius)
+        {
+            Set.Add(ctr1);
+            Set.Add(ctr2);
+            Set.Add(ctr3);
+            Set.Add(ctr4);
+            Set.Add(ctr5);
+            Set.Add(ctr6);
+            Set.Add(ctr7);
+            this.radius = radius;
+        }
+
+        public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, int radius)
+        {
+            Set.Add(ctr1);
+            Set.Add(ctr2);
+            Set.Add(ctr3);
+            Set.Add(ctr4);
+            Set.Add(ctr5);
+            Set.Add(ctr6);
+            Set.Add(ctr7);
+            Set.Add(ctr8);
+            this.radius = radius;
+        }
+
+        public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, Control ctr9, int radius)
+        {
+            Set.Add(ctr1);
+            Set.Add(ctr2);
+            Set.Add(ctr3);
+            Set.Add(ctr4);
+            Set.Add(ctr5);
+            Set.Add(ctr6);
+            Set.Add(ctr7);
+            Set.Add(ctr8);
+            Set.Add(ctr9);
+            this.radius = radius;
+        }
+
         [DllImport("Gdi32.dll")]
         public static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
         public void RoundCorner(Control ctr, int val) => ctr.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, ctr.Width, ctr.Height, val, val));
+        public void RoundCorner()
+        {
+            foreach (Control ctr in Set)
+            {
+                ctr.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, ctr.Width, ctr.Height, radius, radius));
+            }
+        }
+
     }
 
 

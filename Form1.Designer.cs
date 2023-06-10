@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -48,8 +48,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLoginFrame = new System.Windows.Forms.Panel();
-            this.BtnSearch = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.BtnStart = new ItachiUIBunifu.ButtonBunifuItachi();
             this.mrg3 = new System.Windows.Forms.Panel();
             this.l3 = new System.Windows.Forms.Panel();
             this.placeholder4 = new System.Windows.Forms.Label();
@@ -70,15 +68,19 @@
             this.l1 = new System.Windows.Forms.Panel();
             this.placeholder1 = new System.Windows.Forms.Label();
             this.txtStudentID = new System.Windows.Forms.TextBox();
+            this.pnlLoginBody = new System.Windows.Forms.Panel();
+            this.BtnStart = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnSearch = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.CLOCK = new System.Windows.Forms.Timer(this.components);
             this.UI = new System.Windows.Forms.Timer(this.components);
-            this.pnlConfirmExit = new System.Windows.Forms.Panel();
+            this.pnlAdminLock = new System.Windows.Forms.Panel();
             this.pnlDesign = new System.Windows.Forms.Panel();
             this.BtnCancelIn = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.label4 = new System.Windows.Forms.Label();
             this.BtnConfirm = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.borderpass = new System.Windows.Forms.Panel();
             this.pass = new System.Windows.Forms.Panel();
             this.placeholder3 = new System.Windows.Forms.Label();
@@ -86,6 +88,7 @@
             this.mensahe = new System.Windows.Forms.Label();
             this.ENVIRONMENT = new System.Windows.Forms.Timer(this.components);
             this.pnlRecords = new System.Windows.Forms.Panel();
+            this.lblTime2 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.pnlStudentInfo = new System.Windows.Forms.Panel();
@@ -119,16 +122,26 @@
             this.lDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lStudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IMiddleInitial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.IRemainingBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.hideRecords = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
+            this.pnlmrgn = new System.Windows.Forms.Panel();
+            this.pnlDateMargin = new System.Windows.Forms.Panel();
+            this.pnlDate = new System.Windows.Forms.Panel();
+            this.dateForRecords = new System.Windows.Forms.DateTimePicker();
             this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
+            this.pnlNotification = new System.Windows.Forms.Panel();
+            this.chckicon = new System.Windows.Forms.PictureBox();
+            this.notificationMessage = new System.Windows.Forms.Label();
+            this.NotificationTimerSpecific = new System.Windows.Forms.Timer(this.components);
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -144,8 +157,10 @@
             this.l2.SuspendLayout();
             this.mrg1.SuspendLayout();
             this.l1.SuspendLayout();
-            this.pnlConfirmExit.SuspendLayout();
+            this.pnlLoginBody.SuspendLayout();
+            this.pnlAdminLock.SuspendLayout();
             this.pnlDesign.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.borderpass.SuspendLayout();
             this.pass.SuspendLayout();
             this.pnlRecords.SuspendLayout();
@@ -162,8 +177,12 @@
             this.l6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsView)).BeginInit();
             this.panel2.SuspendLayout();
+            this.pnlDateMargin.SuspendLayout();
+            this.pnlDate.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).BeginInit();
             this.panel1.SuspendLayout();
+            this.pnlNotification.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chckicon)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
@@ -181,16 +200,16 @@
             // 
             // tm2
             // 
-            this.tm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(103)))), ((int)(((byte)(117)))));
+            this.tm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(99)))), ((int)(((byte)(130)))));
             this.tm2.Controls.Add(this.tm1);
             this.tm2.Location = new System.Drawing.Point(23, 109);
             this.tm2.Name = "tm2";
             this.tm2.Size = new System.Drawing.Size(426, 92);
-            this.tm2.TabIndex = 1;
+            this.tm2.TabIndex = 16;
             // 
             // tm1
             // 
-            this.tm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.tm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(121)))), ((int)(((byte)(158)))));
             this.tm1.Controls.Add(this.lblTime);
             this.tm1.Controls.Add(this.dateToday);
             this.tm1.Location = new System.Drawing.Point(8, 6);
@@ -207,7 +226,7 @@
             this.dateToday.MinimumSize = new System.Drawing.Size(4, 35);
             this.dateToday.Name = "dateToday";
             this.dateToday.Size = new System.Drawing.Size(178, 35);
-            this.dateToday.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.dateToday.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(121)))), ((int)(((byte)(158)))));
             this.dateToday.TabIndex = 12;
             this.dateToday.TabStop = false;
             this.dateToday.TextColor = System.Drawing.Color.White;
@@ -220,7 +239,7 @@
             this.pnlStudsRec.Location = new System.Drawing.Point(464, 61);
             this.pnlStudsRec.Name = "pnlStudsRec";
             this.pnlStudsRec.Size = new System.Drawing.Size(983, 673);
-            this.pnlStudsRec.TabIndex = 4;
+            this.pnlStudsRec.TabIndex = 15;
             // 
             // DataGrid
             // 
@@ -239,9 +258,9 @@
             this.TIME_OUT,
             this.LOG_OUT});
             this.DataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.DataGrid.Location = new System.Drawing.Point(21, 61);
+            this.DataGrid.Location = new System.Drawing.Point(8, 69);
             this.DataGrid.Name = "DataGrid";
-            this.DataGrid.Size = new System.Drawing.Size(941, 597);
+            this.DataGrid.Size = new System.Drawing.Size(966, 597);
             this.DataGrid.TabIndex = 1;
             this.DataGrid.TabStop = false;
             this.DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellContentClick);
@@ -251,7 +270,6 @@
             this.DATE.Frozen = true;
             this.DATE.HeaderText = "DATE";
             this.DATE.Name = "DATE";
-            this.DATE.ReadOnly = true;
             this.DATE.Width = 120;
             // 
             // STUDENT_ID
@@ -304,9 +322,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle2;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -335,64 +353,22 @@
             this.label2.Location = new System.Drawing.Point(96, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(253, 47);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 19;
             this.label2.Text = "SIT-IN FORM";
             // 
             // pnlLoginFrame
             // 
-            this.pnlLoginFrame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.pnlLoginFrame.Controls.Add(this.BtnSearch);
-            this.pnlLoginFrame.Controls.Add(this.BtnStart);
+            this.pnlLoginFrame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(99)))), ((int)(((byte)(130)))));
             this.pnlLoginFrame.Controls.Add(this.mrg3);
             this.pnlLoginFrame.Controls.Add(this.mrg4);
             this.pnlLoginFrame.Controls.Add(this.mrg7);
             this.pnlLoginFrame.Controls.Add(this.mrg2);
             this.pnlLoginFrame.Controls.Add(this.mrg1);
-            this.pnlLoginFrame.Controls.Add(this.label5);
+            this.pnlLoginFrame.Controls.Add(this.pnlLoginBody);
             this.pnlLoginFrame.Location = new System.Drawing.Point(23, 216);
             this.pnlLoginFrame.Name = "pnlLoginFrame";
             this.pnlLoginFrame.Size = new System.Drawing.Size(427, 518);
             this.pnlLoginFrame.TabIndex = 0;
-            // 
-            // BtnSearch
-            // 
-            this.BtnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.BtnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.BtnSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.BtnSearch.BorderRadius = 10;
-            this.BtnSearch.BorderSize = 0;
-            this.BtnSearch.FlatAppearance.BorderSize = 0;
-            this.BtnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnSearch.ForeColor = System.Drawing.Color.White;
-            this.BtnSearch.Location = new System.Drawing.Point(278, 101);
-            this.BtnSearch.Name = "BtnSearch";
-            this.BtnSearch.Size = new System.Drawing.Size(115, 45);
-            this.BtnSearch.TabIndex = 7;
-            this.BtnSearch.Text = "SEARCH";
-            this.BtnSearch.TextColor = System.Drawing.Color.White;
-            this.BtnSearch.UseVisualStyleBackColor = false;
-            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
-            // 
-            // BtnStart
-            // 
-            this.BtnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.BtnStart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.BtnStart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
-            this.BtnStart.BorderRadius = 10;
-            this.BtnStart.BorderSize = 0;
-            this.BtnStart.FlatAppearance.BorderSize = 0;
-            this.BtnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnStart.ForeColor = System.Drawing.Color.White;
-            this.BtnStart.Location = new System.Drawing.Point(32, 371);
-            this.BtnStart.Name = "BtnStart";
-            this.BtnStart.Size = new System.Drawing.Size(362, 48);
-            this.BtnStart.TabIndex = 5;
-            this.BtnStart.Text = "START TIME";
-            this.BtnStart.TextColor = System.Drawing.Color.White;
-            this.BtnStart.UseVisualStyleBackColor = false;
-            this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
             // mrg3
             // 
@@ -401,7 +377,7 @@
             this.mrg3.Location = new System.Drawing.Point(32, 155);
             this.mrg3.Name = "mrg3";
             this.mrg3.Size = new System.Drawing.Size(360, 49);
-            this.mrg3.TabIndex = 0;
+            this.mrg3.TabIndex = 1;
             // 
             // l3
             // 
@@ -440,7 +416,6 @@
             this.txtStudentLastName.Name = "txtStudentLastName";
             this.txtStudentLastName.Size = new System.Drawing.Size(312, 27);
             this.txtStudentLastName.TabIndex = 0;
-            this.txtStudentLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentLastName.TextChanged += new System.EventHandler(this.lastnamehasinput);
             // 
             // mrg4
@@ -450,7 +425,7 @@
             this.mrg4.Location = new System.Drawing.Point(32, 263);
             this.mrg4.Name = "mrg4";
             this.mrg4.Size = new System.Drawing.Size(360, 49);
-            this.mrg4.TabIndex = 0;
+            this.mrg4.TabIndex = 4;
             // 
             // l4
             // 
@@ -489,7 +464,6 @@
             this.txtSection.Name = "txtSection";
             this.txtSection.Size = new System.Drawing.Size(312, 27);
             this.txtSection.TabIndex = 0;
-            this.txtSection.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSection.TextChanged += new System.EventHandler(this.sectioninput);
             // 
             // mrg7
@@ -499,7 +473,7 @@
             this.mrg7.Location = new System.Drawing.Point(313, 209);
             this.mrg7.Name = "mrg7";
             this.mrg7.Size = new System.Drawing.Size(79, 49);
-            this.mrg7.TabIndex = 4;
+            this.mrg7.TabIndex = 3;
             // 
             // l7
             // 
@@ -548,7 +522,7 @@
             this.mrg2.Location = new System.Drawing.Point(32, 209);
             this.mrg2.Name = "mrg2";
             this.mrg2.Size = new System.Drawing.Size(278, 49);
-            this.mrg2.TabIndex = 0;
+            this.mrg2.TabIndex = 2;
             // 
             // l2
             // 
@@ -587,7 +561,6 @@
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(230, 27);
             this.txtStudentName.TabIndex = 1;
-            this.txtStudentName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentName.TextChanged += new System.EventHandler(this.fullNameHasInput);
             // 
             // mrg1
@@ -635,19 +608,69 @@
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(190, 27);
             this.txtStudentID.TabIndex = 1;
-            this.txtStudentID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentID.TextChanged += new System.EventHandler(this.idNumberHasInput);
             this.txtStudentID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForBadInput);
+            // 
+            // pnlLoginBody
+            // 
+            this.pnlLoginBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.pnlLoginBody.Controls.Add(this.BtnStart);
+            this.pnlLoginBody.Controls.Add(this.BtnSearch);
+            this.pnlLoginBody.Controls.Add(this.label5);
+            this.pnlLoginBody.Location = new System.Drawing.Point(4, 4);
+            this.pnlLoginBody.Name = "pnlLoginBody";
+            this.pnlLoginBody.Size = new System.Drawing.Size(419, 510);
+            this.pnlLoginBody.TabIndex = 21;
+            // 
+            // BtnStart
+            // 
+            this.BtnStart.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnStart.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnStart.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnStart.BorderRadius = 10;
+            this.BtnStart.BorderSize = 0;
+            this.BtnStart.FlatAppearance.BorderSize = 0;
+            this.BtnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnStart.ForeColor = System.Drawing.Color.White;
+            this.BtnStart.Location = new System.Drawing.Point(26, 313);
+            this.BtnStart.Name = "BtnStart";
+            this.BtnStart.Size = new System.Drawing.Size(362, 48);
+            this.BtnStart.TabIndex = 5;
+            this.BtnStart.Text = "START TIME";
+            this.BtnStart.TextColor = System.Drawing.Color.White;
+            this.BtnStart.UseVisualStyleBackColor = false;
+            this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
+            // 
+            // BtnSearch
+            // 
+            this.BtnSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnSearch.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnSearch.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(65)))), ((int)(((byte)(205)))), ((int)(((byte)(242)))));
+            this.BtnSearch.BorderRadius = 10;
+            this.BtnSearch.BorderSize = 0;
+            this.BtnSearch.FlatAppearance.BorderSize = 0;
+            this.BtnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnSearch.ForeColor = System.Drawing.Color.White;
+            this.BtnSearch.Location = new System.Drawing.Point(275, 98);
+            this.BtnSearch.Name = "BtnSearch";
+            this.BtnSearch.Size = new System.Drawing.Size(115, 45);
+            this.BtnSearch.TabIndex = 7;
+            this.BtnSearch.Text = "SEARCH";
+            this.BtnSearch.TextColor = System.Drawing.Color.White;
+            this.BtnSearch.UseVisualStyleBackColor = false;
+            this.BtnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label5.Location = new System.Drawing.Point(111, 34);
+            this.label5.Location = new System.Drawing.Point(107, 30);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(196, 30);
-            this.label5.TabIndex = 6;
+            this.label5.TabIndex = 20;
             this.label5.Text = "STUDENT LOGIN";
             // 
             // label3
@@ -659,7 +682,7 @@
             this.label3.Location = new System.Drawing.Point(101, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(244, 13);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 19;
             this.label3.Text = "DEPARTMENT OF NETWORK AND TECHNICAL SERVICES";
             // 
             // CLOCK
@@ -674,22 +697,23 @@
             this.UI.Interval = 10;
             this.UI.Tick += new System.EventHandler(this.TextBoxFocus);
             // 
-            // pnlConfirmExit
+            // pnlAdminLock
             // 
-            this.pnlConfirmExit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
-            this.pnlConfirmExit.Controls.Add(this.pnlDesign);
-            this.pnlConfirmExit.Controls.Add(this.mensahe);
-            this.pnlConfirmExit.Location = new System.Drawing.Point(1500, 204);
-            this.pnlConfirmExit.Name = "pnlConfirmExit";
-            this.pnlConfirmExit.Size = new System.Drawing.Size(575, 342);
-            this.pnlConfirmExit.TabIndex = 8;
+            this.pnlAdminLock.BackColor = System.Drawing.Color.Black;
+            this.pnlAdminLock.Controls.Add(this.pnlDesign);
+            this.pnlAdminLock.Controls.Add(this.mensahe);
+            this.pnlAdminLock.Location = new System.Drawing.Point(1600, 63);
+            this.pnlAdminLock.Name = "pnlAdminLock";
+            this.pnlAdminLock.Size = new System.Drawing.Size(575, 342);
+            this.pnlAdminLock.TabIndex = 8;
             // 
             // pnlDesign
             // 
             this.pnlDesign.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
             this.pnlDesign.Controls.Add(this.BtnCancelIn);
-            this.pnlDesign.Controls.Add(this.label4);
             this.pnlDesign.Controls.Add(this.BtnConfirm);
+            this.pnlDesign.Controls.Add(this.pictureBox2);
+            this.pnlDesign.Controls.Add(this.label4);
             this.pnlDesign.Controls.Add(this.borderpass);
             this.pnlDesign.Location = new System.Drawing.Point(8, 35);
             this.pnlDesign.Name = "pnlDesign";
@@ -698,60 +722,70 @@
             // 
             // BtnCancelIn
             // 
-            this.BtnCancelIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.BtnCancelIn.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.BtnCancelIn.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.BtnCancelIn.BorderRadius = 10;
+            this.BtnCancelIn.BackColor = System.Drawing.Color.Red;
+            this.BtnCancelIn.BackgroundColor = System.Drawing.Color.Red;
+            this.BtnCancelIn.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BtnCancelIn.BorderRadius = 20;
             this.BtnCancelIn.BorderSize = 0;
             this.BtnCancelIn.FlatAppearance.BorderSize = 0;
             this.BtnCancelIn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnCancelIn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelIn.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnCancelIn.ForeColor = System.Drawing.Color.White;
-            this.BtnCancelIn.Location = new System.Drawing.Point(125, 200);
+            this.BtnCancelIn.Location = new System.Drawing.Point(81, 231);
             this.BtnCancelIn.Name = "BtnCancelIn";
-            this.BtnCancelIn.Size = new System.Drawing.Size(299, 44);
-            this.BtnCancelIn.TabIndex = 2;
+            this.BtnCancelIn.Size = new System.Drawing.Size(396, 39);
+            this.BtnCancelIn.TabIndex = 9;
             this.BtnCancelIn.Text = "CANCEL";
             this.BtnCancelIn.TextColor = System.Drawing.Color.White;
             this.BtnCancelIn.UseVisualStyleBackColor = false;
             this.BtnCancelIn.Click += new System.EventHandler(this.BtnCancelIn_Click);
+            // 
+            // BtnConfirm
+            // 
+            this.BtnConfirm.BackColor = System.Drawing.Color.Red;
+            this.BtnConfirm.BackgroundColor = System.Drawing.Color.Red;
+            this.BtnConfirm.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BtnConfirm.BorderRadius = 20;
+            this.BtnConfirm.BorderSize = 0;
+            this.BtnConfirm.FlatAppearance.BorderSize = 0;
+            this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConfirm.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConfirm.ForeColor = System.Drawing.Color.White;
+            this.BtnConfirm.Location = new System.Drawing.Point(81, 189);
+            this.BtnConfirm.Name = "BtnConfirm";
+            this.BtnConfirm.Size = new System.Drawing.Size(396, 39);
+            this.BtnConfirm.TabIndex = 9;
+            this.BtnConfirm.Text = "CONFIRM";
+            this.BtnConfirm.TextColor = System.Drawing.Color.White;
+            this.BtnConfirm.UseVisualStyleBackColor = false;
+            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Sit_In_Monitoring.Properties.Resources.padlock;
+            this.pictureBox2.Location = new System.Drawing.Point(248, 16);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(60, 60);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 8;
+            this.pictureBox2.TabStop = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label4.Location = new System.Drawing.Point(123, 54);
+            this.label4.Location = new System.Drawing.Point(83, 80);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(299, 28);
+            this.label4.Size = new System.Drawing.Size(404, 28);
             this.label4.TabIndex = 7;
-            this.label4.Text = "INPUT PASSWORD TO EXIT";
-            // 
-            // BtnConfirm
-            // 
-            this.BtnConfirm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.BtnConfirm.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.BtnConfirm.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.BtnConfirm.BorderRadius = 10;
-            this.BtnConfirm.BorderSize = 0;
-            this.BtnConfirm.FlatAppearance.BorderSize = 0;
-            this.BtnConfirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BtnConfirm.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.BtnConfirm.ForeColor = System.Drawing.Color.White;
-            this.BtnConfirm.Location = new System.Drawing.Point(125, 152);
-            this.BtnConfirm.Name = "BtnConfirm";
-            this.BtnConfirm.Size = new System.Drawing.Size(299, 44);
-            this.BtnConfirm.TabIndex = 1;
-            this.BtnConfirm.Text = "CONFIRM";
-            this.BtnConfirm.TextColor = System.Drawing.Color.White;
-            this.BtnConfirm.UseVisualStyleBackColor = false;
-            this.BtnConfirm.Click += new System.EventHandler(this.BtnConfirm_Click);
+            this.label4.Text = "INPUT ADMINISTRATOR PASSWORD";
             // 
             // borderpass
             // 
             this.borderpass.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.borderpass.Controls.Add(this.pass);
-            this.borderpass.Location = new System.Drawing.Point(123, 90);
+            this.borderpass.Location = new System.Drawing.Point(127, 119);
             this.borderpass.Name = "borderpass";
             this.borderpass.Size = new System.Drawing.Size(302, 54);
             this.borderpass.TabIndex = 0;
@@ -799,12 +833,12 @@
             // 
             this.mensahe.AutoSize = true;
             this.mensahe.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.mensahe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.mensahe.Location = new System.Drawing.Point(233, 11);
+            this.mensahe.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.mensahe.Location = new System.Drawing.Point(11, 10);
             this.mensahe.Name = "mensahe";
-            this.mensahe.Size = new System.Drawing.Size(98, 16);
+            this.mensahe.Size = new System.Drawing.Size(91, 16);
             this.mensahe.TabIndex = 7;
-            this.mensahe.Text = "CONFIRM EXIT";
+            this.mensahe.Text = "ADMIN LOCK";
             // 
             // ENVIRONMENT
             // 
@@ -817,6 +851,7 @@
             this.pnlRecords.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
             this.pnlRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRecords.Controls.Add(this.lblTime2);
             this.pnlRecords.Controls.Add(this.label6);
             this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
             this.pnlRecords.Controls.Add(this.pnlStudentInfo);
@@ -825,11 +860,24 @@
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
+            this.pnlRecords.Controls.Add(this.pnlmrgn);
+            this.pnlRecords.Controls.Add(this.pnlDateMargin);
+            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
-            this.pnlRecords.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRecords_Paint);
+            // 
+            // lblTime2
+            // 
+            this.lblTime2.AutoSize = true;
+            this.lblTime2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.lblTime2.Font = new System.Drawing.Font("Century Gothic", 24.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTime2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(103)))), ((int)(((byte)(117)))));
+            this.lblTime2.Location = new System.Drawing.Point(396, 60);
+            this.lblTime2.Name = "lblTime2";
+            this.lblTime2.Size = new System.Drawing.Size(161, 39);
+            this.lblTime2.TabIndex = 1;
+            this.lblTime2.Text = "00:00:00ff";
             // 
             // label6
             // 
@@ -862,15 +910,15 @@
             // 
             // pnlStudentInfo
             // 
-            this.pnlStudentInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.pnlStudentInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
             this.pnlStudentInfo.Controls.Add(this.BtnDelete);
             this.pnlStudentInfo.Controls.Add(this.BtnEdit);
             this.pnlStudentInfo.Controls.Add(this.BtnPrint);
             this.pnlStudentInfo.Controls.Add(this.label15);
             this.pnlStudentInfo.Controls.Add(this.pnlDepth);
-            this.pnlStudentInfo.Location = new System.Drawing.Point(24, 115);
+            this.pnlStudentInfo.Location = new System.Drawing.Point(12, 111);
             this.pnlStudentInfo.Name = "pnlStudentInfo";
-            this.pnlStudentInfo.Size = new System.Drawing.Size(565, 619);
+            this.pnlStudentInfo.Size = new System.Drawing.Size(587, 627);
             this.pnlStudentInfo.TabIndex = 15;
             // 
             // BtnDelete
@@ -940,8 +988,8 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label15.Location = new System.Drawing.Point(182, 8);
+            this.label15.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label15.Location = new System.Drawing.Point(192, 8);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(204, 36);
             this.label15.TabIndex = 6;
@@ -961,9 +1009,9 @@
             this.pnlDepth.Controls.Add(this.panel5);
             this.pnlDepth.Controls.Add(this.panel6);
             this.pnlDepth.Controls.Add(this.panel7);
-            this.pnlDepth.Location = new System.Drawing.Point(10, 54);
+            this.pnlDepth.Location = new System.Drawing.Point(5, 54);
             this.pnlDepth.Name = "pnlDepth";
-            this.pnlDepth.Size = new System.Drawing.Size(544, 450);
+            this.pnlDepth.Size = new System.Drawing.Size(578, 450);
             this.pnlDepth.TabIndex = 9;
             // 
             // label11
@@ -971,7 +1019,7 @@
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label11.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label11.Location = new System.Drawing.Point(62, 371);
+            this.label11.Location = new System.Drawing.Point(79, 377);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(152, 19);
             this.label11.TabIndex = 6;
@@ -982,7 +1030,7 @@
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label14.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label14.Location = new System.Drawing.Point(62, 342);
+            this.label14.Location = new System.Drawing.Point(79, 348);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(174, 19);
             this.label14.TabIndex = 6;
@@ -993,7 +1041,7 @@
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label12.Location = new System.Drawing.Point(62, 311);
+            this.label12.Location = new System.Drawing.Point(79, 317);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(74, 19);
             this.label12.TabIndex = 6;
@@ -1004,7 +1052,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label10.Location = new System.Drawing.Point(62, 282);
+            this.label10.Location = new System.Drawing.Point(79, 288);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(129, 19);
             this.label10.TabIndex = 6;
@@ -1015,7 +1063,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label7.Location = new System.Drawing.Point(62, 253);
+            this.label7.Location = new System.Drawing.Point(79, 259);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(95, 19);
             this.label7.TabIndex = 6;
@@ -1026,7 +1074,7 @@
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox1.Image = global::Sit_In_Monitoring.Properties.Resources.user__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(174, 9);
+            this.pictureBox1.Location = new System.Drawing.Point(191, 20);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(188, 185);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -1037,7 +1085,7 @@
             // panel3
             // 
             this.panel3.Controls.Add(this.displayID);
-            this.panel3.Location = new System.Drawing.Point(134, 251);
+            this.panel3.Location = new System.Drawing.Point(151, 257);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(351, 28);
             this.panel3.TabIndex = 7;
@@ -1057,7 +1105,7 @@
             // panel4
             // 
             this.panel4.Controls.Add(this.displayName);
-            this.panel4.Location = new System.Drawing.Point(134, 282);
+            this.panel4.Location = new System.Drawing.Point(151, 288);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(351, 28);
             this.panel4.TabIndex = 7;
@@ -1077,7 +1125,7 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.displaySection);
-            this.panel5.Location = new System.Drawing.Point(134, 311);
+            this.panel5.Location = new System.Drawing.Point(151, 317);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(351, 28);
             this.panel5.TabIndex = 7;
@@ -1097,7 +1145,7 @@
             // panel6
             // 
             this.panel6.Controls.Add(this.displayBalance);
-            this.panel6.Location = new System.Drawing.Point(134, 343);
+            this.panel6.Location = new System.Drawing.Point(151, 349);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(351, 28);
             this.panel6.TabIndex = 7;
@@ -1117,7 +1165,7 @@
             // panel7
             // 
             this.panel7.Controls.Add(this.displayNumOfSitIns);
-            this.panel7.Location = new System.Drawing.Point(134, 372);
+            this.panel7.Location = new System.Drawing.Point(151, 378);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(351, 28);
             this.panel7.TabIndex = 7;
@@ -1138,14 +1186,14 @@
             // 
             this.mrg6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg6.Controls.Add(this.l6);
-            this.mrg6.Location = new System.Drawing.Point(1026, 60);
+            this.mrg6.Location = new System.Drawing.Point(1029, 57);
             this.mrg6.Name = "mrg6";
             this.mrg6.Size = new System.Drawing.Size(258, 44);
             this.mrg6.TabIndex = 14;
             // 
             // l6
             // 
-            this.l6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.l6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(78)))), ((int)(((byte)(102)))));
             this.l6.Controls.Add(this.placeholder7);
             this.l6.Controls.Add(this.txtSearchId);
             this.l6.Cursor = System.Windows.Forms.Cursors.IBeam;
@@ -1158,9 +1206,10 @@
             // placeholder7
             // 
             this.placeholder7.AutoSize = true;
+            this.placeholder7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(78)))), ((int)(((byte)(102)))));
             this.placeholder7.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeholder7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.placeholder7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
             this.placeholder7.Location = new System.Drawing.Point(45, 11);
             this.placeholder7.Name = "placeholder7";
             this.placeholder7.Size = new System.Drawing.Size(169, 21);
@@ -1170,7 +1219,7 @@
             // 
             // txtSearchId
             // 
-            this.txtSearchId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.txtSearchId.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(78)))), ((int)(((byte)(102)))));
             this.txtSearchId.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSearchId.Font = new System.Drawing.Font("Microsoft YaHei", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearchId.Location = new System.Drawing.Point(23, 5);
@@ -1184,8 +1233,9 @@
             // 
             // BtnSearchInRecords
             // 
-            this.BtnSearchInRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.BtnSearchInRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.BtnSearchInRecords.AccessibleDescription = "serts";
+            this.BtnSearchInRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(78)))), ((int)(((byte)(102)))));
+            this.BtnSearchInRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(78)))), ((int)(((byte)(102)))));
             this.BtnSearchInRecords.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
             this.BtnSearchInRecords.BorderRadius = 10;
             this.BtnSearchInRecords.BorderSize = 0;
@@ -1193,7 +1243,7 @@
             this.BtnSearchInRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSearchInRecords.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSearchInRecords.ForeColor = System.Drawing.Color.White;
-            this.BtnSearchInRecords.Location = new System.Drawing.Point(1300, 60);
+            this.BtnSearchInRecords.Location = new System.Drawing.Point(1303, 57);
             this.BtnSearchInRecords.Name = "BtnSearchInRecords";
             this.BtnSearchInRecords.Size = new System.Drawing.Size(146, 44);
             this.BtnSearchInRecords.TabIndex = 1;
@@ -1212,12 +1262,14 @@
             this.lDate,
             this.lStudentId,
             this.lFirstName,
+            this.IMiddleInitial,
             this.lLastName,
             this.lSection,
             this.lTimeIn,
-            this.lTimeOut});
+            this.lTimeOut,
+            this.IRemainingBalance});
             this.recordsView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.recordsView.Location = new System.Drawing.Point(606, 115);
+            this.recordsView.Location = new System.Drawing.Point(609, 115);
             this.recordsView.Name = "recordsView";
             this.recordsView.Size = new System.Drawing.Size(841, 619);
             this.recordsView.TabIndex = 12;
@@ -1228,6 +1280,7 @@
             this.lDate.HeaderText = "DATE";
             this.lDate.Name = "lDate";
             this.lDate.ReadOnly = true;
+            this.lDate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.lDate.Width = 70;
             // 
             // lStudentId
@@ -1235,39 +1288,69 @@
             this.lStudentId.Frozen = true;
             this.lStudentId.HeaderText = "STUDENT ID";
             this.lStudentId.Name = "lStudentId";
-            this.lStudentId.Width = 116;
+            this.lStudentId.ReadOnly = true;
+            this.lStudentId.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // lFirstName
             // 
             this.lFirstName.Frozen = true;
             this.lFirstName.HeaderText = "FIRST NAME";
             this.lFirstName.Name = "lFirstName";
+            this.lFirstName.ReadOnly = true;
+            this.lFirstName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.lFirstName.Width = 160;
+            // 
+            // IMiddleInitial
+            // 
+            this.IMiddleInitial.Frozen = true;
+            this.IMiddleInitial.HeaderText = "M.I.";
+            this.IMiddleInitial.Name = "IMiddleInitial";
+            this.IMiddleInitial.ReadOnly = true;
+            this.IMiddleInitial.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IMiddleInitial.Width = 40;
             // 
             // lLastName
             // 
             this.lLastName.Frozen = true;
             this.lLastName.HeaderText = "LAST NAME";
             this.lLastName.Name = "lLastName";
-            this.lLastName.Width = 160;
+            this.lLastName.ReadOnly = true;
+            this.lLastName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.lLastName.Width = 110;
             // 
             // lSection
             // 
             this.lSection.Frozen = true;
             this.lSection.HeaderText = "SECTION";
             this.lSection.Name = "lSection";
+            this.lSection.ReadOnly = true;
+            this.lSection.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // lTimeIn
             // 
             this.lTimeIn.Frozen = true;
             this.lTimeIn.HeaderText = "TIME IN";
             this.lTimeIn.Name = "lTimeIn";
+            this.lTimeIn.ReadOnly = true;
+            this.lTimeIn.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.lTimeIn.Width = 60;
             // 
             // lTimeOut
             // 
             this.lTimeOut.Frozen = true;
             this.lTimeOut.HeaderText = "TIME OUT";
             this.lTimeOut.Name = "lTimeOut";
+            this.lTimeOut.ReadOnly = true;
+            this.lTimeOut.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.lTimeOut.Width = 60;
+            // 
+            // IRemainingBalance
+            // 
+            this.IRemainingBalance.HeaderText = "BALANCE";
+            this.IRemainingBalance.Name = "IRemainingBalance";
+            this.IRemainingBalance.ReadOnly = true;
+            this.IRemainingBalance.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.IRemainingBalance.ToolTipText = "Student\'s Remaining Time Balance";
             // 
             // panel2
             // 
@@ -1309,6 +1392,42 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "RECORDS";
             // 
+            // pnlmrgn
+            // 
+            this.pnlmrgn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pnlmrgn.Location = new System.Drawing.Point(605, 111);
+            this.pnlmrgn.Name = "pnlmrgn";
+            this.pnlmrgn.Size = new System.Drawing.Size(849, 627);
+            this.pnlmrgn.TabIndex = 16;
+            // 
+            // pnlDateMargin
+            // 
+            this.pnlDateMargin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(1)))), ((int)(((byte)(78)))), ((int)(((byte)(102)))));
+            this.pnlDateMargin.Controls.Add(this.pnlDate);
+            this.pnlDateMargin.Location = new System.Drawing.Point(606, 60);
+            this.pnlDateMargin.Name = "pnlDateMargin";
+            this.pnlDateMargin.Size = new System.Drawing.Size(411, 39);
+            this.pnlDateMargin.TabIndex = 18;
+            // 
+            // pnlDate
+            // 
+            this.pnlDate.Controls.Add(this.dateForRecords);
+            this.pnlDate.Location = new System.Drawing.Point(4, 4);
+            this.pnlDate.Name = "pnlDate";
+            this.pnlDate.Size = new System.Drawing.Size(403, 31);
+            this.pnlDate.TabIndex = 17;
+            // 
+            // dateForRecords
+            // 
+            this.dateForRecords.CalendarMonthBackground = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.dateForRecords.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateForRecords.Location = new System.Drawing.Point(-1, -1);
+            this.dateForRecords.Margin = new System.Windows.Forms.Padding(0);
+            this.dateForRecords.Name = "dateForRecords";
+            this.dateForRecords.Size = new System.Drawing.Size(405, 33);
+            this.dateForRecords.TabIndex = 9;
+            this.dateForRecords.TabStop = false;
+            // 
             // pictureBoxBunifuItachi1
             // 
             this.pictureBoxBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
@@ -1316,7 +1435,7 @@
             this.pictureBoxBunifuItachi1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
             this.pictureBoxBunifuItachi1.BorderColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
             this.pictureBoxBunifuItachi1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
-            this.pictureBoxBunifuItachi1.BorderSize = 5;
+            this.pictureBoxBunifuItachi1.BorderSize = 4;
             this.pictureBoxBunifuItachi1.GradientAngle = 50F;
             this.pictureBoxBunifuItachi1.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
             this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(23, 27);
@@ -1335,7 +1454,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1472, 40);
-            this.panel1.TabIndex = 1;
+            this.panel1.TabIndex = 20;
             // 
             // exitButton
             // 
@@ -1354,6 +1473,44 @@
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
             // 
+            // pnlNotification
+            // 
+            this.pnlNotification.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(227)))), ((int)(((byte)(107)))));
+            this.pnlNotification.Controls.Add(this.chckicon);
+            this.pnlNotification.Controls.Add(this.notificationMessage);
+            this.pnlNotification.Location = new System.Drawing.Point(1000, 640);
+            this.pnlNotification.Name = "pnlNotification";
+            this.pnlNotification.Size = new System.Drawing.Size(512, 52);
+            this.pnlNotification.TabIndex = 10;
+            // 
+            // chckicon
+            // 
+            this.chckicon.Image = global::Sit_In_Monitoring.Properties.Resources._checked;
+            this.chckicon.Location = new System.Drawing.Point(6, 6);
+            this.chckicon.Name = "chckicon";
+            this.chckicon.Size = new System.Drawing.Size(39, 40);
+            this.chckicon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.chckicon.TabIndex = 4;
+            this.chckicon.TabStop = false;
+            // 
+            // notificationMessage
+            // 
+            this.notificationMessage.AutoSize = true;
+            this.notificationMessage.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.notificationMessage.Font = new System.Drawing.Font("Century Gothic", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notificationMessage.ForeColor = System.Drawing.Color.Black;
+            this.notificationMessage.Location = new System.Drawing.Point(51, 10);
+            this.notificationMessage.Name = "notificationMessage";
+            this.notificationMessage.Size = new System.Drawing.Size(170, 32);
+            this.notificationMessage.TabIndex = 3;
+            this.notificationMessage.Text = "SIT-IN FORM";
+            // 
+            // NotificationTimerSpecific
+            // 
+            this.NotificationTimerSpecific.Enabled = true;
+            this.NotificationTimerSpecific.Interval = 10;
+            this.NotificationTimerSpecific.Tick += new System.EventHandler(this.NotificationTimerSpecific_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1362,10 +1519,11 @@
             this.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1472, 759);
+            this.Controls.Add(this.pnlAdminLock);
             this.Controls.Add(this.pnlRecords);
+            this.Controls.Add(this.pnlNotification);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pictureBoxBunifuItachi1);
-            this.Controls.Add(this.pnlConfirmExit);
             this.Controls.Add(this.pnlLoginFrame);
             this.Controls.Add(this.tm2);
             this.Controls.Add(this.panel1);
@@ -1386,7 +1544,6 @@
             this.pnlStudsRec.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
             this.pnlLoginFrame.ResumeLayout(false);
-            this.pnlLoginFrame.PerformLayout();
             this.mrg3.ResumeLayout(false);
             this.l3.ResumeLayout(false);
             this.l3.PerformLayout();
@@ -1402,10 +1559,13 @@
             this.mrg1.ResumeLayout(false);
             this.l1.ResumeLayout(false);
             this.l1.PerformLayout();
-            this.pnlConfirmExit.ResumeLayout(false);
-            this.pnlConfirmExit.PerformLayout();
+            this.pnlLoginBody.ResumeLayout(false);
+            this.pnlLoginBody.PerformLayout();
+            this.pnlAdminLock.ResumeLayout(false);
+            this.pnlAdminLock.PerformLayout();
             this.pnlDesign.ResumeLayout(false);
             this.pnlDesign.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.borderpass.ResumeLayout(false);
             this.pass.ResumeLayout(false);
             this.pass.PerformLayout();
@@ -1432,8 +1592,13 @@
             this.l6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.recordsView)).EndInit();
             this.panel2.ResumeLayout(false);
+            this.pnlDateMargin.ResumeLayout(false);
+            this.pnlDate.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).EndInit();
             this.panel1.ResumeLayout(false);
+            this.pnlNotification.ResumeLayout(false);
+            this.pnlNotification.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chckicon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1466,11 +1631,9 @@
         private System.Windows.Forms.DataGridView DataGrid;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel pnlConfirmExit;
+        private System.Windows.Forms.Panel pnlAdminLock;
         private System.Windows.Forms.Panel pnlDesign;
         private System.Windows.Forms.Label mensahe;
-        private ItachiUIBunifu.ButtonBunifuItachi BtnCancelIn;
-        private ItachiUIBunifu.ButtonBunifuItachi BtnConfirm;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Panel borderpass;
         private System.Windows.Forms.Panel pass;
@@ -1502,14 +1665,6 @@
         private System.Windows.Forms.Label label9;
         private ItachiUIBunifu.ButtonBunifuItachi BtnDelete;
         private ItachiUIBunifu.ButtonBunifuItachi BtnEdit;
-        private System.Windows.Forms.DataGridView recordsView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lStudentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lSection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label7;
@@ -1540,6 +1695,29 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
         private System.Windows.Forms.Panel pnlDepth;
+        private System.Windows.Forms.Panel pnlNotification;
+        private System.Windows.Forms.Timer NotificationTimerSpecific;
+        private System.Windows.Forms.Label notificationMessage;
+        private System.Windows.Forms.PictureBox chckicon;
+        private System.Windows.Forms.DataGridView recordsView;
+        private System.Windows.Forms.Label lblTime2;
+        private System.Windows.Forms.DateTimePicker dateForRecords;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lStudentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IMiddleInitial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn IRemainingBalance;
+        private System.Windows.Forms.Panel pnlmrgn;
+        private System.Windows.Forms.Panel pnlDate;
+        private System.Windows.Forms.Panel pnlDateMargin;
+        private System.Windows.Forms.Panel pnlLoginBody;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnCancelIn;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnConfirm;
     }
 }
 

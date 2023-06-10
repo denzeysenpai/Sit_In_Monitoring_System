@@ -131,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="db\DatabaseQuery.sql" />
+    <None Include="images\padlock.png" />
+    <None Include="images\checked.png" />
+    <None Include="images\check.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.8">
