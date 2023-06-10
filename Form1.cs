@@ -9,7 +9,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC21\\ACTSTUDENT;Initial Catalog=SitInMonitoring;Integrated Security=True");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True");
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
 
@@ -93,7 +93,7 @@ namespace Sit_In_Monitoring
             clearStudentText();
             txtStudentID.Focus();
             MessageBox.Show("Student successfully sit in!");
-            //Update_Data();
+            Update_Data();
         }//DONE
         public void StudentExisted()
         {
@@ -139,25 +139,26 @@ namespace Sit_In_Monitoring
             }
 
         }//DONE
-        //public void Update_Data() // DONE
-        //{
-        //    SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid", conn);
+        public void Update_Data() // DONE
+        {
+            DisplayLogs();
+            SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid", conn);
 
-        //    DataTable dt = new DataTable();
-        //    s.Fill(dt);
-        //    DataGrid.Rows.Clear();
+            DataTable dt = new DataTable();
+            s.Fill(dt);
+            DataGrid.Rows.Clear();
 
-        //    foreach(DataRow dr in dt.Rows)
-        //    {
-        //        int cs = DataGrid.Rows.Add();
-        //        //int rv = recordsView.Rows.Add();
-        //        for(int i = 0; i < 7; i++)
-        //        {
-        //            DataGrid.Rows[cs].Cells[i].Value = dr[i].ToString();
-        //            //recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
-        //        }
-        //    }
-        //}
+            foreach (DataRow dr in dt.Rows)
+            {
+                int cs = DataGrid.Rows.Add();
+                //int rv = recordsView.Rows.Add();
+                for (int i = 0; i < 7; i++)
+                {
+                    DataGrid.Rows[cs].Cells[i].Value = dr[i].ToString();
+                    //recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
+                }
+            }
+        }
         public void LogoutStudent(DataGridViewCellEventArgs e)//DONE
         {
             DateTime date = DateTime.Now;
@@ -178,14 +179,41 @@ namespace Sit_In_Monitoring
 
             DataGrid.Rows.RemoveAt(e.RowIndex);
         }
-        public void DisplayLogs()
+        public void DisplayLogs()//DONE
         {
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.personid = sl.personid", conn);
 
-        }//NEXT TO BE MADE -EZSUJERO 6/9/23
+            DataTable dt = new DataTable();
+            s.Fill(dt);
+            recordsView.Rows.Clear();
 
-        //MARK PALIHOG KO TARONG NYA SA TAB INDEX SA TANANG TEXTBOX
-        //NYA PALIHOG NLNG PUD KO REMOVE SA PRIORITY NUMBER MARK KAY 1ST COME 1ST SERVE RAMAN DIAY TA.
-        //NYA PLEASE LANG SAD PUD KO MARK NGA E BUTANG DIRI ANG MGA LOCATIONS SA FORM IN CASE NAA KOY IPANG CHANGE, MAG ASK LNG NYA PUD KO UGMA
+            foreach (DataRow dr in dt.Rows)
+            {
+                int rv = recordsView.Rows.Add();
+                for (int i = 0; i < 7; i++)
+                {
+                    recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
+                }
+            }
+        }
+        public void SearchStudent()//DONE
+        {
+            recordsView.Rows.Clear();
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.studentid like '%"+ txtSearchId.Text +"%'", conn);
+
+            DataTable dt = new DataTable();
+            dt.Clear();
+            s.Fill(dt);
+            foreach (DataRow dr in dt.Rows)
+            {
+                int rv = recordsView.Rows.Add();
+                for (int i = 0; i < 7; i++)
+                {
+                    recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
+                }
+            }
+        }
+
         #endregion
 
         public Form1()
@@ -235,7 +263,8 @@ namespace Sit_In_Monitoring
 
             pnlConfirmExit.Hide();
             exitApp = false;
-            //Update_Data();
+            Update_Data();
+            DisplayLogs();
 
             pnlConfirmExit.Location = new Point(446, 204);
             pnlRecords.Location = new Point(0, 0);
@@ -457,7 +486,7 @@ namespace Sit_In_Monitoring
                     MessageBox.Show(ex.Message);
                 }
                 conn.Close();
-                //Update_Data();
+                Update_Data();
             }
         }
 
@@ -522,12 +551,17 @@ namespace Sit_In_Monitoring
 
         private void BtnSearchInRecords_Click(object sender, EventArgs e)
         {
-
+            SearchStudent();
         }
 
         private void pnlRecords_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void txtSearchId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            SearchStudent();
         }
     }
     class SeiyaMarx

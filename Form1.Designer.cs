@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -304,9 +304,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -825,7 +825,7 @@
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -1180,6 +1180,7 @@
             this.txtSearchId.TabIndex = 0;
             this.txtSearchId.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSearchId.TextChanged += new System.EventHandler(this.searchedchanged);
+            this.txtSearchId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSearchId_KeyPress);
             // 
             // BtnSearchInRecords
             // 
