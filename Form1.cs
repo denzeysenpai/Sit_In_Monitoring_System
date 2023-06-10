@@ -2,35 +2,53 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True");
+        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC21\\ACTSTUDENT;Initial Catalog=SitInMonitoring;Integrated Security=True");
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
 
         Color buttonColors;
         Color notClicked;
         Color Clicked;
+        Color CanStart;
+        Color NotStart;
 
         bool exitApp;
         string password;
         int attemptsOfLogin;
 
         #region ALL OF FUNCTIONS
+        public void EnableStart() =>
+            BtnStart.Enabled = (BtnStart.BackColor = CanStart) == CanStart;
+
+        public void DisableStart() =>
+            BtnStart.Enabled = !((BtnStart.BackColor = NotStart) == NotStart);
+
+
+        public void DefaultEnable()
+        {
+            txtStudentName.Enabled = false;
+            txtSection.Enabled = false;
+            txtMiddleInitial.Enabled = false;
+            txtStudentLastName.Enabled = false;
+            BtnStart.Enabled = false;
+            BtnStart.BackColor = NotStart;
+            txtStudentID.Enabled = true;
+            txtStudentID.Focus();
+        }
+
         public void clearStudentText()
         {
             txtStudentName.Text = string.Empty;
             txtMiddleInitial.Text = string.Empty;
             txtStudentLastName.Text = string.Empty;
             txtSection.Text = string.Empty;
-            txtPriorityNum.Text = string.Empty;
         }//DONE
         public void AddStudent()
         {
@@ -70,15 +88,16 @@ namespace Sit_In_Monitoring
                 cmd1.ExecuteNonQuery();
                 cmd1.Parameters.Clear();
             }
-            MessageBox.Show("Student successfully sit in!");
-            Update_Data();
+            
             txtStudentID.Text = string.Empty;
             clearStudentText();
             txtStudentID.Focus();
+            MessageBox.Show("Student successfully sit in!");
+            //Update_Data();
         }//DONE
         public void StudentExisted()
         {
-            if(txtStudentID.Text != "")
+            if (txtStudentID.Text != "")
             {
                 SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                 ds.Clear();
@@ -90,41 +109,55 @@ namespace Sit_In_Monitoring
                     txtStudentLastName.Text = ds.Tables[0].Rows[0]["lastName"].ToString();
                     txtSection.Text = ds.Tables[0].Rows[0]["section"].ToString();
 
-                    MessageBox.Show("Student has been found!");
+                    DialogResult d = MessageBox.Show("Student has been found!", "Record Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (d.Equals(DialogResult.OK))
+                    {
+                        BtnStart.Enabled = true;
+                        BtnStart.BackColor = CanStart;
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("This student is not yet registered!");
+                    DialogResult d = MessageBox.Show("This student is not yet registered!", "STUDENT NOT FOUND", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     clearStudentText();
-                    txtStudentName.Focus();
+                    
+                    if (d.Equals(DialogResult.OK))
+                    {
+                        txtStudentLastName.Enabled = true;
+                        txtSection.Enabled = true;
+                        txtMiddleInitial.Enabled = true;
+                        txtStudentName.Enabled = true;
+                        txtStudentLastName.Focus();
+                        DisableStart();
+                    }
                 }
             }
             else
             {
-                MessageBox.Show("Please fill out student ID first!");
+                MessageBox.Show("Please fill out student ID first!", "INVALID INPUT!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 txtStudentID.Focus();
             }
-            
+
         }//DONE
-        public void Update_Data() // DONE
-        {
-            SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid", conn);
+        //public void Update_Data() // DONE
+        //{
+        //    SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid", conn);
 
-            DataTable dt = new DataTable();
-            s.Fill(dt);
-            DataGrid.Rows.Clear();
+        //    DataTable dt = new DataTable();
+        //    s.Fill(dt);
+        //    DataGrid.Rows.Clear();
 
-            foreach(DataRow dr in dt.Rows)
-            {
-                int cs = DataGrid.Rows.Add();
-                //int rv = recordsView.Rows.Add();
-                for(int i = 0; i < 7; i++)
-                {
-                    DataGrid.Rows[cs].Cells[i].Value = dr[i].ToString();
-                    //recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
-                }
-            }
-        }
+        //    foreach(DataRow dr in dt.Rows)
+        //    {
+        //        int cs = DataGrid.Rows.Add();
+        //        //int rv = recordsView.Rows.Add();
+        //        for(int i = 0; i < 7; i++)
+        //        {
+        //            DataGrid.Rows[cs].Cells[i].Value = dr[i].ToString();
+        //            //recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
+        //        }
+        //    }
+        //}
         public void LogoutStudent(DataGridViewCellEventArgs e)//DONE
         {
             DateTime date = DateTime.Now;
@@ -149,7 +182,7 @@ namespace Sit_In_Monitoring
         {
 
         }//NEXT TO BE MADE -EZSUJERO 6/9/23
-        
+
         //MARK PALIHOG KO TARONG NYA SA TAB INDEX SA TANANG TEXTBOX
         //NYA PALIHOG NLNG PUD KO REMOVE SA PRIORITY NUMBER MARK KAY 1ST COME 1ST SERVE RAMAN DIAY TA.
         //NYA PLEASE LANG SAD PUD KO MARK NGA E BUTANG DIRI ANG MGA LOCATIONS SA FORM IN CASE NAA KOY IPANG CHANGE, MAG ASK LNG NYA PUD KO UGMA
@@ -172,7 +205,6 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(mrg2, g1);
             Design.RoundCorner(mrg3, g1);
             Design.RoundCorner(mrg4, g1);
-            Design.RoundCorner(mrg5, g1);
             Design.RoundCorner(mrg6, g1);
             Design.RoundCorner(mrg7, g1);
 
@@ -183,7 +215,6 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(l2, g2);
             Design.RoundCorner(l3, g2);
             Design.RoundCorner(l4, g2);
-            Design.RoundCorner(l5, g2);
             Design.RoundCorner(l6, g2);
             Design.RoundCorner(l7, g2);
 
@@ -192,15 +223,19 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(DataGrid, 15);
             Design.RoundCorner(recordsView, 15);
             Design.RoundCorner(pnlStudentInfo, 15);
+
+
         }
         private void Form1_Load(object sender, EventArgs e)
         {
             notClicked = Color.FromArgb(210, 242, 250);
             Clicked = Color.FromArgb(65, 205, 242);
+            CanStart = Color.FromArgb(7, 163, 58);
+            NotStart = Color.FromArgb(65, 205, 242);
 
             pnlConfirmExit.Hide();
             exitApp = false;
-            Update_Data();
+            //Update_Data();
 
             pnlConfirmExit.Location = new Point(446, 204);
             pnlRecords.Location = new Point(0, 0);
@@ -220,6 +255,31 @@ namespace Sit_In_Monitoring
             BtnPrint.BackColor = buttonColors;
             BtnStart.BackColor = buttonColors;
             BtnEdit.BackColor = buttonColors;
+
+            txtStudentID.TabIndex = 0;
+            BtnSearch.TabIndex = 1;
+            txtStudentLastName.TabIndex = 2;
+            txtStudentName.TabIndex = 3;
+            txtMiddleInitial.TabIndex = 4;
+            txtSection.TabIndex = 5;
+
+            foreach (Control ctr in this.Controls)
+            {
+                if (ctr is Panel)
+                {
+                    ctr.TabIndex = 1;
+                    ctr.TabStop = false;
+                }
+                if (ctr is Form)
+                {
+                    ctr.TabIndex = 0;
+                    ctr.TabStop = false;
+                    ctr.Enabled = true;
+                    ctr.Focus();
+                }
+            }
+            DefaultEnable();
+
         }
 
         #region Behavior UI
@@ -231,7 +291,6 @@ namespace Sit_In_Monitoring
         private void PassHasInput(object sender, EventArgs e) => CheckForInput(txtPass, placeholder3);
         private void lastnamehasinput(object sender, EventArgs e) => CheckForInput(txtStudentLastName, placeholder4);
         private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
-        private void prioinput(object sender, EventArgs e) => CheckForInput(txtPriorityNum, placeholder6);
         private void searchedchanged(object sender, EventArgs e) => CheckForInput(txtSearchId, placeholder7);
         private void initialHasInput(object sender, EventArgs e) => CheckForInput(txtMiddleInitial, placeholder8);
 
@@ -244,10 +303,8 @@ namespace Sit_In_Monitoring
         private void passClick(object sender, EventArgs e) => txtPass.Focus();
         private void lnclick(object sender, EventArgs e) => txtStudentLastName.Focus();
         private void seclick(object sender, EventArgs e) => txtSection.Focus();
-        private void prnumclick(object sender, EventArgs e) => txtPriorityNum.Focus();
         private void qw1(object sender, EventArgs e) => txtStudentLastName.Focus();
         private void qw2(object sender, EventArgs e) => txtSection.Focus();
-        private void qw3(object sender, EventArgs e) => txtPriorityNum.Focus();
         private void placeholder7click(object sender, EventArgs e) => txtSearchId.Focus();
         private void inClick(object sender, EventArgs e) => txtMiddleInitial.Focus();
 
@@ -267,6 +324,7 @@ namespace Sit_In_Monitoring
         {
             void TextBoxBehaviour(Control txtbx, Control mrgin, Control placeholders) =>
                 placeholders.Visible = (mrgin.BackColor = txtbx.Focused ? Clicked : notClicked) == notClicked;
+            bool CheckForInput(Control txt) => !(txt.Text == null || txt.Text == "");
 
             // Border highlight
             TextBoxBehaviour(txtStudentID, mrg1, placeholder1);
@@ -283,14 +341,16 @@ namespace Sit_In_Monitoring
             // Section
             TextBoxBehaviour(txtSection, mrg4, placeholder5);
 
-            // Priority num
-            TextBoxBehaviour(txtPriorityNum, mrg5, placeholder6);
-
             // Search
             TextBoxBehaviour(txtSearchId, mrg6, placeholder7);
 
             // Middle Initial
             TextBoxBehaviour(txtMiddleInitial, mrg7, placeholder8);
+
+            if (CheckForInput(txtStudentID) && CheckForInput(txtStudentName) && CheckForInput(txtStudentLastName) && CheckForInput(txtMiddleInitial) && CheckForInput(txtSection))
+                EnableStart();
+            else
+                DisableStart();
         }
 
 
@@ -339,13 +399,13 @@ namespace Sit_In_Monitoring
             dateToday.Checked = true;
             dateToday.Select();
         }
-#endregion
+        #endregion
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
             string ErrorMessage = "";
             bool ErrorInInputIsDetected = false;
 
-            bool ControlHasNullInputIn(Control txtbox) => 
+            bool ControlHasNullInputIn(Control txtbox) =>
                 ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
 
 
@@ -364,8 +424,6 @@ namespace Sit_In_Monitoring
             if (ControlHasNullInputIn(txtSection))
                 ErrorMessage += "Please Fill out Student Section!\n";
 
-            if (ControlHasNullInputIn(txtPriorityNum))
-                ErrorMessage += "Please Fill out Priority Number!\n";
 
 
             if (ErrorInInputIsDetected)
@@ -374,17 +432,18 @@ namespace Sit_In_Monitoring
             {
                 try
                 {
+                    DefaultEnable();
                     AddStudent();
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
-                }  
+                }
             }
             conn.Close();
         }
         private void DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e) // Update data during log out
-        {         
+        {
             bool StudentLogsOut = e.RowIndex >= 0 && e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index;
 
             if (StudentLogsOut)
@@ -398,7 +457,7 @@ namespace Sit_In_Monitoring
                     MessageBox.Show(ex.Message);
                 }
                 conn.Close();
-                Update_Data();
+                //Update_Data();
             }
         }
 
@@ -441,7 +500,6 @@ namespace Sit_In_Monitoring
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show(ex.Message);
             }
             conn.Close();
@@ -467,6 +525,10 @@ namespace Sit_In_Monitoring
 
         }
 
+        private void pnlRecords_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
     class SeiyaMarx
     {

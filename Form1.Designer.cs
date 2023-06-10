@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -50,10 +50,6 @@
             this.pnlLoginFrame = new System.Windows.Forms.Panel();
             this.BtnSearch = new ItachiUIBunifu.ButtonBunifuItachi();
             this.BtnStart = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.mrg5 = new System.Windows.Forms.Panel();
-            this.l5 = new System.Windows.Forms.Panel();
-            this.placeholder6 = new System.Windows.Forms.Label();
-            this.txtPriorityNum = new System.Windows.Forms.TextBox();
             this.mrg3 = new System.Windows.Forms.Panel();
             this.l3 = new System.Windows.Forms.Panel();
             this.placeholder4 = new System.Windows.Forms.Label();
@@ -138,8 +134,6 @@
             this.pnlStudsRec.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).BeginInit();
             this.pnlLoginFrame.SuspendLayout();
-            this.mrg5.SuspendLayout();
-            this.l5.SuspendLayout();
             this.mrg3.SuspendLayout();
             this.l3.SuspendLayout();
             this.mrg4.SuspendLayout();
@@ -192,7 +186,7 @@
             this.tm2.Location = new System.Drawing.Point(23, 109);
             this.tm2.Name = "tm2";
             this.tm2.Size = new System.Drawing.Size(426, 92);
-            this.tm2.TabIndex = 3;
+            this.tm2.TabIndex = 1;
             // 
             // tm1
             // 
@@ -202,7 +196,7 @@
             this.tm1.Location = new System.Drawing.Point(8, 6);
             this.tm1.Name = "tm1";
             this.tm1.Size = new System.Drawing.Size(409, 80);
-            this.tm1.TabIndex = 3;
+            this.tm1.TabIndex = 0;
             // 
             // dateToday
             // 
@@ -214,7 +208,8 @@
             this.dateToday.Name = "dateToday";
             this.dateToday.Size = new System.Drawing.Size(178, 35);
             this.dateToday.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.dateToday.TabIndex = 4;
+            this.dateToday.TabIndex = 12;
+            this.dateToday.TabStop = false;
             this.dateToday.TextColor = System.Drawing.Color.White;
             // 
             // pnlStudsRec
@@ -247,7 +242,8 @@
             this.DataGrid.Location = new System.Drawing.Point(21, 61);
             this.DataGrid.Name = "DataGrid";
             this.DataGrid.Size = new System.Drawing.Size(941, 597);
-            this.DataGrid.TabIndex = 0;
+            this.DataGrid.TabIndex = 1;
+            this.DataGrid.TabStop = false;
             this.DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellContentClick);
             // 
             // DATE
@@ -308,9 +304,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -327,7 +323,7 @@
             this.label1.Location = new System.Drawing.Point(305, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 40);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 0;
             this.label1.Text = "STUDENTS LOGGED IN";
             // 
             // label2
@@ -339,7 +335,7 @@
             this.label2.Location = new System.Drawing.Point(96, 38);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(253, 47);
-            this.label2.TabIndex = 6;
+            this.label2.TabIndex = 2;
             this.label2.Text = "SIT-IN FORM";
             // 
             // pnlLoginFrame
@@ -347,7 +343,6 @@
             this.pnlLoginFrame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
             this.pnlLoginFrame.Controls.Add(this.BtnSearch);
             this.pnlLoginFrame.Controls.Add(this.BtnStart);
-            this.pnlLoginFrame.Controls.Add(this.mrg5);
             this.pnlLoginFrame.Controls.Add(this.mrg3);
             this.pnlLoginFrame.Controls.Add(this.mrg4);
             this.pnlLoginFrame.Controls.Add(this.mrg7);
@@ -357,7 +352,7 @@
             this.pnlLoginFrame.Location = new System.Drawing.Point(23, 216);
             this.pnlLoginFrame.Name = "pnlLoginFrame";
             this.pnlLoginFrame.Size = new System.Drawing.Size(427, 518);
-            this.pnlLoginFrame.TabIndex = 4;
+            this.pnlLoginFrame.TabIndex = 0;
             // 
             // BtnSearch
             // 
@@ -370,10 +365,10 @@
             this.BtnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSearch.ForeColor = System.Drawing.Color.White;
-            this.BtnSearch.Location = new System.Drawing.Point(280, 101);
+            this.BtnSearch.Location = new System.Drawing.Point(278, 101);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(115, 45);
-            this.BtnSearch.TabIndex = 1;
+            this.BtnSearch.TabIndex = 7;
             this.BtnSearch.Text = "SEARCH";
             this.BtnSearch.TextColor = System.Drawing.Color.White;
             this.BtnSearch.UseVisualStyleBackColor = false;
@@ -393,66 +388,17 @@
             this.BtnStart.Location = new System.Drawing.Point(32, 371);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(362, 48);
-            this.BtnStart.TabIndex = 7;
+            this.BtnStart.TabIndex = 5;
             this.BtnStart.Text = "START TIME";
             this.BtnStart.TextColor = System.Drawing.Color.White;
             this.BtnStart.UseVisualStyleBackColor = false;
             this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
             // 
-            // mrg5
-            // 
-            this.mrg5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
-            this.mrg5.Controls.Add(this.l5);
-            this.mrg5.Location = new System.Drawing.Point(35, 317);
-            this.mrg5.Name = "mrg5";
-            this.mrg5.Size = new System.Drawing.Size(360, 49);
-            this.mrg5.TabIndex = 0;
-            // 
-            // l5
-            // 
-            this.l5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
-            this.l5.Controls.Add(this.placeholder6);
-            this.l5.Controls.Add(this.txtPriorityNum);
-            this.l5.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.l5.Location = new System.Drawing.Point(1, 1);
-            this.l5.Name = "l5";
-            this.l5.Size = new System.Drawing.Size(358, 47);
-            this.l5.TabIndex = 6;
-            this.l5.Click += new System.EventHandler(this.qw3);
-            // 
-            // placeholder6
-            // 
-            this.placeholder6.AutoSize = true;
-            this.placeholder6.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.placeholder6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placeholder6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder6.Location = new System.Drawing.Point(23, 12);
-            this.placeholder6.Name = "placeholder6";
-            this.placeholder6.Size = new System.Drawing.Size(152, 21);
-            this.placeholder6.TabIndex = 6;
-            this.placeholder6.Text = "PRIORITY NUMBER";
-            this.placeholder6.Click += new System.EventHandler(this.prnumclick);
-            // 
-            // txtPriorityNum
-            // 
-            this.txtPriorityNum.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
-            this.txtPriorityNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPriorityNum.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
-            this.txtPriorityNum.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPriorityNum.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.txtPriorityNum.Location = new System.Drawing.Point(23, 10);
-            this.txtPriorityNum.MaxLength = 22;
-            this.txtPriorityNum.Name = "txtPriorityNum";
-            this.txtPriorityNum.Size = new System.Drawing.Size(312, 27);
-            this.txtPriorityNum.TabIndex = 26;
-            this.txtPriorityNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.txtPriorityNum.TextChanged += new System.EventHandler(this.prioinput);
-            // 
             // mrg3
             // 
             this.mrg3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg3.Controls.Add(this.l3);
-            this.mrg3.Location = new System.Drawing.Point(33, 209);
+            this.mrg3.Location = new System.Drawing.Point(32, 155);
             this.mrg3.Name = "mrg3";
             this.mrg3.Size = new System.Drawing.Size(360, 49);
             this.mrg3.TabIndex = 0;
@@ -466,7 +412,7 @@
             this.l3.Location = new System.Drawing.Point(1, 1);
             this.l3.Name = "l3";
             this.l3.Size = new System.Drawing.Size(358, 47);
-            this.l3.TabIndex = 4;
+            this.l3.TabIndex = 0;
             this.l3.Click += new System.EventHandler(this.qw1);
             // 
             // placeholder4
@@ -475,10 +421,10 @@
             this.placeholder4.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder4.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder4.Location = new System.Drawing.Point(25, 11);
+            this.placeholder4.Location = new System.Drawing.Point(25, 12);
             this.placeholder4.Name = "placeholder4";
             this.placeholder4.Size = new System.Drawing.Size(99, 21);
-            this.placeholder4.TabIndex = 4;
+            this.placeholder4.TabIndex = 0;
             this.placeholder4.Text = "LAST NAME";
             this.placeholder4.Click += new System.EventHandler(this.lnclick);
             // 
@@ -493,7 +439,7 @@
             this.txtStudentLastName.MaxLength = 22;
             this.txtStudentLastName.Name = "txtStudentLastName";
             this.txtStudentLastName.Size = new System.Drawing.Size(312, 27);
-            this.txtStudentLastName.TabIndex = 24;
+            this.txtStudentLastName.TabIndex = 0;
             this.txtStudentLastName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentLastName.TextChanged += new System.EventHandler(this.lastnamehasinput);
             // 
@@ -501,7 +447,7 @@
             // 
             this.mrg4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg4.Controls.Add(this.l4);
-            this.mrg4.Location = new System.Drawing.Point(34, 263);
+            this.mrg4.Location = new System.Drawing.Point(32, 263);
             this.mrg4.Name = "mrg4";
             this.mrg4.Size = new System.Drawing.Size(360, 49);
             this.mrg4.TabIndex = 0;
@@ -515,7 +461,7 @@
             this.l4.Location = new System.Drawing.Point(1, 1);
             this.l4.Name = "l4";
             this.l4.Size = new System.Drawing.Size(358, 47);
-            this.l4.TabIndex = 5;
+            this.l4.TabIndex = 0;
             this.l4.Click += new System.EventHandler(this.qw2);
             // 
             // placeholder5
@@ -524,10 +470,10 @@
             this.placeholder5.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder5.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder5.Location = new System.Drawing.Point(24, 12);
+            this.placeholder5.Location = new System.Drawing.Point(24, 14);
             this.placeholder5.Name = "placeholder5";
             this.placeholder5.Size = new System.Drawing.Size(79, 21);
-            this.placeholder5.TabIndex = 5;
+            this.placeholder5.TabIndex = 1;
             this.placeholder5.Text = "SECTION";
             this.placeholder5.Click += new System.EventHandler(this.seclick);
             // 
@@ -542,7 +488,7 @@
             this.txtSection.MaxLength = 22;
             this.txtSection.Name = "txtSection";
             this.txtSection.Size = new System.Drawing.Size(312, 27);
-            this.txtSection.TabIndex = 25;
+            this.txtSection.TabIndex = 0;
             this.txtSection.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtSection.TextChanged += new System.EventHandler(this.sectioninput);
             // 
@@ -550,10 +496,10 @@
             // 
             this.mrg7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg7.Controls.Add(this.l7);
-            this.mrg7.Location = new System.Drawing.Point(316, 155);
+            this.mrg7.Location = new System.Drawing.Point(313, 209);
             this.mrg7.Name = "mrg7";
             this.mrg7.Size = new System.Drawing.Size(79, 49);
-            this.mrg7.TabIndex = 0;
+            this.mrg7.TabIndex = 4;
             // 
             // l7
             // 
@@ -564,7 +510,7 @@
             this.l7.Location = new System.Drawing.Point(1, 1);
             this.l7.Name = "l7";
             this.l7.Size = new System.Drawing.Size(77, 47);
-            this.l7.TabIndex = 3;
+            this.l7.TabIndex = 0;
             this.l7.Click += new System.EventHandler(this.inClick);
             // 
             // placeholder8
@@ -573,10 +519,10 @@
             this.placeholder8.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder8.Location = new System.Drawing.Point(20, 12);
+            this.placeholder8.Location = new System.Drawing.Point(20, 14);
             this.placeholder8.Name = "placeholder8";
             this.placeholder8.Size = new System.Drawing.Size(38, 21);
-            this.placeholder8.TabIndex = 3;
+            this.placeholder8.TabIndex = 8;
             this.placeholder8.Text = "M.I.";
             this.placeholder8.Click += new System.EventHandler(this.inClick);
             // 
@@ -591,7 +537,7 @@
             this.txtMiddleInitial.MaxLength = 1;
             this.txtMiddleInitial.Name = "txtMiddleInitial";
             this.txtMiddleInitial.Size = new System.Drawing.Size(38, 27);
-            this.txtMiddleInitial.TabIndex = 23;
+            this.txtMiddleInitial.TabIndex = 0;
             this.txtMiddleInitial.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtMiddleInitial.TextChanged += new System.EventHandler(this.initialHasInput);
             // 
@@ -599,7 +545,7 @@
             // 
             this.mrg2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg2.Controls.Add(this.l2);
-            this.mrg2.Location = new System.Drawing.Point(32, 155);
+            this.mrg2.Location = new System.Drawing.Point(32, 209);
             this.mrg2.Name = "mrg2";
             this.mrg2.Size = new System.Drawing.Size(278, 49);
             this.mrg2.TabIndex = 0;
@@ -613,7 +559,7 @@
             this.l2.Location = new System.Drawing.Point(1, 1);
             this.l2.Name = "l2";
             this.l2.Size = new System.Drawing.Size(276, 47);
-            this.l2.TabIndex = 2;
+            this.l2.TabIndex = 0;
             this.l2.Click += new System.EventHandler(this.userClick2);
             // 
             // placeholder2
@@ -622,10 +568,10 @@
             this.placeholder2.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder2.Location = new System.Drawing.Point(26, 12);
+            this.placeholder2.Location = new System.Drawing.Point(26, 13);
             this.placeholder2.Name = "placeholder2";
             this.placeholder2.Size = new System.Drawing.Size(102, 21);
-            this.placeholder2.TabIndex = 2;
+            this.placeholder2.TabIndex = 0;
             this.placeholder2.Text = "FIRST NAME";
             this.placeholder2.Click += new System.EventHandler(this.fullNameClick);
             // 
@@ -640,7 +586,7 @@
             this.txtStudentName.MaxLength = 22;
             this.txtStudentName.Name = "txtStudentName";
             this.txtStudentName.Size = new System.Drawing.Size(230, 27);
-            this.txtStudentName.TabIndex = 22;
+            this.txtStudentName.TabIndex = 1;
             this.txtStudentName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentName.TextChanged += new System.EventHandler(this.fullNameHasInput);
             // 
@@ -671,7 +617,7 @@
             this.placeholder1.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.placeholder1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.placeholder1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
-            this.placeholder1.Location = new System.Drawing.Point(26, 12);
+            this.placeholder1.Location = new System.Drawing.Point(26, 13);
             this.placeholder1.Name = "placeholder1";
             this.placeholder1.Size = new System.Drawing.Size(169, 21);
             this.placeholder1.TabIndex = 0;
@@ -688,7 +634,7 @@
             this.txtStudentID.MaxLength = 11;
             this.txtStudentID.Name = "txtStudentID";
             this.txtStudentID.Size = new System.Drawing.Size(190, 27);
-            this.txtStudentID.TabIndex = 20;
+            this.txtStudentID.TabIndex = 1;
             this.txtStudentID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtStudentID.TextChanged += new System.EventHandler(this.idNumberHasInput);
             this.txtStudentID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CheckForBadInput);
@@ -713,7 +659,7 @@
             this.label3.Location = new System.Drawing.Point(101, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(244, 13);
-            this.label3.TabIndex = 7;
+            this.label3.TabIndex = 3;
             this.label3.Text = "DEPARTMENT OF NETWORK AND TECHNICAL SERVICES";
             // 
             // CLOCK
@@ -879,10 +825,11 @@
             this.pnlRecords.Controls.Add(this.recordsView);
             this.pnlRecords.Controls.Add(this.panel2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
+            this.pnlRecords.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlRecords_Paint);
             // 
             // label6
             // 
@@ -941,6 +888,7 @@
             this.BtnDelete.Name = "BtnDelete";
             this.BtnDelete.Size = new System.Drawing.Size(100, 30);
             this.BtnDelete.TabIndex = 1;
+            this.BtnDelete.TabStop = false;
             this.BtnDelete.Text = "DELETE";
             this.BtnDelete.TextColor = System.Drawing.Color.White;
             this.BtnDelete.UseVisualStyleBackColor = false;
@@ -961,6 +909,7 @@
             this.BtnEdit.Name = "BtnEdit";
             this.BtnEdit.Size = new System.Drawing.Size(100, 30);
             this.BtnEdit.TabIndex = 1;
+            this.BtnEdit.TabStop = false;
             this.BtnEdit.Text = "EDIT";
             this.BtnEdit.TextColor = System.Drawing.Color.White;
             this.BtnEdit.UseVisualStyleBackColor = false;
@@ -981,6 +930,7 @@
             this.BtnPrint.Name = "BtnPrint";
             this.BtnPrint.Size = new System.Drawing.Size(100, 30);
             this.BtnPrint.TabIndex = 1;
+            this.BtnPrint.TabStop = false;
             this.BtnPrint.Text = "PRINT";
             this.BtnPrint.TextColor = System.Drawing.Color.White;
             this.BtnPrint.UseVisualStyleBackColor = false;
@@ -1245,7 +1195,7 @@
             this.BtnSearchInRecords.Location = new System.Drawing.Point(1300, 60);
             this.BtnSearchInRecords.Name = "BtnSearchInRecords";
             this.BtnSearchInRecords.Size = new System.Drawing.Size(146, 44);
-            this.BtnSearchInRecords.TabIndex = 13;
+            this.BtnSearchInRecords.TabIndex = 1;
             this.BtnSearchInRecords.Text = "SEARCH";
             this.BtnSearchInRecords.TextColor = System.Drawing.Color.White;
             this.BtnSearchInRecords.UseVisualStyleBackColor = false;
@@ -1341,6 +1291,7 @@
             this.hideRecords.Name = "hideRecords";
             this.hideRecords.Size = new System.Drawing.Size(91, 40);
             this.hideRecords.TabIndex = 0;
+            this.hideRecords.TabStop = false;
             this.hideRecords.Text = "GO BACK";
             this.hideRecords.UseVisualStyleBackColor = false;
             this.hideRecords.Click += new System.EventHandler(this.hideRecords_Click);
@@ -1383,7 +1334,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1472, 40);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 1;
             // 
             // exitButton
             // 
@@ -1396,7 +1347,8 @@
             this.exitButton.Location = new System.Drawing.Point(1428, 0);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(44, 40);
-            this.exitButton.TabIndex = 0;
+            this.exitButton.TabIndex = 11;
+            this.exitButton.TabStop = false;
             this.exitButton.Text = "X";
             this.exitButton.UseVisualStyleBackColor = false;
             this.exitButton.Click += new System.EventHandler(this.exitButton_Click);
@@ -1434,9 +1386,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.DataGrid)).EndInit();
             this.pnlLoginFrame.ResumeLayout(false);
             this.pnlLoginFrame.PerformLayout();
-            this.mrg5.ResumeLayout(false);
-            this.l5.ResumeLayout(false);
-            this.l5.PerformLayout();
             this.mrg3.ResumeLayout(false);
             this.l3.ResumeLayout(false);
             this.l3.PerformLayout();
@@ -1533,10 +1482,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button hideRecords;
         private ItachiUIBunifu.ButtonBunifuItachi BtnSearch;
-        private System.Windows.Forms.Panel mrg5;
-        private System.Windows.Forms.Panel l5;
-        private System.Windows.Forms.Label placeholder6;
-        private System.Windows.Forms.TextBox txtPriorityNum;
         private System.Windows.Forms.Panel mrg3;
         private System.Windows.Forms.Panel l3;
         private System.Windows.Forms.Label placeholder4;

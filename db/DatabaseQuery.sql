@@ -1,4 +1,5 @@
 ﻿using SitInMonitoring
+Create database SitInMonitoring
 
 create table Students(
 personid int identity(1,1) PRIMARY KEY NOT NULL,
