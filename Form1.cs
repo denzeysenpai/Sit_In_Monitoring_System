@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sit_In_Monitoring
 {
@@ -42,34 +44,32 @@ namespace Sit_In_Monitoring
         #region ALL OF FUNCTIONS // hekhokhekohok
         public void SetNotificationOnLoad() =>
             pnlNotification.Left = Width;
-        public void NotifySuccessfulSitIn()
-        {
-            notificationMessage.Text = "Logged-in Successfully!";
-            notify = true;
-        }
-
-        public void NotifySuccessfulLogOut()
-        {
-            notificationMessage.Text = "Logged-Out Successfully!";
-            notify = true;
-        }
+        public void NotifySuccessfulSitIn() => // Notification for successful log in
+            notify = (notificationMessage.Text = "Logged-in Successfully!") == "Logged-in Successfully!" || notify;
+        public void NotifySuccessfulLogOut() => // Notification for successful log out
+            notify = (notificationMessage.Text = "Logged-Out Successfully!") == "Logged-Out Successfully!" || notify;
 
         public void ShowAdminPasswordInput()
         {
             pnlAdminLock.Show();
             pnlAdminLock.BringToFront();
             pnlAdminLock.Enabled = true;
+            txtPass.Focus();
+            txtStudentID.Enabled = false;
+            BtnSearch.Enabled = false;
         }
 
         public void CloseConfirmation()
         {
+            txtStudentID.Enabled = true;
             pnlAdminLock.Hide();
-            txtPass.Text = string.Empty;
+            txtPass.Text = "";
             ReasonForPassword = "";
+            BtnSearch.Enabled = true;
         }
 
         // just add body in local functions
-        public void ConfirmReasonForPasswordInput() // This method is only called after input matches the correct password - maki
+        public void AdminLockReasonConfirmation() // This method is only called after input matches the correct password - maki
         {
             void ReasonIsForExit() =>
                 exitApp = true;
@@ -99,7 +99,7 @@ namespace Sit_In_Monitoring
             }
 
 
-            void ReasonIsForRecords()
+            void ReasonIsForRecords() // Show Records Page
             {
                 pnlRecords.Show();
                 pnlRecords.Enabled = true;
@@ -115,6 +115,7 @@ namespace Sit_In_Monitoring
                 case "print": ReasonIsForPrint(); break;
                 case "records": ReasonIsForRecords(); break;
             }
+
             CloseConfirmation();
         }
 
@@ -205,7 +206,7 @@ namespace Sit_In_Monitoring
                     txtStudentLastName.Text = ds.Tables[0].Rows[0]["lastName"].ToString();
                     txtSection.Text = ds.Tables[0].Rows[0]["section"].ToString();
 
-                    DialogResult d = MessageBox.Show("Student Record Already Exists!", "Record Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult d = MessageBox.Show("Student Record Exists!", "Record Found", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (d.Equals(DialogResult.OK))
                     {
                         BtnStart.Enabled = true;
@@ -214,7 +215,7 @@ namespace Sit_In_Monitoring
                 }
                 else
                 {
-                    DialogResult d = MessageBox.Show("This student is not yet registered!", "STUDENT NOT FOUND", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
+                    DialogResult d = MessageBox.Show("This student is not yet registered! \nPlease register before sit-in!", "STUDENT NOT FOUND", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
                     clearStudentText();
 
                     if (d.Equals(DialogResult.OK))
@@ -312,14 +313,18 @@ namespace Sit_In_Monitoring
 
         #endregion
 
+
+        // 4, 150
+        // 4, 370
         public Form1()
         {
             InitializeComponent();
 
-
             // Add design
-            TextboxMargins = new SeiyaMarx(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 25);
-            TextboxBodies = new SeiyaMarx(tm1, tm2, l1, l2, l3, l4, l6, l7, 24);
+            Design.RoundCorner(this, 25);
+
+            TextboxMargins = new SeiyaMarx(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 18);
+            TextboxBodies = new SeiyaMarx(tm1, tm2, l1, l2, l3, l4, l6, l7, 17);
             Fifteens = new SeiyaMarx(pnlmrgn, pnlLoginFrame, pnlStudsRec, pnlDesign, pnlDepth, DataGrid, recordsView, pnlStudentInfo, pnlDate, 15);
 
             TextboxMargins.RoundCorner();
@@ -327,10 +332,10 @@ namespace Sit_In_Monitoring
             Fifteens.RoundCorner();
 
             Design.RoundCorner(pnlAdminLock, 18);
-            Design.RoundCorner(this, 25);
             Design.RoundCorner(pnlNotification, 50);
             Design.RoundCorner(pnlDateMargin, 15);
             Design.RoundCorner(pnlLoginBody, 15);
+            Design.RoundCorner(pnltm2, 15);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -358,11 +363,11 @@ namespace Sit_In_Monitoring
             BtnConfirm.BackColor = Color.Black;
             BtnCancelIn.BackColor = Color.Black;
 
-            BtnDelete.BackColor = buttonColors;
+            BtnDelete.BackColor = Color.FromArgb(0, 93, 130);
             BtnSearch.BackColor = buttonColors;
-            BtnPrint.BackColor = buttonColors;
+            BtnPrint.BackColor = Color.FromArgb(0, 50, 94);
             BtnStart.BackColor = buttonColors;
-            BtnEdit.BackColor = buttonColors;
+            BtnEdit.BackColor = Color.FromArgb(0, 134, 158);
 
             txtStudentID.TabIndex = 0;
             BtnSearch.TabIndex = 1;
@@ -396,20 +401,20 @@ namespace Sit_In_Monitoring
             Update();
         }
 
-        #region Behavior UI
+        #region _Behavior UI
         private void idNumberHasInput(object sender, EventArgs e)
         {
             BtnSearch.Enabled = true;
             BtnSearch.Text = "SEARCH";
-            CheckForInput(txtStudentID, placeholder1);
+            CheckForBadInput_In(txtStudentID, placeholder1);
         }
         private void CheckForBadInput(object sender, KeyPressEventArgs e) => e.Handled = char.IsLetter(e.KeyChar);
-        private void fullNameHasInput(object sender, EventArgs e) => CheckForInput(txtStudentName, placeholder2);
-        private void PassHasInput(object sender, EventArgs e) => CheckForInput(txtPass, placeholder3);
-        private void lastnamehasinput(object sender, EventArgs e) => CheckForInput(txtStudentLastName, placeholder4);
-        private void sectioninput(object sender, EventArgs e) => CheckForInput(txtSection, placeholder5);
-        private void searchedchanged(object sender, EventArgs e) => CheckForInput(txtSearchId, placeholder7);
-        private void initialHasInput(object sender, EventArgs e) => CheckForInput(txtMiddleInitial, placeholder8);
+        private void fullNameHasInput(object sender, EventArgs e) => CheckForBadInput_In(txtStudentName, placeholder2);
+        private void PassHasInput(object sender, EventArgs e) => CheckForBadInput_In(txtPass, placeholder3);
+        private void lastnamehasinput(object sender, EventArgs e) => CheckForBadInput_In(txtStudentLastName, placeholder4);
+        private void sectioninput(object sender, EventArgs e) => CheckForBadInput_In(txtSection, placeholder5);
+        private void searchedchanged(object sender, EventArgs e) => CheckForBadInput_In(txtSearchId, placeholder7);
+        private void initialHasInput(object sender, EventArgs e) => CheckForBadInput_In(txtMiddleInitial, placeholder8);
 
 
         // Text Focus
@@ -452,32 +457,33 @@ namespace Sit_In_Monitoring
         /// </summary>
         private void TextBoxFocus(object sender, EventArgs e)
         {
-            void TextBoxBehaviour(Control txtbx, Control mrgin, Control placeholders) =>
+            void TextBox_Behavior(Control txtbx, Control mrgin, Control placeholders) => // Text box placeholders _Behavior
                 placeholders.Visible = (mrgin.BackColor = txtbx.Focused ? Clicked : notClicked) == notClicked;
-            bool CheckForInput(Control txt) => !(txt.Text == null || txt.Text == "");
+            bool CheckForBadInput_In(Control txt) => 
+                !(txt.Text == null || txt.Text == "");
 
             // Border highlight
-            TextBoxBehaviour(txtStudentID, mrg1, placeholder1);
+            TextBox_Behavior(txtStudentID, mrg1, placeholder1);
 
             // Border highlight
-            TextBoxBehaviour(txtStudentName, mrg2, placeholder2);
+            TextBox_Behavior(txtStudentName, mrg2, placeholder2);
 
             // Border highlight
-            TextBoxBehaviour(txtPass, borderpass, placeholder3);
+            TextBox_Behavior(txtPass, borderpass, placeholder3);
 
             // Last name
-            TextBoxBehaviour(txtStudentLastName, mrg3, placeholder4);
+            TextBox_Behavior(txtStudentLastName, mrg3, placeholder4);
 
             // Section
-            TextBoxBehaviour(txtSection, mrg4, placeholder5);
+            TextBox_Behavior(txtSection, mrg4, placeholder5);
 
             // Search
-            TextBoxBehaviour(txtSearchId, mrg6, placeholder7);
+            placeholder7.Visible = (mrg6.BackColor = txtSearchId.Focused ? Clicked : Color.FromArgb(0, 70, 92)) == Color.FromArgb(0, 70, 92);
 
             // Middle Initial
-            TextBoxBehaviour(txtMiddleInitial, mrg7, placeholder8);
+            TextBox_Behavior(txtMiddleInitial, mrg7, placeholder8);
 
-            if (CheckForInput(txtStudentID) && CheckForInput(txtStudentName) && CheckForInput(txtStudentLastName) && CheckForInput(txtMiddleInitial) && CheckForInput(txtSection))
+            if (CheckForBadInput_In(txtStudentID) && CheckForBadInput_In(txtStudentName) && CheckForBadInput_In(txtStudentLastName) && CheckForBadInput_In(txtMiddleInitial) && CheckForBadInput_In(txtSection))
                 EnableStart();
             else
                 DisableStart();
@@ -489,7 +495,7 @@ namespace Sit_In_Monitoring
         /// </summary>
         /// <param name="ctr"></param>
         /// <param name="placeholder"></param>
-        void CheckForInput(Control ctr, Control placeholder)
+        void CheckForBadInput_In(Control ctr, Control placeholder)
         {
             if (ctr.Text == string.Empty || ctr.Text == null) { placeholder.BringToFront(); } else { placeholder.SendToBack(); }
         }
@@ -507,7 +513,7 @@ namespace Sit_In_Monitoring
             {
                 if (txtPass.Text == password)
                 {
-                    ConfirmReasonForPasswordInput();
+                    AdminLockReasonConfirmation();
                     attemptsOfLogin = 0;
                 }
                 else
@@ -525,8 +531,13 @@ namespace Sit_In_Monitoring
             ReasonForPassword = "exit";
             ShowAdminPasswordInput();
         }
-        private void BtnCancelIn_Click(object sender, EventArgs e) =>
-            txtPass.Text = (pnlAdminLock.Visible = exitApp = false) ? string.Empty : txtPass.Text;
+        private void BtnCancelIn_Click(object sender, EventArgs e)
+        {
+            txtPass.Text = (pnlAdminLock.Visible = exitApp = false) ? string.Empty : string.Empty;
+            BtnSearch.Enabled = true;
+            txtStudentID.Enabled = true;
+            txtStudentID.Focus();
+        }
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
@@ -564,7 +575,7 @@ namespace Sit_In_Monitoring
 
             bool ControlHasNullInputIn(Control txtbox) => // this specifies invalid input
                 ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
-
+                //      ^^^^^INVALID INPUT DETECTED
 
             if (ControlHasNullInputIn(txtStudentID))
                 ErrorMessage += "Please Fill out Student ID!\n";
@@ -691,15 +702,22 @@ namespace Sit_In_Monitoring
         {
             SearchStudent();
         }
+
+        private void StudentIdNumberEffect(object sender, EventArgs e)
+        {
+            placeholder7.ForeColor = Color.FromArgb(0, 234, 255);
+        }
+
+        private void StudentIdNumberEffectEnd(object sender, EventArgs e)
+        {
+            placeholder7.ForeColor = Color.FromArgb(154, 214, 230);
+        }
     }
     class SeiyaMarx
     {
         List<Control> Set = new List<Control>();
         int radius;
-        public SeiyaMarx()
-        {
-
-        }
+        public SeiyaMarx() {/**/}
         public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, int radius)
         {
             Set.Add(ctr1);
@@ -711,7 +729,6 @@ namespace Sit_In_Monitoring
             Set.Add(ctr7);
             this.radius = radius;
         }
-
         public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, int radius)
         {
             Set.Add(ctr1);
@@ -724,7 +741,6 @@ namespace Sit_In_Monitoring
             Set.Add(ctr8);
             this.radius = radius;
         }
-
         public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, Control ctr9, int radius)
         {
             Set.Add(ctr1);
@@ -749,9 +765,5 @@ namespace Sit_In_Monitoring
                 ctr.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, ctr.Width, ctr.Height, radius, radius));
             }
         }
-
     }
-
-
-
 }
