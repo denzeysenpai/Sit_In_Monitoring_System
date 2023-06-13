@@ -52,3 +52,15 @@ ON students.personid = currentsession.personid
 SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.studentId = cs.studentId
 
 select * from SessionLogs
+
+
+SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where concat(sl.studentid, s.firstName, s.middleInitial ,s.lastname, s.section) like '%ez%'
+
+
+
+select * from SessionLogs
+
+
+
+
+UPDATE sessionLogs SET timeOut = '5:20:04 PM' where studentid = '21-2001265' and date = ' 06/13/2023'

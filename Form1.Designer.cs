@@ -117,12 +117,12 @@
             this.lDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lStudentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lFirstName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IMiddleInitial = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lMiddleInitial = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lLastName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IRemainingBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.hideRecords = new System.Windows.Forms.Button();
             this.pnlmrgn = new System.Windows.Forms.Panel();
@@ -882,6 +882,7 @@
             this.LBLBTNSEARCH.Size = new System.Drawing.Size(83, 23);
             this.LBLBTNSEARCH.TabIndex = 19;
             this.LBLBTNSEARCH.Text = "SEARCH";
+            this.LBLBTNSEARCH.Click += new System.EventHandler(this.LBLBTNSEARCH_Click);
             // 
             // label6
             // 
@@ -1196,17 +1197,18 @@
             this.lDate,
             this.lStudentId,
             this.lFirstName,
-            this.IMiddleInitial,
+            this.lMiddleInitial,
             this.lLastName,
             this.lSection,
             this.lTimeIn,
             this.lTimeOut,
-            this.IRemainingBalance});
+            this.lBalance});
             this.recordsView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
             this.recordsView.Location = new System.Drawing.Point(611, 91);
             this.recordsView.Name = "recordsView";
             this.recordsView.Size = new System.Drawing.Size(841, 635);
             this.recordsView.TabIndex = 12;
+            this.recordsView.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordView_CellClick);
             // 
             // lDate
             // 
@@ -1234,14 +1236,14 @@
             this.lFirstName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.lFirstName.Width = 160;
             // 
-            // IMiddleInitial
+            // lMiddleInitial
             // 
-            this.IMiddleInitial.Frozen = true;
-            this.IMiddleInitial.HeaderText = "M.I.";
-            this.IMiddleInitial.Name = "IMiddleInitial";
-            this.IMiddleInitial.ReadOnly = true;
-            this.IMiddleInitial.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IMiddleInitial.Width = 40;
+            this.lMiddleInitial.Frozen = true;
+            this.lMiddleInitial.HeaderText = "M.I.";
+            this.lMiddleInitial.Name = "lMiddleInitial";
+            this.lMiddleInitial.ReadOnly = true;
+            this.lMiddleInitial.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.lMiddleInitial.Width = 40;
             // 
             // lLastName
             // 
@@ -1278,13 +1280,13 @@
             this.lTimeOut.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.lTimeOut.Width = 60;
             // 
-            // IRemainingBalance
+            // lBalance
             // 
-            this.IRemainingBalance.HeaderText = "BALANCE";
-            this.IRemainingBalance.Name = "IRemainingBalance";
-            this.IRemainingBalance.ReadOnly = true;
-            this.IRemainingBalance.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.IRemainingBalance.ToolTipText = "Student\'s Remaining Time Balance";
+            this.lBalance.HeaderText = "BALANCE";
+            this.lBalance.Name = "lBalance";
+            this.lBalance.ReadOnly = true;
+            this.lBalance.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.lBalance.ToolTipText = "Student\'s Remaining Time Balance";
             // 
             // panel2
             // 
@@ -1349,6 +1351,7 @@
             this.dateForRecords.Size = new System.Drawing.Size(405, 33);
             this.dateForRecords.TabIndex = 9;
             this.dateForRecords.TabStop = false;
+            this.dateForRecords.ValueChanged += new System.EventHandler(this.dateForRecords_ValueChanged);
             // 
             // mrg6
             // 
@@ -1744,15 +1747,6 @@
         private System.Windows.Forms.DataGridView recordsView;
         private System.Windows.Forms.Label lblTime2;
         private System.Windows.Forms.DateTimePicker dateForRecords;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lStudentId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lFirstName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IMiddleInitial;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lLastName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lSection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IRemainingBalance;
         private System.Windows.Forms.Panel pnlmrgn;
         private System.Windows.Forms.Panel pnlDate;
         private System.Windows.Forms.Panel pnlDateMargin;
@@ -1772,6 +1766,15 @@
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel pnltm2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lStudentId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lFirstName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lMiddleInitial;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lLastName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lBalance;
     }
 }
 
