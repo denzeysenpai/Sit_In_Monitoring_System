@@ -12,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC22\\ACTSTUDENT;Initial Catalog=sitinez;Integrated Security=True");
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
@@ -173,7 +173,7 @@ namespace Sit_In_Monitoring
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, remainingTime, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, timeUsed, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd2.Parameters.AddWithValue("@date", date);
                     cmd2.Parameters.AddWithValue("@timeIn", time1);
@@ -199,7 +199,7 @@ namespace Sit_In_Monitoring
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, remainingTime, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, timeUsed, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd2.Parameters.AddWithValue("@date", date);
                     cmd2.Parameters.AddWithValue("@timeIn", time1);
@@ -287,7 +287,7 @@ namespace Sit_In_Monitoring
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
             conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut where studentid = @studentid and date = @dateNow", conn);
+            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut, TimeUsed =  concat (datediff(second,TimeIn,TimeOut)/3600,' hours ',(datediff(second,TimeIn,TimeOut)%3600)/60,' minutes') where studentid = @studentid and date = @dateNow", conn);
             cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
             cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
@@ -304,7 +304,7 @@ namespace Sit_In_Monitoring
         public void SearchStudentAllLogs()//DONE
         {
             recordsView.Rows.Clear();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where concat(sl.studentid, s.firstName, s.middleInitial,s.lastname, s.section) like '%" + txtSearchId.Text + "%'", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where concat(sl.studentid, s.firstName, s.middleInitial,s.lastname, s.section) like '%" + txtSearchId.Text + "%'", conn);
 
             DataTable dt = new DataTable();
             dt.Clear();
@@ -312,7 +312,7 @@ namespace Sit_In_Monitoring
             foreach (DataRow dr in dt.Rows)
             {
                 int rv = recordsView.Rows.Add();
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 9; i++)
                 {
                     recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
                 }
@@ -321,7 +321,7 @@ namespace Sit_In_Monitoring
         public void DisplayForLogs()
         {
             recordsView.Rows.Clear();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%"+ txtSearchId.Text +"%'", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%"+ txtSearchId.Text +"%'", conn);
 
             DataTable dt = new DataTable();
             dt.Clear();
@@ -329,12 +329,19 @@ namespace Sit_In_Monitoring
             foreach (DataRow dr in dt.Rows)
             {
                 int rv = recordsView.Rows.Add();
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < 9; i++)
                 {
                     recordsView.Rows[rv].Cells[i].Value = dr[i].ToString();
                 }
             }
         }//DONE
+        public void RestrictTime()
+        {
+
+        }//ON-GOING 
+        
+
+
 
         //NEXT TASK: ADD RESTRICTION FOR CERTAIN HOURS LIMITED ONLY SIT IN AND ALSO RESTRICTION BYPASS + REASON FOR IT - EZ 
         #endregion
@@ -753,7 +760,7 @@ namespace Sit_In_Monitoring
                     displayID.Text = recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString();
                     displayName.Text = recordsView.Rows[e.RowIndex].Cells["lFirstName"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lMiddleInitial"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lLastName"].FormattedValue.ToString();
                     displaySection.Text = recordsView.Rows[e.RowIndex].Cells["lSection"].FormattedValue.ToString();
-                    displayBalance.Text = recordsView.Rows[e.RowIndex].Cells["lBalance"].FormattedValue.ToString();
+                    displayBalance.Text = recordsView.Rows[e.RowIndex].Cells["lTimeUsed"].FormattedValue.ToString();
                     displayNumOfSitIns.Text = dt.Rows.Count.ToString();
                 }
             }

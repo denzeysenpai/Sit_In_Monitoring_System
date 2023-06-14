@@ -122,7 +122,7 @@
             this.lSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeIn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lTimeOut = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lBalance = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lTimeUsed = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel2 = new System.Windows.Forms.Panel();
             this.hideRecords = new System.Windows.Forms.Button();
             this.pnlmrgn = new System.Windows.Forms.Panel();
@@ -1202,7 +1202,7 @@
             this.lSection,
             this.lTimeIn,
             this.lTimeOut,
-            this.lBalance});
+            this.lTimeUsed});
             this.recordsView.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
             this.recordsView.Location = new System.Drawing.Point(611, 91);
             this.recordsView.Name = "recordsView";
@@ -1280,13 +1280,13 @@
             this.lTimeOut.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.lTimeOut.Width = 60;
             // 
-            // lBalance
+            // lTimeUsed
             // 
-            this.lBalance.HeaderText = "BALANCE";
-            this.lBalance.Name = "lBalance";
-            this.lBalance.ReadOnly = true;
-            this.lBalance.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.lBalance.ToolTipText = "Student\'s Remaining Time Balance";
+            this.lTimeUsed.HeaderText = "TIME USED";
+            this.lTimeUsed.Name = "lTimeUsed";
+            this.lTimeUsed.ReadOnly = true;
+            this.lTimeUsed.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.lTimeUsed.ToolTipText = "Student\'s Remaining Time Balance";
             // 
             // panel2
             // 
@@ -1774,7 +1774,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lSection;
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lBalance;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lTimeUsed;
     }
 }
 
