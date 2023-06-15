@@ -87,11 +87,11 @@ namespace Sit_In_Monitoring
             void ReasonIsForEdit()
             {
                 pnlEditUser.Show();
-                oldStudentId.Texts = studentId;
-                oldSection.Texts = section;
-                oldFirstName.Texts = fName;
-                oldLastName.Texts = lName;
-                oldMiddleInitial.Texts = mInitial;
+                newStudentId.Texts = studentId;
+                newSection.Texts = section;
+                newFirstName.Texts = fName;
+                newLastName.Texts = lName;
+                newMiddleInitial.Texts = mInitial;
                 
                 /* ADD CODE BODY FOR EDIT HERE
                  * 
@@ -297,6 +297,7 @@ namespace Sit_In_Monitoring
                 }
             }
         }
+
         public void LogoutStudent(DataGridViewCellEventArgs e)//DONE
         {
             DateTime date = DateTime.Now;
@@ -382,10 +383,11 @@ namespace Sit_In_Monitoring
             TextboxBodies.RoundCorner();
             Fifteens.RoundCorner();
 
-            Design.RoundCorner(pnlAdminLock, 18);
             Design.RoundCorner(pnlNotification, 50);
             Design.RoundCorner(pnlDateMargin, 15);
             Design.RoundCorner(pnlLoginBody, 15);
+            Design.RoundCorner(pnlAdminLock, 18);
+            Design.RoundCorner(pnlEditUser, 18);
             Design.RoundCorner(pnltm2, 15);
         }
         private void Form1_Load(object sender, EventArgs e)
@@ -740,6 +742,12 @@ namespace Sit_In_Monitoring
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             ReasonForPassword = "edit";
+            changesInfo1.Hide();
+            changesInfo2.Hide();
+            changesInfo3.Hide();
+            changesInfo4.Hide();
+            changesInfo5.Hide();
+
             ShowAdminPasswordInput();
         }
 
@@ -822,6 +830,12 @@ namespace Sit_In_Monitoring
              *  - MARK
              */
         }
+
+        private void recordsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
     }
     class SeiyaMarx
     {
