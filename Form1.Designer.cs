@@ -88,6 +88,46 @@
             this.mensahe = new System.Windows.Forms.Label();
             this.ENVIRONMENT = new System.Windows.Forms.Timer(this.components);
             this.pnlRecords = new System.Windows.Forms.Panel();
+            this.pnlEditUser = new System.Windows.Forms.Panel();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.confirm6 = new System.Windows.Forms.CheckBox();
+            this.confirm4 = new System.Windows.Forms.CheckBox();
+            this.confirm2 = new System.Windows.Forms.CheckBox();
+            this.confirm5 = new System.Windows.Forms.CheckBox();
+            this.confirm3 = new System.Windows.Forms.CheckBox();
+            this.confirm1 = new System.Windows.Forms.CheckBox();
+            this.newRemainingBalance = new ItachiBunifuUI.TextBoxBunifu();
+            this.newMiddleInitial = new ItachiBunifuUI.TextBoxBunifu();
+            this.newFirstName = new ItachiBunifuUI.TextBoxBunifu();
+            this.newSection = new ItachiBunifuUI.TextBoxBunifu();
+            this.newLastName = new ItachiBunifuUI.TextBoxBunifu();
+            this.newStudentId = new ItachiBunifuUI.TextBoxBunifu();
+            this.oldRemainingBalance = new ItachiBunifuUI.TextBoxBunifu();
+            this.oldMiddleInitial = new ItachiBunifuUI.TextBoxBunifu();
+            this.oldFirstName = new ItachiBunifuUI.TextBoxBunifu();
+            this.oldSection = new ItachiBunifuUI.TextBoxBunifu();
+            this.oldLastName = new ItachiBunifuUI.TextBoxBunifu();
+            this.changesInfo6 = new System.Windows.Forms.Label();
+            this.oldStudentId = new ItachiBunifuUI.TextBoxBunifu();
+            this.changesInfo4 = new System.Windows.Forms.Label();
+            this.btnCancelEdit = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.btnConfirmEdit = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.changesInfo5 = new System.Windows.Forms.Label();
+            this.changesInfo2 = new System.Windows.Forms.Label();
+            this.changesInfo3 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.changesInfo1 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label30 = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.label25 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
             this.LBLBTNSEARCH = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
@@ -167,6 +207,8 @@
             this.borderpass.SuspendLayout();
             this.pass.SuspendLayout();
             this.pnlRecords.SuspendLayout();
+            this.pnlEditUser.SuspendLayout();
+            this.panel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).BeginInit();
             this.pnlStudentInfo.SuspendLayout();
             this.pnlDepth.SuspendLayout();
@@ -855,6 +897,7 @@
             this.pnlRecords.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
             this.pnlRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlRecords.Controls.Add(this.pnlEditUser);
             this.pnlRecords.Controls.Add(this.LBLBTNSEARCH);
             this.pnlRecords.Controls.Add(this.label6);
             this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
@@ -870,6 +913,614 @@
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
+            // 
+            // pnlEditUser
+            // 
+            this.pnlEditUser.BackColor = System.Drawing.Color.Black;
+            this.pnlEditUser.Controls.Add(this.panel9);
+            this.pnlEditUser.Controls.Add(this.label13);
+            this.pnlEditUser.Location = new System.Drawing.Point(184, 95);
+            this.pnlEditUser.Name = "pnlEditUser";
+            this.pnlEditUser.Size = new System.Drawing.Size(1115, 565);
+            this.pnlEditUser.TabIndex = 21;
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.panel9.Controls.Add(this.confirm6);
+            this.panel9.Controls.Add(this.confirm4);
+            this.panel9.Controls.Add(this.confirm2);
+            this.panel9.Controls.Add(this.confirm5);
+            this.panel9.Controls.Add(this.confirm3);
+            this.panel9.Controls.Add(this.confirm1);
+            this.panel9.Controls.Add(this.newRemainingBalance);
+            this.panel9.Controls.Add(this.newMiddleInitial);
+            this.panel9.Controls.Add(this.newFirstName);
+            this.panel9.Controls.Add(this.newSection);
+            this.panel9.Controls.Add(this.newLastName);
+            this.panel9.Controls.Add(this.newStudentId);
+            this.panel9.Controls.Add(this.oldRemainingBalance);
+            this.panel9.Controls.Add(this.oldMiddleInitial);
+            this.panel9.Controls.Add(this.oldFirstName);
+            this.panel9.Controls.Add(this.oldSection);
+            this.panel9.Controls.Add(this.oldLastName);
+            this.panel9.Controls.Add(this.changesInfo6);
+            this.panel9.Controls.Add(this.oldStudentId);
+            this.panel9.Controls.Add(this.changesInfo4);
+            this.panel9.Controls.Add(this.btnCancelEdit);
+            this.panel9.Controls.Add(this.btnConfirmEdit);
+            this.panel9.Controls.Add(this.changesInfo5);
+            this.panel9.Controls.Add(this.changesInfo2);
+            this.panel9.Controls.Add(this.changesInfo3);
+            this.panel9.Controls.Add(this.label22);
+            this.panel9.Controls.Add(this.changesInfo1);
+            this.panel9.Controls.Add(this.label20);
+            this.panel9.Controls.Add(this.label30);
+            this.panel9.Controls.Add(this.label19);
+            this.panel9.Controls.Add(this.label26);
+            this.panel9.Controls.Add(this.label18);
+            this.panel9.Controls.Add(this.label29);
+            this.panel9.Controls.Add(this.label23);
+            this.panel9.Controls.Add(this.label25);
+            this.panel9.Controls.Add(this.label17);
+            this.panel9.Controls.Add(this.label16);
+            this.panel9.Location = new System.Drawing.Point(5, 30);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(1105, 520);
+            this.panel9.TabIndex = 21;
+            // 
+            // confirm6
+            // 
+            this.confirm6.AutoSize = true;
+            this.confirm6.Location = new System.Drawing.Point(978, 295);
+            this.confirm6.Name = "confirm6";
+            this.confirm6.Size = new System.Drawing.Size(15, 14);
+            this.confirm6.TabIndex = 7;
+            this.confirm6.UseVisualStyleBackColor = true;
+            // 
+            // confirm4
+            // 
+            this.confirm4.AutoSize = true;
+            this.confirm4.Location = new System.Drawing.Point(978, 220);
+            this.confirm4.Name = "confirm4";
+            this.confirm4.Size = new System.Drawing.Size(15, 14);
+            this.confirm4.TabIndex = 7;
+            this.confirm4.UseVisualStyleBackColor = true;
+            // 
+            // confirm2
+            // 
+            this.confirm2.AutoSize = true;
+            this.confirm2.Location = new System.Drawing.Point(977, 145);
+            this.confirm2.Name = "confirm2";
+            this.confirm2.Size = new System.Drawing.Size(15, 14);
+            this.confirm2.TabIndex = 7;
+            this.confirm2.UseVisualStyleBackColor = true;
+            // 
+            // confirm5
+            // 
+            this.confirm5.AutoSize = true;
+            this.confirm5.Location = new System.Drawing.Point(978, 257);
+            this.confirm5.Name = "confirm5";
+            this.confirm5.Size = new System.Drawing.Size(15, 14);
+            this.confirm5.TabIndex = 7;
+            this.confirm5.UseVisualStyleBackColor = true;
+            // 
+            // confirm3
+            // 
+            this.confirm3.AutoSize = true;
+            this.confirm3.Location = new System.Drawing.Point(978, 182);
+            this.confirm3.Name = "confirm3";
+            this.confirm3.Size = new System.Drawing.Size(15, 14);
+            this.confirm3.TabIndex = 7;
+            this.confirm3.UseVisualStyleBackColor = true;
+            // 
+            // confirm1
+            // 
+            this.confirm1.AutoSize = true;
+            this.confirm1.Location = new System.Drawing.Point(977, 107);
+            this.confirm1.Name = "confirm1";
+            this.confirm1.Size = new System.Drawing.Size(15, 14);
+            this.confirm1.TabIndex = 7;
+            this.confirm1.UseVisualStyleBackColor = true;
+            // 
+            // newRemainingBalance
+            // 
+            this.newRemainingBalance.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.newRemainingBalance.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.newRemainingBalance.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.newRemainingBalance.BorderRadius = 0;
+            this.newRemainingBalance.BorderSize = 1;
+            this.newRemainingBalance.ForeColor = System.Drawing.Color.Black;
+            this.newRemainingBalance.Location = new System.Drawing.Point(634, 288);
+            this.newRemainingBalance.Margin = new System.Windows.Forms.Padding(4);
+            this.newRemainingBalance.Multiline = false;
+            this.newRemainingBalance.Name = "newRemainingBalance";
+            this.newRemainingBalance.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.newRemainingBalance.PasswordChar = false;
+            this.newRemainingBalance.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.newRemainingBalance.PlaceholderText = "Bal.";
+            this.newRemainingBalance.Size = new System.Drawing.Size(79, 29);
+            this.newRemainingBalance.TabIndex = 1;
+            this.newRemainingBalance.Texts = "";
+            this.newRemainingBalance.UnderlinedStyle = false;
+            this.newRemainingBalance._TextChanged += new System.EventHandler(this.textBoxBunifu12__TextChanged);
+            // 
+            // newMiddleInitial
+            // 
+            this.newMiddleInitial.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.newMiddleInitial.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.newMiddleInitial.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.newMiddleInitial.BorderRadius = 0;
+            this.newMiddleInitial.BorderSize = 1;
+            this.newMiddleInitial.ForeColor = System.Drawing.Color.Black;
+            this.newMiddleInitial.Location = new System.Drawing.Point(634, 212);
+            this.newMiddleInitial.Margin = new System.Windows.Forms.Padding(4);
+            this.newMiddleInitial.Multiline = false;
+            this.newMiddleInitial.Name = "newMiddleInitial";
+            this.newMiddleInitial.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.newMiddleInitial.PasswordChar = false;
+            this.newMiddleInitial.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.newMiddleInitial.PlaceholderText = "M.I.";
+            this.newMiddleInitial.Size = new System.Drawing.Size(78, 29);
+            this.newMiddleInitial.TabIndex = 1;
+            this.newMiddleInitial.Texts = "";
+            this.newMiddleInitial.UnderlinedStyle = false;
+            // 
+            // newFirstName
+            // 
+            this.newFirstName.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.newFirstName.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.newFirstName.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.newFirstName.BorderRadius = 0;
+            this.newFirstName.BorderSize = 1;
+            this.newFirstName.ForeColor = System.Drawing.Color.Black;
+            this.newFirstName.Location = new System.Drawing.Point(475, 138);
+            this.newFirstName.Margin = new System.Windows.Forms.Padding(4);
+            this.newFirstName.Multiline = false;
+            this.newFirstName.Name = "newFirstName";
+            this.newFirstName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.newFirstName.PasswordChar = false;
+            this.newFirstName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.newFirstName.PlaceholderText = "FirstName";
+            this.newFirstName.Size = new System.Drawing.Size(237, 29);
+            this.newFirstName.TabIndex = 1;
+            this.newFirstName.Texts = "";
+            this.newFirstName.UnderlinedStyle = false;
+            this.newFirstName._TextChanged += new System.EventHandler(this.textBoxBunifu4__TextChanged);
+            // 
+            // newSection
+            // 
+            this.newSection.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.newSection.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.newSection.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.newSection.BorderRadius = 0;
+            this.newSection.BorderSize = 1;
+            this.newSection.ForeColor = System.Drawing.Color.Black;
+            this.newSection.Location = new System.Drawing.Point(476, 250);
+            this.newSection.Margin = new System.Windows.Forms.Padding(4);
+            this.newSection.Multiline = false;
+            this.newSection.Name = "newSection";
+            this.newSection.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.newSection.PasswordChar = false;
+            this.newSection.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.newSection.PlaceholderText = "Section";
+            this.newSection.Size = new System.Drawing.Size(237, 29);
+            this.newSection.TabIndex = 1;
+            this.newSection.Texts = "";
+            this.newSection.UnderlinedStyle = false;
+            this.newSection._TextChanged += new System.EventHandler(this.textBoxBunifu11__TextChanged);
+            // 
+            // newLastName
+            // 
+            this.newLastName.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.newLastName.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.newLastName.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.newLastName.BorderRadius = 0;
+            this.newLastName.BorderSize = 1;
+            this.newLastName.ForeColor = System.Drawing.Color.Black;
+            this.newLastName.Location = new System.Drawing.Point(476, 175);
+            this.newLastName.Margin = new System.Windows.Forms.Padding(4);
+            this.newLastName.Multiline = false;
+            this.newLastName.Name = "newLastName";
+            this.newLastName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.newLastName.PasswordChar = false;
+            this.newLastName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.newLastName.PlaceholderText = "LastName";
+            this.newLastName.Size = new System.Drawing.Size(237, 29);
+            this.newLastName.TabIndex = 1;
+            this.newLastName.Texts = "";
+            this.newLastName.UnderlinedStyle = false;
+            this.newLastName._TextChanged += new System.EventHandler(this.textBoxBunifu7__TextChanged);
+            // 
+            // newStudentId
+            // 
+            this.newStudentId.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.newStudentId.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.newStudentId.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.newStudentId.BorderRadius = 0;
+            this.newStudentId.BorderSize = 1;
+            this.newStudentId.ForeColor = System.Drawing.Color.Black;
+            this.newStudentId.Location = new System.Drawing.Point(475, 100);
+            this.newStudentId.Margin = new System.Windows.Forms.Padding(4);
+            this.newStudentId.Multiline = false;
+            this.newStudentId.Name = "newStudentId";
+            this.newStudentId.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.newStudentId.PasswordChar = false;
+            this.newStudentId.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.newStudentId.PlaceholderText = "Student ID";
+            this.newStudentId.Size = new System.Drawing.Size(237, 29);
+            this.newStudentId.TabIndex = 1;
+            this.newStudentId.Texts = "";
+            this.newStudentId.UnderlinedStyle = false;
+            this.newStudentId._TextChanged += new System.EventHandler(this.textBoxBunifu2__TextChanged);
+            // 
+            // oldRemainingBalance
+            // 
+            this.oldRemainingBalance.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.oldRemainingBalance.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.oldRemainingBalance.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.oldRemainingBalance.BorderRadius = 0;
+            this.oldRemainingBalance.BorderSize = 1;
+            this.oldRemainingBalance.ForeColor = System.Drawing.Color.Black;
+            this.oldRemainingBalance.Location = new System.Drawing.Point(348, 288);
+            this.oldRemainingBalance.Margin = new System.Windows.Forms.Padding(4);
+            this.oldRemainingBalance.Multiline = false;
+            this.oldRemainingBalance.Name = "oldRemainingBalance";
+            this.oldRemainingBalance.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.oldRemainingBalance.PasswordChar = false;
+            this.oldRemainingBalance.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.oldRemainingBalance.PlaceholderText = "";
+            this.oldRemainingBalance.Size = new System.Drawing.Size(84, 29);
+            this.oldRemainingBalance.TabIndex = 1;
+            this.oldRemainingBalance.Texts = "";
+            this.oldRemainingBalance.UnderlinedStyle = false;
+            this.oldRemainingBalance._TextChanged += new System.EventHandler(this.textBoxBunifu10__TextChanged);
+            // 
+            // oldMiddleInitial
+            // 
+            this.oldMiddleInitial.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.oldMiddleInitial.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.oldMiddleInitial.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.oldMiddleInitial.BorderRadius = 0;
+            this.oldMiddleInitial.BorderSize = 1;
+            this.oldMiddleInitial.ForeColor = System.Drawing.Color.Black;
+            this.oldMiddleInitial.Location = new System.Drawing.Point(348, 212);
+            this.oldMiddleInitial.Margin = new System.Windows.Forms.Padding(4);
+            this.oldMiddleInitial.Multiline = false;
+            this.oldMiddleInitial.Name = "oldMiddleInitial";
+            this.oldMiddleInitial.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.oldMiddleInitial.PasswordChar = false;
+            this.oldMiddleInitial.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.oldMiddleInitial.PlaceholderText = "";
+            this.oldMiddleInitial.Size = new System.Drawing.Size(83, 29);
+            this.oldMiddleInitial.TabIndex = 1;
+            this.oldMiddleInitial.Texts = "";
+            this.oldMiddleInitial.UnderlinedStyle = false;
+            // 
+            // oldFirstName
+            // 
+            this.oldFirstName.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.oldFirstName.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.oldFirstName.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.oldFirstName.BorderRadius = 0;
+            this.oldFirstName.BorderSize = 1;
+            this.oldFirstName.ForeColor = System.Drawing.Color.Black;
+            this.oldFirstName.Location = new System.Drawing.Point(210, 138);
+            this.oldFirstName.Margin = new System.Windows.Forms.Padding(4);
+            this.oldFirstName.Multiline = false;
+            this.oldFirstName.Name = "oldFirstName";
+            this.oldFirstName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.oldFirstName.PasswordChar = false;
+            this.oldFirstName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.oldFirstName.PlaceholderText = "";
+            this.oldFirstName.Size = new System.Drawing.Size(221, 29);
+            this.oldFirstName.TabIndex = 1;
+            this.oldFirstName.Texts = "";
+            this.oldFirstName.UnderlinedStyle = false;
+            this.oldFirstName._TextChanged += new System.EventHandler(this.textBoxBunifu3__TextChanged);
+            // 
+            // oldSection
+            // 
+            this.oldSection.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.oldSection.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.oldSection.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.oldSection.BorderRadius = 0;
+            this.oldSection.BorderSize = 1;
+            this.oldSection.ForeColor = System.Drawing.Color.Black;
+            this.oldSection.Location = new System.Drawing.Point(211, 250);
+            this.oldSection.Margin = new System.Windows.Forms.Padding(4);
+            this.oldSection.Multiline = false;
+            this.oldSection.Name = "oldSection";
+            this.oldSection.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.oldSection.PasswordChar = false;
+            this.oldSection.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.oldSection.PlaceholderText = "";
+            this.oldSection.Size = new System.Drawing.Size(221, 29);
+            this.oldSection.TabIndex = 1;
+            this.oldSection.Texts = "";
+            this.oldSection.UnderlinedStyle = false;
+            this.oldSection._TextChanged += new System.EventHandler(this.textBoxBunifu9__TextChanged);
+            // 
+            // oldLastName
+            // 
+            this.oldLastName.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.oldLastName.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.oldLastName.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.oldLastName.BorderRadius = 0;
+            this.oldLastName.BorderSize = 1;
+            this.oldLastName.ForeColor = System.Drawing.Color.Black;
+            this.oldLastName.Location = new System.Drawing.Point(211, 175);
+            this.oldLastName.Margin = new System.Windows.Forms.Padding(4);
+            this.oldLastName.Multiline = false;
+            this.oldLastName.Name = "oldLastName";
+            this.oldLastName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.oldLastName.PasswordChar = false;
+            this.oldLastName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.oldLastName.PlaceholderText = "";
+            this.oldLastName.Size = new System.Drawing.Size(221, 29);
+            this.oldLastName.TabIndex = 1;
+            this.oldLastName.Texts = "";
+            this.oldLastName.UnderlinedStyle = false;
+            this.oldLastName._TextChanged += new System.EventHandler(this.textBoxBunifu5__TextChanged);
+            // 
+            // changesInfo6
+            // 
+            this.changesInfo6.AutoSize = true;
+            this.changesInfo6.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changesInfo6.ForeColor = System.Drawing.Color.Black;
+            this.changesInfo6.Location = new System.Drawing.Point(770, 290);
+            this.changesInfo6.Name = "changesInfo6";
+            this.changesInfo6.Size = new System.Drawing.Size(120, 19);
+            this.changesInfo6.TabIndex = 6;
+            this.changesInfo6.Text = "none → none";
+            // 
+            // oldStudentId
+            // 
+            this.oldStudentId.BackColor = System.Drawing.Color.AntiqueWhite;
+            this.oldStudentId.BorderColor = System.Drawing.Color.AntiqueWhite;
+            this.oldStudentId.BorderFocusColor = System.Drawing.Color.Aqua;
+            this.oldStudentId.BorderRadius = 0;
+            this.oldStudentId.BorderSize = 1;
+            this.oldStudentId.ForeColor = System.Drawing.Color.Black;
+            this.oldStudentId.Location = new System.Drawing.Point(210, 100);
+            this.oldStudentId.Margin = new System.Windows.Forms.Padding(4);
+            this.oldStudentId.Multiline = false;
+            this.oldStudentId.Name = "oldStudentId";
+            this.oldStudentId.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
+            this.oldStudentId.PasswordChar = false;
+            this.oldStudentId.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
+            this.oldStudentId.PlaceholderText = "";
+            this.oldStudentId.Size = new System.Drawing.Size(221, 29);
+            this.oldStudentId.TabIndex = 1;
+            this.oldStudentId.Texts = "";
+            this.oldStudentId.UnderlinedStyle = false;
+            this.oldStudentId._TextChanged += new System.EventHandler(this.textBoxBunifu1__TextChanged);
+            // 
+            // changesInfo4
+            // 
+            this.changesInfo4.AutoSize = true;
+            this.changesInfo4.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changesInfo4.ForeColor = System.Drawing.Color.Black;
+            this.changesInfo4.Location = new System.Drawing.Point(770, 215);
+            this.changesInfo4.Name = "changesInfo4";
+            this.changesInfo4.Size = new System.Drawing.Size(120, 19);
+            this.changesInfo4.TabIndex = 6;
+            this.changesInfo4.Text = "none → none";
+            // 
+            // btnCancelEdit
+            // 
+            this.btnCancelEdit.BackColor = System.Drawing.Color.Black;
+            this.btnCancelEdit.BackgroundColor = System.Drawing.Color.Black;
+            this.btnCancelEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCancelEdit.BorderRadius = 20;
+            this.btnCancelEdit.BorderSize = 0;
+            this.btnCancelEdit.FlatAppearance.BorderSize = 0;
+            this.btnCancelEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCancelEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCancelEdit.ForeColor = System.Drawing.Color.White;
+            this.btnCancelEdit.Location = new System.Drawing.Point(359, 475);
+            this.btnCancelEdit.Name = "btnCancelEdit";
+            this.btnCancelEdit.Size = new System.Drawing.Size(386, 40);
+            this.btnCancelEdit.TabIndex = 0;
+            this.btnCancelEdit.Text = "CANCEL AND EXIT";
+            this.btnCancelEdit.TextColor = System.Drawing.Color.White;
+            this.btnCancelEdit.UseVisualStyleBackColor = false;
+            this.btnCancelEdit.Click += new System.EventHandler(this.btnCancelEdit_Click);
+            // 
+            // btnConfirmEdit
+            // 
+            this.btnConfirmEdit.BackColor = System.Drawing.Color.Black;
+            this.btnConfirmEdit.BackgroundColor = System.Drawing.Color.Black;
+            this.btnConfirmEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnConfirmEdit.BorderRadius = 20;
+            this.btnConfirmEdit.BorderSize = 0;
+            this.btnConfirmEdit.FlatAppearance.BorderSize = 0;
+            this.btnConfirmEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConfirmEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConfirmEdit.ForeColor = System.Drawing.Color.White;
+            this.btnConfirmEdit.Location = new System.Drawing.Point(359, 433);
+            this.btnConfirmEdit.Name = "btnConfirmEdit";
+            this.btnConfirmEdit.Size = new System.Drawing.Size(386, 40);
+            this.btnConfirmEdit.TabIndex = 0;
+            this.btnConfirmEdit.Text = "CONFIRM SELECTED EDITS";
+            this.btnConfirmEdit.TextColor = System.Drawing.Color.White;
+            this.btnConfirmEdit.UseVisualStyleBackColor = false;
+            // 
+            // changesInfo5
+            // 
+            this.changesInfo5.AutoSize = true;
+            this.changesInfo5.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changesInfo5.ForeColor = System.Drawing.Color.Black;
+            this.changesInfo5.Location = new System.Drawing.Point(770, 252);
+            this.changesInfo5.Name = "changesInfo5";
+            this.changesInfo5.Size = new System.Drawing.Size(120, 19);
+            this.changesInfo5.TabIndex = 6;
+            this.changesInfo5.Text = "none → none";
+            // 
+            // changesInfo2
+            // 
+            this.changesInfo2.AutoSize = true;
+            this.changesInfo2.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changesInfo2.ForeColor = System.Drawing.Color.Black;
+            this.changesInfo2.Location = new System.Drawing.Point(769, 140);
+            this.changesInfo2.Name = "changesInfo2";
+            this.changesInfo2.Size = new System.Drawing.Size(120, 19);
+            this.changesInfo2.TabIndex = 6;
+            this.changesInfo2.Text = "none → none";
+            // 
+            // changesInfo3
+            // 
+            this.changesInfo3.AutoSize = true;
+            this.changesInfo3.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changesInfo3.ForeColor = System.Drawing.Color.Black;
+            this.changesInfo3.Location = new System.Drawing.Point(770, 177);
+            this.changesInfo3.Name = "changesInfo3";
+            this.changesInfo3.Size = new System.Drawing.Size(120, 19);
+            this.changesInfo3.TabIndex = 6;
+            this.changesInfo3.Text = "none → none";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.Black;
+            this.label22.Location = new System.Drawing.Point(929, 63);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(106, 19);
+            this.label22.TabIndex = 6;
+            this.label22.Text = "Confirm Edit";
+            // 
+            // changesInfo1
+            // 
+            this.changesInfo1.AutoSize = true;
+            this.changesInfo1.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changesInfo1.ForeColor = System.Drawing.Color.Black;
+            this.changesInfo1.Location = new System.Drawing.Point(769, 102);
+            this.changesInfo1.Name = "changesInfo1";
+            this.changesInfo1.Size = new System.Drawing.Size(120, 19);
+            this.changesInfo1.TabIndex = 6;
+            this.changesInfo1.Text = "none → none";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(784, 63);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(83, 19);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Changes";
+            // 
+            // label30
+            // 
+            this.label30.AutoSize = true;
+            this.label30.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label30.ForeColor = System.Drawing.Color.Black;
+            this.label30.Location = new System.Drawing.Point(81, 290);
+            this.label30.Name = "label30";
+            this.label30.Size = new System.Drawing.Size(174, 19);
+            this.label30.TabIndex = 6;
+            this.label30.Text = "Remaining Balance:";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.Black;
+            this.label19.Location = new System.Drawing.Point(566, 63);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(47, 19);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "New";
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.Black;
+            this.label26.Location = new System.Drawing.Point(81, 215);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(116, 19);
+            this.label26.TabIndex = 6;
+            this.label26.Text = "Middle initial:";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.Black;
+            this.label18.Location = new System.Drawing.Point(274, 63);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(99, 19);
+            this.label18.TabIndex = 6;
+            this.label18.Text = "Old Values";
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.Black;
+            this.label29.Location = new System.Drawing.Point(81, 252);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(74, 19);
+            this.label29.TabIndex = 6;
+            this.label29.Text = "Section:";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.Black;
+            this.label23.Location = new System.Drawing.Point(80, 140);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(99, 19);
+            this.label23.TabIndex = 6;
+            this.label23.Text = "First Name:";
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.Black;
+            this.label25.Location = new System.Drawing.Point(81, 177);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(100, 19);
+            this.label25.TabIndex = 6;
+            this.label25.Text = "Last Name:";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label17.ForeColor = System.Drawing.Color.Black;
+            this.label17.Location = new System.Drawing.Point(80, 62);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(63, 19);
+            this.label17.TabIndex = 6;
+            this.label17.Text = "Details";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.ForeColor = System.Drawing.Color.Black;
+            this.label16.Location = new System.Drawing.Point(80, 102);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(95, 19);
+            this.label16.TabIndex = 6;
+            this.label16.Text = "Student ID:";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.ForeColor = System.Drawing.Color.White;
+            this.label13.Location = new System.Drawing.Point(485, 5);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(147, 19);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "EDIT STUDENT INFO";
             // 
             // LBLBTNSEARCH
             // 
@@ -1623,6 +2274,10 @@
             this.pass.PerformLayout();
             this.pnlRecords.ResumeLayout(false);
             this.pnlRecords.PerformLayout();
+            this.pnlEditUser.ResumeLayout(false);
+            this.pnlEditUser.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).EndInit();
             this.pnlStudentInfo.ResumeLayout(false);
             this.pnlStudentInfo.PerformLayout();
@@ -1775,6 +2430,46 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeIn;
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeOut;
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeUsed;
+        private System.Windows.Forms.Panel pnlEditUser;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.CheckBox confirm1;
+        private ItachiBunifuUI.TextBoxBunifu newStudentId;
+        private ItachiBunifuUI.TextBoxBunifu oldStudentId;
+        private ItachiUIBunifu.ButtonBunifuItachi btnConfirmEdit;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox confirm6;
+        private System.Windows.Forms.CheckBox confirm4;
+        private System.Windows.Forms.CheckBox confirm2;
+        private System.Windows.Forms.CheckBox confirm5;
+        private System.Windows.Forms.CheckBox confirm3;
+        private ItachiBunifuUI.TextBoxBunifu newRemainingBalance;
+        private ItachiBunifuUI.TextBoxBunifu newMiddleInitial;
+        private ItachiBunifuUI.TextBoxBunifu newFirstName;
+        private ItachiBunifuUI.TextBoxBunifu newSection;
+        private ItachiBunifuUI.TextBoxBunifu newLastName;
+        private ItachiBunifuUI.TextBoxBunifu oldRemainingBalance;
+        private ItachiBunifuUI.TextBoxBunifu oldMiddleInitial;
+        private ItachiBunifuUI.TextBoxBunifu oldFirstName;
+        private ItachiBunifuUI.TextBoxBunifu oldSection;
+        private ItachiBunifuUI.TextBoxBunifu oldLastName;
+        private System.Windows.Forms.Label changesInfo6;
+        private System.Windows.Forms.Label changesInfo4;
+        private System.Windows.Forms.Label changesInfo5;
+        private System.Windows.Forms.Label changesInfo2;
+        private System.Windows.Forms.Label changesInfo3;
+        private System.Windows.Forms.Label changesInfo1;
+        private System.Windows.Forms.Label label30;
+        private System.Windows.Forms.Label label26;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label label25;
+        private ItachiUIBunifu.ButtonBunifuItachi btnCancelEdit;
     }
 }
 

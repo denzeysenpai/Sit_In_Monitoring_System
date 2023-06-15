@@ -12,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=LAB5-PC22\\ACTSTUDENT;Initial Catalog=sitinez;Integrated Security=True");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
@@ -77,6 +77,7 @@ namespace Sit_In_Monitoring
 
             void ReasonIsForEdit()
             {
+                pnlEditUser.Show();
                 /* ADD CODE BODY FOR EDIT HERE
                  * 
                  */
@@ -408,6 +409,11 @@ namespace Sit_In_Monitoring
             txtStudentName.TabIndex = 3;
             txtMiddleInitial.TabIndex = 4;
             txtSection.TabIndex = 5;
+
+            pnlEditUser.Hide();
+            pnlEditUser.Location = new Point(184, 95);
+            pnlEditUser.Size = new Size(1115, 565);
+            pnlEditUser.BackColor = Color.Black;
 
             foreach (Control ctr in this.Controls)
             {
@@ -779,6 +785,62 @@ namespace Sit_In_Monitoring
         private void LBLBTNSEARCH_Click(object sender, EventArgs e)
         {
             SearchStudentAllLogs();
+        }
+
+        private void textBoxBunifu10__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu3__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu9__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu5__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu1__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu12__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu4__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu11__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu7__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBoxBunifu2__TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelEdit_Click(object sender, EventArgs e)
+        {
+            ReasonForPassword = "";
+            pnlEditUser.Hide();
         }
     }
     class SeiyaMarx
