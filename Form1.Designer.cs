@@ -1045,7 +1045,6 @@
             this.newFirstName.TabIndex = 1;
             this.newFirstName.Texts = "";
             this.newFirstName.UnderlinedStyle = false;
-            this.newFirstName._TextChanged += new System.EventHandler(this.textBoxBunifu4__TextChanged);
             // 
             // newSection
             // 
@@ -1067,7 +1066,6 @@
             this.newSection.TabIndex = 1;
             this.newSection.Texts = "";
             this.newSection.UnderlinedStyle = false;
-            this.newSection._TextChanged += new System.EventHandler(this.textBoxBunifu11__TextChanged);
             // 
             // newLastName
             // 
@@ -1089,7 +1087,6 @@
             this.newLastName.TabIndex = 1;
             this.newLastName.Texts = "";
             this.newLastName.UnderlinedStyle = false;
-            this.newLastName._TextChanged += new System.EventHandler(this.textBoxBunifu7__TextChanged);
             // 
             // newStudentId
             // 
@@ -1111,7 +1108,6 @@
             this.newStudentId.TabIndex = 1;
             this.newStudentId.Texts = "";
             this.newStudentId.UnderlinedStyle = false;
-            this.newStudentId._TextChanged += new System.EventHandler(this.textBoxBunifu2__TextChanged);
             // 
             // oldMiddleInitial
             // 
@@ -1156,7 +1152,6 @@
             this.oldFirstName.TabIndex = 1;
             this.oldFirstName.Texts = "";
             this.oldFirstName.UnderlinedStyle = false;
-            this.oldFirstName._TextChanged += new System.EventHandler(this.textBoxBunifu3__TextChanged);
             // 
             // oldSection
             // 
@@ -1179,7 +1174,6 @@
             this.oldSection.TabIndex = 1;
             this.oldSection.Texts = "";
             this.oldSection.UnderlinedStyle = false;
-            this.oldSection._TextChanged += new System.EventHandler(this.textBoxBunifu9__TextChanged);
             // 
             // oldLastName
             // 
@@ -1202,7 +1196,6 @@
             this.oldLastName.TabIndex = 1;
             this.oldLastName.Texts = "";
             this.oldLastName.UnderlinedStyle = false;
-            this.oldLastName._TextChanged += new System.EventHandler(this.textBoxBunifu5__TextChanged);
             // 
             // oldStudentId
             // 
@@ -1225,7 +1218,6 @@
             this.oldStudentId.TabIndex = 1;
             this.oldStudentId.Texts = "";
             this.oldStudentId.UnderlinedStyle = false;
-            this.oldStudentId._TextChanged += new System.EventHandler(this.textBoxBunifu1__TextChanged);
             // 
             // changesInfo4
             // 

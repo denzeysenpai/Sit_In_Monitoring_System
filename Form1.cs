@@ -163,6 +163,7 @@ namespace Sit_In_Monitoring
             txtStudentLastName.Text = string.Empty;
             txtSection.Text = string.Empty;
         }//DONE
+
         public void AddStudent()
         {
             DateTime val = DateTime.Now;
@@ -233,6 +234,7 @@ namespace Sit_In_Monitoring
             txtStudentID.Focus();
             Update_Data(); 
         }//DONE
+
         public void StudentExisted()
         {
             if (txtStudentID.Text != "")
