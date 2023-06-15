@@ -12,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
@@ -255,7 +255,7 @@ namespace Sit_In_Monitoring
                         BtnStart.Enabled = true;
                         BtnStart.BackColor = CanStart;
                     }
-                }
+                } 
                 else
                 {
                     DialogResult d = MessageBox.Show("This student is not yet registered! \nPlease register before sit-in!", "STUDENT NOT FOUND", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
@@ -306,7 +306,7 @@ namespace Sit_In_Monitoring
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
             conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut, TimeUsed =  concat (datediff(second,TimeIn,TimeOut)/3600,' hours ',(datediff(second,TimeIn,TimeOut)%3600)/60,' minutes') where studentid = @studentid and date = @dateNow", conn);
+            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut, TimeUsed = CONVERT(DECIMAL(5,2), DATEDIFF(second, TimeIn, TimeOut) / 3600.0) where studentid = @studentid and date = @dateNow", conn);
             cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
             cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
@@ -784,16 +784,18 @@ namespace Sit_In_Monitoring
                 if (recordsView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
                     SqlDataAdapter c = new SqlDataAdapter("SELECT * FROM SessionLogs WHERE studentId = '" + recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString() + "'", conn);
+                    SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM students WHERE studentId = '" + recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString() + "'", conn);
                     DataTable dt = new DataTable();
                     dt.Clear();
+                    ds.Clear();
+                    s.Fill(ds);
                     c.Fill(dt);
 
                     studentId = displayID.Text = recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString();
                     displayName.Text = recordsView.Rows[e.RowIndex].Cells["lFirstName"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lMiddleInitial"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lLastName"].FormattedValue.ToString();
                     section = displaySection.Text = recordsView.Rows[e.RowIndex].Cells["lSection"].FormattedValue.ToString();
-                    displayBalance.Text = recordsView.Rows[e.RowIndex].Cells["lTimeUsed"].FormattedValue.ToString();
+                    displayBalance.Text = ds.Tables[0].Rows[0]["RemainingTime"].ToString() + " hours";
                     displayNumOfSitIns.Text = dt.Rows.Count.ToString();
-
                     fName = recordsView.Rows[e.RowIndex].Cells["lFirstName"].FormattedValue.ToString();
                     lName = recordsView.Rows[e.RowIndex].Cells["lLastName"].FormattedValue.ToString();
                     mInitial = recordsView.Rows[e.RowIndex].Cells["lMiddleInitial"].FormattedValue.ToString();

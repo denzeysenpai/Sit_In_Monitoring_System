@@ -6,7 +6,7 @@ firstName varchar(50) NOT NULL,
 middleInitial varchar(5),
 lastName varchar(50) NOT NULL,
 section varchar(10) NOT NULL,
-RemainingTime varchar(50),
+RemainingTime decimal,
 
 CONSTRAINT UQ_StudentTermEnrolled UNIQUE(studentId, section)
 );
@@ -19,7 +19,7 @@ studentId varchar(13) NOT NULL,
 Date varchar(15) NOT NULL,
 TimeIn varchar(15) NOT NULL,
 TimeOut varchar(15),
-RemainingTime varchar(50),
+RemainingTime decimal,
 personid int NOT NULL,
 
 CONSTRAINT FK_currentStudent FOREIGN KEY(personid)
@@ -32,14 +32,12 @@ studentId varchar(13) NOT NULL,
 Date varchar(15) NOT NULL,
 TimeIn time NOT NULL,
 TimeOut time,
-TimeUsed varchar(50),
+TimeUsed decimal,
 personid int NOT NULL,
 
 CONSTRAINT FK_LogStudent FOREIGN KEY(personid)
 REFERENCES Students(personid)
 );
-
-
 
 
 --Select currentSession.Date, Students.studentId, students.firstName, students.middleInitial, Students.lastName, currentSession.TimeIn, currentSession.TimeOut
@@ -71,3 +69,34 @@ UPDATE sessionLogs SET timeOut = '15:28:40.0000000', TimeUsed =  concat (datedif
 
 
 SELECT * FROM SessionLogs
+
+SELECT CONCAT(FLOOR((TIME_TO_SEC(currentTimeRemaining) - (SELECT TIME_TO_SEC(TimeUsed) FROM sessionLogs 
+WHERE studentid = @studentid AND date = @dateNow))/3600), ' hours ', 
+FLOOR(((TIME_TO_SEC(currentTimeRemaining) - (SELECT TIME_TO_SEC(TimeUsed) FROM sessionLogs 
+WHERE studentid = @studentid AND date = @dateNow))%3600)/60), ' minutes') AS newTimeRemaining;
+
+select * from sessionlogs
+
+
+
+
+
+SELECT CONCAT(FLOOR(DATEDIFF(second, TimeIn, TimeOut)/3600), ' hours ', 
+FLOOR((DATEDIFF(second, TimeIn, TimeOut)%3600)/60), ' minutes') AS TimeUsed
+FROM sessionLogs
+WHERE studentId = '21-2001265' AND Date = ' 06/15/2023';
+
+
+UPDATE Students
+SET RemainingTime = CONCAT(FLOOR((DATEDIFF(second, '00:00:00', RemainingTime) - DATEDIFF(second, '00:00:00', 
+(SELECT TimeUsed FROM sessionLogs WHERE studentId = '21-2001265' AND Date = ' 06/15/2023'))) / 3600), ' hours ', 
+FLOOR(((DATEDIFF(second, '00:00:00', RemainingTime) - DATEDIFF(second, '00:00:00', 
+(SELECT TimeUsed FROM sessionLogs WHERE studentId = '21-2001265' AND Date = ' 06/15/2023'))) % 3600) / 60), ' minutes')
+WHERE studentId = '21-2001265';
+
+UPDATE Students
+SET RemainingTime = CONCAT(FLOOR((DATEDIFF(second, '00:00:00', RemainingTime) - DATEDIFF(second, '00:00:00', '0:01:00')) / 3600), ' hours ', 
+FLOOR(((DATEDIFF(second, '00:00:00', RemainingTime) - DATEDIFF(second, '00:00:00', '0:01:00')) % 3600) / 60), ' minutes')
+WHERE studentId = '21-2001265';
+
+select * from students
