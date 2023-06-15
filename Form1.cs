@@ -22,7 +22,6 @@ namespace Sit_In_Monitoring
         SeiyaMarx Fifteens;
 
         bool closeNotify;
-        bool bounce;
         bool notify;
         bool exitApp;
 
@@ -39,6 +38,16 @@ namespace Sit_In_Monitoring
         int attemptsOfLogin;
 
         readonly int endOfNotification = 1000;
+
+        //int hour;
+        //int minute;
+        string studentId;
+        string section;
+        string fName;
+        string lName;
+        string mInitial;
+        const string arrow = "→";
+        
         #endregion ATTRIBUTES
 
         #region ALL OF FUNCTIONS // hekhokhekohok
@@ -78,6 +87,12 @@ namespace Sit_In_Monitoring
             void ReasonIsForEdit()
             {
                 pnlEditUser.Show();
+                oldStudentId.Texts = studentId;
+                oldSection.Texts = section;
+                oldFirstName.Texts = fName;
+                oldLastName.Texts = lName;
+                oldMiddleInitial.Texts = mInitial;
+                
                 /* ADD CODE BODY FOR EDIT HERE
                  * 
                  */
@@ -433,7 +448,6 @@ namespace Sit_In_Monitoring
 
             closeNotify = false;
             notify = false;
-            bounce = true;
 
             SetNotificationOnLoad();
             DefaultEnable();
@@ -737,6 +751,7 @@ namespace Sit_In_Monitoring
         {
             SearchStudentAllLogs();
         }
+
         private void txtSearchId_KeyPress(object sender, KeyPressEventArgs e)
         {
             DisplayForLogs();
@@ -763,11 +778,16 @@ namespace Sit_In_Monitoring
                     dt.Clear();
                     c.Fill(dt);
 
-                    displayID.Text = recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString();
+                    studentId = displayID.Text = recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString();
                     displayName.Text = recordsView.Rows[e.RowIndex].Cells["lFirstName"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lMiddleInitial"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lLastName"].FormattedValue.ToString();
-                    displaySection.Text = recordsView.Rows[e.RowIndex].Cells["lSection"].FormattedValue.ToString();
+                    section = displaySection.Text = recordsView.Rows[e.RowIndex].Cells["lSection"].FormattedValue.ToString();
                     displayBalance.Text = recordsView.Rows[e.RowIndex].Cells["lTimeUsed"].FormattedValue.ToString();
                     displayNumOfSitIns.Text = dt.Rows.Count.ToString();
+
+                    fName = recordsView.Rows[e.RowIndex].Cells["lFirstName"].FormattedValue.ToString();
+                    lName = recordsView.Rows[e.RowIndex].Cells["lLastName"].FormattedValue.ToString();
+                    mInitial = recordsView.Rows[e.RowIndex].Cells["lMiddleInitial"].FormattedValue.ToString();
+
                 }
             }
             catch (Exception)
@@ -787,60 +807,18 @@ namespace Sit_In_Monitoring
             SearchStudentAllLogs();
         }
 
-        private void textBoxBunifu10__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu3__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu9__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu5__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu1__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu12__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu4__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu11__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu7__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBoxBunifu2__TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnCancelEdit_Click(object sender, EventArgs e)
         {
             ReasonForPassword = "";
             pnlEditUser.Hide();
+        }
+
+        private void btnConfirmEdit_Click(object sender, EventArgs e)
+        {
+            /* ADD CODE BODY FOR EDIT RECORD
+             * 
+             *  - MARK
+             */
         }
     }
     class SeiyaMarx

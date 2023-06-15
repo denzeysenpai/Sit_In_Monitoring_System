@@ -90,24 +90,20 @@
             this.pnlRecords = new System.Windows.Forms.Panel();
             this.pnlEditUser = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.confirm6 = new System.Windows.Forms.CheckBox();
             this.confirm4 = new System.Windows.Forms.CheckBox();
             this.confirm2 = new System.Windows.Forms.CheckBox();
             this.confirm5 = new System.Windows.Forms.CheckBox();
             this.confirm3 = new System.Windows.Forms.CheckBox();
             this.confirm1 = new System.Windows.Forms.CheckBox();
-            this.newRemainingBalance = new ItachiBunifuUI.TextBoxBunifu();
             this.newMiddleInitial = new ItachiBunifuUI.TextBoxBunifu();
             this.newFirstName = new ItachiBunifuUI.TextBoxBunifu();
             this.newSection = new ItachiBunifuUI.TextBoxBunifu();
             this.newLastName = new ItachiBunifuUI.TextBoxBunifu();
             this.newStudentId = new ItachiBunifuUI.TextBoxBunifu();
-            this.oldRemainingBalance = new ItachiBunifuUI.TextBoxBunifu();
             this.oldMiddleInitial = new ItachiBunifuUI.TextBoxBunifu();
             this.oldFirstName = new ItachiBunifuUI.TextBoxBunifu();
             this.oldSection = new ItachiBunifuUI.TextBoxBunifu();
             this.oldLastName = new ItachiBunifuUI.TextBoxBunifu();
-            this.changesInfo6 = new System.Windows.Forms.Label();
             this.oldStudentId = new ItachiBunifuUI.TextBoxBunifu();
             this.changesInfo4 = new System.Windows.Forms.Label();
             this.btnCancelEdit = new ItachiUIBunifu.ButtonBunifuItachi();
@@ -118,7 +114,6 @@
             this.label22 = new System.Windows.Forms.Label();
             this.changesInfo1 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
-            this.label30 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.label18 = new System.Windows.Forms.Label();
@@ -919,7 +914,7 @@
             this.pnlEditUser.BackColor = System.Drawing.Color.Black;
             this.pnlEditUser.Controls.Add(this.panel9);
             this.pnlEditUser.Controls.Add(this.label13);
-            this.pnlEditUser.Location = new System.Drawing.Point(184, 95);
+            this.pnlEditUser.Location = new System.Drawing.Point(454, 97);
             this.pnlEditUser.Name = "pnlEditUser";
             this.pnlEditUser.Size = new System.Drawing.Size(1115, 565);
             this.pnlEditUser.TabIndex = 21;
@@ -927,24 +922,20 @@
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.panel9.Controls.Add(this.confirm6);
             this.panel9.Controls.Add(this.confirm4);
             this.panel9.Controls.Add(this.confirm2);
             this.panel9.Controls.Add(this.confirm5);
             this.panel9.Controls.Add(this.confirm3);
             this.panel9.Controls.Add(this.confirm1);
-            this.panel9.Controls.Add(this.newRemainingBalance);
             this.panel9.Controls.Add(this.newMiddleInitial);
             this.panel9.Controls.Add(this.newFirstName);
             this.panel9.Controls.Add(this.newSection);
             this.panel9.Controls.Add(this.newLastName);
             this.panel9.Controls.Add(this.newStudentId);
-            this.panel9.Controls.Add(this.oldRemainingBalance);
             this.panel9.Controls.Add(this.oldMiddleInitial);
             this.panel9.Controls.Add(this.oldFirstName);
             this.panel9.Controls.Add(this.oldSection);
             this.panel9.Controls.Add(this.oldLastName);
-            this.panel9.Controls.Add(this.changesInfo6);
             this.panel9.Controls.Add(this.oldStudentId);
             this.panel9.Controls.Add(this.changesInfo4);
             this.panel9.Controls.Add(this.btnCancelEdit);
@@ -955,7 +946,6 @@
             this.panel9.Controls.Add(this.label22);
             this.panel9.Controls.Add(this.changesInfo1);
             this.panel9.Controls.Add(this.label20);
-            this.panel9.Controls.Add(this.label30);
             this.panel9.Controls.Add(this.label19);
             this.panel9.Controls.Add(this.label26);
             this.panel9.Controls.Add(this.label18);
@@ -968,15 +958,6 @@
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(1105, 520);
             this.panel9.TabIndex = 21;
-            // 
-            // confirm6
-            // 
-            this.confirm6.AutoSize = true;
-            this.confirm6.Location = new System.Drawing.Point(978, 295);
-            this.confirm6.Name = "confirm6";
-            this.confirm6.Size = new System.Drawing.Size(15, 14);
-            this.confirm6.TabIndex = 7;
-            this.confirm6.UseVisualStyleBackColor = true;
             // 
             // confirm4
             // 
@@ -1022,28 +1003,6 @@
             this.confirm1.Size = new System.Drawing.Size(15, 14);
             this.confirm1.TabIndex = 7;
             this.confirm1.UseVisualStyleBackColor = true;
-            // 
-            // newRemainingBalance
-            // 
-            this.newRemainingBalance.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.newRemainingBalance.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.newRemainingBalance.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.newRemainingBalance.BorderRadius = 0;
-            this.newRemainingBalance.BorderSize = 1;
-            this.newRemainingBalance.ForeColor = System.Drawing.Color.Black;
-            this.newRemainingBalance.Location = new System.Drawing.Point(634, 288);
-            this.newRemainingBalance.Margin = new System.Windows.Forms.Padding(4);
-            this.newRemainingBalance.Multiline = false;
-            this.newRemainingBalance.Name = "newRemainingBalance";
-            this.newRemainingBalance.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.newRemainingBalance.PasswordChar = false;
-            this.newRemainingBalance.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
-            this.newRemainingBalance.PlaceholderText = "Bal.";
-            this.newRemainingBalance.Size = new System.Drawing.Size(79, 29);
-            this.newRemainingBalance.TabIndex = 1;
-            this.newRemainingBalance.Texts = "";
-            this.newRemainingBalance.UnderlinedStyle = false;
-            this.newRemainingBalance._TextChanged += new System.EventHandler(this.textBoxBunifu12__TextChanged);
             // 
             // newMiddleInitial
             // 
@@ -1154,28 +1113,6 @@
             this.newStudentId.UnderlinedStyle = false;
             this.newStudentId._TextChanged += new System.EventHandler(this.textBoxBunifu2__TextChanged);
             // 
-            // oldRemainingBalance
-            // 
-            this.oldRemainingBalance.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.oldRemainingBalance.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.oldRemainingBalance.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.oldRemainingBalance.BorderRadius = 0;
-            this.oldRemainingBalance.BorderSize = 1;
-            this.oldRemainingBalance.ForeColor = System.Drawing.Color.Black;
-            this.oldRemainingBalance.Location = new System.Drawing.Point(348, 288);
-            this.oldRemainingBalance.Margin = new System.Windows.Forms.Padding(4);
-            this.oldRemainingBalance.Multiline = false;
-            this.oldRemainingBalance.Name = "oldRemainingBalance";
-            this.oldRemainingBalance.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.oldRemainingBalance.PasswordChar = false;
-            this.oldRemainingBalance.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
-            this.oldRemainingBalance.PlaceholderText = "";
-            this.oldRemainingBalance.Size = new System.Drawing.Size(84, 29);
-            this.oldRemainingBalance.TabIndex = 1;
-            this.oldRemainingBalance.Texts = "";
-            this.oldRemainingBalance.UnderlinedStyle = false;
-            this.oldRemainingBalance._TextChanged += new System.EventHandler(this.textBoxBunifu10__TextChanged);
-            // 
             // oldMiddleInitial
             // 
             this.oldMiddleInitial.BackColor = System.Drawing.Color.AntiqueWhite;
@@ -1183,6 +1120,7 @@
             this.oldMiddleInitial.BorderFocusColor = System.Drawing.Color.Aqua;
             this.oldMiddleInitial.BorderRadius = 0;
             this.oldMiddleInitial.BorderSize = 1;
+            this.oldMiddleInitial.Enabled = false;
             this.oldMiddleInitial.ForeColor = System.Drawing.Color.Black;
             this.oldMiddleInitial.Location = new System.Drawing.Point(348, 212);
             this.oldMiddleInitial.Margin = new System.Windows.Forms.Padding(4);
@@ -1204,6 +1142,7 @@
             this.oldFirstName.BorderFocusColor = System.Drawing.Color.Aqua;
             this.oldFirstName.BorderRadius = 0;
             this.oldFirstName.BorderSize = 1;
+            this.oldFirstName.Enabled = false;
             this.oldFirstName.ForeColor = System.Drawing.Color.Black;
             this.oldFirstName.Location = new System.Drawing.Point(210, 138);
             this.oldFirstName.Margin = new System.Windows.Forms.Padding(4);
@@ -1226,6 +1165,7 @@
             this.oldSection.BorderFocusColor = System.Drawing.Color.Aqua;
             this.oldSection.BorderRadius = 0;
             this.oldSection.BorderSize = 1;
+            this.oldSection.Enabled = false;
             this.oldSection.ForeColor = System.Drawing.Color.Black;
             this.oldSection.Location = new System.Drawing.Point(211, 250);
             this.oldSection.Margin = new System.Windows.Forms.Padding(4);
@@ -1248,6 +1188,7 @@
             this.oldLastName.BorderFocusColor = System.Drawing.Color.Aqua;
             this.oldLastName.BorderRadius = 0;
             this.oldLastName.BorderSize = 1;
+            this.oldLastName.Enabled = false;
             this.oldLastName.ForeColor = System.Drawing.Color.Black;
             this.oldLastName.Location = new System.Drawing.Point(211, 175);
             this.oldLastName.Margin = new System.Windows.Forms.Padding(4);
@@ -1263,17 +1204,6 @@
             this.oldLastName.UnderlinedStyle = false;
             this.oldLastName._TextChanged += new System.EventHandler(this.textBoxBunifu5__TextChanged);
             // 
-            // changesInfo6
-            // 
-            this.changesInfo6.AutoSize = true;
-            this.changesInfo6.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changesInfo6.ForeColor = System.Drawing.Color.Black;
-            this.changesInfo6.Location = new System.Drawing.Point(770, 290);
-            this.changesInfo6.Name = "changesInfo6";
-            this.changesInfo6.Size = new System.Drawing.Size(120, 19);
-            this.changesInfo6.TabIndex = 6;
-            this.changesInfo6.Text = "none → none";
-            // 
             // oldStudentId
             // 
             this.oldStudentId.BackColor = System.Drawing.Color.AntiqueWhite;
@@ -1281,6 +1211,7 @@
             this.oldStudentId.BorderFocusColor = System.Drawing.Color.Aqua;
             this.oldStudentId.BorderRadius = 0;
             this.oldStudentId.BorderSize = 1;
+            this.oldStudentId.Enabled = false;
             this.oldStudentId.ForeColor = System.Drawing.Color.Black;
             this.oldStudentId.Location = new System.Drawing.Point(210, 100);
             this.oldStudentId.Margin = new System.Windows.Forms.Padding(4);
@@ -1318,7 +1249,7 @@
             this.btnCancelEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelEdit.ForeColor = System.Drawing.Color.White;
-            this.btnCancelEdit.Location = new System.Drawing.Point(359, 475);
+            this.btnCancelEdit.Location = new System.Drawing.Point(360, 432);
             this.btnCancelEdit.Name = "btnCancelEdit";
             this.btnCancelEdit.Size = new System.Drawing.Size(386, 40);
             this.btnCancelEdit.TabIndex = 0;
@@ -1338,13 +1269,14 @@
             this.btnConfirmEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmEdit.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmEdit.Location = new System.Drawing.Point(359, 433);
+            this.btnConfirmEdit.Location = new System.Drawing.Point(360, 390);
             this.btnConfirmEdit.Name = "btnConfirmEdit";
             this.btnConfirmEdit.Size = new System.Drawing.Size(386, 40);
             this.btnConfirmEdit.TabIndex = 0;
             this.btnConfirmEdit.Text = "CONFIRM SELECTED EDITS";
             this.btnConfirmEdit.TextColor = System.Drawing.Color.White;
             this.btnConfirmEdit.UseVisualStyleBackColor = false;
+            this.btnConfirmEdit.Click += new System.EventHandler(this.btnConfirmEdit_Click);
             // 
             // changesInfo5
             // 
@@ -1411,17 +1343,6 @@
             this.label20.Size = new System.Drawing.Size(83, 19);
             this.label20.TabIndex = 6;
             this.label20.Text = "Changes";
-            // 
-            // label30
-            // 
-            this.label30.AutoSize = true;
-            this.label30.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label30.ForeColor = System.Drawing.Color.Black;
-            this.label30.Location = new System.Drawing.Point(81, 290);
-            this.label30.Name = "label30";
-            this.label30.Size = new System.Drawing.Size(174, 19);
-            this.label30.TabIndex = 6;
-            this.label30.Text = "Remaining Balance:";
             // 
             // label19
             // 
@@ -2443,28 +2364,23 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.CheckBox confirm6;
         private System.Windows.Forms.CheckBox confirm4;
         private System.Windows.Forms.CheckBox confirm2;
         private System.Windows.Forms.CheckBox confirm5;
         private System.Windows.Forms.CheckBox confirm3;
-        private ItachiBunifuUI.TextBoxBunifu newRemainingBalance;
         private ItachiBunifuUI.TextBoxBunifu newMiddleInitial;
         private ItachiBunifuUI.TextBoxBunifu newFirstName;
         private ItachiBunifuUI.TextBoxBunifu newSection;
         private ItachiBunifuUI.TextBoxBunifu newLastName;
-        private ItachiBunifuUI.TextBoxBunifu oldRemainingBalance;
         private ItachiBunifuUI.TextBoxBunifu oldMiddleInitial;
         private ItachiBunifuUI.TextBoxBunifu oldFirstName;
         private ItachiBunifuUI.TextBoxBunifu oldSection;
         private ItachiBunifuUI.TextBoxBunifu oldLastName;
-        private System.Windows.Forms.Label changesInfo6;
         private System.Windows.Forms.Label changesInfo4;
         private System.Windows.Forms.Label changesInfo5;
         private System.Windows.Forms.Label changesInfo2;
         private System.Windows.Forms.Label changesInfo3;
         private System.Windows.Forms.Label changesInfo1;
-        private System.Windows.Forms.Label label30;
         private System.Windows.Forms.Label label26;
         private System.Windows.Forms.Label label29;
         private System.Windows.Forms.Label label23;
