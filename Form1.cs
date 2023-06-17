@@ -12,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
@@ -86,13 +86,14 @@ namespace Sit_In_Monitoring
 
             void ReasonIsForEdit()
             {
-                pnlEditUser.Show();
-                newStudentId.Texts = studentId;
-                newSection.Texts = section;
-                newFirstName.Texts = fName;
-                newLastName.Texts = lName;
-                newMiddleInitial.Texts = mInitial;
+                newStudentId.PlaceholderText = studentId;
+                newSection.PlaceholderText = section;
+                newFirstName.PlaceholderText = fName;
+                newLastName.PlaceholderText = lName;
+                newMiddleInitial.PlaceholderText = mInitial;
                 
+                pnlEditUser.Show();
+
                 /* ADD CODE BODY FOR EDIT HERE
                  * 
                  */
@@ -389,6 +390,7 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnlAdminLock, 18);
             Design.RoundCorner(pnlEditUser, 18);
             Design.RoundCorner(pnltm2, 15);
+            Design.RoundCorner(pnlIn, 16);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -544,6 +546,9 @@ namespace Sit_In_Monitoring
                 EnableStart();
             else
                 DisableStart();
+
+
+            lblChanges.Visible = lblConfirm.Visible = (confirm1.Visible || confirm2.Visible || confirm3.Visible || confirm4.Visible || confirm5.Visible);
         }
 
 
@@ -742,11 +747,21 @@ namespace Sit_In_Monitoring
         private void BtnEdit_Click(object sender, EventArgs e)
         {
             ReasonForPassword = "edit";
+
             changesInfo1.Hide();
             changesInfo2.Hide();
             changesInfo3.Hide();
             changesInfo4.Hide();
             changesInfo5.Hide();
+
+            lblChanges.Hide();
+            lblConfirm.Hide();
+
+            confirm1.Hide();
+            confirm2.Hide();
+            confirm3.Hide();
+            confirm4.Hide();
+            confirm5.Hide();
 
             ShowAdminPasswordInput();
         }
@@ -833,11 +848,37 @@ namespace Sit_In_Monitoring
              */
         }
 
-        private void recordsView_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        void CheckForChanges(string _old, string _new, Control changes, CheckBox cbx)
         {
-
+            if (_old != _new && (_new != null && _new != string.Empty))
+            {
+                changes.Visible = true;
+                changes.Text = $"{_old} {arrow} {_new}";
+                cbx.Visible = true;
+            }
+            else
+            {
+                changes.Visible = false;
+                changes.Text = "";
+                cbx.Visible = false;
+            }
         }
 
+        private void studentidTextChangedEdit(object sender, EventArgs e) =>
+            CheckForChanges(newStudentId.PlaceholderText, newStudentId.Texts, changesInfo1, confirm1);
+
+
+        private void firstNameTextChangedEdit(object sender, EventArgs e) =>
+            CheckForChanges(newFirstName.PlaceholderText, newFirstName.Texts, changesInfo2, confirm2);
+
+        private void lastNameTextChangedEdit(object sender, EventArgs e) =>
+            CheckForChanges(newLastName.PlaceholderText, newLastName.Texts, changesInfo3, confirm3);
+
+        private void middleInitialTextChangedEdit(object sender, EventArgs e) =>
+            CheckForChanges(newMiddleInitial.PlaceholderText, newMiddleInitial.Texts, changesInfo4, confirm4);
+
+        private void sectionTextChangedEdit(object sender, EventArgs e) =>
+            CheckForChanges(newSection.PlaceholderText, newSection.Texts, changesInfo5, confirm5);
     }
     class SeiyaMarx
     {
