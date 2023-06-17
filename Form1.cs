@@ -12,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
         readonly DataSet ds = new DataSet();
@@ -184,14 +184,14 @@ namespace Sit_In_Monitoring
                 s.Fill(ds);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, remainingTime, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd1.Parameters.AddWithValue("@date", date);
                     cmd1.Parameters.AddWithValue("@timeIn", time1);
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, timeUsed, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd2.Parameters.AddWithValue("@date", date);
                     cmd2.Parameters.AddWithValue("@timeIn", time1);
@@ -210,14 +210,14 @@ namespace Sit_In_Monitoring
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
 
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, remainingTime, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd1.Parameters.AddWithValue("@date", date);
                     cmd1.Parameters.AddWithValue("@timeIn", time1);
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, timeUsed, personid) SELECT @studentId, @date, @timeIn, s.remainingTime, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd2.Parameters.AddWithValue("@date", date);
                     cmd2.Parameters.AddWithValue("@timeIn", time1);
@@ -307,11 +307,16 @@ namespace Sit_In_Monitoring
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
             conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut, TimeUsed = CONVERT(DECIMAL(5,2), DATEDIFF(second, TimeIn, TimeOut) / 3600.0) where studentid = @studentid and date = @dateNow", conn);
+            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut where studentid = @studentid and date = @dateNow", conn);
             cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
             cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
             cmd.ExecuteNonQuery();
+
+            SqlCommand timeUsed = new SqlCommand("UPDATE sessionlogs SET TimeUsed = CONVERT(DECIMAL(5,2), DATEDIFF(second, TimeIn, TimeOut) / 3600.0) where studentid = @studentid and date = @dateNow", conn);
+            timeUsed.Parameters.AddWithValue("@studentId", studentId);
+            timeUsed.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
+            timeUsed.ExecuteNonQuery();
 
             SqlCommand cmd2 = new SqlCommand("DELETE FROM currentSession WHERE studentId = @studentId and date = @dateNow", conn);
             cmd2.Parameters.AddWithValue("@studentId", studentId);
