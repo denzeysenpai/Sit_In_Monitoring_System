@@ -114,7 +114,28 @@ SET remainingTime -= (SELECT CONVERT(DECIMAL(16, 6), SUM(TimeUsed))
 FROM SessionLogs WHERE studentID = Students.studentID and Date = ' 06/19/2023')
 WHERE studentID = '21-2002433';
 
-select * from Students
 
 
+
+--DATA CHANGES FOR TRIALS
+UPDATE Students
+SET remainingTime -= (SELECT CONVERT(DECIMAL(16, 6), SUM(TimeUsed))
+FROM SessionLogs WHERE logid = 17)
+WHERE studentID = '21-2001265';
+
+UPDATE SessionLogs SET TimeUsed = (DATEDIFF(second, TimeIn, TimeOut) / 3600.0) WHERE logid = 17;
+
+
+
+
+SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '21-2001265' GROUP BY studentID HAVING SUM(TimeUsed) >= 1
+
+
+select * from SessionLogs
+SELECT COUNT(*) as countOfRows FROM SessionLogs;
+
+
+drop table SessionLogs
+drop table currentSession
+drop table Students
 
