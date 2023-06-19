@@ -13,9 +13,10 @@ namespace Sit_In_Monitoring
     public partial class Form1 : Form
     {
         readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly DataSet ds = new DataSet();
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
-        readonly DataSet ds = new DataSet();
+        
 
         SeiyaMarx TextboxMargins;
         SeiyaMarx TextboxBodies;
@@ -176,6 +177,7 @@ namespace Sit_In_Monitoring
 
             check.Fill(dt);
 
+
            if(dt.Rows.Count == 0)
             {
                 conn.Open();
@@ -299,17 +301,23 @@ namespace Sit_In_Monitoring
             }
         }
 
-        public void LogoutStudent(DataGridViewCellEventArgs e)//DONE
+        public void LogoutStudent(DataGridViewCellEventArgs e)//DONE MODIFIED 6/19/2023
         {
             DateTime date = DateTime.Now;
             string time1 = date.ToString("hh:mm:ss tt");
             DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
+            SqlDataAdapter count = new SqlDataAdapter("SELECT * FROM SessionLogs;", conn);
+            DataTable dt = new DataTable();
+
+            count.Fill(dt);
+
             conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut where studentid = @studentid and date = @dateNow", conn);
+            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut where logid = @logid", conn);
             cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
+            cmd.Parameters.AddWithValue("@logid", dt.Rows.Count);
             cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
             cmd.ExecuteNonQuery();
 
@@ -318,8 +326,9 @@ namespace Sit_In_Monitoring
             timeUsed.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
             timeUsed.ExecuteNonQuery();
 
-            SqlCommand substractTime = new SqlCommand("UPDATE Students SET remainingTime -= (SELECT CONVERT(DECIMAL(16, 6), SUM(TimeUsed)) FROM SessionLogs WHERE studentID = @studentId and Date = @date) WHERE studentID = @studentId;", conn);
+            SqlCommand substractTime = new SqlCommand("UPDATE Students SET remainingTime = remainingTime - (SELECT CONVERT(DECIMAL(16, 6), TimeUsed) FROM SessionLogs WHERE studentID = @studentId and logid = @logid) WHERE studentID = @studentId;", conn);
             substractTime.Parameters.AddWithValue("studentId", studentId);
+            substractTime.Parameters.AddWithValue("@logid", dt.Rows.Count);
             substractTime.Parameters.AddWithValue("date", dateToday.Value.ToString(" MM/dd/yyyy"));
             substractTime.ExecuteNonQuery();
 
@@ -330,7 +339,7 @@ namespace Sit_In_Monitoring
 
             DataGrid.Rows.RemoveAt(e.RowIndex);
             NotifySuccessfulLogOut();
-        }
+        } 
         public void SearchStudentAllLogs()//DONE
         {
             recordsView.Rows.Clear();
@@ -367,13 +376,56 @@ namespace Sit_In_Monitoring
         }//DONE
         public void RestrictTime()
         {
+            SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
+            DataTable wew = new DataTable();
 
-        }//ON-GOING 
+            check.Fill(wew);
+
+
+            if (wew.Rows.Count == 0)
+            {
+                SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
+                DataTable dt = new DataTable();
+
+                restrict.Fill(dt);
+
+                if (dt.Rows.Count >= 1)
+                {
+                    if (MessageBox.Show("This student have already reached session limit time!\r\n(CANCEL to override)", "Time Limit Reached!", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                    {
+                        if (MessageBox.Show("Do you want to override student's time?", "Override?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
+                            AddStudent();
+                        }
+                        else
+                        {
+                            clearStudentText();
+                        }
+
+                    }
+                    else
+                    {
+                        clearStudentText();
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Student is already on a session!");
+            }
+           
+        }//DONE
+
+        //PS: MODIFIED THE LOGOUT STUDENT FUNCTION BY USING THE ROW AS THE FOREIGN KEY, WILL DO MORE STUDY REGARDING WITH THIS
+        // FOR IT CAN CAUSE GREAT PROBLEM ONCE 1 ROW IS MISSING OR 1 ROW DELETED.
+        //NEVER DELETE A ROW 
+        //NOT GOING TO USE THE DELETE TABLE UNLESS IF THIS PROBLEM HAS BEEN FIXED.
+
+
+        //WORK OUT THE IDEA ON HOW TO SET THE TIME OUT ON A SPECIFIC RECORD AND ALSO SUBTRACT SPECIFIC TIME USED TO THE REMAINING TIME
         
+        //MARK/GOERGE TASK: PRINT DB TO EXCEL 
 
-
-
-        //NEXT TASK: ADD RESTRICTION FOR CERTAIN HOURS LIMITED ONLY SIT IN AND ALSO RESTRICTION BYPASS + REASON FOR IT - EZ 
         #endregion
 
 
@@ -642,6 +694,19 @@ namespace Sit_In_Monitoring
 
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
+            SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
+            DataTable dt = new DataTable();
+            bool Add;
+            restrict.Fill(dt);
+
+            if (dt.Rows.Count >= 1)
+            {
+                Add = false;
+            }
+            else
+            {
+                Add = true;
+            }
             string ErrorMessage = "";
             bool ErrorInInputIsDetected = false; // this checks overall invalid input
 
@@ -673,7 +738,14 @@ namespace Sit_In_Monitoring
                 try
                 {
                     DefaultEnable();
-                    AddStudent();
+                    if(Add == true)
+                    {
+                        AddStudent();
+                    }
+                    else
+                    {
+                        RestrictTime();
+                    }
                 }
                 catch (Exception ex)
                 {
