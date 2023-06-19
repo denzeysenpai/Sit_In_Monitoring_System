@@ -313,10 +313,15 @@ namespace Sit_In_Monitoring
             cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
             cmd.ExecuteNonQuery();
 
-            SqlCommand timeUsed = new SqlCommand("UPDATE sessionlogs SET TimeUsed = CONVERT(DECIMAL(5,2), DATEDIFF(second, TimeIn, TimeOut) / 3600.0) where studentid = @studentid and date = @dateNow", conn);
+            SqlCommand timeUsed = new SqlCommand("UPDATE sessionlogs SET TimeUsed = DATEDIFF(second, TimeIn, TimeOut) / 3600.0 where studentid = @studentid and date = @dateNow", conn);
             timeUsed.Parameters.AddWithValue("@studentId", studentId);
             timeUsed.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
             timeUsed.ExecuteNonQuery();
+
+            SqlCommand substractTime = new SqlCommand("UPDATE Students SET remainingTime -= (SELECT CONVERT(DECIMAL(16, 6), SUM(TimeUsed)) FROM SessionLogs WHERE studentID = @studentId and Date = @date) WHERE studentID = @studentId;", conn);
+            substractTime.Parameters.AddWithValue("studentId", studentId);
+            substractTime.Parameters.AddWithValue("date", dateToday.Value.ToString(" MM/dd/yyyy"));
+            substractTime.ExecuteNonQuery();
 
             SqlCommand cmd2 = new SqlCommand("DELETE FROM currentSession WHERE studentId = @studentId and date = @dateNow", conn);
             cmd2.Parameters.AddWithValue("@studentId", studentId);
