@@ -474,7 +474,7 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnlEditUser, 18);
             Design.RoundCorner(pnltm2, 15);
             Design.RoundCorner(pnlIn, 16);
-            Design.RoundCorner(pnlPleaseWait, 20);
+            Design.RoundCorner(pnlPleaseWait, 40);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
