@@ -12,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
@@ -78,6 +78,29 @@ namespace Sit_In_Monitoring
             BtnSearch.Enabled = true;
         }
 
+        public void PrintRecordsToExelFormat()
+        {
+            if (recordsView.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application xcelApp = new Microsoft.Office.Interop.Excel.Application();
+                xcelApp.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < recordsView.Columns.Count + 1; i++)
+                {
+                    xcelApp.Cells[1,i] = recordsView.Columns[i - 1].HeaderText;           
+
+                }
+                for (int i = 0;i < recordsView.Rows.Count; i++)
+                {
+                    for (int j = 0; j < recordsView.Columns.Count; j++)
+                    {
+                        xcelApp.Cells[i + 2,j + 1] = recordsView.Rows[i].Cells[j].Value.ToString();
+                    }
+                    xcelApp.Columns.AutoFit();
+                    xcelApp.Visible = true;
+                }
+            }
+        } // DONE
+
         // just add body in local functions
         public void AdminLockReasonConfirmation() // This method is only called after input matches the correct password - maki
         {
@@ -111,9 +134,7 @@ namespace Sit_In_Monitoring
 
             void ReasonIsForPrint()
             {
-                /* ADD CODE BODY FOR PRINT HERE
-                 * 
-                 */
+                PrintRecordsToExelFormat();
             }
 
 
