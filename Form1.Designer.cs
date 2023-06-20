@@ -174,6 +174,8 @@
             this.notificationMessage = new System.Windows.Forms.Label();
             this.NotificationTimerSpecific = new System.Windows.Forms.Timer(this.components);
             this.label8 = new System.Windows.Forms.Label();
+            this.pnlPleaseWait = new System.Windows.Forms.Panel();
+            this.Processing = new System.Windows.Forms.Timer(this.components);
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -898,7 +900,7 @@
             this.pnlRecords.Controls.Add(this.mrg6);
             this.pnlRecords.Controls.Add(this.pnltm2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -908,7 +910,7 @@
             this.pnlEditUser.BackColor = System.Drawing.Color.Black;
             this.pnlEditUser.Controls.Add(this.pnlIn);
             this.pnlEditUser.Controls.Add(this.label13);
-            this.pnlEditUser.Location = new System.Drawing.Point(189, 96);
+            this.pnlEditUser.Location = new System.Drawing.Point(1809, 96);
             this.pnlEditUser.Name = "pnlEditUser";
             this.pnlEditUser.Size = new System.Drawing.Size(1115, 565);
             this.pnlEditUser.TabIndex = 21;
@@ -2003,6 +2005,21 @@
             this.label8.TabIndex = 19;
             this.label8.Text = "DEPARTMENT OF NETWORK AND TECHNICAL SERVICES";
             // 
+            // pnlPleaseWait
+            // 
+            this.pnlPleaseWait.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.HuwatUsah;
+            this.pnlPleaseWait.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlPleaseWait.Location = new System.Drawing.Point(1600, 53);
+            this.pnlPleaseWait.Name = "pnlPleaseWait";
+            this.pnlPleaseWait.Size = new System.Drawing.Size(461, 88);
+            this.pnlPleaseWait.TabIndex = 2;
+            // 
+            // Processing
+            // 
+            this.Processing.Enabled = true;
+            this.Processing.Interval = 2;
+            this.Processing.Tick += new System.EventHandler(this.ProcessDB);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2011,6 +2028,7 @@
             this.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1472, 759);
+            this.Controls.Add(this.pnlPleaseWait);
             this.Controls.Add(this.pnlAdminLock);
             this.Controls.Add(this.pnlRecords);
             this.Controls.Add(this.label8);
@@ -2127,7 +2145,6 @@
         private System.Windows.Forms.Label placeholder1;
         private ItachiUIBunifu.ButtonBunifuItachi BtnStart;
         private System.Windows.Forms.Label placeholder2;
-        private System.Windows.Forms.DataGridView DataGrid;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel pnlAdminLock;
@@ -2200,15 +2217,6 @@
         private ItachiUIBunifu.ButtonBunifuItachi BtnCancelIn;
         private ItachiUIBunifu.ButtonBunifuItachi BtnConfirm;
         private System.Windows.Forms.Label LBLBTNSEARCH;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIRSTNAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LASTNAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cSection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
-        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel pnltm2;
         private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
@@ -2249,6 +2257,18 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.Label label25;
         private ItachiUIBunifu.ButtonBunifuItachi btnCancelEdit;
+        private System.Windows.Forms.Panel pnlPleaseWait;
+        private System.Windows.Forms.Timer Processing;
+        private System.Windows.Forms.DataGridView DataGrid;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIRSTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LASTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
+        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
     }
 }
 

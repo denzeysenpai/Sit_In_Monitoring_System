@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Drawing.Printing;
 using System.Runtime.InteropServices;
+using System.Threading;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sit_In_Monitoring
 {
@@ -16,7 +15,7 @@ namespace Sit_In_Monitoring
         readonly DataSet ds = new DataSet();
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
-        
+
 
         SeiyaMarx TextboxMargins;
         SeiyaMarx TextboxBodies;
@@ -25,6 +24,7 @@ namespace Sit_In_Monitoring
         bool closeNotify;
         bool notify;
         bool exitApp;
+        bool ProcessingDataBase;
 
         Color buttonColors;
         Color notClicked;
@@ -48,7 +48,7 @@ namespace Sit_In_Monitoring
         string lName;
         string mInitial;
         const string arrow = "→";
-        
+
         #endregion ATTRIBUTES
 
         #region ALL OF FUNCTIONS // hekhokhekohok
@@ -86,14 +86,14 @@ namespace Sit_In_Monitoring
                 xcelApp.Application.Workbooks.Add(Type.Missing);
                 for (int i = 1; i < recordsView.Columns.Count + 1; i++)
                 {
-                    xcelApp.Cells[1,i] = recordsView.Columns[i - 1].HeaderText;           
+                    xcelApp.Cells[1, i] = recordsView.Columns[i - 1].HeaderText;
 
                 }
-                for (int i = 0;i < recordsView.Rows.Count; i++)
+                for (int i = 0; i < recordsView.Rows.Count; i++)
                 {
                     for (int j = 0; j < recordsView.Columns.Count; j++)
                     {
-                        xcelApp.Cells[i + 2,j + 1] = recordsView.Rows[i].Cells[j].Value.ToString();
+                        xcelApp.Cells[i + 2, j + 1] = recordsView.Rows[i].Cells[j].Value.ToString();
                     }
                     xcelApp.Columns.AutoFit();
                     xcelApp.Visible = true;
@@ -115,7 +115,7 @@ namespace Sit_In_Monitoring
                 newFirstName.PlaceholderText = fName;
                 newLastName.PlaceholderText = lName;
                 newMiddleInitial.PlaceholderText = mInitial;
-                
+
                 pnlEditUser.Show();
 
                 /* ADD CODE BODY FOR EDIT HERE
@@ -199,7 +199,7 @@ namespace Sit_In_Monitoring
             check.Fill(dt);
 
 
-           if(dt.Rows.Count == 0)
+            if (dt.Rows.Count == 0)
             {
                 conn.Open();
                 SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
@@ -256,7 +256,7 @@ namespace Sit_In_Monitoring
             txtStudentID.Text = string.Empty;
             clearStudentText();
             txtStudentID.Focus();
-            Update_Data(); 
+            Update_Data();
         }//DONE
 
         public void StudentExisted()
@@ -279,7 +279,7 @@ namespace Sit_In_Monitoring
                         BtnStart.Enabled = true;
                         BtnStart.BackColor = CanStart;
                     }
-                } 
+                }
                 else
                 {
                     DialogResult d = MessageBox.Show("This student is not yet registered! \nPlease register before sit-in!", "STUDENT NOT FOUND", MessageBoxButtons.OKCancel, MessageBoxIcon.Error);
@@ -322,7 +322,7 @@ namespace Sit_In_Monitoring
             }
         }
 
-        public void LogoutStudent(DataGridViewCellEventArgs e)//DONE MODIFIED 6/19/2023
+        public void LogoutStudent(DataGridViewCellEventArgs e) //DONE MODIFIED 6/19/2023 // NEW BUG FOUND
         {
             DateTime date = DateTime.Now;
             string time1 = date.ToString("hh:mm:ss tt");
@@ -359,8 +359,8 @@ namespace Sit_In_Monitoring
             cmd2.ExecuteNonQuery();
 
             DataGrid.Rows.RemoveAt(e.RowIndex);
-            NotifySuccessfulLogOut();
-        } 
+            ProcessingDataBase = true;
+        }
         public void SearchStudentAllLogs()//DONE
         {
             recordsView.Rows.Clear();
@@ -381,7 +381,7 @@ namespace Sit_In_Monitoring
         public void DisplayForLogs()
         {
             recordsView.Rows.Clear();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%"+ txtSearchId.Text +"%'", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%" + txtSearchId.Text + "%'", conn);
 
             DataTable dt = new DataTable();
             dt.Clear();
@@ -434,7 +434,7 @@ namespace Sit_In_Monitoring
             {
                 MessageBox.Show("Student is already on a session!");
             }
-           
+
         }//DONE
 
         //PS: MODIFIED THE LOGOUT STUDENT FUNCTION BY USING THE ROW AS THE FOREIGN KEY, WILL DO MORE STUDY REGARDING WITH THIS
@@ -444,8 +444,8 @@ namespace Sit_In_Monitoring
 
 
         //WORK OUT THE IDEA ON HOW TO SET THE TIME OUT ON A SPECIFIC RECORD AND ALSO SUBTRACT SPECIFIC TIME USED TO THE REMAINING TIME
-        
-        //MARK/GOERGE TASK: PRINT DB TO EXCEL 
+
+        //MARK/GOERGE TASK: PRINT DB TO EXCEL //DONE
 
         #endregion
 
@@ -487,6 +487,7 @@ namespace Sit_In_Monitoring
             exitApp = false;
             Update_Data();
             DisplayForLogs();
+            ProcessingDataBase = false;
 
             pnlAdminLock.Location = new Point(446, 204);
             pnlRecords.Location = new Point(0, 0);
@@ -518,6 +519,7 @@ namespace Sit_In_Monitoring
             pnlEditUser.Location = new Point(184, 95);
             pnlEditUser.Size = new Size(1115, 565);
             pnlEditUser.BackColor = Color.Black;
+            pnlPleaseWait.Location = new Point((Width / 2) - (pnlPleaseWait.Width / 2), (Height / 2) - (pnlPleaseWait.Height / 2));
 
             foreach (Control ctr in this.Controls)
             {
@@ -576,14 +578,19 @@ namespace Sit_In_Monitoring
 
         private void NotificationTimerSpecific_Tick(object sender, EventArgs e)
         {
+
+            pnlNotification.Visible = !pnlPleaseWait.Visible;
             // NOTIFICATION PANEL
 
             // Notification Animation go BrrRrRrrrR
-            closeNotify = count >= 800 ? !(notify = (count = 0) != 0) : closeNotify;
-            count = closeNotify == false && notify && pnlNotification.Left < endOfNotification + 40 ? count + 10 : count;
-            pnlNotification.Left = notify && pnlNotification.Left > endOfNotification ? pnlNotification.Left - 20 : pnlNotification.Left;
-            pnlNotification.Left = closeNotify && pnlNotification.Left < Width ? pnlNotification.Left + 20 : pnlNotification.Left;
-            closeNotify = (!closeNotify || pnlNotification.Left < Width) && closeNotify;
+            if (ProcessingDataBase == false)
+            {
+                closeNotify = count >= 800 ? !(notify = (count = 0) != 0) : closeNotify;
+                count = closeNotify == false && notify && pnlNotification.Left < endOfNotification + 40 ? count + 10 : count;
+                pnlNotification.Left = notify && pnlNotification.Left > endOfNotification ? pnlNotification.Left - 20 : pnlNotification.Left;
+                pnlNotification.Left = closeNotify && pnlNotification.Left < Width ? pnlNotification.Left + 20 : pnlNotification.Left;
+                closeNotify = (!closeNotify || pnlNotification.Left < Width) && closeNotify;
+            }
             // - hehe
         }
 
@@ -601,7 +608,7 @@ namespace Sit_In_Monitoring
         {
             void TextBox_Behavior(Control txtbx, Control mrgin, Control placeholders) => // Text box placeholders _Behavior
                 placeholders.Visible = (mrgin.BackColor = txtbx.Focused ? Clicked : notClicked) == notClicked;
-            bool CheckForBadInput_In(Control txt) => 
+            bool CheckForBadInput_In(Control txt) =>
                 !(txt.Text == null || txt.Text == "");
 
             // Border highlight
@@ -733,7 +740,7 @@ namespace Sit_In_Monitoring
 
             bool ControlHasNullInputIn(Control txtbox) => // this specifies invalid input
                 ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
-                //      ^^^^^INVALID INPUT DETECTED
+            //      ^^^^^INVALID INPUT DETECTED
 
             if (ControlHasNullInputIn(txtStudentID))
                 ErrorMessage += "Please Fill out Student ID!\n";
@@ -759,7 +766,7 @@ namespace Sit_In_Monitoring
                 try
                 {
                     DefaultEnable();
-                    if(Add == true)
+                    if (Add == true)
                     {
                         AddStudent();
                     }
@@ -795,7 +802,7 @@ namespace Sit_In_Monitoring
         }
 
         // USE THIS TO DISPLAY INFO IN SEARCHED RECORDS
-        /// <summary>
+        ///// <summary>
         /// Displays the student info in correct format
         /// </summary>
         /// <param name="stud_ID">Student ID to display</param>
@@ -924,7 +931,7 @@ namespace Sit_In_Monitoring
             {
 
             }
-           
+
         }
 
         private void dateForRecords_ValueChanged(object sender, EventArgs e)
@@ -982,6 +989,26 @@ namespace Sit_In_Monitoring
 
         private void sectionTextChangedEdit(object sender, EventArgs e) =>
             CheckForChanges(newSection.PlaceholderText, newSection.Texts, changesInfo5, confirm5);
+
+        private void ProcessDB(object sender, EventArgs e)
+        {
+            // Please Wait Notification after Log Out
+            if (ProcessingDataBase)
+            {
+                DataGrid.Enabled = false;
+                pnlPleaseWait.Show();
+                DataGrid.Columns["LOG_OUT"].Visible = false;
+                Thread.Sleep(1500);
+                NotifySuccessfulLogOut();
+                ProcessingDataBase = false;
+            }
+            else
+            {
+                pnlPleaseWait.Hide();
+                DataGrid.Columns["LOG_OUT"].Visible = true;
+                DataGrid.Enabled = true;
+            }
+        }
     }
     class SeiyaMarx
     {
