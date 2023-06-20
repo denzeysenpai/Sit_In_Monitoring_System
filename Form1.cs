@@ -474,6 +474,7 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnlEditUser, 18);
             Design.RoundCorner(pnltm2, 15);
             Design.RoundCorner(pnlIn, 16);
+            Design.RoundCorner(pnlPleaseWait, 20);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -585,10 +586,10 @@ namespace Sit_In_Monitoring
             // Notification Animation go BrrRrRrrrR
             if (ProcessingDataBase == false)
             {
-                closeNotify = count >= 800 ? !(notify = (count = 0) != 0) : closeNotify;
+                closeNotify = count >= 600 ? !(notify = (count = 0) != 0) : closeNotify;
                 count = closeNotify == false && notify && pnlNotification.Left < endOfNotification + 40 ? count + 10 : count;
-                pnlNotification.Left = notify && pnlNotification.Left > endOfNotification ? pnlNotification.Left - 20 : pnlNotification.Left;
-                pnlNotification.Left = closeNotify && pnlNotification.Left < Width ? pnlNotification.Left + 20 : pnlNotification.Left;
+                pnlNotification.Left = notify && pnlNotification.Left > endOfNotification ? pnlNotification.Left - 40 : pnlNotification.Left;
+                pnlNotification.Left = closeNotify && pnlNotification.Left < Width ? pnlNotification.Left + 40 : pnlNotification.Left;
                 closeNotify = (!closeNotify || pnlNotification.Left < Width) && closeNotify;
             }
             // - hehe

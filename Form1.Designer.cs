@@ -1990,7 +1990,7 @@
             // NotificationTimerSpecific
             // 
             this.NotificationTimerSpecific.Enabled = true;
-            this.NotificationTimerSpecific.Interval = 10;
+            this.NotificationTimerSpecific.Interval = 5;
             this.NotificationTimerSpecific.Tick += new System.EventHandler(this.NotificationTimerSpecific_Tick);
             // 
             // label8
