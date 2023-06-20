@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -11,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
         #region ATTRIBUTES
         readonly SeiyaMarx Design = new SeiyaMarx();
@@ -186,11 +187,13 @@ namespace Sit_In_Monitoring
             txtStudentLastName.Text = string.Empty;
             txtSection.Text = string.Empty;
         }//DONE
+        #endregion
 
+        #region main functions-Ez
         public void AddStudent()
         {
             DateTime val = DateTime.Now;
-            string time1 = val.ToString("hh:mm:ss tt");
+            string time1 = val.ToString("HH:mm:ss tt");
             string date = $"{val.Date: MM/dd/yyyy}";
 
             SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
@@ -214,12 +217,12 @@ namespace Sit_In_Monitoring
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    cmd2.Parameters.AddWithValue("@date", date);
-                    cmd2.Parameters.AddWithValue("@timeIn", time1);
-                    cmd2.ExecuteNonQuery();
-                    NotifySuccessfulSitIn();
+                    //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                    //cmd2.Parameters.AddWithValue("@date", date);
+                    //cmd2.Parameters.AddWithValue("@timeIn", time1);
+                    //cmd2.ExecuteNonQuery();
+                    //NotifySuccessfulSitIn();
                 }
                 else
                 {
@@ -240,11 +243,11 @@ namespace Sit_In_Monitoring
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    cmd2.Parameters.AddWithValue("@date", date);
-                    cmd2.Parameters.AddWithValue("@timeIn", time1);
-                    cmd2.ExecuteNonQuery();
+                    //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                    //cmd2.Parameters.AddWithValue("@date", date);
+                    //cmd2.Parameters.AddWithValue("@timeIn", time1);
+                    //cmd2.ExecuteNonQuery();
                     NotifySuccessfulSitIn();
                 }
             }
@@ -322,40 +325,53 @@ namespace Sit_In_Monitoring
             }
         }
 
-        public void LogoutStudent(DataGridViewCellEventArgs e) //DONE MODIFIED 6/19/2023 // NEW BUG FOUND
+        public void LogoutStudent(DataGridViewCellEventArgs e) //FIXED 6/20/23 NEED TO BE TESTED
         {
             DateTime date = DateTime.Now;
-            string time1 = date.ToString("hh:mm:ss tt");
+            string dateDb = dateToday.Value.ToString(" MM/dd/yyyy");
+            string time1 = date.ToString("HH:mm:ss tt");
             DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
             SqlDataAdapter count = new SqlDataAdapter("SELECT * FROM SessionLogs;", conn);
+            SqlDataAdapter calc = new SqlDataAdapter("SELECT DATEDIFF(second, TimeIn, '"+ time1 +"') / 3600.0 from currentsession where studentid = '"+ studentId +"' and date = '"+ dateDb +"'", conn);
             DataTable dt = new DataTable();
+            DataTable timeUsed = new DataTable();
+
+            calc.Fill(timeUsed);
 
             count.Fill(dt);
 
             conn.Open();
-            SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut where logid = @logid", conn);
+            SqlCommand cmd = new SqlCommand("INSERT INTO SessionLogs SELECT cs.studentId, cs.date, cs.timeIn, @timeOut, @timeUsed, cs.personid FROM currentSession cs WHERE cs.studentid = @studentId and date = @dateNow", conn);
             cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
-            cmd.Parameters.AddWithValue("@logid", dt.Rows.Count);
-            cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
+            cmd.Parameters.AddWithValue("@dateNow", dateDb);
+            cmd.Parameters.AddWithValue("@timeUsed", timeUsed.Rows[0][0].ToString());
             cmd.ExecuteNonQuery();
 
-            SqlCommand timeUsed = new SqlCommand("UPDATE sessionlogs SET TimeUsed = DATEDIFF(second, TimeIn, TimeOut) / 3600.0 where studentid = @studentid and date = @dateNow", conn);
-            timeUsed.Parameters.AddWithValue("@studentId", studentId);
-            timeUsed.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
-            timeUsed.ExecuteNonQuery();
+            //SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut where logid = @logid", conn);
+            //cmd.Parameters.AddWithValue("@timeOut", time1);
+            //cmd.Parameters.AddWithValue("@studentId", studentId);
+            //cmd.Parameters.AddWithValue("@logid", dt.Rows.Count);
+            //cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
+            //cmd.ExecuteNonQuery();
 
-            SqlCommand substractTime = new SqlCommand("UPDATE Students SET remainingTime = remainingTime - (SELECT CONVERT(DECIMAL(16, 6), TimeUsed) FROM SessionLogs WHERE studentID = @studentId and logid = @logid) WHERE studentID = @studentId;", conn);
+            //SqlCommand timeUsed = new SqlCommand("UPDATE sessionlogs SET TimeUsed = DATEDIFF(second, TimeIn, TimeOut) / 3600.0 where studentid = @studentid and date = @dateNow", conn);
+            //timeUsed.Parameters.AddWithValue("@studentId", studentId);
+            //timeUsed.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
+            //timeUsed.ExecuteNonQuery();
+
+            SqlCommand substractTime = new SqlCommand("UPDATE Students SET remainingTime = remainingTime - (SELECT CONVERT(DECIMAL(16, 6), TimeUsed) FROM SessionLogs WHERE studentID = @studentId and timeout = @timeOut) WHERE studentID = @studentId;", conn);
             substractTime.Parameters.AddWithValue("studentId", studentId);
+            substractTime.Parameters.AddWithValue("@timeOut", time1);
             substractTime.Parameters.AddWithValue("@logid", dt.Rows.Count);
             substractTime.Parameters.AddWithValue("date", dateToday.Value.ToString(" MM/dd/yyyy"));
             substractTime.ExecuteNonQuery();
 
             SqlCommand cmd2 = new SqlCommand("DELETE FROM currentSession WHERE studentId = @studentId and date = @dateNow", conn);
             cmd2.Parameters.AddWithValue("@studentId", studentId);
-            cmd2.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
+            cmd2.Parameters.AddWithValue("@dateNow", dateDb);
             cmd2.ExecuteNonQuery();
 
             DataGrid.Rows.RemoveAt(e.RowIndex);
@@ -436,18 +452,8 @@ namespace Sit_In_Monitoring
             }
 
         }//DONE
-
-        //PS: MODIFIED THE LOGOUT STUDENT FUNCTION BY USING THE ROW AS THE FOREIGN KEY, WILL DO MORE STUDY REGARDING WITH THIS
-        // FOR IT CAN CAUSE GREAT PROBLEM ONCE 1 ROW IS MISSING OR 1 ROW DELETED.
-        //NEVER DELETE A ROW 
-        //NOT GOING TO USE THE DELETE TABLE UNLESS IF THIS PROBLEM HAS BEEN FIXED.
-
-
-        //WORK OUT THE IDEA ON HOW TO SET THE TIME OUT ON A SPECIFIC RECORD AND ALSO SUBTRACT SPECIFIC TIME USED TO THE REMAINING TIME
-
-        //MARK/GOERGE TASK: PRINT DB TO EXCEL //DONE
-
         #endregion
+
 
 
         // 4, 150
@@ -951,13 +957,34 @@ namespace Sit_In_Monitoring
             pnlEditUser.Hide();
         }
 
-        private void btnConfirmEdit_Click(object sender, EventArgs e)
+        private void btnConfirmEdit_Click(object sender, EventArgs e) //won't display the text, adjust tommorow
         {
-            /* ADD CODE BODY FOR EDIT RECORD
-             * 
-             *  - MARK
-             */
+            try
+            {
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("UPDATE students SET studentid = @studentid, firstName = @firstName, middleInitial = @middleInitial, lastName = @lastName, section = @section where studentid = @studentid", conn);
+
+                cmd.Parameters.AddWithValue("@studentid", newStudentId.PlaceholderText);
+                cmd.Parameters.AddWithValue("@firstName", newFirstName.PlaceholderText);
+                cmd.Parameters.AddWithValue("@middleInitial", newMiddleInitial.PlaceholderText);
+                cmd.Parameters.AddWithValue("@lastName", newLastName.PlaceholderText);
+                cmd.Parameters.AddWithValue("@section", newSection.PlaceholderText);
+                cmd.ExecuteNonQuery();
+
+                DisplayForLogs();
+                conn.Close();
+
+                ReasonForPassword = "";
+                pnlEditUser.Hide();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                
+            }    
         }
+
+
 
         void CheckForChanges(string _old, string _new, Control changes, CheckBox cbx)
         {
