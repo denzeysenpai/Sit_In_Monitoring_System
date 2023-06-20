@@ -120,10 +120,10 @@ WHERE studentID = '21-2002433';
 --DATA CHANGES FOR TRIALS
 UPDATE Students
 SET remainingTime -= (SELECT CONVERT(DECIMAL(16, 6), SUM(TimeUsed))
-FROM SessionLogs WHERE logid = 17)
+FROM SessionLogs WHERE studentId = '21-2001265')
 WHERE studentID = '21-2001265';
 
-UPDATE SessionLogs SET TimeUsed = (DATEDIFF(second, TimeIn, TimeOut) / 3600.0) WHERE logid = 17;
+UPDATE SessionLogs SET TimeUsed = (DATEDIFF(second, TimeIn, TimeOut) / 3600.0), studentId = '21' WHERE studentId = '21-2001265' and timein = '';
 
 
 
@@ -135,7 +135,15 @@ select * from SessionLogs
 SELECT COUNT(*) as countOfRows FROM SessionLogs;
 
 
-drop table SessionLogs
-drop table currentSession
-drop table Students
+--drop table SessionLogs
+--drop table currentSession
+--drop table Students
 
+
+select * from currentsession
+
+SELECT DATEDIFF(second, TimeIn, '14:31:19.0000000') / 3600.0 from sessionlogs where studentid = '21-2001265' and date = ' 06/20/2023'
+
+select * from Students
+
+UPDATE students SET studentid = '21-20012653', firstName = 'EZRAH', middleInitial = 'A', lastName = 'SUJERO ', section = 'IT404' where studentid = '21-2001265'
