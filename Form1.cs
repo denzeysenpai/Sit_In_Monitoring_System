@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -13,15 +11,21 @@ namespace Sit_In_Monitoring
 {
     public partial class Form1 : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
+
+        void OpenSQL() =>
+            conn.Open();
+        void CloseSQL() => 
+            conn.Close();
+
         #region ATTRIBUTES
-        readonly SeiyaMarx Design = new SeiyaMarx();
+        readonly SeiyaMarxElls Design = new SeiyaMarxElls();
 
 
-        SeiyaMarx TextboxMargins;
-        SeiyaMarx TextboxBodies;
-        SeiyaMarx Fifteens;
+        SeiyaMarxElls TextboxMargins;
+        SeiyaMarxElls TextboxBodies;
+        SeiyaMarxElls Fifteens;
 
         bool closeNotify;
         bool notify;
@@ -53,7 +57,7 @@ namespace Sit_In_Monitoring
 
         #endregion ATTRIBUTES
 
-        #region ALL OF FUNCTIONS // hekhokhekohok
+        #region ALL OF FUNCTIONS // hekhokhekohok - Mark
         public void SetNotificationOnLoad() =>
             pnlNotification.Left = Width;
         public void NotifySuccessfulSitIn() => // Notification for successful log in
@@ -89,7 +93,6 @@ namespace Sit_In_Monitoring
                 for (int i = 1; i < recordsView.Columns.Count + 1; i++)
                 {
                     xcelApp.Cells[1, i] = recordsView.Columns[i - 1].HeaderText;
-
                 }
                 for (int i = 0; i < recordsView.Rows.Count; i++)
                 {
@@ -109,14 +112,16 @@ namespace Sit_In_Monitoring
             void ReasonIsForExit() =>
                 exitApp = true;
 
+            void ReasonIsForPrint() =>
+                PrintRecordsToExelFormat();
 
             void ReasonIsForEdit()
             {
-                newStudentId.PlaceholderText = studentId;
-                newSection.PlaceholderText = section;
-                newFirstName.PlaceholderText = fName;
-                newLastName.PlaceholderText = lName;
-                newMiddleInitial.PlaceholderText = mInitial;
+                oldStudentIDValue.Text = studentId;
+                oldSectionValue.Text = section;
+                oldFirstNameValue.Text = fName;
+                oldLastNameValue.Text = lName;
+                oldMiddleInitialValue.Text = mInitial;
 
                 pnlEditUser.Show();
 
@@ -125,20 +130,12 @@ namespace Sit_In_Monitoring
                  */
             }
 
-
             void ReasonIsForDelete()
             {
                 /* ADD CODE BODY FOR DELETE HERE
                  * 
                  */
             }
-
-
-            void ReasonIsForPrint()
-            {
-                PrintRecordsToExelFormat();
-            }
-
 
             void ReasonIsForRecords() // Show Records Page
             {
@@ -157,7 +154,6 @@ namespace Sit_In_Monitoring
                 case "print": ReasonIsForPrint(); break;
                 case "records": ReasonIsForRecords(); break;
             }
-
             CloseConfirmation();
         }
 
@@ -167,7 +163,6 @@ namespace Sit_In_Monitoring
 
         public void DisableStart() =>
             BtnStart.Enabled = !((BtnStart.BackColor = NotStart) == NotStart);
-
 
         public void DefaultEnable() // Enabling of Default Controls
         {
@@ -205,7 +200,7 @@ namespace Sit_In_Monitoring
 
             if (dt.Rows.Count == 0)
             {
-                conn.Open();
+                OpenSQL();
                 SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                 ds.Clear();
                 s.Fill(ds);
@@ -332,7 +327,7 @@ namespace Sit_In_Monitoring
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
             SqlDataAdapter count = new SqlDataAdapter("SELECT * FROM SessionLogs;", conn);
-            SqlDataAdapter calc = new SqlDataAdapter("SELECT DATEDIFF(second, TimeIn, '"+ time1 +"') / 3600.0 from currentsession where studentid = '"+ studentId +"' and date = '"+ dateDb +"'", conn);
+            SqlDataAdapter calc = new SqlDataAdapter("SELECT DATEDIFF(second, TimeIn, '" + time1 + "') / 3600.0 from currentsession where studentid = '" + studentId + "' and date = '" + dateDb + "'", conn);
             DataTable dt = new DataTable();
             DataTable timeUsed = new DataTable();
 
@@ -340,7 +335,7 @@ namespace Sit_In_Monitoring
 
             count.Fill(dt);
 
-            conn.Open();
+            OpenSQL();
             SqlCommand cmd = new SqlCommand("INSERT INTO SessionLogs SELECT cs.studentId, cs.date, cs.timeIn, @timeOut, @timeUsed, cs.personid FROM currentSession cs WHERE cs.studentid = @studentId and date = @dateNow", conn);
             cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
@@ -450,14 +445,10 @@ namespace Sit_In_Monitoring
             //{
             //    MessageBox.Show(ex.Message);
             //}
-           
+
         }
         #endregion
 
-
-
-        // 4, 150
-        // 4, 370
         public Form1()
         {
             InitializeComponent();
@@ -465,14 +456,15 @@ namespace Sit_In_Monitoring
             // Add design
             Design.RoundCorner(this, 25);
 
-            TextboxMargins = new SeiyaMarx(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 18);
-            TextboxBodies = new SeiyaMarx(tm1, tm2, l1, l2, l3, l4, l6, l7, 17);
-            Fifteens = new SeiyaMarx(pnlmrgn, pnlLoginFrame, pnlStudsRec, pnlDesign, pnlDepth, DataGrid, recordsView, pnlStudentInfo, pnlDate, 15);
+            TextboxMargins = new SeiyaMarxElls(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 18);
+            TextboxBodies = new SeiyaMarxElls(tm1, tm2, l1, l2, l3, l4, l6, l7, 17);
+            Fifteens = new SeiyaMarxElls(pnlmrgn, pnlLoginFrame, pnlStudsRec, pnlDesign, pnlDepth, DataGrid, recordsView, pnlStudentInfo, pnlDate, 15);
 
             TextboxMargins.RoundCorner();
             TextboxBodies.RoundCorner();
             Fifteens.RoundCorner();
 
+            #region Panel |> Round Corners
             Design.RoundCorner(pnlNotification, 50);
             Design.RoundCorner(pnlDateMargin, 15);
             Design.RoundCorner(pnlLoginBody, 15);
@@ -481,6 +473,20 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnltm2, 15);
             Design.RoundCorner(pnlIn, 16);
             Design.RoundCorner(pnlPleaseWait, 40);
+            #endregion
+
+            #region Edit Panel |> Round Corners
+            Design.RoundCorner(m1, 18);
+            Design.RoundCorner(m2, 18);
+            Design.RoundCorner(m3, 18);
+            Design.RoundCorner(m4, 18);
+            Design.RoundCorner(m5, 18);
+            Design.RoundCorner(n1, 18);
+            Design.RoundCorner(n2, 18);
+            Design.RoundCorner(n3, 18);
+            Design.RoundCorner(n4, 18);
+            Design.RoundCorner(n5, 18);
+            #endregion
         }
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -552,36 +558,82 @@ namespace Sit_In_Monitoring
             Update();
         }
 
-        #region _Behavior UI
+        #region _Behavior UI - Mark
         private void idNumberHasInput(object sender, EventArgs e)
         {
             BtnSearch.Enabled = true;
             BtnSearch.Text = "SEARCH";
             CheckForBadInput_In(txtStudentID, placeholder1);
         }
-        private void CheckForBadInput(object sender, KeyPressEventArgs e) => e.Handled = char.IsLetter(e.KeyChar);
-        private void fullNameHasInput(object sender, EventArgs e) => CheckForBadInput_In(txtStudentName, placeholder2);
-        private void PassHasInput(object sender, EventArgs e) => CheckForBadInput_In(txtPass, placeholder3);
-        private void lastnamehasinput(object sender, EventArgs e) => CheckForBadInput_In(txtStudentLastName, placeholder4);
-        private void sectioninput(object sender, EventArgs e) => CheckForBadInput_In(txtSection, placeholder5);
-        private void searchedchanged(object sender, EventArgs e) => CheckForBadInput_In(txtSearchId, placeholder7);
-        private void initialHasInput(object sender, EventArgs e) => CheckForBadInput_In(txtMiddleInitial, placeholder8);
 
+        #region Bad Input |> Behavior UI - Mark
+        private void CheckForBadInput(object sender, KeyPressEventArgs e) => 
+            e.Handled = char.IsLetter(e.KeyChar);
+        private void fullNameHasInput(object sender, EventArgs e) => 
+            CheckForBadInput_In(txtStudentName, placeholder2);
+        private void PassHasInput(object sender, EventArgs e) => 
+            CheckForBadInput_In(txtPass, placeholder3);
+        private void lastnamehasinput(object sender, EventArgs e) => 
+            CheckForBadInput_In(txtStudentLastName, placeholder4);
+        private void sectioninput(object sender, EventArgs e) => 
+            CheckForBadInput_In(txtSection, placeholder5);
+        private void searchedchanged(object sender, EventArgs e) => 
+            CheckForBadInput_In(txtSearchId, placeholder7);
+        private void initialHasInput(object sender, EventArgs e) => 
+            CheckForBadInput_In(txtMiddleInitial, placeholder8);
+        private void e1(object sender, KeyPressEventArgs e) =>
+            CheckForBadInput_In(newStudentIDValue, oldStudentIDValue);
+        private void e2(object sender, KeyPressEventArgs e) =>
+            CheckForBadInput_In(newFirstNameValue, oldFirstNameValue);
+        private void e3(object sender, KeyPressEventArgs e) =>
+            CheckForBadInput_In(newLastNameValue, oldLastNameValue);
+        private void e4(object sender, KeyPressEventArgs e) =>
+            CheckForBadInput_In(newSectionValue, oldSectionValue);
+        private void e5(object sender, KeyPressEventArgs e) =>
+            CheckForBadInput_In(newMiddleInitialValue, oldMiddleInitialValue);
 
-        // Text Focus
-        private void idClick(object sender, EventArgs e) => txtStudentID.Focus();
-        private void fullNameClick(object sender, EventArgs e) => txtStudentName.Focus();
-        private void userClick(object sender, EventArgs e) => txtStudentID.Focus();
-        private void userClick2(object sender, EventArgs e) => txtStudentName.Focus();
-        private void idClick2(object sender, EventArgs e) => txtPass.Focus();
-        private void passClick(object sender, EventArgs e) => txtPass.Focus();
-        private void lnclick(object sender, EventArgs e) => txtStudentLastName.Focus();
-        private void seclick(object sender, EventArgs e) => txtSection.Focus();
-        private void qw1(object sender, EventArgs e) => txtStudentLastName.Focus();
-        private void qw2(object sender, EventArgs e) => txtSection.Focus();
-        private void placeholder7click(object sender, EventArgs e) => txtSearchId.Focus();
-        private void inClick(object sender, EventArgs e) => txtMiddleInitial.Focus();
+        #endregion
 
+        #region Clicks |> Behavior UI - Mark
+        private void idClick(object sender, EventArgs e) => 
+            txtStudentID.Focus();
+        private void fullNameClick(object sender, EventArgs e) => 
+            txtStudentName.Focus();
+        private void userClick(object sender, EventArgs e) => 
+            txtStudentID.Focus();
+        private void userClick2(object sender, EventArgs e) => 
+            txtStudentName.Focus();
+        private void idClick2(object sender, EventArgs e) => 
+            txtPass.Focus();
+        private void passClick(object sender, EventArgs e) => 
+            txtPass.Focus();
+        private void lnclick(object sender, EventArgs e) => 
+            txtStudentLastName.Focus();
+        private void seclick(object sender, EventArgs e) => 
+            txtSection.Focus();
+        private void qw1(object sender, EventArgs e) => 
+            txtStudentLastName.Focus();
+        private void qw2(object sender, EventArgs e) => 
+            txtSection.Focus();
+        private void placeholder7click(object sender, EventArgs e) => 
+            txtSearchId.Focus();
+        private void inClick(object sender, EventArgs e) => 
+            txtMiddleInitial.Focus();
+        private void editIdClick(object sender, EventArgs e) =>
+            newStudentIDValue.Focus();
+
+        private void firstEditClick(object sender, EventArgs e) =>
+            newFirstNameValue.Focus();
+
+        private void LastEditClick(object sender, EventArgs e) =>
+            newLastNameValue.Focus();
+
+        private void sectionEditClick(object sender, EventArgs e) =>
+            newSectionValue.Focus();
+
+        private void midEditClick(object sender, EventArgs e) =>
+            newMiddleInitialValue.Focus();
+        #endregion
 
         private void NotificationTimerSpecific_Tick(object sender, EventArgs e)
         {
@@ -589,7 +641,7 @@ namespace Sit_In_Monitoring
             pnlNotification.Visible = !pnlPleaseWait.Visible;
             // NOTIFICATION PANEL
 
-            // Notification Animation go BrrRrRrrrR
+            // Notification Animation go BrrRrRrrrR - Mark
             if (ProcessingDataBase == false)
             {
                 closeNotify = count >= 600 ? !(notify = (count = 0) != 0) : closeNotify;
@@ -609,10 +661,9 @@ namespace Sit_In_Monitoring
         private void ORASAN(object sender, EventArgs e)
         {
             lblTime2.Text = lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
-
             notifyTimeDone();
         }
-            
+
         /// <summary>
         /// Checks if the textbox is focused in the form
         /// </summary>
@@ -622,35 +673,27 @@ namespace Sit_In_Monitoring
                 placeholders.Visible = (mrgin.BackColor = txtbx.Focused ? Clicked : notClicked) == notClicked;
             bool CheckForBadInput_In(Control txt) =>
                 !(txt.Text == null || txt.Text == "");
-
-            // Border highlight
-            TextBox_Behavior(txtStudentID, mrg1, placeholder1);
-
-            // Border highlight
-            TextBox_Behavior(txtStudentName, mrg2, placeholder2);
-
-            // Border highlight
-            TextBox_Behavior(txtPass, borderpass, placeholder3);
-
-            // Last name
-            TextBox_Behavior(txtStudentLastName, mrg3, placeholder4);
-
-            // Section
-            TextBox_Behavior(txtSection, mrg4, placeholder5);
-
-            // Search
             placeholder7.Visible = (mrg6.BackColor = txtSearchId.Focused ? Clicked : Color.FromArgb(0, 70, 92)) == Color.FromArgb(0, 70, 92);
 
-            // Middle Initial
+            #region Textbox Behaviors |> Mark
+            TextBox_Behavior(txtStudentID, mrg1, placeholder1);
+            TextBox_Behavior(txtStudentName, mrg2, placeholder2);
+            TextBox_Behavior(txtPass, borderpass, placeholder3);
+            TextBox_Behavior(txtStudentLastName, mrg3, placeholder4);
+            TextBox_Behavior(txtSection, mrg4, placeholder5);
+
+            TextBox_Behavior(newStudentIDValue, m1, oldStudentIDValue);
+            TextBox_Behavior(newFirstNameValue, m2, oldFirstNameValue);
+            TextBox_Behavior(newLastNameValue, m3, oldLastNameValue);
+            TextBox_Behavior(newSectionValue, m4, oldSectionValue);
+            TextBox_Behavior(newMiddleInitialValue, m5, oldMiddleInitialValue);
             TextBox_Behavior(txtMiddleInitial, mrg7, placeholder8);
+            #endregion
 
             if (CheckForBadInput_In(txtStudentID) && CheckForBadInput_In(txtStudentName) && CheckForBadInput_In(txtStudentLastName) && CheckForBadInput_In(txtMiddleInitial) && CheckForBadInput_In(txtSection))
                 EnableStart();
             else
                 DisableStart();
-
-
-            lblChanges.Visible = lblConfirm.Visible = (confirm1.Visible || confirm2.Visible || confirm3.Visible || confirm4.Visible || confirm5.Visible);
         }
 
 
@@ -671,11 +714,17 @@ namespace Sit_In_Monitoring
         }
         private void BtnConfirm_Click(object sender, EventArgs e)
         {
-            if (attemptsOfLogin > 9 && txtPass.Text != password)
-                MessageBox.Show($"Please contact an assistant! \nAfter ({attemptsOfLogin}), you have failed to input the correct password!", "Password Incorrect!", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            bool PasswordIsCorrect = txtPass.Text == password;
+            if (attemptsOfLogin > 9 && !PasswordIsCorrect)
+                MessageBox.Show($"" +
+                    $"Please contact an assistant! \n" +
+                    $"After ({attemptsOfLogin}), you have failed to input the correct password!",
+                    "Password Incorrect!",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
             else
             {
-                if (txtPass.Text == password)
+                if (PasswordIsCorrect)
                 {
                     AdminLockReasonConfirmation();
                     attemptsOfLogin = 0;
@@ -705,24 +754,25 @@ namespace Sit_In_Monitoring
 
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.F1 && e.Control)
+            Keys Key = e.KeyCode;
+            void TabIndexCatch(Control txt, Control btn)
+            {
+                if (Key == Keys.Tab && txt.Focused)
+                    btn.Focus();
+            }
+
+            if (Key == Keys.F1 && e.Control)
             {
                 ReasonForPassword = "records";
                 ShowAdminPasswordInput();
             }
 
-
             // Tab Switch Code - maki hekhok // HEHEHEHEHEHEHEHE MUGANA
-            if (e.KeyCode == Keys.Tab && txtStudentID.Focused)
-                BtnSearch.Focus();
-            if (e.KeyCode == Keys.Tab && txtStudentLastName.Focused)
-                txtStudentName.Focus();
-            if (e.KeyCode == Keys.Tab && txtStudentName.Focused)
-                txtMiddleInitial.Focus();
-            if (e.KeyCode == Keys.Tab && txtStudentID.Focused)
-                txtSection.Focus();
-            if (e.KeyCode == Keys.Tab && txtSection.Focused)
-                BtnStart.Focus();
+            TabIndexCatch(txtStudentID, BtnSearch);
+            TabIndexCatch(txtStudentLastName, txtStudentName);
+            TabIndexCatch(txtStudentName, txtMiddleInitial);
+            TabIndexCatch(txtStudentID, txtSection);
+            TabIndexCatch(txtSection, BtnStart);
         }
 
         private void CalendarClick(object sender, EventArgs e) // Calendar in main page
@@ -739,14 +789,13 @@ namespace Sit_In_Monitoring
             bool Add;
             restrict.Fill(dt);
 
+            // Check Row Count
             if (dt.Rows.Count >= 1)
-            {
                 Add = false;
-            }
             else
-            {
                 Add = true;
-            }
+
+            // Check For error
             string ErrorMessage = "";
             bool ErrorInInputIsDetected = false; // this checks overall invalid input
 
@@ -754,6 +803,7 @@ namespace Sit_In_Monitoring
                 ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
             //      ^^^^^INVALID INPUT DETECTED
 
+            #region CheckForInvalidError |> Mark
             if (ControlHasNullInputIn(txtStudentID))
                 ErrorMessage += "Please Fill out Student ID!\n";
 
@@ -768,36 +818,30 @@ namespace Sit_In_Monitoring
 
             if (ControlHasNullInputIn(txtSection))
                 ErrorMessage += "Please Fill out Student Section!\n";
-
-
+            #endregion
 
             if (ErrorInInputIsDetected)
                 MessageBox.Show($"{ErrorMessage}", "INVALID INPUT DETECTED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
             {
-                try
+                try // No errors, but check for Exceptions
                 {
                     DefaultEnable();
                     if (Add == true)
-                    {
                         AddStudent();
-                    }
                     else
-                    {
                         RestrictTime();
-                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            conn.Close();
+            CloseSQL();
         }
         private void DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e) // Update data during log out
         {
-            bool StudentLogsOut = e.RowIndex >= 0 && e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index;
-
+            bool StudentLogsOut = e.RowIndex > -1 && (e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index);
             if (StudentLogsOut)
             {
                 try
@@ -808,13 +852,13 @@ namespace Sit_In_Monitoring
                 {
                     MessageBox.Show(ex.Message);
                 }
-                conn.Close();
+                CloseSQL();
                 Update_Data();
             }
         }
 
         // USE THIS TO DISPLAY INFO IN SEARCHED RECORDS
-        ///// <summary>
+        /// <summary>
         /// Displays the student info in correct format
         /// </summary>
         /// <param name="stud_ID">Student ID to display</param>
@@ -838,11 +882,9 @@ namespace Sit_In_Monitoring
             displayNumOfSitIns.Text = num_of_sit_ins.ToString();
         }
 
-
         // RECORDS PAGE FUNCTIONS
         private void hideRecords_Click(object sender, EventArgs e) =>
             pnlRecords.Visible = false;
-
 
         private void BtnSearch_Click(object sender, EventArgs e)
         {
@@ -857,7 +899,7 @@ namespace Sit_In_Monitoring
             {
                 MessageBox.Show(ex.Message);
             }
-            conn.Close();
+            CloseSQL();
         }
 
         private void BtnDelete_Click(object sender, EventArgs e)
@@ -876,15 +918,6 @@ namespace Sit_In_Monitoring
             changesInfo4.Hide();
             changesInfo5.Hide();
 
-            lblChanges.Hide();
-            lblConfirm.Hide();
-
-            confirm1.Hide();
-            confirm2.Hide();
-            confirm3.Hide();
-            confirm4.Hide();
-            confirm5.Hide();
-
             ShowAdminPasswordInput();
         }
 
@@ -894,25 +927,19 @@ namespace Sit_In_Monitoring
             ShowAdminPasswordInput();
         }
 
-        private void BtnSearchInRecords_Click(object sender, EventArgs e)
-        {
+        #region Buttons Go To |> Mark
+        private void BtnSearchInRecords_Click(object sender, EventArgs e) =>
             SearchStudentAllLogs();
-        }
 
-        private void txtSearchId_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtSearchId_KeyPress(object sender, KeyPressEventArgs e) =>
             DisplayForLogs();
-        }
 
-        private void StudentIdNumberEffect(object sender, EventArgs e)
-        {
+        private void StudentIdNumberEffect(object sender, EventArgs e) =>
             placeholder7.ForeColor = Color.FromArgb(0, 234, 255);
-        }
 
-        private void StudentIdNumberEffectEnd(object sender, EventArgs e)
-        {
+        private void StudentIdNumberEffectEnd(object sender, EventArgs e) =>
             placeholder7.ForeColor = Color.FromArgb(154, 214, 230);
-        }
+        #endregion
 
         private void RecordView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -920,41 +947,45 @@ namespace Sit_In_Monitoring
             {
                 if (recordsView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
-                    SqlDataAdapter c = new SqlDataAdapter("SELECT * FROM SessionLogs WHERE studentId = '" + recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString() + "'", conn);
-                    SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM students WHERE studentId = '" + recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString() + "'", conn);
                     DataTable dt = new DataTable();
+                    string GetRecordViewCellValueOf(string identifier) =>
+                        recordsView.Rows[e.RowIndex].Cells[identifier].FormattedValue.ToString(); // Go to Expression of Value of specified identifier
+                    string StudentIdInRecords() =>
+                        GetRecordViewCellValueOf("lStudentId");
+                    string IDSelectFrom(string table) =>
+                        $"SELECT * FROM {table} WHERE studentId";
+
+                    SqlDataAdapter c = new SqlDataAdapter($"{IDSelectFrom("sessionlogs")} = '" + StudentIdInRecords() + "'", conn);
+                    SqlDataAdapter s = new SqlDataAdapter($"{IDSelectFrom("students")} = '" + StudentIdInRecords() + "'", conn);
+
                     dt.Clear();
                     ds.Clear();
                     s.Fill(ds);
                     c.Fill(dt);
 
-                    studentId = displayID.Text = recordsView.Rows[e.RowIndex].Cells["lStudentId"].FormattedValue.ToString();
-                    displayName.Text = recordsView.Rows[e.RowIndex].Cells["lFirstName"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lMiddleInitial"].FormattedValue.ToString() + " " + recordsView.Rows[e.RowIndex].Cells["lLastName"].FormattedValue.ToString();
-                    section = displaySection.Text = recordsView.Rows[e.RowIndex].Cells["lSection"].FormattedValue.ToString();
+                    // Initialize value
+                    fName = GetRecordViewCellValueOf("lFirstName");
+                    mInitial = GetRecordViewCellValueOf("lMiddleInitial");
+                    lName = GetRecordViewCellValueOf("lLastName");
+                    studentId = StudentIdInRecords();
+                    section = GetRecordViewCellValueOf("lSection");
+
+                    // Display
+                    displayID.Text = studentId;
+                    displayName.Text = $"{fName} {mInitial} {lName}";
+                    displaySection.Text = section;
                     displayBalance.Text = ds.Tables[0].Rows[0]["RemainingTime"].ToString() + " hours";
                     displayNumOfSitIns.Text = dt.Rows.Count.ToString();
-                    fName = recordsView.Rows[e.RowIndex].Cells["lFirstName"].FormattedValue.ToString();
-                    lName = recordsView.Rows[e.RowIndex].Cells["lLastName"].FormattedValue.ToString();
-                    mInitial = recordsView.Rows[e.RowIndex].Cells["lMiddleInitial"].FormattedValue.ToString();
-
                 }
             }
-            catch (Exception)
-            {
-
-            }
-
+            catch (Exception) {/**/}
         }
 
-        private void dateForRecords_ValueChanged(object sender, EventArgs e)
-        {
+        private void dateForRecords_ValueChanged(object sender, EventArgs e) =>
             DisplayForLogs();
-        }
 
-        private void LBLBTNSEARCH_Click(object sender, EventArgs e)
-        {
+        private void LBLBTNSEARCH_Click(object sender, EventArgs e) =>
             SearchStudentAllLogs();
-        }
 
         private void btnCancelEdit_Click(object sender, EventArgs e)
         {
@@ -966,62 +997,54 @@ namespace Sit_In_Monitoring
         {
             try
             {
-                conn.Open();
+                OpenSQL();
                 SqlCommand cmd = new SqlCommand("UPDATE students SET studentid = @studentid, firstName = @firstName, middleInitial = @middleInitial, lastName = @lastName, section = @section where studentid = @studentid", conn);
 
-                cmd.Parameters.AddWithValue("@studentid", newStudentId.PlaceholderText);
-                cmd.Parameters.AddWithValue("@firstName", newFirstName.PlaceholderText);
-                cmd.Parameters.AddWithValue("@middleInitial", newMiddleInitial.PlaceholderText);
-                cmd.Parameters.AddWithValue("@lastName", newLastName.PlaceholderText);
-                cmd.Parameters.AddWithValue("@section", newSection.PlaceholderText);
+                cmd.Parameters.AddWithValue("@studentid", newStudentIDValue.Text);
+                cmd.Parameters.AddWithValue("@firstName", newFirstNameValue.Text);
+                cmd.Parameters.AddWithValue("@middleInitial", newMiddleInitialValue.Text);
+                cmd.Parameters.AddWithValue("@lastName", newLastNameValue.Text);
+                cmd.Parameters.AddWithValue("@section", newSectionValue.Text);
                 cmd.ExecuteNonQuery();
 
                 DisplayForLogs();
-                conn.Close();
-
+                CloseSQL();
                 ReasonForPassword = "";
                 pnlEditUser.Hide();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-                
-            }    
+            }
         }
 
-
-
-        void CheckForChanges(string _old, string _new, Control changes, CheckBox cbx)
+        void CheckForChanges(string _old, string _new, Control changes)
         {
-            if (_old != _new && (_new != null && _new != string.Empty))
-            {
-                changes.Visible = true;
+            bool ThereAreNewEditsInRecord() =>
+                _old != _new && (_new != null && _new != string.Empty);
+            changes.Visible = ThereAreNewEditsInRecord();
+            if (ThereAreNewEditsInRecord())
                 changes.Text = $"{_old} {arrow} {_new}";
-                cbx.Visible = true;
-            }
             else
-            {
-                changes.Visible = false;
                 changes.Text = "";
-                cbx.Visible = false;
-            }
         }
 
+        #region UI Behaviour NEW |> Edit Panel - Mark
         private void studentidTextChangedEdit(object sender, EventArgs e) =>
-            CheckForChanges(newStudentId.PlaceholderText, newStudentId.Texts, changesInfo1, confirm1);
-
+            CheckForChanges(oldStudentIDValue.Text, newStudentIDValue.Text, changesInfo1);
 
         private void firstNameTextChangedEdit(object sender, EventArgs e) =>
-            CheckForChanges(newFirstName.PlaceholderText, newFirstName.Texts, changesInfo2, confirm2);
+            CheckForChanges(oldFirstNameValue.Text, newFirstNameValue.Text, changesInfo2);
 
         private void lastNameTextChangedEdit(object sender, EventArgs e) =>
-            CheckForChanges(newLastName.PlaceholderText, newLastName.Texts, changesInfo3, confirm3);
+            CheckForChanges(oldLastNameValue.Text, newLastNameValue.Text, changesInfo3);
 
         private void middleInitialTextChangedEdit(object sender, EventArgs e) =>
-            CheckForChanges(newMiddleInitial.PlaceholderText, newMiddleInitial.Texts, changesInfo4, confirm4);
+            CheckForChanges(oldMiddleInitialValue.Text, newMiddleInitialValue.Text, changesInfo4);
 
         private void sectionTextChangedEdit(object sender, EventArgs e) =>
-            CheckForChanges(newSection.PlaceholderText, newSection.Texts, changesInfo5, confirm5);
+            CheckForChanges(oldSectionValue.Text, newSectionValue.Text, changesInfo5);
+        #endregion
 
         private void ProcessDB(object sender, EventArgs e)
         {
@@ -1043,12 +1066,13 @@ namespace Sit_In_Monitoring
             }
         }
     }
-    class SeiyaMarx
+    #region Mark |> Mark
+    class SeiyaMarxElls
     {
         List<Control> Set = new List<Control>();
         int radius;
-        public SeiyaMarx() {/**/}
-        public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, int radius)
+        public SeiyaMarxElls() {/**/}
+        public SeiyaMarxElls(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, int radius)
         {
             Set.Add(ctr1);
             Set.Add(ctr2);
@@ -1059,7 +1083,7 @@ namespace Sit_In_Monitoring
             Set.Add(ctr7);
             this.radius = radius;
         }
-        public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, int radius)
+        public SeiyaMarxElls(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, int radius)
         {
             Set.Add(ctr1);
             Set.Add(ctr2);
@@ -1071,7 +1095,7 @@ namespace Sit_In_Monitoring
             Set.Add(ctr8);
             this.radius = radius;
         }
-        public SeiyaMarx(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, Control ctr9, int radius)
+        public SeiyaMarxElls(Control ctr1, Control ctr2, Control ctr3, Control ctr4, Control ctr5, Control ctr6, Control ctr7, Control ctr8, Control ctr9, int radius)
         {
             Set.Add(ctr1);
             Set.Add(ctr2);
@@ -1096,4 +1120,5 @@ namespace Sit_In_Monitoring
             }
         }
     }
+    #endregion
 }

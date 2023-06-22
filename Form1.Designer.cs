@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -90,31 +91,37 @@
             this.pnlRecords = new System.Windows.Forms.Panel();
             this.pnlEditUser = new System.Windows.Forms.Panel();
             this.pnlIn = new System.Windows.Forms.Panel();
-            this.confirm4 = new System.Windows.Forms.CheckBox();
-            this.confirm2 = new System.Windows.Forms.CheckBox();
-            this.confirm5 = new System.Windows.Forms.CheckBox();
-            this.confirm3 = new System.Windows.Forms.CheckBox();
-            this.confirm1 = new System.Windows.Forms.CheckBox();
-            this.newMiddleInitial = new ItachiBunifuUI.TextBoxBunifu();
-            this.newFirstName = new ItachiBunifuUI.TextBoxBunifu();
-            this.newSection = new ItachiBunifuUI.TextBoxBunifu();
-            this.newLastName = new ItachiBunifuUI.TextBoxBunifu();
-            this.newStudentId = new ItachiBunifuUI.TextBoxBunifu();
+            this.m4 = new System.Windows.Forms.Panel();
+            this.n4 = new System.Windows.Forms.Panel();
+            this.oldSectionValue = new System.Windows.Forms.Label();
+            this.newSectionValue = new System.Windows.Forms.TextBox();
+            this.m3 = new System.Windows.Forms.Panel();
+            this.n3 = new System.Windows.Forms.Panel();
+            this.oldLastNameValue = new System.Windows.Forms.Label();
+            this.newLastNameValue = new System.Windows.Forms.TextBox();
+            this.changesInfo1 = new System.Windows.Forms.Label();
+            this.m2 = new System.Windows.Forms.Panel();
+            this.n2 = new System.Windows.Forms.Panel();
+            this.oldFirstNameValue = new System.Windows.Forms.Label();
+            this.newFirstNameValue = new System.Windows.Forms.TextBox();
+            this.m5 = new System.Windows.Forms.Panel();
+            this.n5 = new System.Windows.Forms.Panel();
+            this.oldMiddleInitialValue = new System.Windows.Forms.Label();
+            this.newMiddleInitialValue = new System.Windows.Forms.TextBox();
+            this.m1 = new System.Windows.Forms.Panel();
+            this.n1 = new System.Windows.Forms.Panel();
+            this.oldStudentIDValue = new System.Windows.Forms.Label();
+            this.newStudentIDValue = new System.Windows.Forms.TextBox();
             this.changesInfo4 = new System.Windows.Forms.Label();
             this.btnCancelEdit = new ItachiUIBunifu.ButtonBunifuItachi();
             this.btnConfirmEdit = new ItachiUIBunifu.ButtonBunifuItachi();
             this.changesInfo5 = new System.Windows.Forms.Label();
             this.changesInfo2 = new System.Windows.Forms.Label();
             this.changesInfo3 = new System.Windows.Forms.Label();
-            this.lblConfirm = new System.Windows.Forms.Label();
-            this.changesInfo1 = new System.Windows.Forms.Label();
-            this.lblChanges = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label29 = new System.Windows.Forms.Label();
-            this.label23 = new System.Windows.Forms.Label();
-            this.label25 = new System.Windows.Forms.Label();
+            this.label24 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
             this.LBLBTNSEARCH = new System.Windows.Forms.Label();
@@ -200,6 +207,16 @@
             this.pnlRecords.SuspendLayout();
             this.pnlEditUser.SuspendLayout();
             this.pnlIn.SuspendLayout();
+            this.m4.SuspendLayout();
+            this.n4.SuspendLayout();
+            this.m3.SuspendLayout();
+            this.n3.SuspendLayout();
+            this.m2.SuspendLayout();
+            this.n2.SuspendLayout();
+            this.m5.SuspendLayout();
+            this.n5.SuspendLayout();
+            this.m1.SuspendLayout();
+            this.n1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).BeginInit();
             this.pnlStudentInfo.SuspendLayout();
             this.pnlDepth.SuspendLayout();
@@ -718,9 +735,9 @@
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(93)))));
             this.label3.Location = new System.Drawing.Point(12, 742);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(79, 13);
+            this.label3.Size = new System.Drawing.Size(93, 13);
             this.label3.TabIndex = 19;
-            this.label3.Text = "@seiyamarx2023";
+            this.label3.Text = "@SeiyaMarxElls2023";
             // 
             // CLOCK
             // 
@@ -799,7 +816,7 @@
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Image = global::Sit_In_Monitoring.Properties.Resources.padlock;
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(248, 16);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(60, 60);
@@ -885,7 +902,7 @@
             // 
             // pnlRecords
             // 
-            this.pnlRecords.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
+            this.pnlRecords.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlRecords.BackgroundImage")));
             this.pnlRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRecords.Controls.Add(this.pnlEditUser);
@@ -910,211 +927,307 @@
             this.pnlEditUser.BackColor = System.Drawing.Color.Black;
             this.pnlEditUser.Controls.Add(this.pnlIn);
             this.pnlEditUser.Controls.Add(this.label13);
-            this.pnlEditUser.Location = new System.Drawing.Point(1809, 96);
+            this.pnlEditUser.Location = new System.Drawing.Point(1609, 96);
             this.pnlEditUser.Name = "pnlEditUser";
-            this.pnlEditUser.Size = new System.Drawing.Size(1115, 565);
+            this.pnlEditUser.Size = new System.Drawing.Size(666, 565);
             this.pnlEditUser.TabIndex = 21;
             // 
             // pnlIn
             // 
             this.pnlIn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
-            this.pnlIn.Controls.Add(this.confirm4);
-            this.pnlIn.Controls.Add(this.confirm2);
-            this.pnlIn.Controls.Add(this.confirm5);
-            this.pnlIn.Controls.Add(this.confirm3);
-            this.pnlIn.Controls.Add(this.confirm1);
-            this.pnlIn.Controls.Add(this.newMiddleInitial);
-            this.pnlIn.Controls.Add(this.newFirstName);
-            this.pnlIn.Controls.Add(this.newSection);
-            this.pnlIn.Controls.Add(this.newLastName);
-            this.pnlIn.Controls.Add(this.newStudentId);
+            this.pnlIn.Controls.Add(this.m4);
+            this.pnlIn.Controls.Add(this.m3);
+            this.pnlIn.Controls.Add(this.changesInfo1);
+            this.pnlIn.Controls.Add(this.m2);
+            this.pnlIn.Controls.Add(this.m5);
+            this.pnlIn.Controls.Add(this.m1);
             this.pnlIn.Controls.Add(this.changesInfo4);
             this.pnlIn.Controls.Add(this.btnCancelEdit);
             this.pnlIn.Controls.Add(this.btnConfirmEdit);
             this.pnlIn.Controls.Add(this.changesInfo5);
             this.pnlIn.Controls.Add(this.changesInfo2);
             this.pnlIn.Controls.Add(this.changesInfo3);
-            this.pnlIn.Controls.Add(this.lblConfirm);
-            this.pnlIn.Controls.Add(this.changesInfo1);
-            this.pnlIn.Controls.Add(this.lblChanges);
-            this.pnlIn.Controls.Add(this.label19);
-            this.pnlIn.Controls.Add(this.label26);
-            this.pnlIn.Controls.Add(this.label29);
-            this.pnlIn.Controls.Add(this.label23);
-            this.pnlIn.Controls.Add(this.label25);
+            this.pnlIn.Controls.Add(this.label24);
+            this.pnlIn.Controls.Add(this.label21);
             this.pnlIn.Controls.Add(this.label17);
+            this.pnlIn.Controls.Add(this.label20);
             this.pnlIn.Controls.Add(this.label16);
             this.pnlIn.Location = new System.Drawing.Point(5, 30);
             this.pnlIn.Name = "pnlIn";
-            this.pnlIn.Size = new System.Drawing.Size(1105, 520);
+            this.pnlIn.Size = new System.Drawing.Size(656, 520);
             this.pnlIn.TabIndex = 21;
             // 
-            // confirm4
+            // m4
             // 
-            this.confirm4.AutoSize = true;
-            this.confirm4.Location = new System.Drawing.Point(867, 244);
-            this.confirm4.Name = "confirm4";
-            this.confirm4.Size = new System.Drawing.Size(15, 14);
-            this.confirm4.TabIndex = 7;
-            this.confirm4.UseVisualStyleBackColor = true;
+            this.m4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
+            this.m4.Controls.Add(this.n4);
+            this.m4.Location = new System.Drawing.Point(151, 273);
+            this.m4.Name = "m4";
+            this.m4.Size = new System.Drawing.Size(201, 49);
+            this.m4.TabIndex = 8;
+            this.m4.Click += new System.EventHandler(this.sectionEditClick);
             // 
-            // confirm2
+            // n4
             // 
-            this.confirm2.AutoSize = true;
-            this.confirm2.Location = new System.Drawing.Point(866, 169);
-            this.confirm2.Name = "confirm2";
-            this.confirm2.Size = new System.Drawing.Size(15, 14);
-            this.confirm2.TabIndex = 7;
-            this.confirm2.UseVisualStyleBackColor = true;
+            this.n4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.n4.Controls.Add(this.oldSectionValue);
+            this.n4.Controls.Add(this.newSectionValue);
+            this.n4.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.n4.Location = new System.Drawing.Point(1, 1);
+            this.n4.Name = "n4";
+            this.n4.Size = new System.Drawing.Size(199, 47);
+            this.n4.TabIndex = 0;
+            this.n4.Click += new System.EventHandler(this.sectionEditClick);
             // 
-            // confirm5
+            // oldSectionValue
             // 
-            this.confirm5.AutoSize = true;
-            this.confirm5.Location = new System.Drawing.Point(867, 281);
-            this.confirm5.Name = "confirm5";
-            this.confirm5.Size = new System.Drawing.Size(15, 14);
-            this.confirm5.TabIndex = 7;
-            this.confirm5.UseVisualStyleBackColor = true;
+            this.oldSectionValue.AutoSize = true;
+            this.oldSectionValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.oldSectionValue.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldSectionValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.oldSectionValue.Location = new System.Drawing.Point(23, 13);
+            this.oldSectionValue.Name = "oldSectionValue";
+            this.oldSectionValue.Size = new System.Drawing.Size(79, 21);
+            this.oldSectionValue.TabIndex = 1;
+            this.oldSectionValue.Text = "SECTION";
+            this.oldSectionValue.Click += new System.EventHandler(this.sectionEditClick);
             // 
-            // confirm3
+            // newSectionValue
             // 
-            this.confirm3.AutoSize = true;
-            this.confirm3.Location = new System.Drawing.Point(867, 206);
-            this.confirm3.Name = "confirm3";
-            this.confirm3.Size = new System.Drawing.Size(15, 14);
-            this.confirm3.TabIndex = 7;
-            this.confirm3.UseVisualStyleBackColor = true;
+            this.newSectionValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.newSectionValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newSectionValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.newSectionValue.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newSectionValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.newSectionValue.Location = new System.Drawing.Point(23, 10);
+            this.newSectionValue.MaxLength = 22;
+            this.newSectionValue.Name = "newSectionValue";
+            this.newSectionValue.Size = new System.Drawing.Size(153, 27);
+            this.newSectionValue.TabIndex = 0;
+            this.newSectionValue.Click += new System.EventHandler(this.sectionEditClick);
+            this.newSectionValue.TextChanged += new System.EventHandler(this.sectionTextChangedEdit);
+            this.newSectionValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.e4);
             // 
-            // confirm1
+            // m3
             // 
-            this.confirm1.AutoSize = true;
-            this.confirm1.Location = new System.Drawing.Point(866, 131);
-            this.confirm1.Name = "confirm1";
-            this.confirm1.Size = new System.Drawing.Size(15, 14);
-            this.confirm1.TabIndex = 7;
-            this.confirm1.UseVisualStyleBackColor = true;
+            this.m3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
+            this.m3.Controls.Add(this.n3);
+            this.m3.Location = new System.Drawing.Point(150, 203);
+            this.m3.Name = "m3";
+            this.m3.Size = new System.Drawing.Size(360, 49);
+            this.m3.TabIndex = 8;
             // 
-            // newMiddleInitial
+            // n3
             // 
-            this.newMiddleInitial.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.newMiddleInitial.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.newMiddleInitial.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.newMiddleInitial.BorderRadius = 0;
-            this.newMiddleInitial.BorderSize = 1;
-            this.newMiddleInitial.ForeColor = System.Drawing.Color.Black;
-            this.newMiddleInitial.Location = new System.Drawing.Point(494, 234);
-            this.newMiddleInitial.Margin = new System.Windows.Forms.Padding(4);
-            this.newMiddleInitial.Multiline = false;
-            this.newMiddleInitial.Name = "newMiddleInitial";
-            this.newMiddleInitial.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.newMiddleInitial.PasswordChar = false;
-            this.newMiddleInitial.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
-            this.newMiddleInitial.PlaceholderText = "M.I.";
-            this.newMiddleInitial.Size = new System.Drawing.Size(78, 29);
-            this.newMiddleInitial.TabIndex = 1;
-            this.newMiddleInitial.Texts = "";
-            this.newMiddleInitial.UnderlinedStyle = false;
-            this.newMiddleInitial._TextChanged += new System.EventHandler(this.middleInitialTextChangedEdit);
-            this.newMiddleInitial.Leave += new System.EventHandler(this.middleInitialTextChangedEdit);
+            this.n3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.n3.Controls.Add(this.oldLastNameValue);
+            this.n3.Controls.Add(this.newLastNameValue);
+            this.n3.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.n3.Location = new System.Drawing.Point(1, 1);
+            this.n3.Name = "n3";
+            this.n3.Size = new System.Drawing.Size(358, 47);
+            this.n3.TabIndex = 0;
+            this.n3.Click += new System.EventHandler(this.LastEditClick);
             // 
-            // newFirstName
+            // oldLastNameValue
             // 
-            this.newFirstName.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.newFirstName.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.newFirstName.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.newFirstName.BorderRadius = 0;
-            this.newFirstName.BorderSize = 1;
-            this.newFirstName.ForeColor = System.Drawing.Color.Black;
-            this.newFirstName.Location = new System.Drawing.Point(335, 160);
-            this.newFirstName.Margin = new System.Windows.Forms.Padding(4);
-            this.newFirstName.Multiline = false;
-            this.newFirstName.Name = "newFirstName";
-            this.newFirstName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.newFirstName.PasswordChar = false;
-            this.newFirstName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
-            this.newFirstName.PlaceholderText = "FirstName";
-            this.newFirstName.Size = new System.Drawing.Size(237, 29);
-            this.newFirstName.TabIndex = 1;
-            this.newFirstName.Texts = "";
-            this.newFirstName.UnderlinedStyle = false;
-            this.newFirstName._TextChanged += new System.EventHandler(this.firstNameTextChangedEdit);
-            this.newFirstName.Leave += new System.EventHandler(this.firstNameTextChangedEdit);
+            this.oldLastNameValue.AutoSize = true;
+            this.oldLastNameValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.oldLastNameValue.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldLastNameValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.oldLastNameValue.Location = new System.Drawing.Point(19, 12);
+            this.oldLastNameValue.Name = "oldLastNameValue";
+            this.oldLastNameValue.Size = new System.Drawing.Size(95, 21);
+            this.oldLastNameValue.TabIndex = 1;
+            this.oldLastNameValue.Text = "LASTNAME";
+            this.oldLastNameValue.Click += new System.EventHandler(this.LastEditClick);
             // 
-            // newSection
+            // newLastNameValue
             // 
-            this.newSection.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.newSection.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.newSection.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.newSection.BorderRadius = 0;
-            this.newSection.BorderSize = 1;
-            this.newSection.ForeColor = System.Drawing.Color.Black;
-            this.newSection.Location = new System.Drawing.Point(336, 272);
-            this.newSection.Margin = new System.Windows.Forms.Padding(4);
-            this.newSection.Multiline = false;
-            this.newSection.Name = "newSection";
-            this.newSection.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.newSection.PasswordChar = false;
-            this.newSection.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
-            this.newSection.PlaceholderText = "Section";
-            this.newSection.Size = new System.Drawing.Size(237, 29);
-            this.newSection.TabIndex = 1;
-            this.newSection.Texts = "";
-            this.newSection.UnderlinedStyle = false;
-            this.newSection._TextChanged += new System.EventHandler(this.sectionTextChangedEdit);
-            this.newSection.Leave += new System.EventHandler(this.sectionTextChangedEdit);
+            this.newLastNameValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.newLastNameValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newLastNameValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.newLastNameValue.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newLastNameValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.newLastNameValue.Location = new System.Drawing.Point(23, 10);
+            this.newLastNameValue.MaxLength = 22;
+            this.newLastNameValue.Name = "newLastNameValue";
+            this.newLastNameValue.Size = new System.Drawing.Size(312, 27);
+            this.newLastNameValue.TabIndex = 0;
+            this.newLastNameValue.Click += new System.EventHandler(this.LastEditClick);
+            this.newLastNameValue.TextChanged += new System.EventHandler(this.lastNameTextChangedEdit);
+            this.newLastNameValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.e3);
             // 
-            // newLastName
+            // changesInfo1
             // 
-            this.newLastName.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.newLastName.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.newLastName.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.newLastName.BorderRadius = 0;
-            this.newLastName.BorderSize = 1;
-            this.newLastName.ForeColor = System.Drawing.Color.Black;
-            this.newLastName.Location = new System.Drawing.Point(336, 197);
-            this.newLastName.Margin = new System.Windows.Forms.Padding(4);
-            this.newLastName.Multiline = false;
-            this.newLastName.Name = "newLastName";
-            this.newLastName.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.newLastName.PasswordChar = false;
-            this.newLastName.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
-            this.newLastName.PlaceholderText = "LastName";
-            this.newLastName.Size = new System.Drawing.Size(237, 29);
-            this.newLastName.TabIndex = 1;
-            this.newLastName.Texts = "";
-            this.newLastName.UnderlinedStyle = false;
-            this.newLastName._TextChanged += new System.EventHandler(this.lastNameTextChangedEdit);
-            this.newLastName.Leave += new System.EventHandler(this.lastNameTextChangedEdit);
+            this.changesInfo1.AutoSize = true;
+            this.changesInfo1.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.changesInfo1.ForeColor = System.Drawing.Color.Black;
+            this.changesInfo1.Location = new System.Drawing.Point(271, 42);
+            this.changesInfo1.Name = "changesInfo1";
+            this.changesInfo1.Size = new System.Drawing.Size(120, 19);
+            this.changesInfo1.TabIndex = 6;
+            this.changesInfo1.Text = "none → none";
             // 
-            // newStudentId
+            // m2
             // 
-            this.newStudentId.BackColor = System.Drawing.Color.AntiqueWhite;
-            this.newStudentId.BorderColor = System.Drawing.Color.AntiqueWhite;
-            this.newStudentId.BorderFocusColor = System.Drawing.Color.Aqua;
-            this.newStudentId.BorderRadius = 0;
-            this.newStudentId.BorderSize = 1;
-            this.newStudentId.ForeColor = System.Drawing.Color.Black;
-            this.newStudentId.Location = new System.Drawing.Point(335, 122);
-            this.newStudentId.Margin = new System.Windows.Forms.Padding(4);
-            this.newStudentId.Multiline = false;
-            this.newStudentId.Name = "newStudentId";
-            this.newStudentId.Padding = new System.Windows.Forms.Padding(10, 7, 10, 7);
-            this.newStudentId.PasswordChar = false;
-            this.newStudentId.PlaceholderColor = System.Drawing.Color.FromArgb(((int)(((byte)(178)))), ((int)(((byte)(199)))), ((int)(((byte)(237)))));
-            this.newStudentId.PlaceholderText = "Student ID";
-            this.newStudentId.Size = new System.Drawing.Size(237, 29);
-            this.newStudentId.TabIndex = 1;
-            this.newStudentId.Texts = "";
-            this.newStudentId.UnderlinedStyle = false;
-            this.newStudentId._TextChanged += new System.EventHandler(this.studentidTextChangedEdit);
-            this.newStudentId.Leave += new System.EventHandler(this.studentidTextChangedEdit);
+            this.m2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
+            this.m2.Controls.Add(this.n2);
+            this.m2.Location = new System.Drawing.Point(151, 133);
+            this.m2.Name = "m2";
+            this.m2.Size = new System.Drawing.Size(360, 49);
+            this.m2.TabIndex = 8;
+            this.m2.Click += new System.EventHandler(this.firstEditClick);
+            // 
+            // n2
+            // 
+            this.n2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.n2.Controls.Add(this.oldFirstNameValue);
+            this.n2.Controls.Add(this.newFirstNameValue);
+            this.n2.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.n2.Location = new System.Drawing.Point(1, 1);
+            this.n2.Name = "n2";
+            this.n2.Size = new System.Drawing.Size(358, 47);
+            this.n2.TabIndex = 0;
+            this.n2.Click += new System.EventHandler(this.firstEditClick);
+            // 
+            // oldFirstNameValue
+            // 
+            this.oldFirstNameValue.AutoSize = true;
+            this.oldFirstNameValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.oldFirstNameValue.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldFirstNameValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.oldFirstNameValue.Location = new System.Drawing.Point(23, 13);
+            this.oldFirstNameValue.Name = "oldFirstNameValue";
+            this.oldFirstNameValue.Size = new System.Drawing.Size(98, 21);
+            this.oldFirstNameValue.TabIndex = 1;
+            this.oldFirstNameValue.Text = "FIRSTNAME";
+            this.oldFirstNameValue.Click += new System.EventHandler(this.firstEditClick);
+            // 
+            // newFirstNameValue
+            // 
+            this.newFirstNameValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.newFirstNameValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newFirstNameValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.newFirstNameValue.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newFirstNameValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.newFirstNameValue.Location = new System.Drawing.Point(23, 10);
+            this.newFirstNameValue.MaxLength = 22;
+            this.newFirstNameValue.Name = "newFirstNameValue";
+            this.newFirstNameValue.Size = new System.Drawing.Size(312, 27);
+            this.newFirstNameValue.TabIndex = 0;
+            this.newFirstNameValue.Click += new System.EventHandler(this.firstEditClick);
+            this.newFirstNameValue.TextChanged += new System.EventHandler(this.firstNameTextChangedEdit);
+            this.newFirstNameValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.e2);
+            // 
+            // m5
+            // 
+            this.m5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
+            this.m5.Controls.Add(this.n5);
+            this.m5.Location = new System.Drawing.Point(369, 273);
+            this.m5.Name = "m5";
+            this.m5.Size = new System.Drawing.Size(141, 49);
+            this.m5.TabIndex = 8;
+            this.m5.Click += new System.EventHandler(this.midEditClick);
+            // 
+            // n5
+            // 
+            this.n5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.n5.Controls.Add(this.oldMiddleInitialValue);
+            this.n5.Controls.Add(this.newMiddleInitialValue);
+            this.n5.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.n5.Location = new System.Drawing.Point(1, 1);
+            this.n5.Name = "n5";
+            this.n5.Size = new System.Drawing.Size(139, 47);
+            this.n5.TabIndex = 0;
+            this.n5.Click += new System.EventHandler(this.midEditClick);
+            // 
+            // oldMiddleInitialValue
+            // 
+            this.oldMiddleInitialValue.AutoSize = true;
+            this.oldMiddleInitialValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.oldMiddleInitialValue.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldMiddleInitialValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.oldMiddleInitialValue.Location = new System.Drawing.Point(24, 13);
+            this.oldMiddleInitialValue.Name = "oldMiddleInitialValue";
+            this.oldMiddleInitialValue.Size = new System.Drawing.Size(42, 21);
+            this.oldMiddleInitialValue.TabIndex = 1;
+            this.oldMiddleInitialValue.Text = "MID";
+            this.oldMiddleInitialValue.Click += new System.EventHandler(this.midEditClick);
+            // 
+            // newMiddleInitialValue
+            // 
+            this.newMiddleInitialValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.newMiddleInitialValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newMiddleInitialValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.newMiddleInitialValue.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newMiddleInitialValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.newMiddleInitialValue.Location = new System.Drawing.Point(23, 10);
+            this.newMiddleInitialValue.MaxLength = 1;
+            this.newMiddleInitialValue.Name = "newMiddleInitialValue";
+            this.newMiddleInitialValue.Size = new System.Drawing.Size(93, 27);
+            this.newMiddleInitialValue.TabIndex = 0;
+            this.newMiddleInitialValue.Click += new System.EventHandler(this.midEditClick);
+            this.newMiddleInitialValue.TextChanged += new System.EventHandler(this.middleInitialTextChangedEdit);
+            this.newMiddleInitialValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.e5);
+            // 
+            // m1
+            // 
+            this.m1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
+            this.m1.Controls.Add(this.n1);
+            this.m1.Location = new System.Drawing.Point(151, 63);
+            this.m1.Name = "m1";
+            this.m1.Size = new System.Drawing.Size(360, 49);
+            this.m1.TabIndex = 8;
+            this.m1.Click += new System.EventHandler(this.editIdClick);
+            // 
+            // n1
+            // 
+            this.n1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.n1.Controls.Add(this.oldStudentIDValue);
+            this.n1.Controls.Add(this.newStudentIDValue);
+            this.n1.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.n1.Location = new System.Drawing.Point(1, 1);
+            this.n1.Name = "n1";
+            this.n1.Size = new System.Drawing.Size(358, 47);
+            this.n1.TabIndex = 0;
+            this.n1.Click += new System.EventHandler(this.editIdClick);
+            // 
+            // oldStudentIDValue
+            // 
+            this.oldStudentIDValue.AutoSize = true;
+            this.oldStudentIDValue.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.oldStudentIDValue.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.oldStudentIDValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(196)))), ((int)(((byte)(209)))));
+            this.oldStudentIDValue.Location = new System.Drawing.Point(19, 14);
+            this.oldStudentIDValue.Name = "oldStudentIDValue";
+            this.oldStudentIDValue.Size = new System.Drawing.Size(95, 21);
+            this.oldStudentIDValue.TabIndex = 1;
+            this.oldStudentIDValue.Text = "STUDENTID";
+            this.oldStudentIDValue.Click += new System.EventHandler(this.editIdClick);
+            // 
+            // newStudentIDValue
+            // 
+            this.newStudentIDValue.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(242)))), ((int)(((byte)(250)))));
+            this.newStudentIDValue.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.newStudentIDValue.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.newStudentIDValue.Font = new System.Drawing.Font("Microsoft YaHei", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.newStudentIDValue.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.newStudentIDValue.Location = new System.Drawing.Point(23, 10);
+            this.newStudentIDValue.MaxLength = 22;
+            this.newStudentIDValue.Name = "newStudentIDValue";
+            this.newStudentIDValue.Size = new System.Drawing.Size(312, 27);
+            this.newStudentIDValue.TabIndex = 0;
+            this.newStudentIDValue.Click += new System.EventHandler(this.editIdClick);
+            this.newStudentIDValue.TextChanged += new System.EventHandler(this.studentidTextChangedEdit);
+            this.newStudentIDValue.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.e1);
             // 
             // changesInfo4
             // 
             this.changesInfo4.AutoSize = true;
             this.changesInfo4.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changesInfo4.ForeColor = System.Drawing.Color.Black;
-            this.changesInfo4.Location = new System.Drawing.Point(658, 239);
+            this.changesInfo4.Location = new System.Drawing.Point(411, 252);
             this.changesInfo4.Name = "changesInfo4";
             this.changesInfo4.Size = new System.Drawing.Size(120, 19);
             this.changesInfo4.TabIndex = 6;
@@ -1131,7 +1244,7 @@
             this.btnCancelEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelEdit.ForeColor = System.Drawing.Color.White;
-            this.btnCancelEdit.Location = new System.Drawing.Point(360, 432);
+            this.btnCancelEdit.Location = new System.Drawing.Point(136, 444);
             this.btnCancelEdit.Name = "btnCancelEdit";
             this.btnCancelEdit.Size = new System.Drawing.Size(386, 40);
             this.btnCancelEdit.TabIndex = 0;
@@ -1151,7 +1264,7 @@
             this.btnConfirmEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConfirmEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConfirmEdit.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmEdit.Location = new System.Drawing.Point(360, 390);
+            this.btnConfirmEdit.Location = new System.Drawing.Point(136, 398);
             this.btnConfirmEdit.Name = "btnConfirmEdit";
             this.btnConfirmEdit.Size = new System.Drawing.Size(386, 40);
             this.btnConfirmEdit.TabIndex = 0;
@@ -1165,7 +1278,7 @@
             this.changesInfo5.AutoSize = true;
             this.changesInfo5.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changesInfo5.ForeColor = System.Drawing.Color.Black;
-            this.changesInfo5.Location = new System.Drawing.Point(658, 276);
+            this.changesInfo5.Location = new System.Drawing.Point(225, 252);
             this.changesInfo5.Name = "changesInfo5";
             this.changesInfo5.Size = new System.Drawing.Size(120, 19);
             this.changesInfo5.TabIndex = 6;
@@ -1176,7 +1289,7 @@
             this.changesInfo2.AutoSize = true;
             this.changesInfo2.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changesInfo2.ForeColor = System.Drawing.Color.Black;
-            this.changesInfo2.Location = new System.Drawing.Point(657, 164);
+            this.changesInfo2.Location = new System.Drawing.Point(271, 112);
             this.changesInfo2.Name = "changesInfo2";
             this.changesInfo2.Size = new System.Drawing.Size(120, 19);
             this.changesInfo2.TabIndex = 6;
@@ -1187,128 +1300,73 @@
             this.changesInfo3.AutoSize = true;
             this.changesInfo3.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.changesInfo3.ForeColor = System.Drawing.Color.Black;
-            this.changesInfo3.Location = new System.Drawing.Point(658, 201);
+            this.changesInfo3.Location = new System.Drawing.Point(271, 180);
             this.changesInfo3.Name = "changesInfo3";
             this.changesInfo3.Size = new System.Drawing.Size(120, 19);
             this.changesInfo3.TabIndex = 6;
             this.changesInfo3.Text = "none → none";
             // 
-            // lblConfirm
+            // label24
             // 
-            this.lblConfirm.AutoSize = true;
-            this.lblConfirm.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblConfirm.ForeColor = System.Drawing.Color.Black;
-            this.lblConfirm.Location = new System.Drawing.Point(818, 87);
-            this.lblConfirm.Name = "lblConfirm";
-            this.lblConfirm.Size = new System.Drawing.Size(106, 19);
-            this.lblConfirm.TabIndex = 6;
-            this.lblConfirm.Text = "Confirm Edit";
+            this.label24.AutoSize = true;
+            this.label24.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label24.ForeColor = System.Drawing.Color.Black;
+            this.label24.Location = new System.Drawing.Point(150, 252);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(69, 19);
+            this.label24.TabIndex = 6;
+            this.label24.Text = "Section";
             // 
-            // changesInfo1
+            // label21
             // 
-            this.changesInfo1.AutoSize = true;
-            this.changesInfo1.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.changesInfo1.ForeColor = System.Drawing.Color.Black;
-            this.changesInfo1.Location = new System.Drawing.Point(657, 126);
-            this.changesInfo1.Name = "changesInfo1";
-            this.changesInfo1.Size = new System.Drawing.Size(120, 19);
-            this.changesInfo1.TabIndex = 6;
-            this.changesInfo1.Text = "none → none";
-            // 
-            // lblChanges
-            // 
-            this.lblChanges.AutoSize = true;
-            this.lblChanges.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblChanges.ForeColor = System.Drawing.Color.Black;
-            this.lblChanges.Location = new System.Drawing.Point(672, 87);
-            this.lblChanges.Name = "lblChanges";
-            this.lblChanges.Size = new System.Drawing.Size(83, 19);
-            this.lblChanges.TabIndex = 6;
-            this.lblChanges.Text = "Changes";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.Black;
-            this.label19.Location = new System.Drawing.Point(426, 85);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(57, 19);
-            this.label19.TabIndex = 6;
-            this.label19.Text = "Value";
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.Black;
-            this.label26.Location = new System.Drawing.Point(186, 244);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(116, 19);
-            this.label26.TabIndex = 6;
-            this.label26.Text = "Middle initial:";
-            // 
-            // label29
-            // 
-            this.label29.AutoSize = true;
-            this.label29.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label29.ForeColor = System.Drawing.Color.Black;
-            this.label29.Location = new System.Drawing.Point(186, 281);
-            this.label29.Name = "label29";
-            this.label29.Size = new System.Drawing.Size(74, 19);
-            this.label29.TabIndex = 6;
-            this.label29.Text = "Section:";
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.Black;
-            this.label23.Location = new System.Drawing.Point(185, 169);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(99, 19);
-            this.label23.TabIndex = 6;
-            this.label23.Text = "First Name:";
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.Black;
-            this.label25.Location = new System.Drawing.Point(186, 206);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(100, 19);
-            this.label25.TabIndex = 6;
-            this.label25.Text = "Last Name:";
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.Black;
+            this.label21.Location = new System.Drawing.Point(366, 252);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(39, 19);
+            this.label21.TabIndex = 6;
+            this.label21.Text = "M.I.";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
             this.label17.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label17.ForeColor = System.Drawing.Color.Black;
-            this.label17.Location = new System.Drawing.Point(185, 91);
+            this.label17.Location = new System.Drawing.Point(150, 112);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(63, 19);
+            this.label17.Size = new System.Drawing.Size(94, 19);
             this.label17.TabIndex = 6;
-            this.label17.Text = "Details";
+            this.label17.Text = "First Name";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label20.ForeColor = System.Drawing.Color.Black;
+            this.label20.Location = new System.Drawing.Point(151, 181);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(95, 19);
+            this.label20.TabIndex = 6;
+            this.label20.Text = "Last Name";
             // 
             // label16
             // 
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.Color.Black;
-            this.label16.Location = new System.Drawing.Point(185, 131);
+            this.label16.Location = new System.Drawing.Point(150, 42);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(95, 19);
+            this.label16.Size = new System.Drawing.Size(90, 19);
             this.label16.TabIndex = 6;
-            this.label16.Text = "Student ID:";
+            this.label16.Text = "Student ID";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label13.ForeColor = System.Drawing.Color.White;
-            this.label13.Location = new System.Drawing.Point(485, 5);
+            this.label13.Location = new System.Drawing.Point(263, 5);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(147, 19);
             this.label13.TabIndex = 6;
@@ -1348,7 +1406,7 @@
             this.pictureBoxBunifuItachi2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
             this.pictureBoxBunifuItachi2.BorderSize = 5;
             this.pictureBoxBunifuItachi2.GradientAngle = 50F;
-            this.pictureBoxBunifuItachi2.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
+            this.pictureBoxBunifuItachi2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBunifuItachi2.Image")));
             this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(13, 20);
             this.pictureBoxBunifuItachi2.Name = "pictureBoxBunifuItachi2";
             this.pictureBoxBunifuItachi2.Size = new System.Drawing.Size(72, 72);
@@ -1521,7 +1579,7 @@
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Image = global::Sit_In_Monitoring.Properties.Resources.user__1_;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(191, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(188, 185);
@@ -1568,7 +1626,7 @@
             this.displayName.Name = "displayName";
             this.displayName.Size = new System.Drawing.Size(150, 19);
             this.displayName.TabIndex = 6;
-            this.displayName.Text = "<Marx, Seiya M.>";
+            this.displayName.Text = "<Mark, Seiya M.>";
             // 
             // panel5
             // 
@@ -1733,7 +1791,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
+            this.panel2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel2.BackgroundImage")));
             this.panel2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel2.Controls.Add(this.hideRecords);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1919,7 +1977,7 @@
             this.pictureBoxBunifuItachi1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
             this.pictureBoxBunifuItachi1.BorderSize = 4;
             this.pictureBoxBunifuItachi1.GradientAngle = 50F;
-            this.pictureBoxBunifuItachi1.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
+            this.pictureBoxBunifuItachi1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBunifuItachi1.Image")));
             this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(23, 19);
             this.pictureBoxBunifuItachi1.Name = "pictureBoxBunifuItachi1";
             this.pictureBoxBunifuItachi1.Size = new System.Drawing.Size(72, 72);
@@ -1929,7 +1987,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.agtang;
+            this.panel1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("panel1.BackgroundImage")));
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.exitButton);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -1967,7 +2025,7 @@
             // 
             // chckicon
             // 
-            this.chckicon.Image = global::Sit_In_Monitoring.Properties.Resources._checked;
+            this.chckicon.Image = ((System.Drawing.Image)(resources.GetObject("chckicon.Image")));
             this.chckicon.Location = new System.Drawing.Point(6, 6);
             this.chckicon.Name = "chckicon";
             this.chckicon.Size = new System.Drawing.Size(39, 40);
@@ -2007,7 +2065,7 @@
             // 
             // pnlPleaseWait
             // 
-            this.pnlPleaseWait.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.HuwatUsah;
+            this.pnlPleaseWait.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlPleaseWait.BackgroundImage")));
             this.pnlPleaseWait.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlPleaseWait.Location = new System.Drawing.Point(1600, 53);
             this.pnlPleaseWait.Name = "pnlPleaseWait";
@@ -2025,7 +2083,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
-            this.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.background;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1472, 759);
             this.Controls.Add(this.pnlPleaseWait);
@@ -2086,6 +2144,21 @@
             this.pnlEditUser.PerformLayout();
             this.pnlIn.ResumeLayout(false);
             this.pnlIn.PerformLayout();
+            this.m4.ResumeLayout(false);
+            this.n4.ResumeLayout(false);
+            this.n4.PerformLayout();
+            this.m3.ResumeLayout(false);
+            this.n3.ResumeLayout(false);
+            this.n3.PerformLayout();
+            this.m2.ResumeLayout(false);
+            this.n2.ResumeLayout(false);
+            this.n2.PerformLayout();
+            this.m5.ResumeLayout(false);
+            this.n5.ResumeLayout(false);
+            this.n5.PerformLayout();
+            this.m1.ResumeLayout(false);
+            this.n1.ResumeLayout(false);
+            this.n1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi2)).EndInit();
             this.pnlStudentInfo.ResumeLayout(false);
             this.pnlStudentInfo.PerformLayout();
@@ -2230,32 +2303,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeUsed;
         private System.Windows.Forms.Panel pnlEditUser;
         private System.Windows.Forms.Panel pnlIn;
-        private System.Windows.Forms.CheckBox confirm1;
-        private ItachiBunifuUI.TextBoxBunifu newStudentId;
         private ItachiUIBunifu.ButtonBunifuItachi btnConfirmEdit;
-        private System.Windows.Forms.Label lblConfirm;
-        private System.Windows.Forms.Label lblChanges;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.CheckBox confirm4;
-        private System.Windows.Forms.CheckBox confirm2;
-        private System.Windows.Forms.CheckBox confirm5;
-        private System.Windows.Forms.CheckBox confirm3;
-        private ItachiBunifuUI.TextBoxBunifu newMiddleInitial;
-        private ItachiBunifuUI.TextBoxBunifu newFirstName;
-        private ItachiBunifuUI.TextBoxBunifu newSection;
-        private ItachiBunifuUI.TextBoxBunifu newLastName;
         private System.Windows.Forms.Label changesInfo4;
         private System.Windows.Forms.Label changesInfo5;
         private System.Windows.Forms.Label changesInfo2;
         private System.Windows.Forms.Label changesInfo3;
         private System.Windows.Forms.Label changesInfo1;
-        private System.Windows.Forms.Label label26;
-        private System.Windows.Forms.Label label29;
-        private System.Windows.Forms.Label label23;
-        private System.Windows.Forms.Label label25;
         private ItachiUIBunifu.ButtonBunifuItachi btnCancelEdit;
         private System.Windows.Forms.Panel pnlPleaseWait;
         private System.Windows.Forms.Timer Processing;
@@ -2269,6 +2324,30 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
+        private System.Windows.Forms.Panel m4;
+        private System.Windows.Forms.Panel n4;
+        private System.Windows.Forms.Label oldSectionValue;
+        private System.Windows.Forms.TextBox newSectionValue;
+        private System.Windows.Forms.Panel m3;
+        private System.Windows.Forms.Panel n3;
+        private System.Windows.Forms.Label oldLastNameValue;
+        private System.Windows.Forms.TextBox newLastNameValue;
+        private System.Windows.Forms.Panel m2;
+        private System.Windows.Forms.Panel n2;
+        private System.Windows.Forms.Label oldFirstNameValue;
+        private System.Windows.Forms.TextBox newFirstNameValue;
+        private System.Windows.Forms.Panel m5;
+        private System.Windows.Forms.Panel n5;
+        private System.Windows.Forms.Label oldMiddleInitialValue;
+        private System.Windows.Forms.TextBox newMiddleInitialValue;
+        private System.Windows.Forms.Panel m1;
+        private System.Windows.Forms.Panel n1;
+        private System.Windows.Forms.Label oldStudentIDValue;
+        private System.Windows.Forms.TextBox newStudentIDValue;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label17;
+        private System.Windows.Forms.Label label20;
     }
 }
 
