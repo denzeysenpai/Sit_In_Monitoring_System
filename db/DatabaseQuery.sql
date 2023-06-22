@@ -147,3 +147,8 @@ SELECT DATEDIFF(second, TimeIn, '14:31:19.0000000') / 3600.0 from sessionlogs wh
 select * from Students
 
 UPDATE students SET studentid = '21-20012653', firstName = 'EZRAH', middleInitial = 'A', lastName = 'SUJERO ', section = 'IT404' where studentid = '21-2001265'
+
+INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT studentid, ' 06/20/2023', '15:08:47', CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, '15:08:47'))), 108), s.personid FROM Students s WHERE s.studentid = '21-2001265'
+
+
+delete from currentSession

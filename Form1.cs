@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
@@ -210,10 +211,11 @@ namespace Sit_In_Monitoring
                 s.Fill(ds);
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd1.Parameters.AddWithValue("@date", date);
                     cmd1.Parameters.AddWithValue("@timeIn", time1);
+                    cmd1.Parameters.AddWithValue("@timeout", time1);
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
@@ -236,18 +238,14 @@ namespace Sit_In_Monitoring
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
 
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd1.Parameters.AddWithValue("@date", date);
                     cmd1.Parameters.AddWithValue("@timeIn", time1);
+                    cmd1.Parameters.AddWithValue("@timeout", time1);
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    //cmd2.Parameters.AddWithValue("@date", date);
-                    //cmd2.Parameters.AddWithValue("@timeIn", time1);
-                    //cmd2.ExecuteNonQuery();
                     NotifySuccessfulSitIn();
                 }
             }
@@ -318,7 +316,7 @@ namespace Sit_In_Monitoring
             foreach (DataRow dr in dt.Rows)
             {
                 int cs = DataGrid.Rows.Add();
-                for (int i = 0; i < 7; i++)
+                for (int i = 0; i < 8; i++)
                 {
                     DataGrid.Rows[cs].Cells[i].Value = dr[i].ToString();
                 }
@@ -349,18 +347,6 @@ namespace Sit_In_Monitoring
             cmd.Parameters.AddWithValue("@dateNow", dateDb);
             cmd.Parameters.AddWithValue("@timeUsed", timeUsed.Rows[0][0].ToString());
             cmd.ExecuteNonQuery();
-
-            //SqlCommand cmd = new SqlCommand("UPDATE sessionLogs SET timeOut = @timeOut where logid = @logid", conn);
-            //cmd.Parameters.AddWithValue("@timeOut", time1);
-            //cmd.Parameters.AddWithValue("@studentId", studentId);
-            //cmd.Parameters.AddWithValue("@logid", dt.Rows.Count);
-            //cmd.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
-            //cmd.ExecuteNonQuery();
-
-            //SqlCommand timeUsed = new SqlCommand("UPDATE sessionlogs SET TimeUsed = DATEDIFF(second, TimeIn, TimeOut) / 3600.0 where studentid = @studentid and date = @dateNow", conn);
-            //timeUsed.Parameters.AddWithValue("@studentId", studentId);
-            //timeUsed.Parameters.AddWithValue("@dateNow", dateToday.Value.ToString(" MM/dd/yyyy"));
-            //timeUsed.ExecuteNonQuery();
 
             SqlCommand substractTime = new SqlCommand("UPDATE Students SET remainingTime = remainingTime - (SELECT CONVERT(DECIMAL(16, 6), TimeUsed) FROM SessionLogs WHERE studentID = @studentId and timeout = @timeOut) WHERE studentID = @studentId;", conn);
             substractTime.Parameters.AddWithValue("studentId", studentId);
@@ -452,6 +438,20 @@ namespace Sit_In_Monitoring
             }
 
         }//DONE
+
+        public void notifyTimeDone()
+        {
+            //try
+            //{
+            //    { 
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
+           
+        }
         #endregion
 
 
@@ -606,8 +606,13 @@ namespace Sit_In_Monitoring
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void ORASAN(object sender, EventArgs e) =>
+        private void ORASAN(object sender, EventArgs e)
+        {
             lblTime2.Text = lblTime.Text = DateTime.Now.ToString("hh:mm:ss tt");
+
+            notifyTimeDone();
+        }
+            
         /// <summary>
         /// Checks if the textbox is focused in the form
         /// </summary>
