@@ -86,7 +86,7 @@ WHERE studentId = '21-2001265' AND Date = ' 06/15/2023';
 
 
 select * from SessionLogs
-
+select * from students
 
 SELECT COLUMN_NAME, DATA_TYPE 
 FROM INFORMATION_SCHEMA.COLUMNS 
@@ -144,7 +144,9 @@ select * from currentsession
 
 SELECT DATEDIFF(second, TimeIn, '14:31:19.0000000') / 3600.0 from sessionlogs where studentid = '21-2001265' and date = ' 06/20/2023'
 
-select * from Students
+select * from Students WHERE studentid = '21-2001265'
+
+select * from students
 
 UPDATE students SET studentid = '21-20012653', firstName = 'EZRAH', middleInitial = 'A', lastName = 'SUJERO ', section = 'IT404' where studentid = '21-2001265'
 
@@ -152,3 +154,10 @@ INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT st
 
 
 delete from currentSession
+
+SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid and cs.date = ' 06/22/2023'
+
+
+
+delete from SessionLogs
+delete from Students 

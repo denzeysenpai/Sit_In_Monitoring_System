@@ -11,7 +11,7 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
 
         #region ATTRIBUTES
@@ -189,7 +189,7 @@ namespace Sit_In_Monitoring
         public void AddStudent()
         {
             DateTime val = DateTime.Now;
-            string time1 = val.ToString("HH:mm:ss tt");
+            string time1 = val.ToString("HH:mm:ss");
             string date = $"{val.Date: MM/dd/yyyy}";
 
             SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
@@ -302,7 +302,7 @@ namespace Sit_In_Monitoring
         public void Update_Data() // DONE
         {
             DisplayForLogs();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid and cs.date = '"+ dateToday.Value.ToString(" MM/dd/yyyy") + "'", conn);
 
             DataTable dt = new DataTable();
             s.Fill(dt);
@@ -378,7 +378,7 @@ namespace Sit_In_Monitoring
         public void DisplayForLogs()
         {
             recordsView.Rows.Clear();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%" + txtSearchId.Text + "%'", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.fb.c = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%" + txtSearchId.Text + "%'", conn);
 
             DataTable dt = new DataTable();
             dt.Clear();
@@ -394,58 +394,107 @@ namespace Sit_In_Monitoring
         }//DONE
         public void RestrictTime()
         {
-            SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
-            DataTable wew = new DataTable();
+            SqlDataAdapter balance = new SqlDataAdapter("SELECT RemainingTime FROM students where studentid = '" + txtStudentID.Text + "'", conn);
+            ds.Clear();
+            balance.Fill(ds);
 
-            check.Fill(wew);
+            double remainingTime = Convert.ToDouble(ds.Tables[0].Rows[0]["RemainingTime"]);
 
-
-            if (wew.Rows.Count == 0)
+            if (remainingTime > 0)
             {
-                SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
-                DataTable dt = new DataTable();
+                SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
+                DataTable wew = new DataTable();
 
-                restrict.Fill(dt);
+                check.Fill(wew);
 
-                if (dt.Rows.Count >= 1)
+
+                if (wew.Rows.Count == 0)
                 {
-                    if (MessageBox.Show("This student have already reached session limit time!\r\n(CANCEL to override)", "Time Limit Reached!", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                    SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
+                    DataTable dt = new DataTable();
+
+                    restrict.Fill(dt);
+
+                    if (dt.Rows.Count >= 1)
                     {
-                        if (MessageBox.Show("Do you want to override student's time?", "Override?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        if (MessageBox.Show("This student have already reached session limit time!\r\n(CANCEL to override)", "Time Limit Reached!", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                         {
-                            AddStudent();
+                            if (MessageBox.Show("Do you want to override student's time?", "Override?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                AddStudent();
+                            }
+                            else
+                            {
+                                clearStudentText();
+                            }
+
                         }
                         else
                         {
                             clearStudentText();
                         }
-
-                    }
-                    else
-                    {
-                        clearStudentText();
                     }
                 }
             }
             else
             {
-                MessageBox.Show("Student is already on a session!");
+                MessageBox.Show("Student have already used total hours sit-in!");
+                clearStudentText();
             }
+
 
         }//DONE
 
         public void notifyTimeDone()
         {
-            //try
-            //{
-            //    { 
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message);
-            //}
+            try
+            {
+                DateTime val = DateTime.Now;
+                TimeSpan time1 = TimeSpan.Parse(val.ToString("HH:mm:ss"));
 
+                // Iterate through the rows in the DataGridView
+                foreach (DataGridViewRow row in DataGrid.Rows)
+                {
+                    // Check if the current row matches the criterion
+                    if (TimeSpan.Parse(row.Cells["TIME_OUT"].Value.ToString()) <= time1)
+                    {
+                        // Change the color of the row
+                        row.DefaultCellStyle.BackColor = Color.Red;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+        }//DONE 6/23/23
+        public void forEdit()
+        {
+            SqlDataAdapter name = new SqlDataAdapter("SELECT * FROM students WHERE studentid = '" + displayID.Text + "'", conn);
+            ds.Clear();
+            name.Fill(ds);
+
+
+            string studentid = newStudentIDValue.Text == string.Empty ? displayID.Text : newStudentIDValue.Text;
+            string fname = newFirstNameValue.Text == string.Empty ? ds.Tables[0].Rows[0]["firstName"].ToString() : newFirstNameValue.Text;
+            string mname = newMiddleInitialValue.Text == string.Empty ? ds.Tables[0].Rows[0]["middleInitial"].ToString() : newMiddleInitialValue.Text;
+            string lname = newLastNameValue.Text == string.Empty ? ds.Tables[0].Rows[0]["lastName"].ToString() : newLastNameValue.Text;
+            string section = newSectionValue.Text == string.Empty ? displaySection.Text : newSectionValue.Text;
+            OpenSQL();
+            SqlCommand cmd = new SqlCommand("UPDATE students SET studentid = @studentid, firstName = @firstName, middleInitial = @middleInitial, lastName = @lastName, section = @section where studentid = @currentstudentId", conn);
+            cmd.Parameters.AddWithValue("@currentstudentId", studentid);
+            cmd.Parameters.AddWithValue("@studentid", studentid);
+            cmd.Parameters.AddWithValue("@firstName", fname);
+            cmd.Parameters.AddWithValue("@middleInitial", mname);
+            cmd.Parameters.AddWithValue("@lastName", lname);
+            cmd.Parameters.AddWithValue("@section", section);
+            cmd.ExecuteNonQuery();
+
+            DisplayForLogs();
+            CloseSQL();
+            ReasonForPassword = "";
+            pnlEditUser.Hide();
         }
         #endregion
 
@@ -495,7 +544,7 @@ namespace Sit_In_Monitoring
             Clicked = Color.FromArgb(65, 205, 242);
             CanStart = Color.FromArgb(7, 163, 58);
             NotStart = Color.FromArgb(65, 205, 242);
-
+            OpenSQL();
             exitApp = false;
             Update_Data();
             DisplayForLogs();
@@ -986,24 +1035,11 @@ namespace Sit_In_Monitoring
             pnlEditUser.Hide();
         }
 
-        private void BtnConfirmEdit_Click(object sender, EventArgs e) //won't display the text, adjust tommorow
+        private void BtnConfirmEdit_Click(object sender, EventArgs e) 
         {
             try
             {
-                OpenSQL();
-                SqlCommand cmd = new SqlCommand("UPDATE students SET studentid = @studentid, firstName = @firstName, middleInitial = @middleInitial, lastName = @lastName, section = @section where studentid = @studentid", conn);
-
-                cmd.Parameters.AddWithValue("@studentid", newStudentIDValue.Text);
-                cmd.Parameters.AddWithValue("@firstName", newFirstNameValue.Text);
-                cmd.Parameters.AddWithValue("@middleInitial", newMiddleInitialValue.Text);
-                cmd.Parameters.AddWithValue("@lastName", newLastNameValue.Text);
-                cmd.Parameters.AddWithValue("@section", newSectionValue.Text);
-                cmd.ExecuteNonQuery();
-
-                DisplayForLogs();
-                CloseSQL();
-                ReasonForPassword = "";
-                pnlEditUser.Hide();
+                forEdit();
             }
             catch (Exception ex)
             {
@@ -1057,6 +1093,11 @@ namespace Sit_In_Monitoring
                 DataGrid.Columns["LOG_OUT"].Visible = true;
                 DataGrid.Enabled = true;
             }
+        }
+
+        private void dateToday_ValueChanged(object sender, EventArgs e)
+        {
+            Update_Data();
         }
     }
     #region Round Corner |> Mark
