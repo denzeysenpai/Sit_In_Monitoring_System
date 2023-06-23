@@ -9,15 +9,10 @@ using System.Windows.Forms;
 
 namespace Sit_In_Monitoring
 {
-    public partial class Form1 : Form
+    public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
-
-        void OpenSQL() =>
-            conn.Open();
-        void CloseSQL() => 
-            conn.Close();
 
         #region ATTRIBUTES
         readonly SeiyaMarxElls Design = new SeiyaMarxElls();
@@ -58,11 +53,15 @@ namespace Sit_In_Monitoring
         #endregion ATTRIBUTES
 
         #region ALL OF FUNCTIONS // hekhokhekohok - Mark
-        public void SetNotificationOnLoad() =>
+        void OpenSQL() =>
+            conn.Open();
+        void CloseSQL() => 
+            conn.Close();
+        void SetNotificationOnLoad() =>
             pnlNotification.Left = Width;
-        public void NotifySuccessfulSitIn() => // Notification for successful log in
+        void NotifySuccessfulSitIn() => // Notification for successful log in
             notify = (notificationMessage.Text = "Logged-in Successfully!") == "Logged-in Successfully!" || notify;
-        public void NotifySuccessfulLogOut() => // Notification for successful log out
+        void NotifySuccessfulLogOut() => // Notification for successful log out
             notify = (notificationMessage.Text = "Logged-Out Successfully!") == "Logged-Out Successfully!" || notify;
 
         public void ShowAdminPasswordInput()
@@ -150,9 +149,10 @@ namespace Sit_In_Monitoring
             {
                 case "exit": ReasonIsForExit(); break;
                 case "edit": ReasonIsForEdit(); break;
-                case "delete": ReasonIsForDelete(); break;
                 case "print": ReasonIsForPrint(); break;
+                case "delete": ReasonIsForDelete(); break;
                 case "records": ReasonIsForRecords(); break;
+                default: /**/ break;
             }
             CloseConfirmation();
         }
@@ -178,10 +178,10 @@ namespace Sit_In_Monitoring
 
         public void clearStudentText()
         {
+            txtSection.Text = string.Empty;
             txtStudentName.Text = string.Empty;
             txtMiddleInitial.Text = string.Empty;
             txtStudentLastName.Text = string.Empty;
-            txtSection.Text = string.Empty;
         }//DONE
         #endregion
 
@@ -449,15 +449,15 @@ namespace Sit_In_Monitoring
         }
         #endregion
 
-        public Form1()
+        public SitInMonitoringForm()
         {
             InitializeComponent();
 
             // Add design
             Design.RoundCorner(this, 25);
 
-            TextboxMargins = new SeiyaMarxElls(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 18);
             TextboxBodies = new SeiyaMarxElls(tm1, tm2, l1, l2, l3, l4, l6, l7, 17);
+            TextboxMargins = new SeiyaMarxElls(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 18);
             Fifteens = new SeiyaMarxElls(pnlmrgn, pnlLoginFrame, pnlStudsRec, pnlDesign, pnlDepth, DataGrid, recordsView, pnlStudentInfo, pnlDate, 15);
 
             TextboxMargins.RoundCorner();
@@ -488,7 +488,7 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(n5, 18);
             #endregion
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void SitInMonitoringForm_Load(object sender, EventArgs e) // Form Load
         {
             // Default values on first load, may or may not change during run time
             notClicked = Color.FromArgb(210, 242, 250);
@@ -496,15 +496,22 @@ namespace Sit_In_Monitoring
             CanStart = Color.FromArgb(7, 163, 58);
             NotStart = Color.FromArgb(65, 205, 242);
 
-            pnlAdminLock.Hide();
             exitApp = false;
             Update_Data();
             DisplayForLogs();
             ProcessingDataBase = false;
 
-            pnlAdminLock.Location = new Point(446, 204);
-            pnlRecords.Location = new Point(0, 0);
+            Point AlignInCenter(Control ctr) =>
+                new Point((Width / 2) - (ctr.Width / 2),(Height / 2) - (ctr.Height / 2));
+
             pnlRecords.Hide();
+            pnlEditUser.Hide();
+            pnlAdminLock.Hide();
+
+            pnlRecords.Location = AlignInCenter(pnlRecords);
+            pnlEditUser.Location = AlignInCenter(pnlEditUser);
+            pnlAdminLock.Location = AlignInCenter(pnlAdminLock);
+            pnlPleaseWait.Location = AlignInCenter(pnlPleaseWait);
 
             Display_Student_Info("00-0000000", "---- ----", "-", "-------", "---- - ---", 0, 0, 0);
             attemptsOfLogin = 0;
@@ -512,27 +519,14 @@ namespace Sit_In_Monitoring
 
             buttonColors = Color.FromArgb(8, 136, 194);
 
+            BtnStart.BackColor = buttonColors;
+            BtnSearch.BackColor = buttonColors;
             BtnConfirm.BackColor = Color.Black;
             BtnCancelIn.BackColor = Color.Black;
-
-            BtnDelete.BackColor = Color.FromArgb(0, 93, 130);
-            BtnSearch.BackColor = buttonColors;
-            BtnPrint.BackColor = Color.FromArgb(0, 50, 94);
-            BtnStart.BackColor = buttonColors;
-            BtnEdit.BackColor = Color.FromArgb(0, 134, 158);
-
-            txtStudentID.TabIndex = 0;
-            BtnSearch.TabIndex = 1;
-            txtStudentLastName.TabIndex = 2;
-            txtStudentName.TabIndex = 3;
-            txtMiddleInitial.TabIndex = 4;
-            txtSection.TabIndex = 5;
-
-            pnlEditUser.Hide();
-            pnlEditUser.Location = new Point(184, 95);
-            pnlEditUser.Size = new Size(1115, 565);
             pnlEditUser.BackColor = Color.Black;
-            pnlPleaseWait.Location = new Point((Width / 2) - (pnlPleaseWait.Width / 2), (Height / 2) - (pnlPleaseWait.Height / 2));
+            BtnPrint.BackColor = Color.FromArgb(0, 50, 94);
+            BtnEdit.BackColor = Color.FromArgb(0, 134, 158);
+            BtnDelete.BackColor = Color.FromArgb(0, 93, 130);
 
             foreach (Control ctr in this.Controls)
             {
@@ -549,7 +543,6 @@ namespace Sit_In_Monitoring
                     ctr.Focus();
                 }
             }
-
             closeNotify = false;
             notify = false;
 
@@ -755,10 +748,10 @@ namespace Sit_In_Monitoring
         private void KeyIsDown(object sender, KeyEventArgs e)
         {
             Keys Key = e.KeyCode;
-            void TabIndexCatch(Control txt, Control btn)
+            void TabIndexCatch(Control txt, Control Btn)
             {
                 if (Key == Keys.Tab && txt.Focused)
-                    btn.Focus();
+                    Btn.Focus();
             }
 
             if (Key == Keys.F1 && e.Control)
@@ -955,8 +948,8 @@ namespace Sit_In_Monitoring
                     string IDSelectFrom(string table) =>
                         $"SELECT * FROM {table} WHERE studentId";
 
-                    SqlDataAdapter c = new SqlDataAdapter($"{IDSelectFrom("sessionlogs")} = '" + StudentIdInRecords() + "'", conn);
-                    SqlDataAdapter s = new SqlDataAdapter($"{IDSelectFrom("students")} = '" + StudentIdInRecords() + "'", conn);
+                    SqlDataAdapter c = new SqlDataAdapter($"{IDSelectFrom("sessionlogs")} = '{StudentIdInRecords()}'", conn);
+                    SqlDataAdapter s = new SqlDataAdapter($"{IDSelectFrom("students")} = '{StudentIdInRecords()}'", conn);
 
                     dt.Clear();
                     ds.Clear();
@@ -984,16 +977,16 @@ namespace Sit_In_Monitoring
         private void dateForRecords_ValueChanged(object sender, EventArgs e) =>
             DisplayForLogs();
 
-        private void LBLBTNSEARCH_Click(object sender, EventArgs e) =>
+        private void LBLBtnSEARCH_Click(object sender, EventArgs e) =>
             SearchStudentAllLogs();
 
-        private void btnCancelEdit_Click(object sender, EventArgs e)
+        private void BtnCancelEdit_Click(object sender, EventArgs e)
         {
             ReasonForPassword = "";
             pnlEditUser.Hide();
         }
 
-        private void btnConfirmEdit_Click(object sender, EventArgs e) //won't display the text, adjust tommorow
+        private void BtnConfirmEdit_Click(object sender, EventArgs e) //won't display the text, adjust tommorow
         {
             try
             {
@@ -1066,7 +1059,7 @@ namespace Sit_In_Monitoring
             }
         }
     }
-    #region Mark |> Mark
+    #region Round Corner |> Mark
     class SeiyaMarxElls
     {
         List<Control> Set = new List<Control>();

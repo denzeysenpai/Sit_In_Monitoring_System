@@ -1,6 +1,6 @@
 ﻿namespace Sit_In_Monitoring
 {
-    partial class Form1
+    partial class SitInMonitoringForm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SitInMonitoringForm));
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
@@ -113,8 +113,8 @@
             this.oldStudentIDValue = new System.Windows.Forms.Label();
             this.newStudentIDValue = new System.Windows.Forms.TextBox();
             this.changesInfo4 = new System.Windows.Forms.Label();
-            this.btnCancelEdit = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.btnConfirmEdit = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnCancelEdit = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.BtnConfirmEdit = new ItachiUIBunifu.ButtonBunifuItachi();
             this.changesInfo5 = new System.Windows.Forms.Label();
             this.changesInfo2 = new System.Windows.Forms.Label();
             this.changesInfo3 = new System.Windows.Forms.Label();
@@ -124,7 +124,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
-            this.LBLBTNSEARCH = new System.Windows.Forms.Label();
+            this.LBLBtnSEARCH = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.pictureBoxBunifuItachi2 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.pnlStudentInfo = new System.Windows.Forms.Panel();
@@ -376,9 +376,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle2;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -906,7 +906,7 @@
             this.pnlRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlRecords.Controls.Add(this.pnlEditUser);
-            this.pnlRecords.Controls.Add(this.LBLBTNSEARCH);
+            this.pnlRecords.Controls.Add(this.LBLBtnSEARCH);
             this.pnlRecords.Controls.Add(this.label6);
             this.pnlRecords.Controls.Add(this.pictureBoxBunifuItachi2);
             this.pnlRecords.Controls.Add(this.pnlStudentInfo);
@@ -942,8 +942,8 @@
             this.pnlIn.Controls.Add(this.m5);
             this.pnlIn.Controls.Add(this.m1);
             this.pnlIn.Controls.Add(this.changesInfo4);
-            this.pnlIn.Controls.Add(this.btnCancelEdit);
-            this.pnlIn.Controls.Add(this.btnConfirmEdit);
+            this.pnlIn.Controls.Add(this.BtnCancelEdit);
+            this.pnlIn.Controls.Add(this.BtnConfirmEdit);
             this.pnlIn.Controls.Add(this.changesInfo5);
             this.pnlIn.Controls.Add(this.changesInfo2);
             this.pnlIn.Controls.Add(this.changesInfo3);
@@ -1233,45 +1233,45 @@
             this.changesInfo4.TabIndex = 6;
             this.changesInfo4.Text = "none → none";
             // 
-            // btnCancelEdit
+            // BtnCancelEdit
             // 
-            this.btnCancelEdit.BackColor = System.Drawing.Color.Black;
-            this.btnCancelEdit.BackgroundColor = System.Drawing.Color.Black;
-            this.btnCancelEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnCancelEdit.BorderRadius = 20;
-            this.btnCancelEdit.BorderSize = 0;
-            this.btnCancelEdit.FlatAppearance.BorderSize = 0;
-            this.btnCancelEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCancelEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelEdit.ForeColor = System.Drawing.Color.White;
-            this.btnCancelEdit.Location = new System.Drawing.Point(136, 444);
-            this.btnCancelEdit.Name = "btnCancelEdit";
-            this.btnCancelEdit.Size = new System.Drawing.Size(386, 40);
-            this.btnCancelEdit.TabIndex = 0;
-            this.btnCancelEdit.Text = "CANCEL AND EXIT";
-            this.btnCancelEdit.TextColor = System.Drawing.Color.White;
-            this.btnCancelEdit.UseVisualStyleBackColor = false;
-            this.btnCancelEdit.Click += new System.EventHandler(this.btnCancelEdit_Click);
+            this.BtnCancelEdit.BackColor = System.Drawing.Color.Black;
+            this.BtnCancelEdit.BackgroundColor = System.Drawing.Color.Black;
+            this.BtnCancelEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BtnCancelEdit.BorderRadius = 20;
+            this.BtnCancelEdit.BorderSize = 0;
+            this.BtnCancelEdit.FlatAppearance.BorderSize = 0;
+            this.BtnCancelEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnCancelEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnCancelEdit.ForeColor = System.Drawing.Color.White;
+            this.BtnCancelEdit.Location = new System.Drawing.Point(136, 444);
+            this.BtnCancelEdit.Name = "BtnCancelEdit";
+            this.BtnCancelEdit.Size = new System.Drawing.Size(386, 40);
+            this.BtnCancelEdit.TabIndex = 0;
+            this.BtnCancelEdit.Text = "CANCEL AND EXIT";
+            this.BtnCancelEdit.TextColor = System.Drawing.Color.White;
+            this.BtnCancelEdit.UseVisualStyleBackColor = false;
+            this.BtnCancelEdit.Click += new System.EventHandler(this.BtnCancelEdit_Click);
             // 
-            // btnConfirmEdit
+            // BtnConfirmEdit
             // 
-            this.btnConfirmEdit.BackColor = System.Drawing.Color.Black;
-            this.btnConfirmEdit.BackgroundColor = System.Drawing.Color.Black;
-            this.btnConfirmEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnConfirmEdit.BorderRadius = 20;
-            this.btnConfirmEdit.BorderSize = 0;
-            this.btnConfirmEdit.FlatAppearance.BorderSize = 0;
-            this.btnConfirmEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnConfirmEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConfirmEdit.ForeColor = System.Drawing.Color.White;
-            this.btnConfirmEdit.Location = new System.Drawing.Point(136, 398);
-            this.btnConfirmEdit.Name = "btnConfirmEdit";
-            this.btnConfirmEdit.Size = new System.Drawing.Size(386, 40);
-            this.btnConfirmEdit.TabIndex = 0;
-            this.btnConfirmEdit.Text = "CONFIRM SELECTED EDITS";
-            this.btnConfirmEdit.TextColor = System.Drawing.Color.White;
-            this.btnConfirmEdit.UseVisualStyleBackColor = false;
-            this.btnConfirmEdit.Click += new System.EventHandler(this.btnConfirmEdit_Click);
+            this.BtnConfirmEdit.BackColor = System.Drawing.Color.Black;
+            this.BtnConfirmEdit.BackgroundColor = System.Drawing.Color.Black;
+            this.BtnConfirmEdit.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.BtnConfirmEdit.BorderRadius = 20;
+            this.BtnConfirmEdit.BorderSize = 0;
+            this.BtnConfirmEdit.FlatAppearance.BorderSize = 0;
+            this.BtnConfirmEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BtnConfirmEdit.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.BtnConfirmEdit.ForeColor = System.Drawing.Color.White;
+            this.BtnConfirmEdit.Location = new System.Drawing.Point(136, 398);
+            this.BtnConfirmEdit.Name = "BtnConfirmEdit";
+            this.BtnConfirmEdit.Size = new System.Drawing.Size(386, 40);
+            this.BtnConfirmEdit.TabIndex = 0;
+            this.BtnConfirmEdit.Text = "CONFIRM SELECTED EDITS";
+            this.BtnConfirmEdit.TextColor = System.Drawing.Color.White;
+            this.BtnConfirmEdit.UseVisualStyleBackColor = false;
+            this.BtnConfirmEdit.Click += new System.EventHandler(this.BtnConfirmEdit_Click);
             // 
             // changesInfo5
             // 
@@ -1372,18 +1372,18 @@
             this.label13.TabIndex = 6;
             this.label13.Text = "EDIT STUDENT INFO";
             // 
-            // LBLBTNSEARCH
+            // LBLBtnSEARCH
             // 
-            this.LBLBTNSEARCH.AutoSize = true;
-            this.LBLBTNSEARCH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.LBLBTNSEARCH.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LBLBTNSEARCH.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.LBLBTNSEARCH.Location = new System.Drawing.Point(1321, 59);
-            this.LBLBTNSEARCH.Name = "LBLBTNSEARCH";
-            this.LBLBTNSEARCH.Size = new System.Drawing.Size(83, 23);
-            this.LBLBTNSEARCH.TabIndex = 19;
-            this.LBLBTNSEARCH.Text = "SEARCH";
-            this.LBLBTNSEARCH.Click += new System.EventHandler(this.LBLBTNSEARCH_Click);
+            this.LBLBtnSEARCH.AutoSize = true;
+            this.LBLBtnSEARCH.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.LBLBtnSEARCH.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LBLBtnSEARCH.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.LBLBtnSEARCH.Location = new System.Drawing.Point(1321, 59);
+            this.LBLBtnSEARCH.Name = "LBLBtnSEARCH";
+            this.LBLBtnSEARCH.Size = new System.Drawing.Size(83, 23);
+            this.LBLBtnSEARCH.TabIndex = 19;
+            this.LBLBtnSEARCH.Text = "SEARCH";
+            this.LBLBtnSEARCH.Click += new System.EventHandler(this.LBLBtnSEARCH_Click);
             // 
             // label6
             // 
@@ -1406,7 +1406,7 @@
             this.pictureBoxBunifuItachi2.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
             this.pictureBoxBunifuItachi2.BorderSize = 5;
             this.pictureBoxBunifuItachi2.GradientAngle = 50F;
-            this.pictureBoxBunifuItachi2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBunifuItachi2.Image")));
+            this.pictureBoxBunifuItachi2.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
             this.pictureBoxBunifuItachi2.Location = new System.Drawing.Point(13, 20);
             this.pictureBoxBunifuItachi2.Name = "pictureBoxBunifuItachi2";
             this.pictureBoxBunifuItachi2.Size = new System.Drawing.Size(72, 72);
@@ -1977,8 +1977,8 @@
             this.pictureBoxBunifuItachi1.BorderLineStyle = System.Drawing.Drawing2D.DashStyle.DashDotDot;
             this.pictureBoxBunifuItachi1.BorderSize = 4;
             this.pictureBoxBunifuItachi1.GradientAngle = 50F;
-            this.pictureBoxBunifuItachi1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxBunifuItachi1.Image")));
-            this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(23, 19);
+            this.pictureBoxBunifuItachi1.Image = global::Sit_In_Monitoring.Properties.Resources.dntsLogo;
+            this.pictureBoxBunifuItachi1.Location = new System.Drawing.Point(23, 17);
             this.pictureBoxBunifuItachi1.Name = "pictureBoxBunifuItachi1";
             this.pictureBoxBunifuItachi1.Size = new System.Drawing.Size(72, 72);
             this.pictureBoxBunifuItachi1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -2078,7 +2078,7 @@
             this.Processing.Interval = 2;
             this.Processing.Tick += new System.EventHandler(this.ProcessDB);
             // 
-            // Form1
+            // SitInMonitoringForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -2100,11 +2100,11 @@
             this.Controls.Add(this.label2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Name = "Form1";
+            this.Name = "SitInMonitoringForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SIT-IN FORM";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormWillBeClosed);
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.SitInMonitoringForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
             this.tm2.ResumeLayout(false);
             this.tm1.ResumeLayout(false);
@@ -2289,7 +2289,7 @@
         private System.Windows.Forms.PictureBox pictureBox2;
         private ItachiUIBunifu.ButtonBunifuItachi BtnCancelIn;
         private ItachiUIBunifu.ButtonBunifuItachi BtnConfirm;
-        private System.Windows.Forms.Label LBLBTNSEARCH;
+        private System.Windows.Forms.Label LBLBtnSEARCH;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel pnltm2;
         private System.Windows.Forms.DataGridViewTextBoxColumn lDate;
@@ -2303,7 +2303,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn lTimeUsed;
         private System.Windows.Forms.Panel pnlEditUser;
         private System.Windows.Forms.Panel pnlIn;
-        private ItachiUIBunifu.ButtonBunifuItachi btnConfirmEdit;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnConfirmEdit;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label changesInfo4;
@@ -2311,7 +2311,7 @@
         private System.Windows.Forms.Label changesInfo2;
         private System.Windows.Forms.Label changesInfo3;
         private System.Windows.Forms.Label changesInfo1;
-        private ItachiUIBunifu.ButtonBunifuItachi btnCancelEdit;
+        private ItachiUIBunifu.ButtonBunifuItachi BtnCancelEdit;
         private System.Windows.Forms.Panel pnlPleaseWait;
         private System.Windows.Forms.Timer Processing;
         private System.Windows.Forms.DataGridView DataGrid;

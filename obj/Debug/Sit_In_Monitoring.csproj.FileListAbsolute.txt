@@ -1,0 +1,14 @@
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.exe.config
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.exe
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.pdb
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\ItachiUIBunifu.dll
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.AssemblyReference.cache
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.SuggestedBindingRedirects.cache
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.CustomTextBox.resources
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.Properties.Resources.resources
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.GenerateResource.cache
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.CoreCompileInputs.cache
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.CopyComplete
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.exe
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.pdb
+C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.SitInMonitoringForm.resources

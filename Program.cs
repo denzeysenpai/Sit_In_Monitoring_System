@@ -16,7 +16,7 @@ namespace Sit_In_Monitoring
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new SitInMonitoringForm());
         }
     }
 }
