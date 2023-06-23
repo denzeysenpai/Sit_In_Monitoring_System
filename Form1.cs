@@ -378,7 +378,7 @@ namespace Sit_In_Monitoring
         public void DisplayForLogs()
         {
             recordsView.Rows.Clear();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.fb.c = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%" + txtSearchId.Text + "%'", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%" + txtSearchId.Text + "%'", conn);
 
             DataTable dt = new DataTable();
             dt.Clear();
@@ -469,21 +469,22 @@ namespace Sit_In_Monitoring
             }
 
         }//DONE 6/23/23
-        public void forEdit()
+        public void forEdit()//BUG - AFTER EDITING THE TEXT THAT WAS PREVIOUSLY PUT DOESN'T CLEAR-- MUST BE FIX. ALSO DISABLE THE STUDENT ID EDIT. STUDENT ID IS NOT EDITABLE.
         {
+            OpenSQL();
             SqlDataAdapter name = new SqlDataAdapter("SELECT * FROM students WHERE studentid = '" + displayID.Text + "'", conn);
             ds.Clear();
             name.Fill(ds);
 
-
+            string currentid = displayID.Text;
             string studentid = newStudentIDValue.Text == string.Empty ? displayID.Text : newStudentIDValue.Text;
             string fname = newFirstNameValue.Text == string.Empty ? ds.Tables[0].Rows[0]["firstName"].ToString() : newFirstNameValue.Text;
             string mname = newMiddleInitialValue.Text == string.Empty ? ds.Tables[0].Rows[0]["middleInitial"].ToString() : newMiddleInitialValue.Text;
             string lname = newLastNameValue.Text == string.Empty ? ds.Tables[0].Rows[0]["lastName"].ToString() : newLastNameValue.Text;
             string section = newSectionValue.Text == string.Empty ? displaySection.Text : newSectionValue.Text;
-            OpenSQL();
+
             SqlCommand cmd = new SqlCommand("UPDATE students SET studentid = @studentid, firstName = @firstName, middleInitial = @middleInitial, lastName = @lastName, section = @section where studentid = @currentstudentId", conn);
-            cmd.Parameters.AddWithValue("@currentstudentId", studentid);
+            cmd.Parameters.AddWithValue("@currentstudentId", currentid);
             cmd.Parameters.AddWithValue("@studentid", studentid);
             cmd.Parameters.AddWithValue("@firstName", fname);
             cmd.Parameters.AddWithValue("@middleInitial", mname);
@@ -492,9 +493,17 @@ namespace Sit_In_Monitoring
             cmd.ExecuteNonQuery();
 
             DisplayForLogs();
-            CloseSQL();
+
+
+            newStudentIDValue.Text = string.Empty;
+            newFirstNameValue.Text = string.Empty; 
+            newMiddleInitialValue.Text =  string.Empty;
+            newLastNameValue.Text =  string.Empty;
+            newSectionValue.Text = string.Empty;
+
             ReasonForPassword = "";
             pnlEditUser.Hide();
+            CloseSQL();
         }
         #endregion
 
@@ -544,7 +553,6 @@ namespace Sit_In_Monitoring
             Clicked = Color.FromArgb(65, 205, 242);
             CanStart = Color.FromArgb(7, 163, 58);
             NotStart = Color.FromArgb(65, 205, 242);
-            OpenSQL();
             exitApp = false;
             Update_Data();
             DisplayForLogs();
