@@ -11,7 +11,7 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\Documents\\GitHub\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
 
         #region ATTRIBUTES
@@ -155,6 +155,17 @@ namespace Sit_In_Monitoring
                 default: /**/ break;
             }
             CloseConfirmation();
+
+            // MONTHLY
+            /* WEEKLY
+             * DAILY //DONE
+             * PER STUDENT 
+             * SEMESTRAL
+             * 
+             * 
+             * ALLOW PRINTING OF DIFFERENT CONDITIONS
+             
+             */
         }
 
 
@@ -406,7 +417,7 @@ namespace Sit_In_Monitoring
                 DataTable wew = new DataTable();
 
                 check.Fill(wew);
-
+                
 
                 if (wew.Rows.Count == 0)
                 {
