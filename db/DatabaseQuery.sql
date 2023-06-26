@@ -39,6 +39,7 @@ REFERENCES Students(personid)
 );
 
 
+
 --Select currentSession.Date, Students.studentId, students.firstName, students.middleInitial, Students.lastName, currentSession.TimeIn, currentSession.TimeOut
 --FROM Students INNER JOIN currentSession
 --ON students.personid = currentsession.personid
@@ -46,11 +47,9 @@ REFERENCES Students(personid)
 
 --SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.studentId = cs.studentId
 
---select * from SessionLogs
-
+--select * from SessionLogs 
 
 --SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where concat(sl.studentid, s.firstName, s.middleInitial ,s.lastname, s.section) like '%ez%'
-
 
 
 --select * from SessionLogs
@@ -161,3 +160,22 @@ SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section
 
 delete from SessionLogs
 delete from Students 
+
+
+INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId
+GO
+CREATE PROCEDURE InsertNewData (@studentId varchar(13), @date varchar(15), @timeIn TIME, @timeOut TIME)
+AS BEGIN
+INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId
+END
+GO
+
+CREATE PROC InsertNewData 
+(@studentId varchar(13), @date varchar(15), @timeIn TIME, @timeOut TIME)
+AS BEGIN
+INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId
+END
+GO
+
+
+

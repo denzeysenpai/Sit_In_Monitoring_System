@@ -2466,8 +2466,8 @@
             // 
             // chckicon
             // 
-            this.chckicon.Image = ((System.Drawing.Image)(resources.GetObject("chckicon.Image")));
-            this.chckicon.Location = new System.Drawing.Point(6, 6);
+            this.chckicon.Image = global::Sit_In_Monitoring.Properties.Resources._checked;
+            this.chckicon.Location = new System.Drawing.Point(7, 6);
             this.chckicon.Name = "chckicon";
             this.chckicon.Size = new System.Drawing.Size(39, 40);
             this.chckicon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;

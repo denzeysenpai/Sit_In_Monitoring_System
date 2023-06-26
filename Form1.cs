@@ -233,7 +233,8 @@ namespace Sit_In_Monitoring
                     SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                     ds.Clear();
                     s.Fill(ds);
-                    if (ds.Tables[0].Rows.Count > 0)
+
+                    void InsertNewDataToCurrentSessions()
                     {
                         SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                         cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
@@ -243,6 +244,11 @@ namespace Sit_In_Monitoring
                         cmd1.ExecuteNonQuery();
                         cmd1.Parameters.Clear();
 
+                    }
+
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        InsertNewDataToCurrentSessions();
                         //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                         //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                         //cmd2.Parameters.AddWithValue("@date", date);
@@ -262,13 +268,7 @@ namespace Sit_In_Monitoring
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
 
-                        SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                        cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                        cmd1.Parameters.AddWithValue("@date", date);
-                        cmd1.Parameters.AddWithValue("@timeIn", time1);
-                        cmd1.Parameters.AddWithValue("@timeout", time1);
-                        cmd1.ExecuteNonQuery();
-                        cmd1.Parameters.Clear();
+                        InsertNewDataToCurrentSessions();
 
                         NotifySuccessfulSitIn();
                     }
@@ -402,6 +402,7 @@ namespace Sit_In_Monitoring
 
         public void LogoutStudent(DataGridViewCellEventArgs e) //FIXED 6/20/23 NEED TO BE TESTED
         {
+            ProcessingDataBase = true;
             DateTime date = DateTime.Now;
             string dateDb = dateToday.Value.ToString(" MM/dd/yyyy");
             string time1 = date.ToString("HH:mm:ss tt");
@@ -438,7 +439,6 @@ namespace Sit_In_Monitoring
             cmd2.ExecuteNonQuery();
 
             DataGrid.Rows.RemoveAt(e.RowIndex);
-            ProcessingDataBase = true;
         }
         public void SearchStudentAllLogs()//DONE
         {
@@ -1132,6 +1132,7 @@ namespace Sit_In_Monitoring
             placeholder7.ForeColor = Color.FromArgb(154, 214, 230);
         #endregion
 
+        #region GetTimeComputation |> M
         private string GetApproximateTime(System.Data.DataSet dataTable)
         {
             double timeValue = Convert.ToDouble(dataTable.Tables[0].Rows[0]["RemainingTime"].ToString());
@@ -1149,6 +1150,8 @@ namespace Sit_In_Monitoring
 
             return $"{hours} hours, {minutes} minutes";
         }
+        #endregion
+
         private void RecordView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -1219,6 +1222,7 @@ namespace Sit_In_Monitoring
                 MessageBox.Show(ex.Message);
             }
         }
+
         #region UI Behaviour NEW |> Edit Panel - Mark
 
         void CheckForChanges(string _old, string _new, Control changes)
@@ -1253,18 +1257,18 @@ namespace Sit_In_Monitoring
             // Please Wait Notification after Log Out
             if (ProcessingDataBase)
             {
-                DataGrid.Enabled = false;
                 pnlPleaseWait.Show();
+                NotifySuccessfulLogOut();
+                DataGrid.Enabled = false;
+                ProcessingDataBase = false;
                 DataGrid.Columns["LOG_OUT"].Visible = false;
                 Thread.Sleep(1500);
-                NotifySuccessfulLogOut();
-                ProcessingDataBase = false;
             }
             else
             {
+                DataGrid.Enabled = true;
                 pnlPleaseWait.Hide();
                 DataGrid.Columns["LOG_OUT"].Visible = true;
-                DataGrid.Enabled = true;
             }
         }
 
@@ -1388,6 +1392,8 @@ namespace Sit_In_Monitoring
             ReasonForPassword = "";
         }
     }
+
+
     #region Round Corner |> Mark
     class SeiyaMarxElls
     {
