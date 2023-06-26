@@ -11,7 +11,7 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
 
         #region ATTRIBUTES
@@ -53,9 +53,17 @@ namespace Sit_In_Monitoring
         #endregion ATTRIBUTES
 
         #region ALL OF FUNCTIONS // hekhokhekohok - Mark
+        void ResetValuesInInput()
+        {
+            newFirstNameValue.Clear();
+            newMiddleInitialValue.Clear();
+            newLastNameValue.Clear();
+            newSectionValue.Clear();
+        }
+
         void OpenSQL() =>
             conn.Open();
-        void CloseSQL() => 
+        void CloseSQL() =>
             conn.Close();
         void SetNotificationOnLoad() =>
             pnlNotification.Left = Width;
@@ -112,9 +120,9 @@ namespace Sit_In_Monitoring
                 exitApp = true;
 
             void ReasonIsForPrint() =>
-                PrintRecordsToExelFormat();
+                pnlSetPrintOptions.Show();
 
-            void ReasonIsForEdit()
+            void ReasonIsEditStudentDetails()
             {
                 oldStudentIDValue.Text = studentId;
                 oldSectionValue.Text = section;
@@ -148,7 +156,7 @@ namespace Sit_In_Monitoring
             switch (ReasonForPassword) // DON'T CHANGE
             {
                 case "exit": ReasonIsForExit(); break;
-                case "edit": ReasonIsForEdit(); break;
+                case "edit": ReasonIsEditStudentDetails(); break;
                 case "print": ReasonIsForPrint(); break;
                 case "delete": ReasonIsForDelete(); break;
                 case "records": ReasonIsForRecords(); break;
@@ -177,12 +185,21 @@ namespace Sit_In_Monitoring
 
         public void DefaultEnable() // Enabling of Default Controls
         {
-            txtStudentName.Enabled = false;
-            txtSection.Enabled = false;
-            txtMiddleInitial.Enabled = false;
-            txtStudentLastName.Enabled = false;
+            void SetControls(List<Control> ctr)
+            {
+                foreach(Control c in ctr)
+                {
+                    c.Enabled = false;
+                    c.Text = string.Empty;
+                }
+            }
+            List<Control> txts = new List<Control>() { txtStudentName, txtSection, txtMiddleInitial , txtStudentLastName };
+            SetControls(txts);
+
             BtnStart.Enabled = false;
             BtnStart.BackColor = NotStart;
+            BtnSearch.Text = "SEARCH";
+
             txtStudentID.Enabled = true;
             txtStudentID.Focus();
         }
@@ -204,70 +221,124 @@ namespace Sit_In_Monitoring
             string date = $"{val.Date: MM/dd/yyyy}";
 
             SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
 
             check.Fill(dt);
 
-
-            if (dt.Rows.Count == 0)
+            try
             {
-                OpenSQL();
-                SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
-                ds.Clear();
-                s.Fill(ds);
-                if (ds.Tables[0].Rows.Count > 0)
+                if (dt.Rows.Count == 0)
                 {
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    cmd1.Parameters.AddWithValue("@date", date);
-                    cmd1.Parameters.AddWithValue("@timeIn", time1);
-                    cmd1.Parameters.AddWithValue("@timeout", time1);
-                    cmd1.ExecuteNonQuery();
-                    cmd1.Parameters.Clear();
+                    OpenSQL();
+                    SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
+                    ds.Clear();
+                    s.Fill(ds);
+                    if (ds.Tables[0].Rows.Count > 0)
+                    {
+                        SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                        cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                        cmd1.Parameters.AddWithValue("@date", date);
+                        cmd1.Parameters.AddWithValue("@timeIn", time1);
+                        cmd1.Parameters.AddWithValue("@timeout", time1);
+                        cmd1.ExecuteNonQuery();
+                        cmd1.Parameters.Clear();
 
-                    //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    //cmd2.Parameters.AddWithValue("@date", date);
-                    //cmd2.Parameters.AddWithValue("@timeIn", time1);
-                    //cmd2.ExecuteNonQuery();
-                    //NotifySuccessfulSitIn();
+                        //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                        //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                        //cmd2.Parameters.AddWithValue("@date", date);
+                        //cmd2.Parameters.AddWithValue("@timeIn", time1);
+                        //cmd2.ExecuteNonQuery();
+                        //NotifySuccessfulSitIn();
+                    }
+                    else
+                    {
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Students VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
+                        cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                        cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
+                        cmd.Parameters.AddWithValue("@middleInitial", txtMiddleInitial.Text);
+                        cmd.Parameters.AddWithValue("@lastName", txtStudentLastName.Text);
+                        cmd.Parameters.AddWithValue("@section", txtSection.Text);
+                        cmd.Parameters.AddWithValue("@remainingTime", 60.ToString());
+                        cmd.ExecuteNonQuery();
+                        cmd.Parameters.Clear();
+
+                        SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                        cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                        cmd1.Parameters.AddWithValue("@date", date);
+                        cmd1.Parameters.AddWithValue("@timeIn", time1);
+                        cmd1.Parameters.AddWithValue("@timeout", time1);
+                        cmd1.ExecuteNonQuery();
+                        cmd1.Parameters.Clear();
+
+                        NotifySuccessfulSitIn();
+                    }
                 }
                 else
                 {
-                    SqlCommand cmd = new SqlCommand("INSERT INTO Students VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
-                    cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
-                    cmd.Parameters.AddWithValue("@middleInitial", txtMiddleInitial.Text);
-                    cmd.Parameters.AddWithValue("@lastName", txtStudentLastName.Text);
-                    cmd.Parameters.AddWithValue("@section", txtSection.Text);
-                    cmd.Parameters.AddWithValue("@remainingTime", 60.ToString());
-                    cmd.ExecuteNonQuery();
-                    cmd.Parameters.Clear();
+                    MessageBox.Show("Student is already on a session!");
+                }
 
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    cmd1.Parameters.AddWithValue("@date", date);
-                    cmd1.Parameters.AddWithValue("@timeIn", time1);
-                    cmd1.Parameters.AddWithValue("@timeout", time1);
-                    cmd1.ExecuteNonQuery();
-                    cmd1.Parameters.Clear();
+                txtStudentID.Text = string.Empty;
+                clearStudentText();
+                txtStudentID.Focus();
+                Update_Data();
+            }
+            catch (SqlException)
+            {
+                DefaultEnable();
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                DefaultEnable();
+            }
+            catch (Exception) {/**/}
+            
+        }//DONE
 
-                    NotifySuccessfulSitIn();
+        bool NoInjection = true;
+        /// <summary>
+        /// Checks for basic SQL Injection attack attempt |> Mark
+        /// </summary>
+        /// <param name="txt"></param>
+        void CatchSQLInjection(Control txt) 
+        {
+            void SecurityMeasure()
+            {
+                txt.Text = string.Empty;
+                MessageBox.Show(
+                    "Injection attempt detected, if this was a mistake," +
+                    "\nplease double check input!",
+                    "INJECTION ATTEMPT?",
+                    MessageBoxButtons.OKCancel,
+                    MessageBoxIcon.Error);
+
+                NoInjection = false;
+            }
+
+            foreach (char s in txt.Text)
+            {
+                if (s == '\'')
+                {
+                    SecurityMeasure();
                 }
             }
-            else
-            {
-                MessageBox.Show("Student is already on a session!");
-            }
 
-            txtStudentID.Text = string.Empty;
-            clearStudentText();
-            txtStudentID.Focus();
-            Update_Data();
-        }//DONE
+            if (txt.Text.ToUpper().Contains("SELECT") ||
+                txt.Text.ToUpper().Contains("DROP") ||
+                txt.Text.ToUpper().Contains("DELETE") ||
+                txt.Text.ToUpper().Contains("\'--") ||
+                txt.Text.ToUpper().Contains("UPDATE") ||
+                txt.Text.ToUpper().Contains("*") ||
+                txt.Text.ToUpper().Contains("SET"))
+            {
+                SecurityMeasure();
+            }
+        }
+
 
         public void StudentExisted()
         {
+            CatchSQLInjection(txtStudentID);
             if (txtStudentID.Text != "")
             {
                 SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
@@ -313,9 +384,9 @@ namespace Sit_In_Monitoring
         public void Update_Data() // DONE
         {
             DisplayForLogs();
-            SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid and cs.date = '"+ dateToday.Value.ToString(" MM/dd/yyyy") + "'", conn);
+            SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid and cs.date = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "'", conn);
 
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             s.Fill(dt);
             DataGrid.Rows.Clear();
 
@@ -339,8 +410,8 @@ namespace Sit_In_Monitoring
 
             SqlDataAdapter count = new SqlDataAdapter("SELECT * FROM SessionLogs;", conn);
             SqlDataAdapter calc = new SqlDataAdapter("SELECT DATEDIFF(second, TimeIn, '" + time1 + "') / 3600.0 from currentsession where studentid = '" + studentId + "' and date = '" + dateDb + "'", conn);
-            DataTable dt = new DataTable();
-            DataTable timeUsed = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
+            System.Data.DataTable timeUsed = new System.Data.DataTable();
 
             calc.Fill(timeUsed);
 
@@ -348,8 +419,8 @@ namespace Sit_In_Monitoring
 
             OpenSQL();
             SqlCommand cmd = new SqlCommand("INSERT INTO SessionLogs SELECT cs.studentId, cs.date, cs.timeIn, @timeOut, @timeUsed, cs.personid FROM currentSession cs WHERE cs.studentid = @studentId and date = @dateNow", conn);
-            cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@studentId", studentId);
+            cmd.Parameters.AddWithValue("@timeOut", time1);
             cmd.Parameters.AddWithValue("@dateNow", dateDb);
             cmd.Parameters.AddWithValue("@timeUsed", timeUsed.Rows[0][0].ToString());
             cmd.ExecuteNonQuery();
@@ -374,7 +445,7 @@ namespace Sit_In_Monitoring
             recordsView.Rows.Clear();
             SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where concat(sl.studentid, s.firstName, s.middleInitial,s.lastname, s.section) like '%" + txtSearchId.Text + "%'", conn);
 
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt.Clear();
             s.Fill(dt);
             foreach (DataRow dr in dt.Rows)
@@ -391,7 +462,7 @@ namespace Sit_In_Monitoring
             recordsView.Rows.Clear();
             SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%" + txtSearchId.Text + "%'", conn);
 
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt.Clear();
             s.Fill(dt);
             foreach (DataRow dr in dt.Rows)
@@ -414,15 +485,15 @@ namespace Sit_In_Monitoring
             if (remainingTime > 0)
             {
                 SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
-                DataTable wew = new DataTable();
+                System.Data.DataTable wew = new System.Data.DataTable();
 
                 check.Fill(wew);
-                
+
 
                 if (wew.Rows.Count == 0)
                 {
                     SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
-                    DataTable dt = new DataTable();
+                    System.Data.DataTable dt = new System.Data.DataTable();
 
                     restrict.Fill(dt);
 
@@ -438,7 +509,6 @@ namespace Sit_In_Monitoring
                             {
                                 clearStudentText();
                             }
-
                         }
                         else
                         {
@@ -480,7 +550,7 @@ namespace Sit_In_Monitoring
             }
 
         }//DONE 6/23/23
-        public void forEdit()//BUG - AFTER EDITING THE TEXT THAT WAS PREVIOUSLY PUT DOESN'T CLEAR-- MUST BE FIX. ALSO DISABLE THE STUDENT ID EDIT. STUDENT ID IS NOT EDITABLE.
+        public void EditStudentDetails()//BUG - AFTER EDITING THE TEXT THAT WAS PREVIOUSLY PUT DOESN'T CLEAR-- MUST BE FIX. ALSO DISABLE THE STUDENT ID EDIT. STUDENT ID IS NOT EDITABLE. // FIXED |> MARK POGI
         {
             OpenSQL();
             SqlDataAdapter name = new SqlDataAdapter("SELECT * FROM students WHERE studentid = '" + displayID.Text + "'", conn);
@@ -505,15 +575,28 @@ namespace Sit_In_Monitoring
 
             DisplayForLogs();
 
+            oldFirstNameValue.Text = fname;
+            oldLastNameValue.Text = lname;
+            oldMiddleInitialValue.Text = mname;
+            oldSectionValue.Text = section;
 
-            newStudentIDValue.Text = string.Empty;
-            newFirstNameValue.Text = string.Empty; 
-            newMiddleInitialValue.Text =  string.Empty;
-            newLastNameValue.Text =  string.Empty;
-            newSectionValue.Text = string.Empty;
+            displayName.Text = $"{lname}, {fname} {mname}.";
+            displaySection.Text = section;
+            displayID.Text = studentid;
+
+
+            fName = fname;
+            mInitial = mname;
+            lName = lname;
+            this.section = section;
+            studentId = studentid;
+
+            ResetValuesInInput();
 
             ReasonForPassword = "";
             pnlEditUser.Hide();
+            ds.Clear();
+            name.Fill(ds);
             CloseSQL();
         }
         #endregion
@@ -542,6 +625,8 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnltm2, 15);
             Design.RoundCorner(pnlIn, 16);
             Design.RoundCorner(pnlPleaseWait, 40);
+            Design.RoundCorner(pnlCustomReport, 16);
+            Design.RoundCorner(pnlDayReport, 16);
             #endregion
 
             #region Edit Panel |> Round Corners
@@ -569,17 +654,34 @@ namespace Sit_In_Monitoring
             DisplayForLogs();
             ProcessingDataBase = false;
 
-            Point AlignInCenter(Control ctr) =>
-                new Point((Width / 2) - (ctr.Width / 2),(Height / 2) - (ctr.Height / 2));
 
-            pnlRecords.Hide();
-            pnlEditUser.Hide();
-            pnlAdminLock.Hide();
+            System.Drawing.Point AlignInCenter(Control ctr) =>
+                new System.Drawing.Point((Width / 2) - (ctr.Width / 2), (Height / 2) - (ctr.Height / 2));
 
-            pnlRecords.Location = AlignInCenter(pnlRecords);
-            pnlEditUser.Location = AlignInCenter(pnlEditUser);
-            pnlAdminLock.Location = AlignInCenter(pnlAdminLock);
-            pnlPleaseWait.Location = AlignInCenter(pnlPleaseWait);
+
+            void SetPanelsToCenter(List<Control> panels)
+            {
+                foreach (Control panel in panels)
+                {
+                    panel.Location = AlignInCenter(panel);
+                    panel.Hide();
+                }
+            }
+            List<Control> MainPanels = new List<Control>() { pnlRecords, pnlEditUser, pnlAdminLock, pnlSetPrintOptions, pnlPleaseWait };
+            SetPanelsToCenter(MainPanels);
+
+
+            void SetPanelsForPrintSetUpPanel(List<Control> panels)
+            {
+                foreach (Control panel in panels)
+                {
+                    panel.Location = new System.Drawing.Point(999, 85);
+                    panel.Hide();
+                }
+            }
+            List<Control> controls = new List<Control>() { pnlDayReport, pnlCustomReport };
+            SetPanelsForPrintSetUpPanel(controls);
+
 
             Display_Student_Info("00-0000000", "---- ----", "-", "-------", "---- - ---", 0, 0, 0);
             attemptsOfLogin = 0;
@@ -589,9 +691,11 @@ namespace Sit_In_Monitoring
 
             BtnStart.BackColor = buttonColors;
             BtnSearch.BackColor = buttonColors;
+
             BtnConfirm.BackColor = Color.Black;
             BtnCancelIn.BackColor = Color.Black;
             pnlEditUser.BackColor = Color.Black;
+
             BtnPrint.BackColor = Color.FromArgb(0, 50, 94);
             BtnEdit.BackColor = Color.FromArgb(0, 134, 158);
             BtnDelete.BackColor = Color.FromArgb(0, 93, 130);
@@ -628,19 +732,19 @@ namespace Sit_In_Monitoring
         }
 
         #region Bad Input |> Behavior UI - Mark
-        private void CheckForBadInput(object sender, KeyPressEventArgs e) => 
+        private void CheckForBadInput(object sender, KeyPressEventArgs e) =>
             e.Handled = char.IsLetter(e.KeyChar);
-        private void fullNameHasInput(object sender, EventArgs e) => 
+        private void fullNameHasInput(object sender, EventArgs e) =>
             CheckForBadInput_In(txtStudentName, placeholder2);
-        private void PassHasInput(object sender, EventArgs e) => 
+        private void PassHasInput(object sender, EventArgs e) =>
             CheckForBadInput_In(txtPass, placeholder3);
-        private void lastnamehasinput(object sender, EventArgs e) => 
+        private void lastnamehasinput(object sender, EventArgs e) =>
             CheckForBadInput_In(txtStudentLastName, placeholder4);
-        private void sectioninput(object sender, EventArgs e) => 
+        private void sectioninput(object sender, EventArgs e) =>
             CheckForBadInput_In(txtSection, placeholder5);
-        private void searchedchanged(object sender, EventArgs e) => 
+        private void searchedchanged(object sender, EventArgs e) =>
             CheckForBadInput_In(txtSearchId, placeholder7);
-        private void initialHasInput(object sender, EventArgs e) => 
+        private void initialHasInput(object sender, EventArgs e) =>
             CheckForBadInput_In(txtMiddleInitial, placeholder8);
         private void e1(object sender, KeyPressEventArgs e) =>
             CheckForBadInput_In(newStudentIDValue, oldStudentIDValue);
@@ -656,29 +760,29 @@ namespace Sit_In_Monitoring
         #endregion
 
         #region Clicks |> Behavior UI - Mark
-        private void idClick(object sender, EventArgs e) => 
+        private void idClick(object sender, EventArgs e) =>
             txtStudentID.Focus();
-        private void fullNameClick(object sender, EventArgs e) => 
+        private void fullNameClick(object sender, EventArgs e) =>
             txtStudentName.Focus();
-        private void userClick(object sender, EventArgs e) => 
+        private void userClick(object sender, EventArgs e) =>
             txtStudentID.Focus();
-        private void userClick2(object sender, EventArgs e) => 
+        private void userClick2(object sender, EventArgs e) =>
             txtStudentName.Focus();
-        private void idClick2(object sender, EventArgs e) => 
+        private void idClick2(object sender, EventArgs e) =>
             txtPass.Focus();
-        private void passClick(object sender, EventArgs e) => 
+        private void passClick(object sender, EventArgs e) =>
             txtPass.Focus();
-        private void lnclick(object sender, EventArgs e) => 
+        private void lnclick(object sender, EventArgs e) =>
             txtStudentLastName.Focus();
-        private void seclick(object sender, EventArgs e) => 
+        private void seclick(object sender, EventArgs e) =>
             txtSection.Focus();
-        private void qw1(object sender, EventArgs e) => 
+        private void qw1(object sender, EventArgs e) =>
             txtStudentLastName.Focus();
-        private void qw2(object sender, EventArgs e) => 
+        private void qw2(object sender, EventArgs e) =>
             txtSection.Focus();
-        private void placeholder7click(object sender, EventArgs e) => 
+        private void placeholder7click(object sender, EventArgs e) =>
             txtSearchId.Focus();
-        private void inClick(object sender, EventArgs e) => 
+        private void inClick(object sender, EventArgs e) =>
             txtMiddleInitial.Focus();
         private void editIdClick(object sender, EventArgs e) =>
             newStudentIDValue.Focus();
@@ -725,6 +829,17 @@ namespace Sit_In_Monitoring
             notifyTimeDone();
         }
 
+
+        /// <summary>
+        /// Checks for input in the given textboxes
+        /// </summary>
+        /// <param name="ctr"></param>
+        /// <param name="placeholder"></param>
+        void CheckForBadInput_In(Control ctr, Control placeholder)
+        {
+            if (ctr.Text == string.Empty || ctr.Text == null) { placeholder.BringToFront(); } else { placeholder.SendToBack(); }
+        }
+
         /// <summary>
         /// Checks if the textbox is focused in the form
         /// </summary>
@@ -755,17 +870,6 @@ namespace Sit_In_Monitoring
                 EnableStart();
             else
                 DisableStart();
-        }
-
-
-        /// <summary>
-        /// Checks for input in the given textboxes
-        /// </summary>
-        /// <param name="ctr"></param>
-        /// <param name="placeholder"></param>
-        void CheckForBadInput_In(Control ctr, Control placeholder)
-        {
-            if (ctr.Text == string.Empty || ctr.Text == null) { placeholder.BringToFront(); } else { placeholder.SendToBack(); }
         }
 
         private void FormWillBeClosed(object sender, FormClosingEventArgs e)
@@ -846,7 +950,7 @@ namespace Sit_In_Monitoring
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
             SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             bool Add;
             restrict.Fill(dt);
 
@@ -863,6 +967,16 @@ namespace Sit_In_Monitoring
             bool ControlHasNullInputIn(Control txtbox) => // this specifies invalid input
                 ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
             //      ^^^^^INVALID INPUT DETECTED
+
+            #region CheckForSQLInjection
+            void CatchAttempt(List<Control> txt)
+            {
+                foreach (Control t in txt)
+                    CatchSQLInjection(t);
+            }
+            List<Control> txts = new List<Control>() { txtStudentID, txtStudentName, txtMiddleInitial, txtStudentLastName, txtSection };
+            CatchAttempt(txts);
+            #endregion
 
             #region CheckForInvalidError |> Mark
             if (ControlHasNullInputIn(txtStudentID))
@@ -881,7 +995,7 @@ namespace Sit_In_Monitoring
                 ErrorMessage += "Please Fill out Student Section!\n";
             #endregion
 
-            if (ErrorInInputIsDetected)
+            if (ErrorInInputIsDetected && !NoInjection)
                 MessageBox.Show($"{ErrorMessage}", "INVALID INPUT DETECTED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
             {
@@ -892,6 +1006,7 @@ namespace Sit_In_Monitoring
                         AddStudent();
                     else
                         RestrictTime();
+                    NoInjection = true;
                 }
                 catch (Exception ex)
                 {
@@ -979,6 +1094,21 @@ namespace Sit_In_Monitoring
             changesInfo4.Hide();
             changesInfo5.Hide();
 
+            newStudentIDValue.Enabled = false;
+
+            void SetDefaults(Control text)
+            {
+                text.BringToFront();
+                text.Visible = true;
+            }
+
+            SetDefaults(oldFirstNameValue);
+            SetDefaults(oldMiddleInitialValue);
+            SetDefaults(oldLastNameValue);
+            SetDefaults(oldSectionValue);
+
+            ResetValuesInInput();
+
             ShowAdminPasswordInput();
         }
 
@@ -1002,13 +1132,30 @@ namespace Sit_In_Monitoring
             placeholder7.ForeColor = Color.FromArgb(154, 214, 230);
         #endregion
 
+        private string GetApproximateTime(System.Data.DataSet dataTable)
+        {
+            double timeValue = Convert.ToDouble(dataTable.Tables[0].Rows[0]["RemainingTime"].ToString());
+            double hours = Math.Floor(timeValue);
+            double minutes = Math.Floor((timeValue - hours) * 60);
+
+            return $"{hours} hours, {minutes} minutes";
+        }
+
+        private string GetApproximateTime(System.Data.DataTable dataTable) // varchar to numeric error
+        {
+            double timeValue = Convert.ToDouble(dataTable.Rows[0][0]);
+            double hours = Math.Floor(timeValue);
+            double minutes = Math.Floor((timeValue - hours) * 60);
+
+            return $"{hours} hours, {minutes} minutes";
+        }
         private void RecordView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 if (recordsView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
                 {
-                    DataTable dt = new DataTable();
+                    System.Data.DataTable dt = new System.Data.DataTable();
                     string GetRecordViewCellValueOf(string identifier) =>
                         recordsView.Rows[e.RowIndex].Cells[identifier].FormattedValue.ToString(); // Go to Expression of Value of specified identifier
                     string StudentIdInRecords() =>
@@ -1033,10 +1180,17 @@ namespace Sit_In_Monitoring
 
                     // Display
                     displayID.Text = studentId;
-                    displayName.Text = $"{fName} {mInitial} {lName}";
+                    displayName.Text = $"{lName}, {fName} {mInitial}.";
                     displaySection.Text = section;
-                    displayBalance.Text = ds.Tables[0].Rows[0]["RemainingTime"].ToString() + " hours";
                     displayNumOfSitIns.Text = dt.Rows.Count.ToString();
+                    displayBalance.Text = GetApproximateTime(ds);
+
+
+                    // New Initialized Value 
+                    oldFirstNameValue.Text = fName;
+                    oldLastNameValue.Text = lName;
+                    oldMiddleInitialValue.Text = mInitial;
+                    oldSectionValue.Text = section;
                 }
             }
             catch (Exception) {/**/}
@@ -1054,17 +1208,18 @@ namespace Sit_In_Monitoring
             pnlEditUser.Hide();
         }
 
-        private void BtnConfirmEdit_Click(object sender, EventArgs e) 
+        private void BtnConfirmEdit_Click(object sender, EventArgs e)
         {
             try
             {
-                forEdit();
+                EditStudentDetails();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
         }
+        #region UI Behaviour NEW |> Edit Panel - Mark
 
         void CheckForChanges(string _old, string _new, Control changes)
         {
@@ -1077,7 +1232,6 @@ namespace Sit_In_Monitoring
                 changes.Text = "";
         }
 
-        #region UI Behaviour NEW |> Edit Panel - Mark
         private void studentidTextChangedEdit(object sender, EventArgs e) =>
             CheckForChanges(oldStudentIDValue.Text, newStudentIDValue.Text, changesInfo1);
 
@@ -1117,6 +1271,121 @@ namespace Sit_In_Monitoring
         private void dateToday_ValueChanged(object sender, EventArgs e)
         {
             Update_Data();
+        }
+
+        private void cbxSelectForm_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            /*
+                SEMESTRAL REPORT
+                MONTH REPORT
+                STUDENT SPECIFIC REPORT
+                WEEK REPORT
+                DAY REPORT
+                CUSTOM REPORT
+             */
+
+            /* 
+             * semester report
+             *      name
+             *      id
+             *      date
+             *      time in
+             *      time out
+             *      section
+             * 
+             * month report
+             *      name
+             *      id
+             *      date
+             *      time in
+             *      time out
+             *      section
+             *      
+             * student specific report
+             *      name
+             *      id
+             *      section
+             *      date
+             *      time in 
+             *      time out
+             *      number of sit ins
+             *      total time used
+             *      total balance
+             *      
+             * week report
+             *      name
+             *      id
+             *      section
+             *      date range (July 2 - July 9)
+             *      time in
+             *      time out
+             * 
+             * day report
+             *      name
+             *      id
+             *      section
+             *      time in 
+             *      time out
+             *      date
+             *      
+             * custom report
+             *      name
+             *      id
+             *      section
+             *      time in
+             *      time out
+             *      date (range)
+             *      number of sit ins
+             *      balance
+             *      total time used
+             *     
+             *     
+             *     
+             * FUNCTIONS TO ADD!!
+             *      
+             */
+
+            void ShowPanelForSelected(Control pnl, string match) =>
+                pnl.Visible = (cbxSelectForm.Text.ToLower() == match.ToLower());
+
+            ShowPanelForSelected(pnlCustomReport, "custom");
+            ShowPanelForSelected(pnlDayReport, "day report");
+        }
+
+
+
+        // CUSTOM REPORT BUTTON CLICKS
+        private void btnPreviewCustomReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrintCustomReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+        // DAY REPORT BUTTON CLICKS
+        private void btnPreviewDayReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrintDayReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+        // CLOSE PRINT SET UP
+        private void btnClosePrintSetUp_Click(object sender, EventArgs e)
+        {
+            pnlSetPrintOptions.Hide();
+            ReasonForPassword = "";
         }
     }
     #region Round Corner |> Mark

@@ -136,6 +136,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="db\DatabaseQuery.sql" />
+    <None Include="images\backgroundNiMarkPinakaChoi.png" />
     <None Include="images\HuwatUsah.png" />
     <None Include="images\padlock.png" />
     <None Include="images\checked.png" />

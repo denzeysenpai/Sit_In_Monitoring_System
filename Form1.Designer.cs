@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SitInMonitoringForm));
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
@@ -89,7 +89,36 @@
             this.mensahe = new System.Windows.Forms.Label();
             this.ENVIRONMENT = new System.Windows.Forms.Timer(this.components);
             this.pnlRecords = new System.Windows.Forms.Panel();
-            this.panel8 = new System.Windows.Forms.Panel();
+            this.pnlSetPrintOptions = new System.Windows.Forms.Panel();
+            this.pnlDayReport = new System.Windows.Forms.Panel();
+            this.label25 = new System.Windows.Forms.Label();
+            this.btnPreviewDayReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.label23 = new System.Windows.Forms.Label();
+            this.btnPrintDayReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
+            this.dtpDayReportSelect = new System.Windows.Forms.DateTimePicker();
+            this.pnlCustomReport = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnPreviewCustomReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.btnPrintCustomReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.dtpDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
+            this.ChosenOptional = new System.Windows.Forms.CheckedListBox();
+            this.cbxSelectForm = new System.Windows.Forms.ComboBox();
+            this.btnClosePrintSetUp = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.PrintLayoutDataGrid = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.NUMBER_OF_SIT_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pnlEditUser = new System.Windows.Forms.Panel();
             this.pnlIn = new System.Windows.Forms.Panel();
             this.m4 = new System.Windows.Forms.Panel();
@@ -184,17 +213,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.pnlPleaseWait = new System.Windows.Forms.Panel();
             this.Processing = new System.Windows.Forms.Timer(this.components);
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NUMBER_OF_SIT_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -217,7 +235,10 @@
             this.borderpass.SuspendLayout();
             this.pass.SuspendLayout();
             this.pnlRecords.SuspendLayout();
-            this.panel8.SuspendLayout();
+            this.pnlSetPrintOptions.SuspendLayout();
+            this.pnlDayReport.SuspendLayout();
+            this.pnlCustomReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PrintLayoutDataGrid)).BeginInit();
             this.pnlEditUser.SuspendLayout();
             this.pnlIn.SuspendLayout();
             this.m4.SuspendLayout();
@@ -250,7 +271,6 @@
             this.panel1.SuspendLayout();
             this.pnlNotification.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chckicon)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
@@ -390,9 +410,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -919,7 +939,7 @@
             this.pnlRecords.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pnlRecords.BackgroundImage")));
             this.pnlRecords.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlRecords.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pnlRecords.Controls.Add(this.panel8);
+            this.pnlRecords.Controls.Add(this.pnlSetPrintOptions);
             this.pnlRecords.Controls.Add(this.pnlEditUser);
             this.pnlRecords.Controls.Add(this.LBLBtnSEARCH);
             this.pnlRecords.Controls.Add(this.label6);
@@ -932,18 +952,416 @@
             this.pnlRecords.Controls.Add(this.mrg6);
             this.pnlRecords.Controls.Add(this.pnltm2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
             // 
-            // panel8
+            // pnlSetPrintOptions
             // 
-            this.panel8.Controls.Add(this.dataGridView1);
-            this.panel8.Location = new System.Drawing.Point(3, 167);
-            this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(1240, 637);
-            this.panel8.TabIndex = 22;
+            this.pnlSetPrintOptions.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.backgroundNiMarkPinakaChoi;
+            this.pnlSetPrintOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlSetPrintOptions.Controls.Add(this.pnlDayReport);
+            this.pnlSetPrintOptions.Controls.Add(this.pnlCustomReport);
+            this.pnlSetPrintOptions.Controls.Add(this.cbxSelectForm);
+            this.pnlSetPrintOptions.Controls.Add(this.btnClosePrintSetUp);
+            this.pnlSetPrintOptions.Controls.Add(this.PrintLayoutDataGrid);
+            this.pnlSetPrintOptions.Location = new System.Drawing.Point(0, 98);
+            this.pnlSetPrintOptions.Name = "pnlSetPrintOptions";
+            this.pnlSetPrintOptions.Size = new System.Drawing.Size(1473, 599);
+            this.pnlSetPrintOptions.TabIndex = 22;
+            // 
+            // pnlDayReport
+            // 
+            this.pnlDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pnlDayReport.Controls.Add(this.label25);
+            this.pnlDayReport.Controls.Add(this.btnPreviewDayReport);
+            this.pnlDayReport.Controls.Add(this.label23);
+            this.pnlDayReport.Controls.Add(this.btnPrintDayReport);
+            this.pnlDayReport.Controls.Add(this.checkedListBox1);
+            this.pnlDayReport.Controls.Add(this.dtpDayReportSelect);
+            this.pnlDayReport.Location = new System.Drawing.Point(1117, 583);
+            this.pnlDayReport.Name = "pnlDayReport";
+            this.pnlDayReport.Size = new System.Drawing.Size(443, 260);
+            this.pnlDayReport.TabIndex = 15;
+            // 
+            // label25
+            // 
+            this.label25.AutoSize = true;
+            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label25.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label25.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label25.Location = new System.Drawing.Point(16, 18);
+            this.label25.Name = "label25";
+            this.label25.Size = new System.Drawing.Size(72, 16);
+            this.label25.TabIndex = 7;
+            this.label25.Text = "OPTIONAL";
+            this.label25.Click += new System.EventHandler(this.placeholder7click);
+            this.label25.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label25.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // btnPreviewDayReport
+            // 
+            this.btnPreviewDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewDayReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewDayReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPreviewDayReport.BorderRadius = 20;
+            this.btnPreviewDayReport.BorderSize = 0;
+            this.btnPreviewDayReport.FlatAppearance.BorderSize = 0;
+            this.btnPreviewDayReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviewDayReport.ForeColor = System.Drawing.Color.White;
+            this.btnPreviewDayReport.Location = new System.Drawing.Point(16, 160);
+            this.btnPreviewDayReport.Name = "btnPreviewDayReport";
+            this.btnPreviewDayReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPreviewDayReport.TabIndex = 2;
+            this.btnPreviewDayReport.Text = "Preview Day Report";
+            this.btnPreviewDayReport.TextColor = System.Drawing.Color.White;
+            this.btnPreviewDayReport.UseVisualStyleBackColor = false;
+            this.btnPreviewDayReport.Click += new System.EventHandler(this.btnPreviewDayReport_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label23.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label23.Location = new System.Drawing.Point(21, 104);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(39, 16);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "DATE";
+            this.label23.Click += new System.EventHandler(this.placeholder7click);
+            this.label23.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label23.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // btnPrintDayReport
+            // 
+            this.btnPrintDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintDayReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintDayReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPrintDayReport.BorderRadius = 20;
+            this.btnPrintDayReport.BorderSize = 0;
+            this.btnPrintDayReport.FlatAppearance.BorderSize = 0;
+            this.btnPrintDayReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintDayReport.ForeColor = System.Drawing.Color.White;
+            this.btnPrintDayReport.Location = new System.Drawing.Point(16, 205);
+            this.btnPrintDayReport.Name = "btnPrintDayReport";
+            this.btnPrintDayReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPrintDayReport.TabIndex = 2;
+            this.btnPrintDayReport.Text = "Print Day Report";
+            this.btnPrintDayReport.TextColor = System.Drawing.Color.White;
+            this.btnPrintDayReport.UseVisualStyleBackColor = false;
+            this.btnPrintDayReport.Click += new System.EventHandler(this.btnPrintDayReport_Click);
+            // 
+            // checkedListBox1
+            // 
+            this.checkedListBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.checkedListBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkedListBox1.ForeColor = System.Drawing.Color.White;
+            this.checkedListBox1.FormattingEnabled = true;
+            this.checkedListBox1.Items.AddRange(new object[] {
+            "Show student\'s number of sit ins",
+            "Show student\'s hour balance",
+            "Show student\'s total sit-in time"});
+            this.checkedListBox1.Location = new System.Drawing.Point(19, 39);
+            this.checkedListBox1.Name = "checkedListBox1";
+            this.checkedListBox1.Size = new System.Drawing.Size(305, 54);
+            this.checkedListBox1.TabIndex = 0;
+            // 
+            // dtpDayReportSelect
+            // 
+            this.dtpDayReportSelect.Location = new System.Drawing.Point(21, 123);
+            this.dtpDayReportSelect.Name = "dtpDayReportSelect";
+            this.dtpDayReportSelect.Size = new System.Drawing.Size(200, 20);
+            this.dtpDayReportSelect.TabIndex = 1;
+            // 
+            // pnlCustomReport
+            // 
+            this.pnlCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pnlCustomReport.Controls.Add(this.label19);
+            this.pnlCustomReport.Controls.Add(this.label22);
+            this.pnlCustomReport.Controls.Add(this.label18);
+            this.pnlCustomReport.Controls.Add(this.btnPreviewCustomReport);
+            this.pnlCustomReport.Controls.Add(this.btnPrintCustomReport);
+            this.pnlCustomReport.Controls.Add(this.dtpDateEnd);
+            this.pnlCustomReport.Controls.Add(this.dtpDateStart);
+            this.pnlCustomReport.Controls.Add(this.ChosenOptional);
+            this.pnlCustomReport.Location = new System.Drawing.Point(999, 85);
+            this.pnlCustomReport.Name = "pnlCustomReport";
+            this.pnlCustomReport.Size = new System.Drawing.Size(443, 260);
+            this.pnlCustomReport.TabIndex = 15;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label19.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label19.Location = new System.Drawing.Point(222, 108);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 16);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "DATE END";
+            this.label19.Click += new System.EventHandler(this.placeholder7click);
+            this.label19.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label19.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label22.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label22.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label22.Location = new System.Drawing.Point(16, 18);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(72, 16);
+            this.label22.TabIndex = 7;
+            this.label22.Text = "OPTIONAL";
+            this.label22.Click += new System.EventHandler(this.placeholder7click);
+            this.label22.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label22.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label18.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label18.Location = new System.Drawing.Point(16, 108);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(80, 16);
+            this.label18.TabIndex = 7;
+            this.label18.Text = "DATE START";
+            this.label18.Click += new System.EventHandler(this.placeholder7click);
+            this.label18.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label18.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // btnPreviewCustomReport
+            // 
+            this.btnPreviewCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewCustomReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewCustomReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPreviewCustomReport.BorderRadius = 20;
+            this.btnPreviewCustomReport.BorderSize = 0;
+            this.btnPreviewCustomReport.FlatAppearance.BorderSize = 0;
+            this.btnPreviewCustomReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviewCustomReport.ForeColor = System.Drawing.Color.White;
+            this.btnPreviewCustomReport.Location = new System.Drawing.Point(16, 160);
+            this.btnPreviewCustomReport.Name = "btnPreviewCustomReport";
+            this.btnPreviewCustomReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPreviewCustomReport.TabIndex = 2;
+            this.btnPreviewCustomReport.Text = "Preview Custom Report";
+            this.btnPreviewCustomReport.TextColor = System.Drawing.Color.White;
+            this.btnPreviewCustomReport.UseVisualStyleBackColor = false;
+            this.btnPreviewCustomReport.Click += new System.EventHandler(this.btnPreviewCustomReport_Click);
+            // 
+            // btnPrintCustomReport
+            // 
+            this.btnPrintCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintCustomReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintCustomReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPrintCustomReport.BorderRadius = 20;
+            this.btnPrintCustomReport.BorderSize = 0;
+            this.btnPrintCustomReport.FlatAppearance.BorderSize = 0;
+            this.btnPrintCustomReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintCustomReport.ForeColor = System.Drawing.Color.White;
+            this.btnPrintCustomReport.Location = new System.Drawing.Point(16, 205);
+            this.btnPrintCustomReport.Name = "btnPrintCustomReport";
+            this.btnPrintCustomReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPrintCustomReport.TabIndex = 2;
+            this.btnPrintCustomReport.Text = "Print Custom Report";
+            this.btnPrintCustomReport.TextColor = System.Drawing.Color.White;
+            this.btnPrintCustomReport.UseVisualStyleBackColor = false;
+            this.btnPrintCustomReport.Click += new System.EventHandler(this.btnPrintCustomReport_Click);
+            // 
+            // dtpDateEnd
+            // 
+            this.dtpDateEnd.Location = new System.Drawing.Point(225, 127);
+            this.dtpDateEnd.Name = "dtpDateEnd";
+            this.dtpDateEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpDateEnd.TabIndex = 1;
+            // 
+            // dtpDateStart
+            // 
+            this.dtpDateStart.Location = new System.Drawing.Point(16, 127);
+            this.dtpDateStart.Name = "dtpDateStart";
+            this.dtpDateStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpDateStart.TabIndex = 1;
+            // 
+            // ChosenOptional
+            // 
+            this.ChosenOptional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.ChosenOptional.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.ChosenOptional.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChosenOptional.ForeColor = System.Drawing.Color.White;
+            this.ChosenOptional.FormattingEnabled = true;
+            this.ChosenOptional.Items.AddRange(new object[] {
+            "Show student\'s number of sit ins",
+            "Show student\'s hour balance",
+            "Show student\'s total sit-in time"});
+            this.ChosenOptional.Location = new System.Drawing.Point(19, 39);
+            this.ChosenOptional.Name = "ChosenOptional";
+            this.ChosenOptional.Size = new System.Drawing.Size(305, 54);
+            this.ChosenOptional.TabIndex = 0;
+            // 
+            // cbxSelectForm
+            // 
+            this.cbxSelectForm.AutoCompleteCustomSource.AddRange(new string[] {
+            "SEMESTRAL REPORT",
+            "MONTH REPORT",
+            "STUDENT SPECIFIC REPORT",
+            "WEEK REPORT",
+            "DAY REPORT"});
+            this.cbxSelectForm.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxSelectForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxSelectForm.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSelectForm.FormattingEnabled = true;
+            this.cbxSelectForm.Items.AddRange(new object[] {
+            "SEMESTRAL REPORT",
+            "MONTH REPORT",
+            "STUDENT SPECIFIC REPORT",
+            "WEEK REPORT",
+            "DAY REPORT",
+            "CUSTOM"});
+            this.cbxSelectForm.Location = new System.Drawing.Point(999, 41);
+            this.cbxSelectForm.Name = "cbxSelectForm";
+            this.cbxSelectForm.Size = new System.Drawing.Size(265, 28);
+            this.cbxSelectForm.TabIndex = 14;
+            this.cbxSelectForm.Text = "SELECT REPORT FORM";
+            this.cbxSelectForm.SelectedIndexChanged += new System.EventHandler(this.cbxSelectForm_SelectedIndexChanged);
+            // 
+            // btnClosePrintSetUp
+            // 
+            this.btnClosePrintSetUp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnClosePrintSetUp.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnClosePrintSetUp.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnClosePrintSetUp.BorderRadius = 20;
+            this.btnClosePrintSetUp.BorderSize = 0;
+            this.btnClosePrintSetUp.FlatAppearance.BorderSize = 0;
+            this.btnClosePrintSetUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnClosePrintSetUp.ForeColor = System.Drawing.Color.Transparent;
+            this.btnClosePrintSetUp.Location = new System.Drawing.Point(1275, 36);
+            this.btnClosePrintSetUp.Name = "btnClosePrintSetUp";
+            this.btnClosePrintSetUp.Size = new System.Drawing.Size(166, 38);
+            this.btnClosePrintSetUp.TabIndex = 2;
+            this.btnClosePrintSetUp.Text = "CLOSE  AND CANCEL";
+            this.btnClosePrintSetUp.TextColor = System.Drawing.Color.Transparent;
+            this.btnClosePrintSetUp.UseVisualStyleBackColor = false;
+            this.btnClosePrintSetUp.Click += new System.EventHandler(this.btnClosePrintSetUp_Click);
+            // 
+            // PrintLayoutDataGrid
+            // 
+            this.PrintLayoutDataGrid.AllowUserToAddRows = false;
+            this.PrintLayoutDataGrid.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.PrintLayoutDataGrid.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.PrintLayoutDataGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.PrintLayoutDataGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2,
+            this.dataGridViewTextBoxColumn3,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewTextBoxColumn9,
+            this.NUMBER_OF_SIT_IN});
+            this.PrintLayoutDataGrid.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.PrintLayoutDataGrid.Location = new System.Drawing.Point(26, 30);
+            this.PrintLayoutDataGrid.Name = "PrintLayoutDataGrid";
+            this.PrintLayoutDataGrid.Size = new System.Drawing.Size(940, 539);
+            this.PrintLayoutDataGrid.TabIndex = 12;
+            this.PrintLayoutDataGrid.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordView_CellClick);
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.Frozen = true;
+            this.dataGridViewTextBoxColumn1.HeaderText = "DATE";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn1.Width = 70;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.Frozen = true;
+            this.dataGridViewTextBoxColumn2.HeaderText = "STUDENT ID";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.ReadOnly = true;
+            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn3
+            // 
+            this.dataGridViewTextBoxColumn3.Frozen = true;
+            this.dataGridViewTextBoxColumn3.HeaderText = "FIRST NAME";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.ReadOnly = true;
+            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn3.Width = 160;
+            // 
+            // dataGridViewTextBoxColumn4
+            // 
+            this.dataGridViewTextBoxColumn4.Frozen = true;
+            this.dataGridViewTextBoxColumn4.HeaderText = "M.I.";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn4.Width = 40;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.Frozen = true;
+            this.dataGridViewTextBoxColumn5.HeaderText = "LAST NAME";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn5.Width = 110;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.Frozen = true;
+            this.dataGridViewTextBoxColumn6.HeaderText = "SECTION";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.Frozen = true;
+            this.dataGridViewTextBoxColumn7.HeaderText = "TIME IN";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn7.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.Frozen = true;
+            this.dataGridViewTextBoxColumn8.HeaderText = "TIME OUT";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            this.dataGridViewTextBoxColumn8.ReadOnly = true;
+            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn8.Width = 60;
+            // 
+            // dataGridViewTextBoxColumn9
+            // 
+            this.dataGridViewTextBoxColumn9.HeaderText = "TIME USED";
+            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
+            this.dataGridViewTextBoxColumn9.ReadOnly = true;
+            this.dataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewTextBoxColumn9.ToolTipText = "Student\'s Remaining Time Balance";
+            // 
+            // NUMBER_OF_SIT_IN
+            // 
+            this.NUMBER_OF_SIT_IN.HeaderText = "NUMBER OF SIT IN";
+            this.NUMBER_OF_SIT_IN.Name = "NUMBER_OF_SIT_IN";
+            this.NUMBER_OF_SIT_IN.ReadOnly = true;
             // 
             // pnlEditUser
             // 
@@ -2101,114 +2519,6 @@
             this.Processing.Interval = 2;
             this.Processing.Tick += new System.EventHandler(this.ProcessDB);
             // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn1,
-            this.dataGridViewTextBoxColumn2,
-            this.dataGridViewTextBoxColumn3,
-            this.dataGridViewTextBoxColumn4,
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7,
-            this.dataGridViewTextBoxColumn8,
-            this.dataGridViewTextBoxColumn9,
-            this.NUMBER_OF_SIT_IN});
-            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
-            this.dataGridView1.Location = new System.Drawing.Point(25, 24);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(940, 592);
-            this.dataGridView1.TabIndex = 12;
-            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.RecordView_CellClick);
-            // 
-            // dataGridViewTextBoxColumn1
-            // 
-            this.dataGridViewTextBoxColumn1.Frozen = true;
-            this.dataGridViewTextBoxColumn1.HeaderText = "DATE";
-            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
-            this.dataGridViewTextBoxColumn1.ReadOnly = true;
-            this.dataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn1.Width = 70;
-            // 
-            // dataGridViewTextBoxColumn2
-            // 
-            this.dataGridViewTextBoxColumn2.Frozen = true;
-            this.dataGridViewTextBoxColumn2.HeaderText = "STUDENT ID";
-            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
-            this.dataGridViewTextBoxColumn2.ReadOnly = true;
-            this.dataGridViewTextBoxColumn2.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // dataGridViewTextBoxColumn3
-            // 
-            this.dataGridViewTextBoxColumn3.Frozen = true;
-            this.dataGridViewTextBoxColumn3.HeaderText = "FIRST NAME";
-            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
-            this.dataGridViewTextBoxColumn3.ReadOnly = true;
-            this.dataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn3.Width = 160;
-            // 
-            // dataGridViewTextBoxColumn4
-            // 
-            this.dataGridViewTextBoxColumn4.Frozen = true;
-            this.dataGridViewTextBoxColumn4.HeaderText = "M.I.";
-            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
-            this.dataGridViewTextBoxColumn4.ReadOnly = true;
-            this.dataGridViewTextBoxColumn4.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn4.Width = 40;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.Frozen = true;
-            this.dataGridViewTextBoxColumn5.HeaderText = "LAST NAME";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.ReadOnly = true;
-            this.dataGridViewTextBoxColumn5.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn5.Width = 110;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.Frozen = true;
-            this.dataGridViewTextBoxColumn6.HeaderText = "SECTION";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.ReadOnly = true;
-            this.dataGridViewTextBoxColumn6.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.Frozen = true;
-            this.dataGridViewTextBoxColumn7.HeaderText = "TIME IN";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.ReadOnly = true;
-            this.dataGridViewTextBoxColumn7.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn7.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn8
-            // 
-            this.dataGridViewTextBoxColumn8.Frozen = true;
-            this.dataGridViewTextBoxColumn8.HeaderText = "TIME OUT";
-            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
-            this.dataGridViewTextBoxColumn8.ReadOnly = true;
-            this.dataGridViewTextBoxColumn8.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn8.Width = 60;
-            // 
-            // dataGridViewTextBoxColumn9
-            // 
-            this.dataGridViewTextBoxColumn9.HeaderText = "TIME USED";
-            this.dataGridViewTextBoxColumn9.Name = "dataGridViewTextBoxColumn9";
-            this.dataGridViewTextBoxColumn9.ReadOnly = true;
-            this.dataGridViewTextBoxColumn9.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridViewTextBoxColumn9.ToolTipText = "Student\'s Remaining Time Balance";
-            // 
-            // NUMBER_OF_SIT_IN
-            // 
-            this.NUMBER_OF_SIT_IN.HeaderText = "NUMBER OF SIT IN";
-            this.NUMBER_OF_SIT_IN.Name = "NUMBER_OF_SIT_IN";
-            this.NUMBER_OF_SIT_IN.ReadOnly = true;
-            // 
             // SitInMonitoringForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2271,7 +2581,12 @@
             this.pass.PerformLayout();
             this.pnlRecords.ResumeLayout(false);
             this.pnlRecords.PerformLayout();
-            this.panel8.ResumeLayout(false);
+            this.pnlSetPrintOptions.ResumeLayout(false);
+            this.pnlDayReport.ResumeLayout(false);
+            this.pnlDayReport.PerformLayout();
+            this.pnlCustomReport.ResumeLayout(false);
+            this.pnlCustomReport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.PrintLayoutDataGrid)).EndInit();
             this.pnlEditUser.ResumeLayout(false);
             this.pnlEditUser.PerformLayout();
             this.pnlIn.ResumeLayout(false);
@@ -2321,7 +2636,6 @@
             this.pnlNotification.ResumeLayout(false);
             this.pnlNotification.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chckicon)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -2481,8 +2795,8 @@
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Panel pnlSetPrintOptions;
+        private System.Windows.Forms.DataGridView PrintLayoutDataGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
@@ -2493,6 +2807,24 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn9;
         private System.Windows.Forms.DataGridViewTextBoxColumn NUMBER_OF_SIT_IN;
+        private System.Windows.Forms.ComboBox cbxSelectForm;
+        private System.Windows.Forms.Panel pnlCustomReport;
+        private System.Windows.Forms.CheckedListBox ChosenOptional;
+        private System.Windows.Forms.DateTimePicker dtpDateEnd;
+        private System.Windows.Forms.DateTimePicker dtpDateStart;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label label22;
+        private ItachiUIBunifu.ButtonBunifuItachi btnPreviewCustomReport;
+        private ItachiUIBunifu.ButtonBunifuItachi btnPrintCustomReport;
+        private System.Windows.Forms.Panel pnlDayReport;
+        private System.Windows.Forms.Label label25;
+        private ItachiUIBunifu.ButtonBunifuItachi btnPreviewDayReport;
+        private ItachiUIBunifu.ButtonBunifuItachi btnPrintDayReport;
+        private System.Windows.Forms.CheckedListBox checkedListBox1;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.DateTimePicker dtpDayReportSelect;
+        private ItachiUIBunifu.ButtonBunifuItachi btnClosePrintSetUp;
     }
 }
 
