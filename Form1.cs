@@ -11,7 +11,7 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
 
         #region ATTRIBUTES
@@ -53,6 +53,16 @@ namespace Sit_In_Monitoring
         #endregion ATTRIBUTES
 
         #region ALL OF FUNCTIONS // hekhokhekohok - Mark
+
+        void CheckForMissedLogOut()
+        {
+            OpenSQL();
+            SqlCommand cmd = new SqlCommand($"DELETE FROM currentSession WHERE Date != '{DateTime.Now:MM / dd / yyyy}'", conn);
+            cmd.ExecuteNonQuery();
+            
+            CloseSQL();
+        }
+
         void ResetValuesInInput()
         {
             newFirstNameValue.Clear();
@@ -269,7 +279,6 @@ namespace Sit_In_Monitoring
                         cmd.Parameters.Clear();
 
                         InsertNewDataToCurrentSessions();
-
                         NotifySuccessfulSitIn();
                     }
                 }
@@ -612,6 +621,15 @@ namespace Sit_In_Monitoring
             TextboxMargins = new SeiyaMarxElls(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 18);
             Fifteens = new SeiyaMarxElls(pnlmrgn, pnlLoginFrame, pnlStudsRec, pnlDesign, pnlDepth, DataGrid, recordsView, pnlStudentInfo, pnlDate, 15);
 
+            void OverrideRoundCorner(Control ctr, int radius) =>
+                Design.RoundCorner(ctr, radius);
+
+            void RoundCorners(List<Control> lst, int radius)
+            {
+                foreach (Control ctr in lst)
+                    OverrideRoundCorner(ctr, radius);
+            }
+
             TextboxMargins.RoundCorner();
             TextboxBodies.RoundCorner();
             Fifteens.RoundCorner();
@@ -620,13 +638,15 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnlNotification, 50);
             Design.RoundCorner(pnlDateMargin, 15);
             Design.RoundCorner(pnlLoginBody, 15);
+            Design.RoundCorner(pnltm2, 15);
+
             Design.RoundCorner(pnlAdminLock, 18);
             Design.RoundCorner(pnlEditUser, 18);
-            Design.RoundCorner(pnltm2, 15);
-            Design.RoundCorner(pnlIn, 16);
             Design.RoundCorner(pnlPleaseWait, 40);
-            Design.RoundCorner(pnlCustomReport, 16);
-            Design.RoundCorner(pnlDayReport, 16);
+
+            List<Control> Sixteens = new List<Control>() { pnlCustomReport, pnlIn, pnlDayReport, pnlStudentSpecificReport, pnlMonthReport, pnlSemesterReport};
+            RoundCorners(Sixteens, 16);
+
             #endregion
 
             #region Edit Panel |> Round Corners
@@ -645,6 +665,7 @@ namespace Sit_In_Monitoring
         private void SitInMonitoringForm_Load(object sender, EventArgs e) // Form Load
         {
             // Default values on first load, may or may not change during run time
+            CheckForMissedLogOut();
             notClicked = Color.FromArgb(210, 242, 250);
             Clicked = Color.FromArgb(65, 205, 242);
             CanStart = Color.FromArgb(7, 163, 58);
@@ -671,6 +692,7 @@ namespace Sit_In_Monitoring
             SetPanelsToCenter(MainPanels);
 
 
+            // REPORTS FORM
             void SetPanelsForPrintSetUpPanel(List<Control> panels)
             {
                 foreach (Control panel in panels)
@@ -679,7 +701,7 @@ namespace Sit_In_Monitoring
                     panel.Hide();
                 }
             }
-            List<Control> controls = new List<Control>() { pnlDayReport, pnlCustomReport };
+            List<Control> controls = new List<Control>() { pnlDayReport, pnlCustomReport, pnlStudentSpecificReport, pnlMonthReport, pnlSemesterReport};
             SetPanelsForPrintSetUpPanel(controls);
 
 
@@ -1354,6 +1376,9 @@ namespace Sit_In_Monitoring
 
             ShowPanelForSelected(pnlCustomReport, "custom");
             ShowPanelForSelected(pnlDayReport, "day report");
+            ShowPanelForSelected(pnlStudentSpecificReport, "student specific report");
+            ShowPanelForSelected(pnlMonthReport, "month report");
+            ShowPanelForSelected(pnlSemesterReport, "semestral report");
         }
 
 
@@ -1385,12 +1410,54 @@ namespace Sit_In_Monitoring
 
 
 
+        // SEMESTER REPORT BUTTON CLICKS
+        private void btnPreviewSemesterReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrintSemesterReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+        // MONTH REPORT BUTTON CLICKS
+        private void btnPreviewMonthReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrintMonthReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
+
+        // STUDENT SPECIFIC REPORT BUTTON CLICKS
+        private void btnPreviewStudentSpecificReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnPrintStudentSpecificReport_Click(object sender, EventArgs e)
+        {
+
+        }
+
+
+
         // CLOSE PRINT SET UP
         private void btnClosePrintSetUp_Click(object sender, EventArgs e)
         {
             pnlSetPrintOptions.Hide();
             ReasonForPassword = "";
         }
+
     }
 
 
