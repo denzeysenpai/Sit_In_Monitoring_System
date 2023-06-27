@@ -1383,10 +1383,22 @@ namespace Sit_In_Monitoring
 
 
 
+        #region !!UI NOTES!!
+        /*      
+         *      PREVIEW BUTTONS DISPLAYS A PREVIEW IN THE DATA GRID
+         *      PRINT BUTTON MUST BE DISABLED BEFORE PREVIEW
+         *      
+         *      USER MUST PREVIEW REPORT BEFORE PRINTING 
+         *      |> M
+         * 
+         */
+        #endregion
+
+
         // CUSTOM REPORT BUTTON CLICKS
         private void btnPreviewCustomReport_Click(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnPrintCustomReport_Click(object sender, EventArgs e)
