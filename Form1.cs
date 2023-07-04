@@ -11,7 +11,7 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
 
 
@@ -58,7 +58,7 @@ namespace Sit_In_Monitoring
         void CheckForMissedLogOut()
         {
             OpenSQL();
-            SqlCommand cmd = new SqlCommand($"DELETE FROM currentSession WHERE Date != '{DateTime.Now:MM / dd / yyyy}'", conn);
+            SqlCommand cmd = new SqlCommand($"DELETE FROM currentSession WHERE Date != '{DateTime.Now:MM/dd/yyyy}'", conn);
             cmd.ExecuteNonQuery();
 
             CloseSQL();
@@ -121,10 +121,6 @@ namespace Sit_In_Monitoring
                 oldMiddleInitialValue.Text = mInitial;
 
                 pnlEditUser.Show();
-
-                /* ADD CODE BODY FOR EDIT HERE
-                 * 
-                 */
             }
 
             void ReasonIsForDelete()
@@ -223,32 +219,25 @@ namespace Sit_In_Monitoring
                     SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                     ds.Clear();
                     s.Fill(ds);
-
-                    void InsertNewDataToCurrentSessions()
+                    if (ds.Tables[0].Rows.Count > 0)
                     {
-                        SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                        SqlCommand cmd1 = new SqlCommand("" +
+                            "INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) " +
+                            "SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid " +
+                            "FROM Students s " +
+                            "WHERE s.studentid = @studentId", conn);
                         cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                         cmd1.Parameters.AddWithValue("@date", date);
                         cmd1.Parameters.AddWithValue("@timeIn", time1);
                         cmd1.Parameters.AddWithValue("@timeout", time1);
                         cmd1.ExecuteNonQuery();
                         cmd1.Parameters.Clear();
-
-                    }
-
-                    if (ds.Tables[0].Rows.Count > 0)
-                    {
-                        InsertNewDataToCurrentSessions();
-                        //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                        //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                        //cmd2.Parameters.AddWithValue("@date", date);
-                        //cmd2.Parameters.AddWithValue("@timeIn", time1);
-                        //cmd2.ExecuteNonQuery();
-                        //NotifySuccessfulSitIn();
                     }
                     else
                     {
-                        SqlCommand cmd = new SqlCommand("INSERT INTO Students VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
+                        SqlCommand cmd = new SqlCommand("" +
+                            "INSERT INTO Students " +
+                            "VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
                         cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                         cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
                         cmd.Parameters.AddWithValue("@middleInitial", txtMiddleInitial.Text);
@@ -258,7 +247,17 @@ namespace Sit_In_Monitoring
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
 
-                        InsertNewDataToCurrentSessions();
+                        SqlCommand cmd1 = new SqlCommand("" +
+                            "INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) " +
+                            "SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid " +
+                            "FROM Students s " +
+                            "WHERE s.studentid = @studentId", conn);
+                        cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                        cmd1.Parameters.AddWithValue("@date", date);
+                        cmd1.Parameters.AddWithValue("@timeIn", time1);
+                        cmd1.Parameters.AddWithValue("@timeout", time1);
+                        cmd1.ExecuteNonQuery();
+                        cmd1.Parameters.Clear();
                         NotifySuccessfulSitIn();
                     }
                 }
@@ -267,10 +266,10 @@ namespace Sit_In_Monitoring
                     MessageBox.Show("Student is already on a session!");
                 }
 
-                txtStudentID.Text = string.Empty;
-                clearStudentText();
                 txtStudentID.Focus();
                 Update_Data();
+                clearStudentText();
+                txtStudentID.Text = string.Empty;
             }
             catch (SqlException)
             {
@@ -330,6 +329,7 @@ namespace Sit_In_Monitoring
             CatchSQLInjection(txtStudentID);
             if (txtStudentID.Text != "")
             {
+                OpenSQL();
                 SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                 ds.Clear();
                 s.Fill(ds);
@@ -393,7 +393,7 @@ namespace Sit_In_Monitoring
         {
             ProcessingDataBase = true;
             DateTime date = DateTime.Now;
-            string dateDb = dateToday.Value.ToString(" MM/dd/yyyy");
+            string dateDb = dateToday.Value.ToString("MM/dd/yyyy");
             string time1 = date.ToString("HH:mm:ss tt");
             DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
@@ -808,7 +808,7 @@ namespace Sit_In_Monitoring
             pnlNotification.Visible = !pnlPleaseWait.Visible;
             // NOTIFICATION PANEL
 
-            // Notification Animation go BrrRrRrrrR - Mark
+            // Notification Animation go BrrRrRrrrR |> Mark
             if (ProcessingDataBase == false)
             {
                 closeNotify = count >= 600 ? !(notify = (count = 0) != 0) : closeNotify;
@@ -970,7 +970,7 @@ namespace Sit_In_Monitoring
                 ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
             //      ^^^^^INVALID INPUT DETECTED
 
-            #region CheckForSQLInjection
+            #region CheckForSQLInjection |> Mark
             void CatchAttempt(List<Control> txt)
             {
                 foreach (Control t in txt)
@@ -1084,6 +1084,7 @@ namespace Sit_In_Monitoring
         {
             ReasonForPassword = "delete";
             ShowAdminPasswordInput();
+            MessageBox.Show("You have to manually delete in database because it was not implemented...\n-Mark Hekhok");
         }
 
         private void BtnEdit_Click(object sender, EventArgs e)
@@ -1281,76 +1282,6 @@ namespace Sit_In_Monitoring
 
         private void cbxSelectForm_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-                SEMESTRAL REPORT
-                MONTH REPORT
-                STUDENT SPECIFIC REPORT
-                WEEK REPORT
-                DAY REPORT
-                CUSTOM REPORT
-             */
-
-            /* 
-             * semester report
-             *      name
-             *      id
-             *      date
-             *      time in
-             *      time out
-             *      section
-             * 
-             * month report
-             *      name
-             *      id
-             *      date
-             *      time in
-             *      time out
-             *      section
-             *      
-             * student specific report
-             *      name
-             *      id
-             *      section
-             *      date
-             *      time in 
-             *      time out
-             *      number of sit ins
-             *      total time used
-             *      total balance
-             *      
-             * week report
-             *      name
-             *      id
-             *      section
-             *      date range (July 2 - July 9)
-             *      time in
-             *      time out
-             * 
-             * day report
-             *      name
-             *      id
-             *      section
-             *      time in 
-             *      time out
-             *      date
-             *      
-             * custom report
-             *      name
-             *      id
-             *      section
-             *      time in
-             *      time out
-             *      date (range)
-             *      number of sit ins
-             *      balance
-             *      total time used
-             *     
-             *     
-             *     
-             * FUNCTIONS TO ADD!!
-             *      
-             */
-
             void ShowPanelForSelected(Control pnl, string match) =>
                 pnl.Visible = (cbxSelectForm.Text.ToLower() == match.ToLower());
 
@@ -1360,9 +1291,6 @@ namespace Sit_In_Monitoring
             ShowPanelForSelected(pnlMonthReport, "month report");
             ShowPanelForSelected(pnlSemesterReport, "semestral report");
         }
-
-
-
         #region !!UI NOTES!!
         /*      
          *      PREVIEW BUTTONS DISPLAYS A PREVIEW IN THE DATA GRID
@@ -1372,95 +1300,181 @@ namespace Sit_In_Monitoring
          *      |> M
          * 
          */
+
+        /*
+               SEMESTRAL REPORT
+               MONTH REPORT
+               STUDENT SPECIFIC REPORT
+               WEEK REPORT
+               DAY REPORT
+               CUSTOM REPORT
+            */
+
+        /* 
+         * semester report
+         *      name
+         *      id
+         *      date
+         *      time in
+         *      time out
+         *      section
+         * 
+         * month report
+         *      name
+         *      id
+         *      date
+         *      time in
+         *      time out
+         *      section
+         *      
+         * student specific report
+         *      name
+         *      id
+         *      section
+         *      date
+         *      time in 
+         *      time out
+         *      number of sit ins
+         *      total time used
+         *      total balance
+         *      
+         * week report
+         *      name
+         *      id
+         *      section
+         *      date range (July 2 - July 9)
+         *      time in
+         *      time out
+         * 
+         * day report
+         *      name
+         *      id
+         *      section
+         *      time in 
+         *      time out
+         *      date
+         *      
+         * custom report
+         *      name
+         *      id
+         *      section
+         *      time in
+         *      time out
+         *      date (range)
+         *      number of sit ins
+         *      balance
+         *      total time used
+         *     
+         *     
+         *     
+         * FUNCTIONS TO ADD!!
+         *      
+         */
+
+        #endregion
+
+        #region General Function For Print Options |> Mark
+        void GeneralFunctionForPrintOptions(string printingOptions)
+        {
+            // Custom
+            //string SessionLogs = $"SELECT {Conditions} FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date between @DateStart and @DateEnd"; 
+
+            string Conditions = "";
+            string Where = "";
+
+            if (printingOptions == "month")
+            {
+                Conditions = "sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout"; // ALL CONDITIONS ARE FOR EDIT
+                Where = "WHERE MONTH(sl.Date) = MONTH(@Date)";
+            }
+            else if (printingOptions == "studentspecific")
+            {
+                Conditions = "sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout";
+                Where = "WHERE s.studentid = @studentId AND sl.Date BETWEEN @DateStart and @DateEnd";
+            }
+            else if (printingOptions == "day")
+            {
+                Conditions = "sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout";
+                Where = "WHERE sl.Date = @Date";
+            }
+            else if (printingOptions == "semester")
+            {
+                Conditions = "sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout";
+                Where = "WHERE sl.Date BETWEEN @DateStart and @DateEnd";
+            }
+            else { /**/ /*[Impossible Exception]*/ /**/ }
+
+            if (conn.State == ConnectionState.Closed)
+                OpenSQL();
+
+            string SQLProcess = $"SELECT {Conditions} FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid {Where}";
+
+            PrintLayoutDataGrid.Columns.Clear();
+            try
+            {
+                using (DataTable dt = new DataTable("currrentSession"))
+                {
+                    using (SqlCommand cmd = new SqlCommand(SQLProcess, conn))
+                    {
+                        if (printingOptions == "month")
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@Date", selectMonth.SelectionStart.ToString("MM/dd/yyyy"));
+                        }
+                        else if (printingOptions == "studentspecific")
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@studentId", cbxSelectedStudent.Text);
+                            cmd.Parameters.AddWithValue("@DateStart", dtpStudStartDate.Value);
+                            cmd.Parameters.AddWithValue("@DateEnd", dtpStudEndDate.Value);
+                        }
+                        else if (printingOptions == "day") // NOT FINISHED |> MARK
+                        {
+                            cmd.Parameters.Clear();
+                            cmd.Parameters.AddWithValue("@Date", dtpDayReportSelect.Value); 
+                        }
+                        else if (printingOptions == "semester") // NOT FINISHED |> MARK
+                        {
+                            cmd.Parameters.Clear();
+
+                            string startOfSem = $"" +
+                                $"SELECT startOfSem " +
+                                $"FROM SemestersAdded " +
+                                $"WHERE semester = '{cbxSelectSemester.Text}'";
+
+                            string endOfSem = $"" +
+                                $"SELECT endOfSem " +
+                                $"FROM SemestersAdded " +
+                                $"WHERE semester = '{cbxSelectSemester.Text}'";
+
+                            cmd.Parameters.AddWithValue("@DateStart", startOfSem);
+                            cmd.Parameters.AddWithValue("@DateEnd", endOfSem);
+                        }                                      // NOT FINISHED |> MARK
+
+                        SqlDataAdapter da = new SqlDataAdapter(cmd);
+                        da.Fill(dt);
+                        PrintLayoutDataGrid.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex) { MessageBox.Show(ex.Message, "Exception Handled!", MessageBoxButtons.OK, MessageBoxIcon.Error); }
+
+            if (conn.State != ConnectionState.Closed)
+                CloseSQL();
+        }
         #endregion
 
 
-        // CUSTOM REPORT BUTTON CLICKS
-        private void btnPreviewCustomReport_Click(object sender, EventArgs e)
-        {
-            CustomReport();
-        }
-        // CUSTOM REPORT PRINT BUTTON
-        private void btnPrintCustomReport_Click(object sender, EventArgs e)
-        {
-            PrintRecordsToExelFormat();
-        }
 
-
-
-
-        // DAY REPORT BUTTON CLICKS
-        private void btnPreviewDayReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPrintDayReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        // SEMESTER REPORT BUTTON CLICKS
-        private void btnPreviewSemesterReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPrintSemesterReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-        // MONTH REPORT BUTTON CLICKS
-        private void btnPreviewMonthReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPrintMonthReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-
-        // STUDENT SPECIFIC REPORT BUTTON CLICKS
-        private void btnPreviewStudentSpecificReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btnPrintStudentSpecificReport_Click(object sender, EventArgs e)
-        {
-
-        }
-
-
-
-        // CLOSE PRINT SET UP
-        private void btnClosePrintSetUp_Click(object sender, EventArgs e)
-        {
-            pnlSetPrintOptions.Hide();
-            ReasonForPassword = "";
-        }
-       
         #region Can select custom records |> Jeorge
         public void CustomReport()
         {
             PrintLayoutDataGrid.Columns.Clear();
             try
             {
-
                 if (conn.State == ConnectionState.Closed)
                 {
                     OpenSQL();
-
                 }
                 using (DataTable dt = new DataTable("currrentSession"))
                 {
@@ -1471,20 +1485,22 @@ namespace Sit_In_Monitoring
                         SqlDataAdapter dataAdapter = new SqlDataAdapter((cmd));
                         dataAdapter.Fill(dt);
                         PrintLayoutDataGrid.DataSource = dt;
-
                     }
                 }
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (conn.State != ConnectionState.Closed)
+            {
+                CloseSQL();
             }
         }
         #endregion
 
         #region Excel Import |> Jeorge
-        public void PrintRecordsToExelFormat()
+        public void PrintRecordsToExcelFormat()
         {
             if (PrintLayoutDataGrid.Rows.Count > 0)
             {
@@ -1506,6 +1522,75 @@ namespace Sit_In_Monitoring
             }
         }
         #endregion
+
+
+
+
+
+
+        // CUSTOM REPORT BUTTON CLICKS
+        private void btnPreviewCustomReport_Click(object sender, EventArgs e)
+        {
+            CustomReport();
+        }
+        // CUSTOM REPORT PRINT BUTTON
+        private void btnPrintCustomReport_Click(object sender, EventArgs e) =>
+            PrintRecordsToExcelFormat();
+
+
+
+
+
+        // DAY REPORT BUTTON CLICKS
+        private void btnPreviewDayReport_Click(object sender, EventArgs e) =>
+            GeneralFunctionForPrintOptions("day");
+        private void btnPrintDayReport_Click(object sender, EventArgs e) =>
+            PrintRecordsToExcelFormat();
+
+
+
+
+
+
+        // SEMESTER REPORT BUTTON CLICKS
+        private void btnPreviewSemesterReport_Click(object sender, EventArgs e) =>
+            GeneralFunctionForPrintOptions("semester");
+        private void btnPrintSemesterReport_Click(object sender, EventArgs e) =>
+            PrintRecordsToExcelFormat();
+
+
+
+
+
+
+        // MONTH REPORT BUTTON CLICKS
+        private void btnPreviewMonthReport_Click(object sender, EventArgs e) =>
+            GeneralFunctionForPrintOptions("month");
+        private void btnPrintMonthReport_Click(object sender, EventArgs e) =>
+            PrintRecordsToExcelFormat();
+
+
+
+
+
+
+        // STUDENT SPECIFIC REPORT BUTTON CLICKS
+        private void btnPreviewStudentSpecificReport_Click(object sender, EventArgs e) =>
+            GeneralFunctionForPrintOptions("studentspecific");
+        private void btnPrintStudentSpecificReport_Click(object sender, EventArgs e) =>
+            PrintRecordsToExcelFormat();
+
+
+
+
+        // CLOSE PRINT SET UP
+        private void btnClosePrintSetUp_Click(object sender, EventArgs e)
+        {
+            pnlSetPrintOptions.Hide();
+            ReasonForPassword = "";
+        }
+
+
     }
 
     #region Round Corner |> Mark

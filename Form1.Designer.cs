@@ -96,7 +96,7 @@
             this.cbxSelectSemester = new System.Windows.Forms.ComboBox();
             this.btnPrintSemesterReport = new ItachiUIBunifu.ButtonBunifuItachi();
             this.pnlMonthReport = new System.Windows.Forms.Panel();
-            this.monthCalendar1 = new System.Windows.Forms.MonthCalendar();
+            this.selectMonth = new System.Windows.Forms.MonthCalendar();
             this.btnPreviewMonthReport = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label27 = new System.Windows.Forms.Label();
             this.btnPrintMonthReport = new ItachiUIBunifu.ButtonBunifuItachi();
@@ -105,9 +105,10 @@
             this.label28 = new System.Windows.Forms.Label();
             this.btnPreviewStudentSpecificReport = new ItachiUIBunifu.ButtonBunifuItachi();
             this.cbxSelectedStudent = new System.Windows.Forms.ComboBox();
+            this.studentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.btnPrintStudentSpecificReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+            this.dtpStudEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStudStartDate = new System.Windows.Forms.DateTimePicker();
             this.pnlDayReport = new System.Windows.Forms.Panel();
             this.label25 = new System.Windows.Forms.Label();
             this.btnPreviewDayReport = new ItachiUIBunifu.ButtonBunifuItachi();
@@ -221,7 +222,6 @@
             this.pnltm2 = new System.Windows.Forms.Panel();
             this.lblTime2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.studentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
@@ -260,6 +260,7 @@
             this.pnlSemesterReport.SuspendLayout();
             this.pnlMonthReport.SuspendLayout();
             this.pnlStudentSpecificReport.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).BeginInit();
             this.pnlDayReport.SuspendLayout();
             this.pnlCustomReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PrintLayoutDataGrid)).BeginInit();
@@ -291,7 +292,6 @@
             this.mrg6.SuspendLayout();
             this.l6.SuspendLayout();
             this.pnltm2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlNotification.SuspendLayout();
@@ -1007,7 +1007,7 @@
             this.pnlSemesterReport.Controls.Add(this.btnPreviewSemesterReport);
             this.pnlSemesterReport.Controls.Add(this.cbxSelectSemester);
             this.pnlSemesterReport.Controls.Add(this.btnPrintSemesterReport);
-            this.pnlSemesterReport.Location = new System.Drawing.Point(1006, 368);
+            this.pnlSemesterReport.Location = new System.Drawing.Point(972, 341);
             this.pnlSemesterReport.Name = "pnlSemesterReport";
             this.pnlSemesterReport.Size = new System.Drawing.Size(443, 171);
             this.pnlSemesterReport.TabIndex = 15;
@@ -1088,20 +1088,20 @@
             // pnlMonthReport
             // 
             this.pnlMonthReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.pnlMonthReport.Controls.Add(this.monthCalendar1);
+            this.pnlMonthReport.Controls.Add(this.selectMonth);
             this.pnlMonthReport.Controls.Add(this.btnPreviewMonthReport);
             this.pnlMonthReport.Controls.Add(this.label27);
             this.pnlMonthReport.Controls.Add(this.btnPrintMonthReport);
-            this.pnlMonthReport.Location = new System.Drawing.Point(989, 368);
+            this.pnlMonthReport.Location = new System.Drawing.Point(1018, 146);
             this.pnlMonthReport.Name = "pnlMonthReport";
             this.pnlMonthReport.Size = new System.Drawing.Size(443, 237);
             this.pnlMonthReport.TabIndex = 15;
             // 
-            // monthCalendar1
+            // selectMonth
             // 
-            this.monthCalendar1.Location = new System.Drawing.Point(27, 47);
-            this.monthCalendar1.Name = "monthCalendar1";
-            this.monthCalendar1.TabIndex = 3;
+            this.selectMonth.Location = new System.Drawing.Point(27, 47);
+            this.selectMonth.Name = "selectMonth";
+            this.selectMonth.TabIndex = 3;
             // 
             // btnPreviewMonthReport
             // 
@@ -1165,9 +1165,9 @@
             this.pnlStudentSpecificReport.Controls.Add(this.btnPreviewStudentSpecificReport);
             this.pnlStudentSpecificReport.Controls.Add(this.cbxSelectedStudent);
             this.pnlStudentSpecificReport.Controls.Add(this.btnPrintStudentSpecificReport);
-            this.pnlStudentSpecificReport.Controls.Add(this.dateTimePicker1);
-            this.pnlStudentSpecificReport.Controls.Add(this.dateTimePicker2);
-            this.pnlStudentSpecificReport.Location = new System.Drawing.Point(972, 368);
+            this.pnlStudentSpecificReport.Controls.Add(this.dtpStudEndDate);
+            this.pnlStudentSpecificReport.Controls.Add(this.dtpStudStartDate);
+            this.pnlStudentSpecificReport.Location = new System.Drawing.Point(981, 386);
             this.pnlStudentSpecificReport.Name = "pnlStudentSpecificReport";
             this.pnlStudentSpecificReport.Size = new System.Drawing.Size(443, 260);
             this.pnlStudentSpecificReport.TabIndex = 15;
@@ -1232,6 +1232,7 @@
             "WEEK REPORT",
             "DAY REPORT"});
             this.cbxSelectedStudent.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxSelectedStudent.DataSource = this.studentsBindingSource1;
             this.cbxSelectedStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxSelectedStudent.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSelectedStudent.FormattingEnabled = true;
@@ -1239,8 +1240,11 @@
             this.cbxSelectedStudent.Name = "cbxSelectedStudent";
             this.cbxSelectedStudent.Size = new System.Drawing.Size(265, 28);
             this.cbxSelectedStudent.TabIndex = 14;
-            this.cbxSelectedStudent.Text = "SELECT STUDENT";
             this.cbxSelectedStudent.SelectedIndexChanged += new System.EventHandler(this.cbxSelectForm_SelectedIndexChanged);
+            // 
+            // studentsBindingSource1
+            // 
+            this.studentsBindingSource1.DataMember = "Students";
             // 
             // btnPrintStudentSpecificReport
             // 
@@ -1261,19 +1265,19 @@
             this.btnPrintStudentSpecificReport.UseVisualStyleBackColor = false;
             this.btnPrintStudentSpecificReport.Click += new System.EventHandler(this.btnPrintStudentSpecificReport_Click);
             // 
-            // dateTimePicker1
+            // dtpStudEndDate
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(225, 38);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker1.TabIndex = 1;
+            this.dtpStudEndDate.Location = new System.Drawing.Point(225, 38);
+            this.dtpStudEndDate.Name = "dtpStudEndDate";
+            this.dtpStudEndDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpStudEndDate.TabIndex = 1;
             // 
-            // dateTimePicker2
+            // dtpStudStartDate
             // 
-            this.dateTimePicker2.Location = new System.Drawing.Point(16, 38);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-            this.dateTimePicker2.TabIndex = 1;
+            this.dtpStudStartDate.Location = new System.Drawing.Point(16, 38);
+            this.dtpStudStartDate.Name = "dtpStudStartDate";
+            this.dtpStudStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpStudStartDate.TabIndex = 1;
             // 
             // pnlDayReport
             // 
@@ -1284,7 +1288,7 @@
             this.pnlDayReport.Controls.Add(this.btnPrintDayReport);
             this.pnlDayReport.Controls.Add(this.checkedListBox1);
             this.pnlDayReport.Controls.Add(this.dtpDayReportSelect);
-            this.pnlDayReport.Location = new System.Drawing.Point(1117, 583);
+            this.pnlDayReport.Location = new System.Drawing.Point(1067, 390);
             this.pnlDayReport.Name = "pnlDayReport";
             this.pnlDayReport.Size = new System.Drawing.Size(443, 260);
             this.pnlDayReport.TabIndex = 15;
@@ -2712,10 +2716,6 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "RECORDS";
             // 
-            // studentsBindingSource1
-            // 
-            this.studentsBindingSource1.DataMember = "Students";
-            // 
             // pictureBoxBunifuItachi1
             // 
             this.pictureBoxBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
@@ -2904,6 +2904,7 @@
             this.pnlMonthReport.PerformLayout();
             this.pnlStudentSpecificReport.ResumeLayout(false);
             this.pnlStudentSpecificReport.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).EndInit();
             this.pnlDayReport.ResumeLayout(false);
             this.pnlDayReport.PerformLayout();
             this.pnlCustomReport.ResumeLayout(false);
@@ -2953,7 +2954,6 @@
             this.l6.PerformLayout();
             this.pnltm2.ResumeLayout(false);
             this.pnltm2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnlNotification.ResumeLayout(false);
@@ -3152,14 +3152,14 @@
         private System.Windows.Forms.Label label28;
         private ItachiUIBunifu.ButtonBunifuItachi btnPreviewStudentSpecificReport;
         private ItachiUIBunifu.ButtonBunifuItachi btnPrintStudentSpecificReport;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
+        private System.Windows.Forms.DateTimePicker dtpStudEndDate;
+        private System.Windows.Forms.DateTimePicker dtpStudStartDate;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.BindingSource studentsBindingSource;
         private System.Windows.Forms.ComboBox cbxSelectedStudent;
         private System.Windows.Forms.BindingSource studentsBindingSource1;
         private System.Windows.Forms.Panel pnlMonthReport;
-        private System.Windows.Forms.MonthCalendar monthCalendar1;
+        private System.Windows.Forms.MonthCalendar selectMonth;
         private ItachiUIBunifu.ButtonBunifuItachi btnPreviewMonthReport;
         private System.Windows.Forms.Label label27;
         private ItachiUIBunifu.ButtonBunifuItachi btnPrintMonthReport;
