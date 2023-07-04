@@ -137,13 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="db\DatabaseQuery.sql" />
-    <Content Include="SitInMonitoring.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SitInMonitoring_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>SitInMonitoring.mdf</DependentUpon>
-    </Content>
     <None Include="images\backgroundNiMarkPinakaChoi.png" />
     <None Include="images\HuwatUsah.png" />
     <None Include="images\padlock.png" />

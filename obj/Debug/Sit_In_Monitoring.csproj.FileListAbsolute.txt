@@ -28,8 +28,6 @@ C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debu
 C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.exe.config
 C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.exe
 C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.pdb
-C:\Users\ACT-STUDENT\Source\Repos\Sit_In_Monitoring_System\bin\Debug\SitInMonitoring.mdf
-C:\Users\ACT-STUDENT\Source\Repos\Sit_In_Monitoring_System\bin\Debug\SitInMonitoring_log.ldf
 C:\Users\ACT-STUDENT\Source\Repos\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.exe.config
 C:\Users\ACT-STUDENT\Source\Repos\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.exe
 C:\Users\ACT-STUDENT\Source\Repos\Sit_In_Monitoring_System\bin\Debug\Sit_In_Monitoring.pdb

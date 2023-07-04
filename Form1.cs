@@ -102,27 +102,6 @@ namespace Sit_In_Monitoring
             BtnSearch.Enabled = true;
         }
 
-        public void PrintRecordsToExelFormat()
-        {
-            if (recordsView.Rows.Count > 0)
-            {
-                Microsoft.Office.Interop.Excel.Application xcelApp = new Microsoft.Office.Interop.Excel.Application();
-                xcelApp.Application.Workbooks.Add(Type.Missing);
-                for (int i = 1; i < recordsView.Columns.Count + 1; i++)
-                {
-                    xcelApp.Cells[1, i] = recordsView.Columns[i - 1].HeaderText;
-                }
-                for (int i = 0; i < recordsView.Rows.Count; i++)
-                {
-                    for (int j = 0; j < recordsView.Columns.Count; j++)
-                    {
-                        xcelApp.Cells[i + 2, j + 1] = recordsView.Rows[i].Cells[j].Value.ToString();
-                    }
-                    xcelApp.Columns.AutoFit();
-                    xcelApp.Visible = true;
-                }
-            }
-        } // DONE
 
         // just add body in local functions
         public void AdminLockReasonConfirmation() // This method is only called after input matches the correct password - maki
@@ -1401,10 +1380,10 @@ namespace Sit_In_Monitoring
         {
             CustomReport();
         }
-
+        // CUSTOM REPORT PRINT BUTTON
         private void btnPrintCustomReport_Click(object sender, EventArgs e)
         {
-
+            PrintRecordsToExelFormat();
         }
 
 
@@ -1470,6 +1449,8 @@ namespace Sit_In_Monitoring
             pnlSetPrintOptions.Hide();
             ReasonForPassword = "";
         }
+       
+        #region Can select custom records |> Jeorge
         public void CustomReport()
         {
             PrintLayoutDataGrid.Columns.Clear();
@@ -1483,7 +1464,7 @@ namespace Sit_In_Monitoring
                 }
                 using (DataTable dt = new DataTable("currrentSession"))
                 {
-                    using (SqlCommand cmd = new SqlCommand("select sessionId,studentId,Date,TimeIn,TimeOut,RemainingTime,Personid from currentSession where date between @DateStart and @DateEnd ", conn))
+                    using (SqlCommand cmd = new SqlCommand("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date between @DateStart and @DateEnd ", conn))
                     {
                         cmd.Parameters.AddWithValue("@DateStart", dtpDateStart.Value);
                         cmd.Parameters.AddWithValue("@DateEnd", dtpDateEnd.Value);
@@ -1500,10 +1481,32 @@ namespace Sit_In_Monitoring
                 MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+        #endregion
+
+        #region Excel Import |> Jeorge
+        public void PrintRecordsToExelFormat()
+        {
+            if (PrintLayoutDataGrid.Rows.Count > 0)
+            {
+                Microsoft.Office.Interop.Excel.Application xcelApp = new Microsoft.Office.Interop.Excel.Application();
+                xcelApp.Application.Workbooks.Add(Type.Missing);
+                for (int i = 1; i < PrintLayoutDataGrid.Columns.Count + 1; i++)
+                {
+                    xcelApp.Cells[1, i] = PrintLayoutDataGrid.Columns[i - 1].HeaderText;
+                }
+                for (int i = 0; i < PrintLayoutDataGrid.Rows.Count; i++)
+                {
+                    for (int j = 0; j < PrintLayoutDataGrid.Columns.Count; j++)
+                    {
+                        xcelApp.Cells[i + 2, j + 1] = PrintLayoutDataGrid.Rows[i].Cells[j].Value.ToString();
+                    }
+                    xcelApp.Columns.AutoFit();
+                    xcelApp.Visible = true;
+                }
+            }
+        }
+        #endregion
     }
-
-
-   
 
     #region Round Corner |> Mark
     class SeiyaMarxElls
