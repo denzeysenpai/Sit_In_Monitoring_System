@@ -11,8 +11,9 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
+
 
         #region ATTRIBUTES
         readonly SeiyaMarxElls Design = new SeiyaMarxElls();
@@ -59,7 +60,7 @@ namespace Sit_In_Monitoring
             OpenSQL();
             SqlCommand cmd = new SqlCommand($"DELETE FROM currentSession WHERE Date != '{DateTime.Now:MM / dd / yyyy}'", conn);
             cmd.ExecuteNonQuery();
-            
+
             CloseSQL();
         }
 
@@ -197,13 +198,13 @@ namespace Sit_In_Monitoring
         {
             void SetControls(List<Control> ctr)
             {
-                foreach(Control c in ctr)
+                foreach (Control c in ctr)
                 {
                     c.Enabled = false;
                     c.Text = string.Empty;
                 }
             }
-            List<Control> txts = new List<Control>() { txtStudentName, txtSection, txtMiddleInitial , txtStudentLastName };
+            List<Control> txts = new List<Control>() { txtStudentName, txtSection, txtMiddleInitial, txtStudentLastName };
             SetControls(txts);
 
             BtnStart.Enabled = false;
@@ -301,7 +302,7 @@ namespace Sit_In_Monitoring
                 DefaultEnable();
             }
             catch (Exception) {/**/}
-            
+
         }//DONE
 
         bool NoInjection = true;
@@ -309,7 +310,7 @@ namespace Sit_In_Monitoring
         /// Checks for basic SQL Injection attack attempt |> Mark
         /// </summary>
         /// <param name="txt"></param>
-        void CatchSQLInjection(Control txt) 
+        void CatchSQLInjection(Control txt)
         {
             void SecurityMeasure()
             {
@@ -644,7 +645,7 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(pnlEditUser, 18);
             Design.RoundCorner(pnlPleaseWait, 40);
 
-            List<Control> Sixteens = new List<Control>() { pnlCustomReport, pnlIn, pnlDayReport, pnlStudentSpecificReport, pnlMonthReport, pnlSemesterReport};
+            List<Control> Sixteens = new List<Control>() { pnlCustomReport, pnlIn, pnlDayReport, pnlStudentSpecificReport, pnlMonthReport, pnlSemesterReport };
             RoundCorners(Sixteens, 16);
 
             #endregion
@@ -701,7 +702,7 @@ namespace Sit_In_Monitoring
                     panel.Hide();
                 }
             }
-            List<Control> controls = new List<Control>() { pnlDayReport, pnlCustomReport, pnlStudentSpecificReport, pnlMonthReport, pnlSemesterReport};
+            List<Control> controls = new List<Control>() { pnlDayReport, pnlCustomReport, pnlStudentSpecificReport, pnlMonthReport, pnlSemesterReport };
             SetPanelsForPrintSetUpPanel(controls);
 
 
@@ -1398,7 +1399,7 @@ namespace Sit_In_Monitoring
         // CUSTOM REPORT BUTTON CLICKS
         private void btnPreviewCustomReport_Click(object sender, EventArgs e)
         {
-            
+            CustomReport();
         }
 
         private void btnPrintCustomReport_Click(object sender, EventArgs e)
@@ -1469,9 +1470,40 @@ namespace Sit_In_Monitoring
             pnlSetPrintOptions.Hide();
             ReasonForPassword = "";
         }
+        public void CustomReport()
+        {
+            PrintLayoutDataGrid.Columns.Clear();
+            try
+            {
 
+                if (conn.State == ConnectionState.Closed)
+                {
+                    OpenSQL();
+
+                }
+                using (DataTable dt = new DataTable("currrentSession"))
+                {
+                    using (SqlCommand cmd = new SqlCommand("select sessionId,studentId,Date,TimeIn,TimeOut,RemainingTime,Personid from currentSession where date between @DateStart and @DateEnd ", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@DateStart", dtpDateStart.Value);
+                        cmd.Parameters.AddWithValue("@DateEnd", dtpDateEnd.Value);
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter((cmd));
+                        dataAdapter.Fill(dt);
+                        PrintLayoutDataGrid.DataSource = dt;
+
+                    }
+                }
+            }
+
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 
+
+   
 
     #region Round Corner |> Mark
     class SeiyaMarxElls
