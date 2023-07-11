@@ -11,7 +11,7 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         readonly DataSet ds = new DataSet();
 
 
@@ -215,29 +215,30 @@ namespace Sit_In_Monitoring
             {
                 if (dt.Rows.Count == 0)
                 {
-                    OpenSQL();
+                    conn.Open();
                     SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                     ds.Clear();
                     s.Fill(ds);
                     if (ds.Tables[0].Rows.Count > 0)
                     {
-                        SqlCommand cmd1 = new SqlCommand("" +
-                            "INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) " +
-                            "SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid " +
-                            "FROM Students s " +
-                            "WHERE s.studentid = @studentId", conn);
+                        SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                         cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                         cmd1.Parameters.AddWithValue("@date", date);
                         cmd1.Parameters.AddWithValue("@timeIn", time1);
                         cmd1.Parameters.AddWithValue("@timeout", time1);
                         cmd1.ExecuteNonQuery();
                         cmd1.Parameters.Clear();
+
+                        //SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                        //cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
+                        //cmd2.Parameters.AddWithValue("@date", date);
+                        //cmd2.Parameters.AddWithValue("@timeIn", time1);
+                        //cmd2.ExecuteNonQuery();
+                        //NotifySuccessfulSitIn();
                     }
                     else
                     {
-                        SqlCommand cmd = new SqlCommand("" +
-                            "INSERT INTO Students " +
-                            "VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
+                        SqlCommand cmd = new SqlCommand("INSERT INTO Students VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
                         cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                         cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
                         cmd.Parameters.AddWithValue("@middleInitial", txtMiddleInitial.Text);
@@ -247,17 +248,14 @@ namespace Sit_In_Monitoring
                         cmd.ExecuteNonQuery();
                         cmd.Parameters.Clear();
 
-                        SqlCommand cmd1 = new SqlCommand("" +
-                            "INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) " +
-                            "SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid " +
-                            "FROM Students s " +
-                            "WHERE s.studentid = @studentId", conn);
+                        SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                         cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                         cmd1.Parameters.AddWithValue("@date", date);
                         cmd1.Parameters.AddWithValue("@timeIn", time1);
                         cmd1.Parameters.AddWithValue("@timeout", time1);
                         cmd1.ExecuteNonQuery();
                         cmd1.Parameters.Clear();
+
                         NotifySuccessfulSitIn();
                     }
                 }
@@ -265,11 +263,9 @@ namespace Sit_In_Monitoring
                 {
                     MessageBox.Show("Student is already on a session!");
                 }
-
-                txtStudentID.Focus();
                 Update_Data();
+                txtStudentID.Focus();
                 clearStudentText();
-                txtStudentID.Text = string.Empty;
             }
             catch (SqlException)
             {
@@ -330,7 +326,7 @@ namespace Sit_In_Monitoring
             if (txtStudentID.Text != "")
             {
                 OpenSQL();
-                SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
+                SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                 ds.Clear();
                 s.Fill(ds);
                 if (ds.Tables[0].Rows.Count > 0)
@@ -391,17 +387,16 @@ namespace Sit_In_Monitoring
 
         public void LogoutStudent(DataGridViewCellEventArgs e) //FIXED 6/20/23 NEED TO BE TESTED
         {
-            ProcessingDataBase = true;
             DateTime date = DateTime.Now;
-            string dateDb = dateToday.Value.ToString("MM/dd/yyyy");
+            string dateDb = dateToday.Value.ToString(" MM/dd/yyyy");
             string time1 = date.ToString("HH:mm:ss tt");
             DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
             SqlDataAdapter count = new SqlDataAdapter("SELECT * FROM SessionLogs;", conn);
             SqlDataAdapter calc = new SqlDataAdapter("SELECT DATEDIFF(second, TimeIn, '" + time1 + "') / 3600.0 from currentsession where studentid = '" + studentId + "' and date = '" + dateDb + "'", conn);
-            System.Data.DataTable dt = new System.Data.DataTable();
-            System.Data.DataTable timeUsed = new System.Data.DataTable();
+            DataTable dt = new DataTable();
+            DataTable timeUsed = new DataTable();
 
             calc.Fill(timeUsed);
 
@@ -409,8 +404,8 @@ namespace Sit_In_Monitoring
 
             OpenSQL();
             SqlCommand cmd = new SqlCommand("INSERT INTO SessionLogs SELECT cs.studentId, cs.date, cs.timeIn, @timeOut, @timeUsed, cs.personid FROM currentSession cs WHERE cs.studentid = @studentId and date = @dateNow", conn);
-            cmd.Parameters.AddWithValue("@studentId", studentId);
             cmd.Parameters.AddWithValue("@timeOut", time1);
+            cmd.Parameters.AddWithValue("@studentId", studentId);
             cmd.Parameters.AddWithValue("@dateNow", dateDb);
             cmd.Parameters.AddWithValue("@timeUsed", timeUsed.Rows[0][0].ToString());
             cmd.ExecuteNonQuery();
@@ -428,6 +423,7 @@ namespace Sit_In_Monitoring
             cmd2.ExecuteNonQuery();
 
             DataGrid.Rows.RemoveAt(e.RowIndex);
+            ProcessingDataBase = true;
         }
         public void SearchStudentAllLogs()//DONE
         {
@@ -951,6 +947,7 @@ namespace Sit_In_Monitoring
 
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
+            
             SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
             System.Data.DataTable dt = new System.Data.DataTable();
             bool Add;
