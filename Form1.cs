@@ -207,35 +207,27 @@ namespace Sit_In_Monitoring
             string time1 = val.ToString("HH:mm:ss");
             string date = $"{val.Date: MM/dd/yyyy}";
 
-            // Check if student has current session
-            SqlDataAdapter check = new SqlDataAdapter("" +
-                "SELECT * " +
-                "FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
-
+            SqlDataAdapter check = new SqlDataAdapter("SELECT * FROM currentSession where studentid = '" + txtStudentID.Text + "'", conn);
             DataTable dt = new DataTable();
 
             check.Fill(dt);
 
+
             if (dt.Rows.Count == 0)
             {
                 OpenSQL();
-                SqlDataAdapter s = new SqlDataAdapter("" +
-                    "SELECT * " +
-                    "FROM CurrentSession " +
-                    "WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
-
+                SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM Students WHERE Studentid = '" + txtStudentID.Text.ToString() + "'", conn);
                 ds.Clear();
                 s.Fill(ds);
-                /// Fix some issues display ||> William III
                 if (ds.Tables[0].Rows.Count > 0)
                 {
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd1.Parameters.AddWithValue("@date", date);
                     cmd1.Parameters.AddWithValue("@timeIn", time1);
+                    cmd1.Parameters.AddWithValue("@timeout", time1);
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
-                    NotifySuccessfulSitIn();
                 }
                 else
                 {
@@ -249,10 +241,11 @@ namespace Sit_In_Monitoring
                     cmd.ExecuteNonQuery();
                     cmd.Parameters.Clear();
 
-                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
+                    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid FROM Students s WHERE s.studentid = @studentId", conn);
                     cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
                     cmd1.Parameters.AddWithValue("@date", date);
                     cmd1.Parameters.AddWithValue("@timeIn", time1);
+                    cmd1.Parameters.AddWithValue("@timeout", time1);
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
@@ -268,7 +261,6 @@ namespace Sit_In_Monitoring
             ClearInputTextBoxes();
             txtStudentID.Focus();
             Update_Data();
-
         }//DONE
 
         bool NoInjection = true;
@@ -335,7 +327,7 @@ namespace Sit_In_Monitoring
                         "Student Record Exists!",
                         "Record Found",
                         MessageBoxButtons.OK,
-                        MessageBoxIcon.Information);
+                        MessageBoxIcon.Information); 
 
                     if (d.Equals(DialogResult.OK))
                     {

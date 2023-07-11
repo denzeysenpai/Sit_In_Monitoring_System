@@ -29,23 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SitInMonitoringForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
             this.dateToday = new ItachiUIBunifu.DateTimePickerBunifuItachi();
             this.pnlStudsRec = new System.Windows.Forms.Panel();
             this.DataGrid = new System.Windows.Forms.DataGridView();
-            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLoginFrame = new System.Windows.Forms.Panel();
@@ -234,6 +225,15 @@
             this.Processing = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -378,74 +378,6 @@
             this.DataGrid.TabIndex = 1;
             this.DataGrid.TabStop = false;
             this.DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellContentClick);
-            // 
-            // DATE
-            // 
-            this.DATE.Frozen = true;
-            this.DATE.HeaderText = "DATE";
-            this.DATE.Name = "DATE";
-            this.DATE.Width = 120;
-            // 
-            // STUDENT_ID
-            // 
-            this.STUDENT_ID.Frozen = true;
-            this.STUDENT_ID.HeaderText = "STUDENT ID";
-            this.STUDENT_ID.Name = "STUDENT_ID";
-            // 
-            // FIRSTNAME
-            // 
-            this.FIRSTNAME.Frozen = true;
-            this.FIRSTNAME.HeaderText = "FIRST NAME";
-            this.FIRSTNAME.Name = "FIRSTNAME";
-            this.FIRSTNAME.Width = 145;
-            // 
-            // MI
-            // 
-            this.MI.Frozen = true;
-            this.MI.HeaderText = "M.I";
-            this.MI.Name = "MI";
-            this.MI.Width = 40;
-            // 
-            // LASTNAME
-            // 
-            this.LASTNAME.Frozen = true;
-            this.LASTNAME.HeaderText = "LAST NAME";
-            this.LASTNAME.Name = "LASTNAME";
-            this.LASTNAME.Width = 135;
-            // 
-            // cSection
-            // 
-            this.cSection.Frozen = true;
-            this.cSection.HeaderText = "SECTION";
-            this.cSection.Name = "cSection";
-            this.cSection.Width = 75;
-            // 
-            // TIME_IN
-            // 
-            this.TIME_IN.Frozen = true;
-            this.TIME_IN.HeaderText = "TIME IN";
-            this.TIME_IN.Name = "TIME_IN";
-            this.TIME_IN.Width = 110;
-            // 
-            // TIME_OUT
-            // 
-            this.TIME_OUT.Frozen = true;
-            this.TIME_OUT.HeaderText = "TIME OUT";
-            this.TIME_OUT.Name = "TIME_OUT";
-            this.TIME_OUT.Width = 110;
-            // 
-            // LOG_OUT
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
-            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LOG_OUT.Frozen = true;
-            this.LOG_OUT.HeaderText = "LOG OUT";
-            this.LOG_OUT.Name = "LOG_OUT";
-            this.LOG_OUT.Text = "LOG OUT";
-            this.LOG_OUT.ToolTipText = "Log out student";
-            this.LOG_OUT.UseColumnTextForButtonValue = true;
             // 
             // label1
             // 
@@ -2835,6 +2767,82 @@
             // 
             this.studentsBindingSource.DataMember = "Students";
             // 
+            // DATE
+            // 
+            this.DATE.Frozen = true;
+            this.DATE.HeaderText = "DATE";
+            this.DATE.Name = "DATE";
+            this.DATE.ReadOnly = true;
+            this.DATE.Width = 120;
+            // 
+            // STUDENT_ID
+            // 
+            this.STUDENT_ID.Frozen = true;
+            this.STUDENT_ID.HeaderText = "STUDENT ID";
+            this.STUDENT_ID.Name = "STUDENT_ID";
+            this.STUDENT_ID.ReadOnly = true;
+            // 
+            // FIRSTNAME
+            // 
+            this.FIRSTNAME.Frozen = true;
+            this.FIRSTNAME.HeaderText = "FIRST NAME";
+            this.FIRSTNAME.Name = "FIRSTNAME";
+            this.FIRSTNAME.ReadOnly = true;
+            this.FIRSTNAME.Width = 145;
+            // 
+            // MI
+            // 
+            this.MI.Frozen = true;
+            this.MI.HeaderText = "M.I";
+            this.MI.Name = "MI";
+            this.MI.ReadOnly = true;
+            this.MI.Width = 40;
+            // 
+            // LASTNAME
+            // 
+            this.LASTNAME.Frozen = true;
+            this.LASTNAME.HeaderText = "LAST NAME";
+            this.LASTNAME.Name = "LASTNAME";
+            this.LASTNAME.ReadOnly = true;
+            this.LASTNAME.Width = 135;
+            // 
+            // cSection
+            // 
+            this.cSection.Frozen = true;
+            this.cSection.HeaderText = "SECTION";
+            this.cSection.Name = "cSection";
+            this.cSection.ReadOnly = true;
+            this.cSection.Width = 75;
+            // 
+            // TIME_IN
+            // 
+            this.TIME_IN.Frozen = true;
+            this.TIME_IN.HeaderText = "TIME IN";
+            this.TIME_IN.Name = "TIME_IN";
+            this.TIME_IN.ReadOnly = true;
+            this.TIME_IN.Width = 110;
+            // 
+            // TIME_OUT
+            // 
+            this.TIME_OUT.Frozen = true;
+            this.TIME_OUT.HeaderText = "TIME OUT";
+            this.TIME_OUT.Name = "TIME_OUT";
+            this.TIME_OUT.ReadOnly = true;
+            this.TIME_OUT.Width = 110;
+            // 
+            // LOG_OUT
+            // 
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
+            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LOG_OUT.Frozen = true;
+            this.LOG_OUT.HeaderText = "LOG OUT";
+            this.LOG_OUT.Name = "LOG_OUT";
+            this.LOG_OUT.Text = "LOG OUT";
+            this.LOG_OUT.ToolTipText = "Log out student";
+            this.LOG_OUT.UseColumnTextForButtonValue = true;
+            // 
             // SitInMonitoringForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -3086,15 +3094,6 @@
         private System.Windows.Forms.Panel pnlPleaseWait;
         private System.Windows.Forms.Timer Processing;
         private System.Windows.Forms.DataGridView DataGrid;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FIRSTNAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn MI;
-        private System.Windows.Forms.DataGridViewTextBoxColumn LASTNAME;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cSection;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
-        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
         private System.Windows.Forms.Panel m4;
         private System.Windows.Forms.Panel n4;
         private System.Windows.Forms.Label oldSectionValue;
@@ -3170,6 +3169,15 @@
         private ItachiUIBunifu.ButtonBunifuItachi btnPreviewSemesterReport;
         private System.Windows.Forms.ComboBox cbxSelectSemester;
         private ItachiUIBunifu.ButtonBunifuItachi btnPrintSemesterReport;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DATE;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STUDENT_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FIRSTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn MI;
+        private System.Windows.Forms.DataGridViewTextBoxColumn LASTNAME;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cSection;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
+        private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
     }
 }
 
