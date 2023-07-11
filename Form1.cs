@@ -227,45 +227,6 @@ namespace Sit_In_Monitoring
 
                 ds.Clear();
                 s.Fill(ds);
-                //if (ds.Tables[0].Rows.Count > 0) // CODE BLOCK IS EXECUTED IF STUDENT RECORD EXISTS
-                //{
-                //    SqlCommand cmd1 = new SqlCommand("" +
-                //        "INSERT INTO currentSession(studentId, date, timeIn, timeout, personid) " +
-                //        "SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108), s.personid " +
-                //        "FROM Students s " +
-                //        "WHERE s.studentid = @studentId", conn);
-
-                //    cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                //    cmd1.Parameters.AddWithValue("@date", date);
-                //    cmd1.Parameters.AddWithValue("@timeIn", time1);
-                //    cmd1.Parameters.AddWithValue("@timeout", time1);
-                //    cmd1.ExecuteNonQuery();
-                //    cmd1.Parameters.Clear();
-
-                //    NotifySuccessfulSitIn();
-                //}
-                //else // CODE BLOCK IS EXECUTED IF STUDENT HAS NO EXISTING RECORDS
-                //{
-                //    SqlCommand cmd = new SqlCommand("INSERT INTO Students VALUES(@studentId,@firstName, @middleInitial,@lastName,@section, @remainingTime);", conn);
-                //    cmd.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                //    cmd.Parameters.AddWithValue("@firstName", txtStudentName.Text);
-                //    cmd.Parameters.AddWithValue("@middleInitial", txtMiddleInitial.Text);
-                //    cmd.Parameters.AddWithValue("@lastName", txtStudentLastName.Text);
-                //    cmd.Parameters.AddWithValue("@section", txtSection.Text);
-                //    cmd.Parameters.AddWithValue("@remainingTime", 60.ToString());
-                //    cmd.ExecuteNonQuery();
-                //    cmd.Parameters.Clear();
-
-                //    SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, timeout,personid) SELECT @studentId, @date, @timeIn, CONVERT(VARCHAR(8), CONVERT(TIME, DATEADD(minute, 60, CONVERT(DATETIME, @timeout))), 108),s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                //    cmd1.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                //    cmd1.Parameters.AddWithValue("@date", date);
-                //    cmd1.Parameters.AddWithValue("@timeIn", time1);
-                //    cmd1.Parameters.AddWithValue("@timeout", time1);
-                //    cmd1.ExecuteNonQuery();
-                //    cmd1.Parameters.Clear();
-
-                //    NotifySuccessfulSitIn();
-                //}
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
@@ -274,12 +235,6 @@ namespace Sit_In_Monitoring
                     cmd1.Parameters.AddWithValue("@timeIn", time1);
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
-
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    cmd2.Parameters.AddWithValue("@date", date);
-                    cmd2.Parameters.AddWithValue("@timeIn", time1);
-                    cmd2.ExecuteNonQuery();
                     NotifySuccessfulSitIn();
                 }
                 else
@@ -301,11 +256,6 @@ namespace Sit_In_Monitoring
                     cmd1.ExecuteNonQuery();
                     cmd1.Parameters.Clear();
 
-                    SqlCommand cmd2 = new SqlCommand("INSERT INTO sessionLogs(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
-                    cmd2.Parameters.AddWithValue("@studentId", txtStudentID.Text);
-                    cmd2.Parameters.AddWithValue("@date", date);
-                    cmd2.Parameters.AddWithValue("@timeIn", time1);
-                    cmd2.ExecuteNonQuery();
                     NotifySuccessfulSitIn();
                 }
             }
@@ -594,26 +544,26 @@ namespace Sit_In_Monitoring
 
         public void notifyTimeDone()
         {
-            try
-            {
-                DateTime val = DateTime.Now;
-                TimeSpan time1 = TimeSpan.Parse(val.ToString("HH:mm:ss"));
+            //try
+            //{
+            //    DateTime val = DateTime.Now;
+            //    TimeSpan time1 = TimeSpan.Parse(val.ToString("HH:mm:ss"));
 
-                // Iterate through the rows in the DataGridView
-                foreach (DataGridViewRow row in DataGrid.Rows)
-                {
-                    // Check if the current row matches the criterion
-                    if (TimeSpan.Parse(row.Cells["TIME_OUT"].Value.ToString()) <= time1)
-                    {
-                        // Change the color of the row
-                        row.DefaultCellStyle.BackColor = Color.Red;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //    // Iterate through the rows in the DataGridView
+            //    foreach (DataGridViewRow row in DataGrid.Rows)
+            //    {
+            //        // Check if the current row matches the criterion
+            //        if (TimeSpan.Parse(row.Cells["TIME_OUT"].Value.ToString()) <= time1)
+            //        {
+            //            // Change the color of the row
+            //            row.DefaultCellStyle.BackColor = Color.Red;
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
 
         }//DONE 6/23/23
         public void EditStudentDetails()//BUG - AFTER EDITING THE TEXT THAT WAS PREVIOUSLY PUT DOESN'T CLEAR-- MUST BE FIX. ALSO DISABLE THE STUDENT ID EDIT. STUDENT ID IS NOT EDITABLE. // FIXED |> MARK POGI
@@ -1545,7 +1495,7 @@ namespace Sit_In_Monitoring
 
 
 
-        #region Can select custom records |> Jeorge
+        #region Can select custom records |> Jeorge Rey
         public void CustomReport()
         {
             PrintLayoutDataGrid.Columns.Clear();
@@ -1578,7 +1528,7 @@ namespace Sit_In_Monitoring
         }
         #endregion
 
-        #region Excel Import |> Jeorge
+        #region Excel Import |> Jeorge Rey
         public void PrintRecordsToExcelFormat()
         {
             if (PrintLayoutDataGrid.Rows.Count > 0)
