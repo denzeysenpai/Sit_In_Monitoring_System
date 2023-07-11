@@ -216,7 +216,6 @@ namespace Sit_In_Monitoring
 
             check.Fill(dt);
 
-
             if (dt.Rows.Count == 0)
             {
                 OpenSQL();
@@ -227,6 +226,7 @@ namespace Sit_In_Monitoring
 
                 ds.Clear();
                 s.Fill(ds);
+                /// Fix some issues display ||> William III
                 if (ds.Tables[0].Rows.Count > 0)
                 {
                     SqlCommand cmd1 = new SqlCommand("INSERT INTO currentSession(studentId, date, timeIn, personid) SELECT @studentId, @date, @timeIn, s.personid FROM Students s WHERE s.studentid = @studentId", conn);
@@ -1186,6 +1186,7 @@ namespace Sit_In_Monitoring
 
         private void RecordView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            #region Display and Get Records ||> Jeorge Rey
             try
             {
                 if (recordsView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -1229,6 +1230,7 @@ namespace Sit_In_Monitoring
                 }
             }
             catch (Exception) {/**/}
+            #endregion
         }
 
         private void dateForRecords_ValueChanged(object sender, EventArgs e) =>
@@ -1493,8 +1495,6 @@ namespace Sit_In_Monitoring
         }
         #endregion
 
-
-
         #region Can select custom records |> Jeorge Rey
         public void CustomReport()
         {
@@ -1553,10 +1553,6 @@ namespace Sit_In_Monitoring
         #endregion
 
 
-
-
-
-
         // CUSTOM REPORT BUTTON CLICKS
         private void btnPreviewCustomReport_Click(object sender, EventArgs e)
         {
@@ -1566,20 +1562,11 @@ namespace Sit_In_Monitoring
         private void btnPrintCustomReport_Click(object sender, EventArgs e) =>
             PrintRecordsToExcelFormat();
 
-
-
-
-
         // DAY REPORT BUTTON CLICKS
         private void btnPreviewDayReport_Click(object sender, EventArgs e) =>
             GeneralFunctionForPrintOptions("day");
         private void btnPrintDayReport_Click(object sender, EventArgs e) =>
             PrintRecordsToExcelFormat();
-
-
-
-
-
 
         // SEMESTER REPORT BUTTON CLICKS
         private void btnPreviewSemesterReport_Click(object sender, EventArgs e) =>
@@ -1587,30 +1574,17 @@ namespace Sit_In_Monitoring
         private void btnPrintSemesterReport_Click(object sender, EventArgs e) =>
             PrintRecordsToExcelFormat();
 
-
-
-
-
-
         // MONTH REPORT BUTTON CLICKS
         private void btnPreviewMonthReport_Click(object sender, EventArgs e) =>
             GeneralFunctionForPrintOptions("month");
         private void btnPrintMonthReport_Click(object sender, EventArgs e) =>
             PrintRecordsToExcelFormat();
 
-
-
-
-
-
         // STUDENT SPECIFIC REPORT BUTTON CLICKS
         private void btnPreviewStudentSpecificReport_Click(object sender, EventArgs e) =>
             GeneralFunctionForPrintOptions("studentspecific");
         private void btnPrintStudentSpecificReport_Click(object sender, EventArgs e) =>
             PrintRecordsToExcelFormat();
-
-
-
 
         // CLOSE PRINT SET UP
         private void btnClosePrintSetUp_Click(object sender, EventArgs e)
