@@ -12,8 +12,6 @@ C:\Users\user\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\Itach
 C:\Users\user\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.CopyComplete
 C:\Users\user\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.exe
 C:\Users\user\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.pdb
-C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\SitInMonitoring.mdf
-C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\SitInMonitoring_log.ldf
 C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\bin\Debug\ItachiUIBunifu.dll
 C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.AssemblyReference.cache
 C:\Users\ACT-STUDENT\Source\Repos\denzeysenpai\Sit_In_Monitoring_System\obj\Debug\Sit_In_Monitoring.csproj.SuggestedBindingRedirects.cache

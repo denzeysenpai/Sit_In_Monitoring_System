@@ -29,14 +29,23 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SitInMonitoringForm));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
             this.dateToday = new ItachiUIBunifu.DateTimePickerBunifuItachi();
             this.pnlStudsRec = new System.Windows.Forms.Panel();
             this.DataGrid = new System.Windows.Forms.DataGridView();
+            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MI = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.pnlLoginFrame = new System.Windows.Forms.Panel();
@@ -225,15 +234,6 @@
             this.Processing = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.FIRSTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MI = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LASTNAME = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cSection = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_IN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TIME_OUT = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.LOG_OUT = new System.Windows.Forms.DataGridViewButtonColumn();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -305,7 +305,7 @@
             this.lblTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTime.Font = new System.Drawing.Font("Century Gothic", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTime.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(227)))), ((int)(((byte)(249)))), ((int)(((byte)(255)))));
-            this.lblTime.Location = new System.Drawing.Point(82, 6);
+            this.lblTime.Location = new System.Drawing.Point(85, 7);
             this.lblTime.Name = "lblTime";
             this.lblTime.Size = new System.Drawing.Size(196, 47);
             this.lblTime.TabIndex = 1;
@@ -326,9 +326,9 @@
             this.tm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(121)))), ((int)(((byte)(158)))));
             this.tm1.Controls.Add(this.lblTime);
             this.tm1.Controls.Add(this.dateToday);
-            this.tm1.Location = new System.Drawing.Point(8, 6);
+            this.tm1.Location = new System.Drawing.Point(5, 6);
             this.tm1.Name = "tm1";
-            this.tm1.Size = new System.Drawing.Size(409, 80);
+            this.tm1.Size = new System.Drawing.Size(415, 80);
             this.tm1.TabIndex = 0;
             // 
             // dateToday
@@ -336,10 +336,10 @@
             this.dateToday.BorderColor = System.Drawing.Color.Aqua;
             this.dateToday.BorderSize = 0;
             this.dateToday.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateToday.Location = new System.Drawing.Point(110, 49);
+            this.dateToday.Location = new System.Drawing.Point(114, 47);
             this.dateToday.MinimumSize = new System.Drawing.Size(4, 35);
             this.dateToday.Name = "dateToday";
-            this.dateToday.Size = new System.Drawing.Size(178, 35);
+            this.dateToday.Size = new System.Drawing.Size(191, 35);
             this.dateToday.SkinColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(121)))), ((int)(((byte)(158)))));
             this.dateToday.TabIndex = 12;
             this.dateToday.TabStop = false;
@@ -378,6 +378,82 @@
             this.DataGrid.TabIndex = 1;
             this.DataGrid.TabStop = false;
             this.DataGrid.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DataGrid_CellContentClick);
+            // 
+            // DATE
+            // 
+            this.DATE.Frozen = true;
+            this.DATE.HeaderText = "DATE";
+            this.DATE.Name = "DATE";
+            this.DATE.ReadOnly = true;
+            this.DATE.Width = 120;
+            // 
+            // STUDENT_ID
+            // 
+            this.STUDENT_ID.Frozen = true;
+            this.STUDENT_ID.HeaderText = "STUDENT ID";
+            this.STUDENT_ID.Name = "STUDENT_ID";
+            this.STUDENT_ID.ReadOnly = true;
+            // 
+            // FIRSTNAME
+            // 
+            this.FIRSTNAME.Frozen = true;
+            this.FIRSTNAME.HeaderText = "FIRST NAME";
+            this.FIRSTNAME.Name = "FIRSTNAME";
+            this.FIRSTNAME.ReadOnly = true;
+            this.FIRSTNAME.Width = 145;
+            // 
+            // MI
+            // 
+            this.MI.Frozen = true;
+            this.MI.HeaderText = "M.I";
+            this.MI.Name = "MI";
+            this.MI.ReadOnly = true;
+            this.MI.Width = 40;
+            // 
+            // LASTNAME
+            // 
+            this.LASTNAME.Frozen = true;
+            this.LASTNAME.HeaderText = "LAST NAME";
+            this.LASTNAME.Name = "LASTNAME";
+            this.LASTNAME.ReadOnly = true;
+            this.LASTNAME.Width = 135;
+            // 
+            // cSection
+            // 
+            this.cSection.Frozen = true;
+            this.cSection.HeaderText = "SECTION";
+            this.cSection.Name = "cSection";
+            this.cSection.ReadOnly = true;
+            this.cSection.Width = 75;
+            // 
+            // TIME_IN
+            // 
+            this.TIME_IN.Frozen = true;
+            this.TIME_IN.HeaderText = "TIME IN";
+            this.TIME_IN.Name = "TIME_IN";
+            this.TIME_IN.ReadOnly = true;
+            this.TIME_IN.Width = 110;
+            // 
+            // TIME_OUT
+            // 
+            this.TIME_OUT.Frozen = true;
+            this.TIME_OUT.HeaderText = "TIME OUT";
+            this.TIME_OUT.Name = "TIME_OUT";
+            this.TIME_OUT.ReadOnly = true;
+            this.TIME_OUT.Width = 110;
+            // 
+            // LOG_OUT
+            // 
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle2;
+            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.LOG_OUT.Frozen = true;
+            this.LOG_OUT.HeaderText = "LOG OUT";
+            this.LOG_OUT.Name = "LOG_OUT";
+            this.LOG_OUT.Text = "LOG OUT";
+            this.LOG_OUT.ToolTipText = "Log out student";
+            this.LOG_OUT.UseColumnTextForButtonValue = true;
             // 
             // label1
             // 
@@ -910,7 +986,7 @@
             this.pnlRecords.Controls.Add(this.mrg6);
             this.pnlRecords.Controls.Add(this.pnltm2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(0, 0);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -939,7 +1015,7 @@
             this.pnlSemesterReport.Controls.Add(this.btnPreviewSemesterReport);
             this.pnlSemesterReport.Controls.Add(this.cbxSelectSemester);
             this.pnlSemesterReport.Controls.Add(this.btnPrintSemesterReport);
-            this.pnlSemesterReport.Location = new System.Drawing.Point(972, 341);
+            this.pnlSemesterReport.Location = new System.Drawing.Point(9, 13);
             this.pnlSemesterReport.Name = "pnlSemesterReport";
             this.pnlSemesterReport.Size = new System.Drawing.Size(443, 171);
             this.pnlSemesterReport.TabIndex = 15;
@@ -1024,7 +1100,7 @@
             this.pnlMonthReport.Controls.Add(this.btnPreviewMonthReport);
             this.pnlMonthReport.Controls.Add(this.label27);
             this.pnlMonthReport.Controls.Add(this.btnPrintMonthReport);
-            this.pnlMonthReport.Location = new System.Drawing.Point(1018, 146);
+            this.pnlMonthReport.Location = new System.Drawing.Point(6, 190);
             this.pnlMonthReport.Name = "pnlMonthReport";
             this.pnlMonthReport.Size = new System.Drawing.Size(443, 237);
             this.pnlMonthReport.TabIndex = 15;
@@ -1099,7 +1175,7 @@
             this.pnlStudentSpecificReport.Controls.Add(this.btnPrintStudentSpecificReport);
             this.pnlStudentSpecificReport.Controls.Add(this.dtpStudEndDate);
             this.pnlStudentSpecificReport.Controls.Add(this.dtpStudStartDate);
-            this.pnlStudentSpecificReport.Location = new System.Drawing.Point(981, 386);
+            this.pnlStudentSpecificReport.Location = new System.Drawing.Point(461, 290);
             this.pnlStudentSpecificReport.Name = "pnlStudentSpecificReport";
             this.pnlStudentSpecificReport.Size = new System.Drawing.Size(443, 260);
             this.pnlStudentSpecificReport.TabIndex = 15;
@@ -1220,7 +1296,7 @@
             this.pnlDayReport.Controls.Add(this.btnPrintDayReport);
             this.pnlDayReport.Controls.Add(this.checkedListBox1);
             this.pnlDayReport.Controls.Add(this.dtpDayReportSelect);
-            this.pnlDayReport.Location = new System.Drawing.Point(1067, 390);
+            this.pnlDayReport.Location = new System.Drawing.Point(461, 13);
             this.pnlDayReport.Name = "pnlDayReport";
             this.pnlDayReport.Size = new System.Drawing.Size(443, 260);
             this.pnlDayReport.TabIndex = 15;
@@ -2673,7 +2749,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1472, 40);
+            this.panel1.Size = new System.Drawing.Size(1467, 40);
             this.panel1.TabIndex = 20;
             // 
             // exitButton
@@ -2684,7 +2760,7 @@
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(1428, 0);
+            this.exitButton.Location = new System.Drawing.Point(1425, 0);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(44, 40);
             this.exitButton.TabIndex = 11;
@@ -2767,82 +2843,6 @@
             // 
             this.studentsBindingSource.DataMember = "Students";
             // 
-            // DATE
-            // 
-            this.DATE.Frozen = true;
-            this.DATE.HeaderText = "DATE";
-            this.DATE.Name = "DATE";
-            this.DATE.ReadOnly = true;
-            this.DATE.Width = 120;
-            // 
-            // STUDENT_ID
-            // 
-            this.STUDENT_ID.Frozen = true;
-            this.STUDENT_ID.HeaderText = "STUDENT ID";
-            this.STUDENT_ID.Name = "STUDENT_ID";
-            this.STUDENT_ID.ReadOnly = true;
-            // 
-            // FIRSTNAME
-            // 
-            this.FIRSTNAME.Frozen = true;
-            this.FIRSTNAME.HeaderText = "FIRST NAME";
-            this.FIRSTNAME.Name = "FIRSTNAME";
-            this.FIRSTNAME.ReadOnly = true;
-            this.FIRSTNAME.Width = 145;
-            // 
-            // MI
-            // 
-            this.MI.Frozen = true;
-            this.MI.HeaderText = "M.I";
-            this.MI.Name = "MI";
-            this.MI.ReadOnly = true;
-            this.MI.Width = 40;
-            // 
-            // LASTNAME
-            // 
-            this.LASTNAME.Frozen = true;
-            this.LASTNAME.HeaderText = "LAST NAME";
-            this.LASTNAME.Name = "LASTNAME";
-            this.LASTNAME.ReadOnly = true;
-            this.LASTNAME.Width = 135;
-            // 
-            // cSection
-            // 
-            this.cSection.Frozen = true;
-            this.cSection.HeaderText = "SECTION";
-            this.cSection.Name = "cSection";
-            this.cSection.ReadOnly = true;
-            this.cSection.Width = 75;
-            // 
-            // TIME_IN
-            // 
-            this.TIME_IN.Frozen = true;
-            this.TIME_IN.HeaderText = "TIME IN";
-            this.TIME_IN.Name = "TIME_IN";
-            this.TIME_IN.ReadOnly = true;
-            this.TIME_IN.Width = 110;
-            // 
-            // TIME_OUT
-            // 
-            this.TIME_OUT.Frozen = true;
-            this.TIME_OUT.HeaderText = "TIME OUT";
-            this.TIME_OUT.Name = "TIME_OUT";
-            this.TIME_OUT.ReadOnly = true;
-            this.TIME_OUT.Width = 110;
-            // 
-            // LOG_OUT
-            // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
-            this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.LOG_OUT.Frozen = true;
-            this.LOG_OUT.HeaderText = "LOG OUT";
-            this.LOG_OUT.Name = "LOG_OUT";
-            this.LOG_OUT.Text = "LOG OUT";
-            this.LOG_OUT.ToolTipText = "Log out student";
-            this.LOG_OUT.UseColumnTextForButtonValue = true;
-            // 
             // SitInMonitoringForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -2850,7 +2850,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1472, 759);
+            this.ClientSize = new System.Drawing.Size(1467, 759);
             this.Controls.Add(this.pnlPleaseWait);
             this.Controls.Add(this.pnlAdminLock);
             this.Controls.Add(this.pnlRecords);
@@ -2867,7 +2867,7 @@
             this.KeyPreview = true;
             this.Name = "SitInMonitoringForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SIT-IN FORM";
+            this.Text = " ";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormWillBeClosed);
             this.Load += new System.EventHandler(this.SitInMonitoringForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.KeyIsDown);
