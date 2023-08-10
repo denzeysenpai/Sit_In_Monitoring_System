@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Deployment.Application;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -284,7 +283,6 @@ namespace Sit_In_Monitoring
         /// <summary>
         /// Checks for basic SQL Injection attack attempt |> Mark
         /// </summary>
-        /// <param name="txt"></param>
         void CatchSQLInjection(Control txt)
         {
             void SecurityMeasure()
@@ -344,7 +342,7 @@ namespace Sit_In_Monitoring
                         "Student Record Exists!",
                         "Record Found",
                         MessageBoxButtons.OK,
-                        MessageBoxIcon.Information); 
+                        MessageBoxIcon.Information);
 
                     if (d.Equals(DialogResult.OK))
                     {
@@ -524,7 +522,7 @@ namespace Sit_In_Monitoring
 
                     if (dt.Rows.Count >= 1)
                     {
-                        if (MessageBox.Show("This student have already reached session limit time!\r\n(CANCEL to override)", "Time Limit Reached!", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
+                        if (MessageBox.Show("This student has already reached session limit time!\r\n(CANCEL to override)", "Time Limit Reached!", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                         {
                             if (MessageBox.Show("Do you want to override student's time?", "Override?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                                 AddStudent();
@@ -545,7 +543,7 @@ namespace Sit_In_Monitoring
 
         }//DONE
 
-        public void notifyTimeDone()
+        public void notifyTimeDone() // Broken/Bug || Please fix, method no longer does what it is supposed to and is affecting other methods or is being affected by other methods
         {
             //try
             //{
@@ -576,6 +574,7 @@ namespace Sit_In_Monitoring
             ds.Clear();
             name.Fill(ds);
 
+            // Don't worry about this part if code is unreadable for you |> Mark
             string currentid = displayID.Text;
             string studentid = newStudentIDValue.Text == string.Empty ? displayID.Text : newStudentIDValue.Text;
             string fname = newFirstNameValue.Text == string.Empty ? ds.Tables[0].Rows[0]["firstName"].ToString() : newFirstNameValue.Text;
@@ -982,7 +981,6 @@ namespace Sit_In_Monitoring
 
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
-
             SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
 
             System.Data.DataTable dt = new System.Data.DataTable();
@@ -1025,6 +1023,7 @@ namespace Sit_In_Monitoring
                 ErrorMessage += "Please Fill out Student Section!\n";
             #endregion
 
+            #region InputValidationProcess |> Mark
             if (ErrorInInputIsDetected && !NoInjection)
                 MessageBox.Show($"{ErrorMessage}", "INVALID INPUT DETECTED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             else
@@ -1037,11 +1036,10 @@ namespace Sit_In_Monitoring
                         RestrictTime();
                     NoInjection = true;
                 }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
             }
+            #endregion
+
             CloseSQL();
         }
         private void DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e) // Update data during log out
@@ -1049,14 +1047,9 @@ namespace Sit_In_Monitoring
             bool StudentLogsOut = e.RowIndex > -1 && (e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index);
             if (StudentLogsOut)
             {
-                try
-                {
-                    LogoutStudent(e);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
+                if ()
+                try { LogoutStudent(e); }
+                catch (Exception ex) { MessageBox.Show(ex.Message); }
                 CloseSQL();
                 Update_Data();
             }
@@ -1244,14 +1237,8 @@ namespace Sit_In_Monitoring
 
         private void BtnConfirmEdit_Click(object sender, EventArgs e)
         {
-            try
-            {
-                EditStudentDetails();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            try { EditStudentDetails(); }
+            catch (Exception ex) { MessageBox.Show(ex.Message); }
         }
 
         #region UI Behaviour NEW |> Edit Panel - Mark
@@ -1283,6 +1270,10 @@ namespace Sit_In_Monitoring
             CheckForChanges(oldSectionValue.Text, newSectionValue.Text, changesInfo5);
         #endregion
 
+
+        /// <summary>
+        /// Experimental way of delaying user input to keep up with data base process
+        /// </summary>
         private void ProcessDB(object sender, EventArgs e)
         {
             // Please Wait Notification after Log Out
@@ -1303,13 +1294,9 @@ namespace Sit_In_Monitoring
             }
         }
 
-        private void dateToday_ValueChanged(object sender, EventArgs e)
-        {
-            Update_Data();
-        }
-
         private void cbxSelectForm_SelectedIndexChanged(object sender, EventArgs e)
         {
+            // Responsible for displaying the specified pages for chosen option
             void ShowPanelForSelected(Control pnl, string match) =>
                 pnl.Visible = (cbxSelectForm.Text.ToLower() == match.ToLower());
 
@@ -1638,8 +1625,10 @@ namespace Sit_In_Monitoring
 
         [DllImport("Gdi32.dll")]
         public static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidthEllipse, int nHeightEllipse);
+        // This method is responsible for changing the region of rectangles to form an ellipse
         public void RoundCorner(Control ctr, int val) => ctr.Region = Region.FromHrgn(CreateRoundRectRgn(0, 0, ctr.Width, ctr.Height, val, val));
-        public void RoundCorner()
+        // This method is custom created in order make rounding rectangles easier
+        public void RoundCorner() // an overload of another method
         {
             foreach (Control ctr in Set)
             {
