@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
+using System.Deployment.Application;
 using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -11,7 +12,7 @@ namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
-        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\ACT-STUDENT\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
+        readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         DataSet ds = new DataSet();
 
 
@@ -622,10 +623,9 @@ namespace Sit_In_Monitoring
         public SitInMonitoringForm()
         {
             InitializeComponent();
-
-            // Add design
             Design.RoundCorner(this, 25);
 
+            #region Panel |> Round Corners
             TextboxBodies = new SeiyaMarxElls(tm1, tm2, l1, l2, l3, l4, l6, l7, 17);
             TextboxMargins = new SeiyaMarxElls(pass, mrg1, mrg2, mrg3, mrg4, mrg6, mrg7, borderpass, 18);
             Fifteens = new SeiyaMarxElls(pnlmrgn, pnlLoginFrame, pnlStudsRec, pnlDesign, pnlDepth, DataGrid, recordsView, pnlStudentInfo, pnlDate, 15);
@@ -643,7 +643,6 @@ namespace Sit_In_Monitoring
             TextboxBodies.RoundCorner();
             Fifteens.RoundCorner();
 
-            #region Panel |> Round Corners
             Design.RoundCorner(pnlNotification, 50);
             Design.RoundCorner(pnlDateMargin, 15);
             Design.RoundCorner(pnlLoginBody, 15);
@@ -673,6 +672,10 @@ namespace Sit_In_Monitoring
         }
         private void SitInMonitoringForm_Load(object sender, EventArgs e) // Form Load
         {
+            if (DateTime.Now.ToString("MM/dd/yyyy") == "02/16/2024" || DateTime.Now.ToString("MM/dd/yyyy") == "02/16/2025")
+            {
+                MessageBox.Show("Hehe");
+            }
             // Default values on first load, may or may not change during run time
             CheckForMissedLogOut();
             notClicked = Color.FromArgb(210, 242, 250);
@@ -873,7 +876,7 @@ namespace Sit_In_Monitoring
         /// <summary>
         /// Checks if the textbox is focused in the form
         /// </summary>
-        private void TextBoxFocus(object sender, EventArgs e)
+        private void TextBoxFocus(object sender, EventArgs e) // mark da great XD
         {
             void TextBox_Behavior(Control txtbx, Control mrgin, Control placeholders) => // Text box placeholders _Behavior
                 placeholders.Visible = (mrgin.BackColor = txtbx.Focused ? Clicked : notClicked) == notClicked;
@@ -1181,7 +1184,7 @@ namespace Sit_In_Monitoring
 
         private void RecordView_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            #region Display and Get Records ||> Jeorge Rey
+            #region Display and Get Records |> Mark hehe
             try
             {
                 if (recordsView.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
@@ -1215,7 +1218,6 @@ namespace Sit_In_Monitoring
                     displaySection.Text = section;
                     displayNumOfSitIns.Text = dt.Rows.Count.ToString();
                     displayBalance.Text = GetApproximateTime(ds);
-
 
                     // New Initialized Value 
                     oldFirstNameValue.Text = fName;
