@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Office.Interop.Excel;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sit_In_Monitoring
 {
@@ -388,7 +390,7 @@ namespace Sit_In_Monitoring
             DisplayForSessionLogs();
             SqlDataAdapter s = new SqlDataAdapter("SELECT cs.Date, s.studentId, s.firstName, s.middleInitial, s.lastname, s.section, cs.TimeIn, cs.timeout FROM students s JOIN currentSession cs on s.personid = cs.personid", conn);
 
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             s.Fill(dt);
             DataGrid.Rows.Clear();
 
@@ -402,7 +404,7 @@ namespace Sit_In_Monitoring
             }
         }
 
-        public void LogoutStudent(DataGridViewCellEventArgs e) //FIXED 6/20/23 NEED TO BE TESTED
+        public void LogoutStudent(DataGridViewCellEventArgs e) //FIXED 6/20/23 NEED TO BE TESTED |> Mark
         {
             DateTime date = DateTime.Now;
             string dateDb = dateToday.Value.ToString(" MM/dd/yyyy");
@@ -410,23 +412,27 @@ namespace Sit_In_Monitoring
             DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
 
+            // Collects all data present in table of Session Logs
             SqlDataAdapter count = new SqlDataAdapter("" +
                 "SELECT * " +
                 "FROM SessionLogs;", conn);
 
+            // Calculates the appropriate time out for the balance
             SqlDataAdapter calc = new SqlDataAdapter("" +
                 "SELECT DATEDIFF(second, TimeIn, '" + time1 + "') / 3600.0 " +
                 "FROM currentsession " +
                 "WHERE studentid = '" + studentId + "' and date = '" + dateDb + "'", conn);
 
-            DataTable dt = new DataTable();
-            DataTable timeUsed = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
+            System.Data.DataTable timeUsed = new System.Data.DataTable();
 
+            // Fill datatables
             calc.Fill(timeUsed);
-
             count.Fill(dt);
 
             OpenSQL();
+
+            // Add new record to SessionLogs
             SqlCommand cmd = new SqlCommand("" +
                 "INSERT INTO SessionLogs " +
                 "SELECT cs.studentId, cs.date, cs.timeIn, @timeOut, @timeUsed, cs.personid " +
@@ -439,6 +445,7 @@ namespace Sit_In_Monitoring
             cmd.Parameters.AddWithValue("@timeUsed", timeUsed.Rows[0][0].ToString());
             cmd.ExecuteNonQuery();
 
+            // Subtract in record
             SqlCommand substractTime = new SqlCommand("" +
                 "UPDATE Students " +
                 "SET remainingTime = remainingTime - (SELECT CONVERT(DECIMAL(16, 6), TimeUsed) " +
@@ -452,6 +459,7 @@ namespace Sit_In_Monitoring
             substractTime.Parameters.AddWithValue("date", dateToday.Value.ToString(" MM/dd/yyyy"));
             substractTime.ExecuteNonQuery();
 
+            // Delete from current sessions since student is no longer in session
             SqlCommand cmd2 = new SqlCommand("" +
                 "DELETE FROM currentSession " +
                 "WHERE studentId = @studentId and date = @dateNow", conn);
@@ -460,8 +468,42 @@ namespace Sit_In_Monitoring
             cmd2.Parameters.AddWithValue("@dateNow", dateDb);
             cmd2.ExecuteNonQuery();
 
+            // Remove from data grid view in main page
             DataGrid.Rows.RemoveAt(e.RowIndex);
             ProcessingDataBase = true;
+
+            #region DisplayLogOutInformation |> Mark
+            // Gets the specified value in the table: 'students' from database
+            string GetValueOf(string select)
+            {
+                SqlCommand getValue = new SqlCommand("" +
+                $"SELECT {select} " +
+                "FROM Students " +
+                $"WHERE studentID = '{studentId}'", conn);
+                getValue.ExecuteNonQuery();
+                SqlDataReader value = getValue.ExecuteReader();
+                value.Read();
+                string ret = value[0].ToString();
+                value.Close();
+                return ret;
+            }
+
+            // Convert Balance to Hour and Minutes Format
+            double timeValue = Convert.ToDouble(GetValueOf("remainingTime"));
+            double hours = Math.Floor(timeValue);
+            double minutes = Math.Floor((timeValue - hours) * 60);
+
+            // Display Information
+            MessageBox.Show(
+                $"Student ID: {studentId}\n" +
+                $"Student Name: {GetValueOf("lastName")}, {GetValueOf("firstName")} {GetValueOf("middleInitial")}.\n" +
+                $"Remaining Balance: {hours} hours, {minutes} minutes",
+                "LOGOUT INFORMATION",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            // mwah mwah tsup tsup
+            #endregion
         }
         public void SearchStudentAllLogs()//DONE
         {
@@ -485,7 +527,7 @@ namespace Sit_In_Monitoring
             recordsView.Rows.Clear();
             SqlDataAdapter s = new SqlDataAdapter("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date like '%" + dateForRecords.Value.ToString("MM/dd/yyyy") + "%' and sl.studentid like '%" + txtSearchId.Text + "%'", conn);
 
-            DataTable dt = new DataTable();
+            System.Data.DataTable dt = new System.Data.DataTable();
             dt.Clear();
             s.Fill(dt);
             foreach (DataRow dr in dt.Rows)
@@ -524,7 +566,7 @@ namespace Sit_In_Monitoring
                     {
                         if (MessageBox.Show("This student has already reached session limit time!\r\n(CANCEL to override)", "Time Limit Reached!", MessageBoxButtons.OKCancel) == DialogResult.Cancel)
                         {
-                            if (MessageBox.Show("Do you want to override student's time?", "Override?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            if (MessageBox.Show("Do you want to override student's time?", "Override?", MessageBoxButtons.YesNo) == DialogResult.Yes) // I don't think this works... Please fix Ez - Mark
                                 AddStudent();
                             else
                                 ClearInputTextBoxes();
@@ -545,6 +587,8 @@ namespace Sit_In_Monitoring
 
         public void notifyTimeDone() // Broken/Bug || Please fix, method no longer does what it is supposed to and is affecting other methods or is being affected by other methods
         {
+            // COMMENTED TO PREVENT ERROR (Temporary)
+
             //try
             //{
             //    DateTime val = DateTime.Now;
@@ -569,7 +613,8 @@ namespace Sit_In_Monitoring
         }//DONE 6/23/23
         public void EditStudentDetails()//BUG - AFTER EDITING THE TEXT THAT WAS PREVIOUSLY PUT DOESN'T CLEAR-- MUST BE FIX. ALSO DISABLE THE STUDENT ID EDIT. STUDENT ID IS NOT EDITABLE. // FIXED |> MARK POGI
         {
-            OpenSQL();
+            if (conn.State == ConnectionState.Closed)
+                OpenSQL();
             SqlDataAdapter name = new SqlDataAdapter("SELECT * FROM students WHERE studentid = '" + displayID.Text + "'", conn);
             ds.Clear();
             name.Fill(ds);
@@ -581,8 +626,14 @@ namespace Sit_In_Monitoring
             string mname = newMiddleInitialValue.Text == string.Empty ? ds.Tables[0].Rows[0]["middleInitial"].ToString() : newMiddleInitialValue.Text;
             string lname = newLastNameValue.Text == string.Empty ? ds.Tables[0].Rows[0]["lastName"].ToString() : newLastNameValue.Text;
             string section = newSectionValue.Text == string.Empty ? displaySection.Text : newSectionValue.Text;
+            // Short sumamry, string value is returned after checking if string is empty or not, if empty then return current name, if input detected then return input ;) hekhok |> Mark
 
-            SqlCommand cmd = new SqlCommand("UPDATE students SET studentid = @studentid, firstName = @firstName, middleInitial = @middleInitial, lastName = @lastName, section = @section where studentid = @currentstudentId", conn);
+
+            SqlCommand cmd = new SqlCommand("" +
+                "UPDATE students " +
+                "SET studentid = @studentid, firstName = @firstName, middleInitial = @middleInitial, lastName = @lastName, section = @section " +
+                "WHERE studentid = @currentstudentId", conn);
+
             cmd.Parameters.AddWithValue("@currentstudentId", currentid);
             cmd.Parameters.AddWithValue("@studentid", studentid);
             cmd.Parameters.AddWithValue("@firstName", fname);
@@ -615,7 +666,8 @@ namespace Sit_In_Monitoring
             pnlEditUser.Hide();
             ds.Clear();
             name.Fill(ds);
-            CloseSQL();
+            if (conn.State == ConnectionState.Open)
+                CloseSQL();
         }
         #endregion
 
@@ -717,7 +769,7 @@ namespace Sit_In_Monitoring
 
             Display_Student_Info("00-0000000", "---- ----", "-", "-------", "---- - ---", 0, 0, 0);
             attemptsOfLogin = 0;
-            password = "hehe";
+            password = "hehe"; // admin lock temporary password
 
             buttonColors = Color.FromArgb(8, 136, 194);
 
@@ -841,6 +893,7 @@ namespace Sit_In_Monitoring
             // Notification Animation go BrrRrRrrrR |> Mark
             if (ProcessingDataBase == false)
             {
+                // Lisod sabton nu? ayaw hilabti
                 closeNotify = count >= 600 ? !(notify = (count = 0) != 0) : closeNotify;
                 count = closeNotify == false && notify && pnlNotification.Left < endOfNotification + 40 ? count + 10 : count;
                 pnlNotification.Left = notify && pnlNotification.Left > endOfNotification ? pnlNotification.Left - 40 : pnlNotification.Left;
@@ -930,6 +983,7 @@ namespace Sit_In_Monitoring
                     attemptsOfLogin++;
             }
         }
+
         /// <summary>
         /// Exits the application
         /// </summary>
@@ -981,76 +1035,120 @@ namespace Sit_In_Monitoring
 
         private void BtnStart_Click(object sender, EventArgs e) //Update data during log in
         {
-            SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
-
-            System.Data.DataTable dt = new System.Data.DataTable();
-            bool Add = !(dt.Rows.Count >= 1);
-            restrict.Fill(dt);
-
-            #region CheckForSQLInjection |> Mark
-            void CatchAttempt(List<Control> txt)
+            try
             {
-                foreach (Control t in txt)
-                    CatchSQLInjection(t);
-            }
-            List<Control> txts = new List<Control>()
-            { txtStudentID, txtStudentName, txtMiddleInitial, txtStudentLastName, txtSection };
-            CatchAttempt(txts);
-            #endregion
+                SqlDataAdapter restrict = new SqlDataAdapter("SELECT studentID, SUM(TimeUsed) AS TotalTimeUsed FROM SessionLogs WHERE studentID = '" + txtStudentID.Text + "' AND DATE = '" + dateToday.Value.ToString(" MM/dd/yyyy") + "' GROUP BY studentID HAVING SUM(TimeUsed) >= 1;", conn);
 
-            #region CheckForInvalidError |> Mark
-            // Check For error
-            string ErrorMessage = "";
-            bool ErrorInInputIsDetected = false; // this checks overall invalid input
+                System.Data.DataTable dt = new System.Data.DataTable();
+                bool Add = !(dt.Rows.Count >= 1);
+                restrict.Fill(dt);
 
-            bool ControlHasNullInputIn(Control txtbox) => // this specifies invalid input
-                ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
-            //      ^^^^^INVALID INPUT DETECTED
+                //if (conn.State == ConnectionState.Closed)
+                //    OpenSQL();
 
-            if (ControlHasNullInputIn(txtStudentID))
-                ErrorMessage += "Please Fill out Student ID!\n";
-
-            if (ControlHasNullInputIn(txtStudentName))
-                ErrorMessage += "Please Fill out Student First Name!\n";
-
-            if (ControlHasNullInputIn(txtMiddleInitial))
-                ErrorMessage += "Please Fill out Student Middle Initial!\n";
-
-            if (ControlHasNullInputIn(txtStudentLastName))
-                ErrorMessage += "Please Fill out Student Last Name!\n";
-
-            if (ControlHasNullInputIn(txtSection))
-                ErrorMessage += "Please Fill out Student Section!\n";
-            #endregion
-
-            #region InputValidationProcess |> Mark
-            if (ErrorInInputIsDetected && !NoInjection)
-                MessageBox.Show($"{ErrorMessage}", "INVALID INPUT DETECTED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            else
-            {
-                try // No errors, but check for Exceptions
+                #region CheckForSQLInjection |> Mark
+                void CatchAttempt(List<Control> txt)
                 {
-                    if (Add == true)
-                        AddStudent();
-                    else
-                        RestrictTime();
-                    NoInjection = true;
+                    foreach (Control t in txt)
+                        CatchSQLInjection(t);
                 }
-                catch (Exception ex) { MessageBox.Show(ex.Message); }
-            }
-            #endregion
+                List<Control> txts = new List<Control>()
+            { txtStudentID, txtStudentName, txtMiddleInitial, txtStudentLastName, txtSection };
+                CatchAttempt(txts);
+                #endregion
 
-            CloseSQL();
+                #region CheckForInvalidError |> Mark
+                // Check For error
+                string ErrorMessage = "";
+                bool ErrorInInputIsDetected = false; // this checks overall invalid input
+
+                bool ControlHasNullInputIn(Control txtbox) => // this specifies invalid input
+                    ErrorInInputIsDetected = txtbox.Text == null || txtbox.Text == "";
+                //      ^^^^^INVALID INPUT DETECTED
+
+                if (ControlHasNullInputIn(txtStudentID))
+                    ErrorMessage += "Please Fill out Student ID!\n";
+
+                if (ControlHasNullInputIn(txtStudentName))
+                    ErrorMessage += "Please Fill out Student First Name!\n";
+
+                if (ControlHasNullInputIn(txtMiddleInitial))
+                    ErrorMessage += "Please Fill out Student Middle Initial!\n";
+
+                if (ControlHasNullInputIn(txtStudentLastName))
+                    ErrorMessage += "Please Fill out Student Last Name!\n";
+
+                if (ControlHasNullInputIn(txtSection))
+                    ErrorMessage += "Please Fill out Student Section!\n";
+                #endregion
+
+                #region InputValidationProcess |> Mark
+                if (ErrorInInputIsDetected && !NoInjection)
+                    MessageBox.Show($"{ErrorMessage}", "INVALID INPUT DETECTED", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                else
+                {
+                    try // No errors, but check for Exceptions
+                    {
+                        if (Add == true)
+                            AddStudent();
+                        else
+                            RestrictTime();
+                        NoInjection = true;
+                    }
+                    catch (Exception ex) { MessageBox.Show(ex.Message); }
+                }
+                #endregion
+
+                if (conn.State == ConnectionState.Open)
+                    CloseSQL();
+            }
+            catch (InvalidOperationException Ex)
+            {
+                MessageBox.Show("" +
+                    "It seems like you are trying to perform an action that is invalid for\n" +
+                    "the system, the system will try to fix the issue, try contacting a \n" +
+                    "technical assistant for support if this is a mistake.\n" +
+                    $"Error: {Ex}" +
+                    $"\n\nIt is possible that the program was not properly closed, or there were\n" +
+                    $"current sessions that were closed without logging out, or the error was \n" +
+                    $"by a power outage."
+                    ,"UH-OH...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (ArgumentNullException Ex)
+            {
+                MessageBox.Show("" +
+                    "There seems to be a null reference somewhere, try checking your \n" +
+                    "input or contact a technical assistant if you think this is a mistake." +
+                    $"Error: {Ex}"
+                    , "UH-OH...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+            catch (Exception Ex)
+            {
+                MessageBox.Show("" +
+                    "Unregistered Exception found, contact a technical assistant for support." +
+                    $"Error: {Ex}"
+                    , "UH-OH...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
         }
         private void DataGrid_CellContentClick(object sender, DataGridViewCellEventArgs e) // Update data during log out
         {
             bool StudentLogsOut = e.RowIndex > -1 && (e.ColumnIndex == DataGrid.Columns["LOG_OUT"].Index);
             if (StudentLogsOut)
             {
-                if ()
+                //if (conn.State == ConnectionState.Closed)
+                //    OpenSQL();
+
                 try { LogoutStudent(e); }
                 catch (Exception ex) { MessageBox.Show(ex.Message); }
-                CloseSQL();
+
+                if (conn.State == ConnectionState.Open)
+                    CloseSQL();
                 Update_Data();
             }
         }
@@ -1427,7 +1525,7 @@ namespace Sit_In_Monitoring
             PrintLayoutDataGrid.Columns.Clear();
             try
             {
-                using (DataTable dt = new DataTable("currrentSession"))
+                using (System.Data.DataTable dt = new System.Data.DataTable("currrentSession"))
                 {
                     using (SqlCommand cmd = new SqlCommand(SQLProcess, conn))
                     {
@@ -1489,7 +1587,7 @@ namespace Sit_In_Monitoring
                 {
                     OpenSQL();
                 }
-                using (DataTable dt = new DataTable("currrentSession"))
+                using (System.Data.DataTable dt = new System.Data.DataTable("currrentSession"))
                 {
                     using (SqlCommand cmd = new SqlCommand("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date between @DateStart and @DateEnd ", conn))
                     {
