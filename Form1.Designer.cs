@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SitInMonitoringForm));
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
@@ -54,6 +54,11 @@
             this.placeholder1 = new System.Windows.Forms.Label();
             this.txtStudentID = new System.Windows.Forms.TextBox();
             this.pnlLoginBody = new System.Windows.Forms.Panel();
+            this.panel13 = new System.Windows.Forms.Panel();
+            this.panel8 = new System.Windows.Forms.Panel();
+            this.panel11 = new System.Windows.Forms.Panel();
+            this.panel12 = new System.Windows.Forms.Panel();
+            this.panel10 = new System.Windows.Forms.Panel();
             this.BtnSearch = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label5 = new System.Windows.Forms.Label();
             this.mrg3 = new System.Windows.Forms.Panel();
@@ -90,41 +95,55 @@
             this.ENVIRONMENT = new System.Windows.Forms.Timer(this.components);
             this.pnlRecords = new System.Windows.Forms.Panel();
             this.pnlSetPrintOptions = new System.Windows.Forms.Panel();
+            this.pnlSemesterManager = new System.Windows.Forms.Panel();
+            this.pnlMainWindowForSemesterManagement = new System.Windows.Forms.Panel();
+            this.label33 = new System.Windows.Forms.Label();
+            this.panel9 = new System.Windows.Forms.Panel();
+            this.txtSemesterNameInput = new System.Windows.Forms.TextBox();
+            this.label34 = new System.Windows.Forms.Label();
+            this.label32 = new System.Windows.Forms.Label();
+            this.btnCloseSemesterManager = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.btnAddSemesterToRecords = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.btnRemoveSelectedSemester = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.dateTimePickerForEndOfSem = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerForStartOfSem = new System.Windows.Forms.DateTimePicker();
+            this.dataGridForSemesterRecords = new System.Windows.Forms.DataGridView();
+            this.SemesterName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.StartingDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label31 = new System.Windows.Forms.Label();
+            this.pnlCustomReport = new System.Windows.Forms.Panel();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.btnPreviewCustomReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.btnPrintCustomReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.dtpDateEnd = new System.Windows.Forms.DateTimePicker();
+            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
+            this.pnlDayReport = new System.Windows.Forms.Panel();
+            this.btnPreviewDayReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.label23 = new System.Windows.Forms.Label();
+            this.btnPrintDayReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.dtpDayReportSelect = new System.Windows.Forms.DateTimePicker();
+            this.pnlStudentSpecificReport = new System.Windows.Forms.Panel();
+            this.label29 = new System.Windows.Forms.Label();
+            this.label26 = new System.Windows.Forms.Label();
+            this.label28 = new System.Windows.Forms.Label();
+            this.btnPreviewStudentSpecificReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.cbxSelectedStudent = new System.Windows.Forms.ComboBox();
+            this.btnPrintStudentSpecificReport = new ItachiUIBunifu.ButtonBunifuItachi();
+            this.dtpStudEndDate = new System.Windows.Forms.DateTimePicker();
+            this.dtpStudStartDate = new System.Windows.Forms.DateTimePicker();
             this.pnlSemesterReport = new System.Windows.Forms.Panel();
             this.label30 = new System.Windows.Forms.Label();
             this.btnPreviewSemesterReport = new ItachiUIBunifu.ButtonBunifuItachi();
             this.cbxSelectSemester = new System.Windows.Forms.ComboBox();
+            this.btnShowSemesterManager = new ItachiUIBunifu.ButtonBunifuItachi();
             this.btnPrintSemesterReport = new ItachiUIBunifu.ButtonBunifuItachi();
             this.pnlMonthReport = new System.Windows.Forms.Panel();
             this.selectMonth = new System.Windows.Forms.MonthCalendar();
             this.btnPreviewMonthReport = new ItachiUIBunifu.ButtonBunifuItachi();
             this.label27 = new System.Windows.Forms.Label();
             this.btnPrintMonthReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.pnlStudentSpecificReport = new System.Windows.Forms.Panel();
-            this.label26 = new System.Windows.Forms.Label();
-            this.label28 = new System.Windows.Forms.Label();
-            this.btnPreviewStudentSpecificReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.cbxSelectedStudent = new System.Windows.Forms.ComboBox();
-            this.studentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
-            this.btnPrintStudentSpecificReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.dtpStudEndDate = new System.Windows.Forms.DateTimePicker();
-            this.dtpStudStartDate = new System.Windows.Forms.DateTimePicker();
-            this.pnlDayReport = new System.Windows.Forms.Panel();
-            this.label25 = new System.Windows.Forms.Label();
-            this.btnPreviewDayReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.label23 = new System.Windows.Forms.Label();
-            this.btnPrintDayReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.checkedListBox1 = new System.Windows.Forms.CheckedListBox();
-            this.dtpDayReportSelect = new System.Windows.Forms.DateTimePicker();
-            this.pnlCustomReport = new System.Windows.Forms.Panel();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label22 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.btnPreviewCustomReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.btnPrintCustomReport = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.dtpDateEnd = new System.Windows.Forms.DateTimePicker();
-            this.dtpDateStart = new System.Windows.Forms.DateTimePicker();
-            this.ChosenOptional = new System.Windows.Forms.CheckedListBox();
             this.cbxSelectForm = new System.Windows.Forms.ComboBox();
             this.btnClosePrintSetUp = new ItachiUIBunifu.ButtonBunifuItachi();
             this.PrintLayoutDataGrid = new System.Windows.Forms.DataGridView();
@@ -222,6 +241,7 @@
             this.pnltm2 = new System.Windows.Forms.Panel();
             this.lblTime2 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
+            this.studentsBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.pictureBoxBunifuItachi1 = new ItachiUIBunifu.PictureBoxBunifuItachi();
             this.panel1 = new System.Windows.Forms.Panel();
             this.exitButton = new System.Windows.Forms.Button();
@@ -234,6 +254,7 @@
             this.Processing = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.studentsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.fileSystemWatcher1 = new System.IO.FileSystemWatcher();
             this.tm2.SuspendLayout();
             this.tm1.SuspendLayout();
             this.pnlStudsRec.SuspendLayout();
@@ -242,6 +263,8 @@
             this.mrg1.SuspendLayout();
             this.l1.SuspendLayout();
             this.pnlLoginBody.SuspendLayout();
+            this.panel8.SuspendLayout();
+            this.panel11.SuspendLayout();
             this.mrg3.SuspendLayout();
             this.l3.SuspendLayout();
             this.mrg4.SuspendLayout();
@@ -257,12 +280,15 @@
             this.pass.SuspendLayout();
             this.pnlRecords.SuspendLayout();
             this.pnlSetPrintOptions.SuspendLayout();
+            this.pnlSemesterManager.SuspendLayout();
+            this.pnlMainWindowForSemesterManagement.SuspendLayout();
+            this.panel9.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridForSemesterRecords)).BeginInit();
+            this.pnlCustomReport.SuspendLayout();
+            this.pnlDayReport.SuspendLayout();
+            this.pnlStudentSpecificReport.SuspendLayout();
             this.pnlSemesterReport.SuspendLayout();
             this.pnlMonthReport.SuspendLayout();
-            this.pnlStudentSpecificReport.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).BeginInit();
-            this.pnlDayReport.SuspendLayout();
-            this.pnlCustomReport.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PrintLayoutDataGrid)).BeginInit();
             this.pnlEditUser.SuspendLayout();
             this.pnlIn.SuspendLayout();
@@ -292,11 +318,13 @@
             this.mrg6.SuspendLayout();
             this.l6.SuspendLayout();
             this.pnltm2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).BeginInit();
             this.panel1.SuspendLayout();
             this.pnlNotification.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chckicon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTime
@@ -314,11 +342,11 @@
             // 
             // tm2
             // 
-            this.tm2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(99)))), ((int)(((byte)(130)))));
+            this.tm2.BackColor = System.Drawing.Color.White;
             this.tm2.Controls.Add(this.tm1);
-            this.tm2.Location = new System.Drawing.Point(23, 114);
+            this.tm2.Location = new System.Drawing.Point(16, 106);
             this.tm2.Name = "tm2";
-            this.tm2.Size = new System.Drawing.Size(426, 92);
+            this.tm2.Size = new System.Drawing.Size(427, 92);
             this.tm2.TabIndex = 16;
             // 
             // tm1
@@ -326,7 +354,7 @@
             this.tm1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(2)))), ((int)(((byte)(121)))), ((int)(((byte)(158)))));
             this.tm1.Controls.Add(this.lblTime);
             this.tm1.Controls.Add(this.dateToday);
-            this.tm1.Location = new System.Drawing.Point(5, 6);
+            this.tm1.Location = new System.Drawing.Point(6, 6);
             this.tm1.Name = "tm1";
             this.tm1.Size = new System.Drawing.Size(415, 80);
             this.tm1.TabIndex = 0;
@@ -347,10 +375,11 @@
             // 
             // pnlStudsRec
             // 
-            this.pnlStudsRec.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.pnlStudsRec.BackColor = System.Drawing.Color.White;
+            this.pnlStudsRec.Controls.Add(this.label3);
             this.pnlStudsRec.Controls.Add(this.DataGrid);
             this.pnlStudsRec.Controls.Add(this.label1);
-            this.pnlStudsRec.Location = new System.Drawing.Point(459, 56);
+            this.pnlStudsRec.Location = new System.Drawing.Point(455, 59);
             this.pnlStudsRec.Name = "pnlStudsRec";
             this.pnlStudsRec.Size = new System.Drawing.Size(991, 683);
             this.pnlStudsRec.TabIndex = 15;
@@ -444,9 +473,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle5;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -459,8 +488,8 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 24.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label1.Location = new System.Drawing.Point(305, 11);
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(65)))), ((int)(((byte)(87)))));
+            this.label1.Location = new System.Drawing.Point(305, 10);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(358, 40);
             this.label1.TabIndex = 0;
@@ -480,19 +509,19 @@
             // 
             // pnlLoginFrame
             // 
-            this.pnlLoginFrame.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(99)))), ((int)(((byte)(130)))));
+            this.pnlLoginFrame.BackColor = System.Drawing.Color.White;
             this.pnlLoginFrame.Controls.Add(this.mrg1);
             this.pnlLoginFrame.Controls.Add(this.pnlLoginBody);
-            this.pnlLoginFrame.Location = new System.Drawing.Point(23, 212);
+            this.pnlLoginFrame.Location = new System.Drawing.Point(16, 204);
             this.pnlLoginFrame.Name = "pnlLoginFrame";
-            this.pnlLoginFrame.Size = new System.Drawing.Size(427, 527);
+            this.pnlLoginFrame.Size = new System.Drawing.Size(427, 538);
             this.pnlLoginFrame.TabIndex = 0;
             // 
             // mrg1
             // 
             this.mrg1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg1.Controls.Add(this.l1);
-            this.mrg1.Location = new System.Drawing.Point(32, 101);
+            this.mrg1.Location = new System.Drawing.Point(34, 100);
             this.mrg1.Name = "mrg1";
             this.mrg1.Size = new System.Drawing.Size(238, 49);
             this.mrg1.TabIndex = 0;
@@ -539,6 +568,8 @@
             // pnlLoginBody
             // 
             this.pnlLoginBody.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(176)))), ((int)(((byte)(223)))), ((int)(((byte)(235)))));
+            this.pnlLoginBody.Controls.Add(this.panel13);
+            this.pnlLoginBody.Controls.Add(this.panel8);
             this.pnlLoginBody.Controls.Add(this.BtnSearch);
             this.pnlLoginBody.Controls.Add(this.label5);
             this.pnlLoginBody.Controls.Add(this.mrg3);
@@ -546,10 +577,53 @@
             this.pnlLoginBody.Controls.Add(this.mrg7);
             this.pnlLoginBody.Controls.Add(this.mrg2);
             this.pnlLoginBody.Controls.Add(this.BtnStart);
-            this.pnlLoginBody.Location = new System.Drawing.Point(4, 4);
+            this.pnlLoginBody.Location = new System.Drawing.Point(6, 6);
             this.pnlLoginBody.Name = "pnlLoginBody";
-            this.pnlLoginBody.Size = new System.Drawing.Size(419, 500);
+            this.pnlLoginBody.Size = new System.Drawing.Size(415, 510);
             this.pnlLoginBody.TabIndex = 21;
+            // 
+            // panel13
+            // 
+            this.panel13.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(237)))), ((int)(((byte)(247)))));
+            this.panel13.Location = new System.Drawing.Point(0, -1);
+            this.panel13.Name = "panel13";
+            this.panel13.Size = new System.Drawing.Size(418, 22);
+            this.panel13.TabIndex = 22;
+            // 
+            // panel8
+            // 
+            this.panel8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(152)))), ((int)(((byte)(194)))), ((int)(((byte)(212)))));
+            this.panel8.Controls.Add(this.panel11);
+            this.panel8.Controls.Add(this.panel10);
+            this.panel8.Location = new System.Drawing.Point(-1, 387);
+            this.panel8.Name = "panel8";
+            this.panel8.Size = new System.Drawing.Size(418, 181);
+            this.panel8.TabIndex = 21;
+            // 
+            // panel11
+            // 
+            this.panel11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(93)))), ((int)(((byte)(139)))), ((int)(((byte)(158)))));
+            this.panel11.Controls.Add(this.panel12);
+            this.panel11.Location = new System.Drawing.Point(1, 66);
+            this.panel11.Name = "panel11";
+            this.panel11.Size = new System.Drawing.Size(418, 181);
+            this.panel11.TabIndex = 21;
+            // 
+            // panel12
+            // 
+            this.panel12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(128)))), ((int)(((byte)(148)))));
+            this.panel12.Location = new System.Drawing.Point(-1, 33);
+            this.panel12.Name = "panel12";
+            this.panel12.Size = new System.Drawing.Size(418, 181);
+            this.panel12.TabIndex = 22;
+            // 
+            // panel10
+            // 
+            this.panel10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(172)))), ((int)(((byte)(191)))));
+            this.panel10.Location = new System.Drawing.Point(0, 34);
+            this.panel10.Name = "panel10";
+            this.panel10.Size = new System.Drawing.Size(418, 181);
+            this.panel10.TabIndex = 21;
             // 
             // BtnSearch
             // 
@@ -562,7 +636,7 @@
             this.BtnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnSearch.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnSearch.ForeColor = System.Drawing.Color.White;
-            this.BtnSearch.Location = new System.Drawing.Point(275, 98);
+            this.BtnSearch.Location = new System.Drawing.Point(275, 94);
             this.BtnSearch.Name = "BtnSearch";
             this.BtnSearch.Size = new System.Drawing.Size(115, 45);
             this.BtnSearch.TabIndex = 7;
@@ -576,7 +650,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.label5.Location = new System.Drawing.Point(110, 29);
+            this.label5.Location = new System.Drawing.Point(110, 39);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(196, 30);
             this.label5.TabIndex = 20;
@@ -586,7 +660,7 @@
             // 
             this.mrg3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg3.Controls.Add(this.l3);
-            this.mrg3.Location = new System.Drawing.Point(28, 150);
+            this.mrg3.Location = new System.Drawing.Point(28, 146);
             this.mrg3.Name = "mrg3";
             this.mrg3.Size = new System.Drawing.Size(360, 49);
             this.mrg3.TabIndex = 1;
@@ -634,7 +708,7 @@
             // 
             this.mrg4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg4.Controls.Add(this.l4);
-            this.mrg4.Location = new System.Drawing.Point(28, 258);
+            this.mrg4.Location = new System.Drawing.Point(28, 254);
             this.mrg4.Name = "mrg4";
             this.mrg4.Size = new System.Drawing.Size(360, 49);
             this.mrg4.TabIndex = 4;
@@ -682,7 +756,7 @@
             // 
             this.mrg7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg7.Controls.Add(this.l7);
-            this.mrg7.Location = new System.Drawing.Point(309, 204);
+            this.mrg7.Location = new System.Drawing.Point(309, 200);
             this.mrg7.Name = "mrg7";
             this.mrg7.Size = new System.Drawing.Size(79, 49);
             this.mrg7.TabIndex = 3;
@@ -731,7 +805,7 @@
             // 
             this.mrg2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(146)))), ((int)(((byte)(191)))));
             this.mrg2.Controls.Add(this.l2);
-            this.mrg2.Location = new System.Drawing.Point(28, 204);
+            this.mrg2.Location = new System.Drawing.Point(28, 200);
             this.mrg2.Name = "mrg2";
             this.mrg2.Size = new System.Drawing.Size(278, 49);
             this.mrg2.TabIndex = 2;
@@ -786,7 +860,7 @@
             this.BtnStart.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.BtnStart.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.BtnStart.ForeColor = System.Drawing.Color.White;
-            this.BtnStart.Location = new System.Drawing.Point(27, 312);
+            this.BtnStart.Location = new System.Drawing.Point(27, 308);
             this.BtnStart.Name = "BtnStart";
             this.BtnStart.Size = new System.Drawing.Size(362, 48);
             this.BtnStart.TabIndex = 5;
@@ -800,12 +874,12 @@
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.label3.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(85)))), ((int)(((byte)(93)))));
-            this.label3.Location = new System.Drawing.Point(12, 742);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
+            this.label3.Location = new System.Drawing.Point(890, 663);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(93, 13);
+            this.label3.Size = new System.Drawing.Size(88, 13);
             this.label3.TabIndex = 19;
-            this.label3.Text = "@SeiyaMarxElls2023";
+            this.label3.Text = "@marksolante2023";
             // 
             // CLOCK
             // 
@@ -986,7 +1060,7 @@
             this.pnlRecords.Controls.Add(this.mrg6);
             this.pnlRecords.Controls.Add(this.pnltm2);
             this.pnlRecords.Controls.Add(this.label9);
-            this.pnlRecords.Location = new System.Drawing.Point(1600, 0);
+            this.pnlRecords.Location = new System.Drawing.Point(1600, 56);
             this.pnlRecords.Name = "pnlRecords";
             this.pnlRecords.Size = new System.Drawing.Size(1472, 759);
             this.pnlRecords.TabIndex = 9;
@@ -995,18 +1069,538 @@
             // 
             this.pnlSetPrintOptions.BackgroundImage = global::Sit_In_Monitoring.Properties.Resources.backgroundNiMarkPinakaChoi;
             this.pnlSetPrintOptions.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlSetPrintOptions.Controls.Add(this.pnlSemesterManager);
+            this.pnlSetPrintOptions.Controls.Add(this.pnlCustomReport);
+            this.pnlSetPrintOptions.Controls.Add(this.pnlDayReport);
+            this.pnlSetPrintOptions.Controls.Add(this.pnlStudentSpecificReport);
             this.pnlSetPrintOptions.Controls.Add(this.pnlSemesterReport);
             this.pnlSetPrintOptions.Controls.Add(this.pnlMonthReport);
-            this.pnlSetPrintOptions.Controls.Add(this.pnlStudentSpecificReport);
-            this.pnlSetPrintOptions.Controls.Add(this.pnlDayReport);
-            this.pnlSetPrintOptions.Controls.Add(this.pnlCustomReport);
             this.pnlSetPrintOptions.Controls.Add(this.cbxSelectForm);
             this.pnlSetPrintOptions.Controls.Add(this.btnClosePrintSetUp);
             this.pnlSetPrintOptions.Controls.Add(this.PrintLayoutDataGrid);
-            this.pnlSetPrintOptions.Location = new System.Drawing.Point(0, 98);
+            this.pnlSetPrintOptions.Location = new System.Drawing.Point(3, 49);
             this.pnlSetPrintOptions.Name = "pnlSetPrintOptions";
             this.pnlSetPrintOptions.Size = new System.Drawing.Size(1473, 599);
             this.pnlSetPrintOptions.TabIndex = 22;
+            // 
+            // pnlSemesterManager
+            // 
+            this.pnlSemesterManager.BackColor = System.Drawing.Color.Black;
+            this.pnlSemesterManager.Controls.Add(this.pnlMainWindowForSemesterManagement);
+            this.pnlSemesterManager.Controls.Add(this.label31);
+            this.pnlSemesterManager.Location = new System.Drawing.Point(362, 69);
+            this.pnlSemesterManager.Name = "pnlSemesterManager";
+            this.pnlSemesterManager.Size = new System.Drawing.Size(793, 412);
+            this.pnlSemesterManager.TabIndex = 17;
+            // 
+            // pnlMainWindowForSemesterManagement
+            // 
+            this.pnlMainWindowForSemesterManagement.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.label33);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.panel9);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.label34);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.label32);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.btnCloseSemesterManager);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.btnAddSemesterToRecords);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.btnRemoveSelectedSemester);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.dateTimePickerForEndOfSem);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.dateTimePickerForStartOfSem);
+            this.pnlMainWindowForSemesterManagement.Controls.Add(this.dataGridForSemesterRecords);
+            this.pnlMainWindowForSemesterManagement.Location = new System.Drawing.Point(9, 45);
+            this.pnlMainWindowForSemesterManagement.Name = "pnlMainWindowForSemesterManagement";
+            this.pnlMainWindowForSemesterManagement.Size = new System.Drawing.Size(774, 356);
+            this.pnlMainWindowForSemesterManagement.TabIndex = 16;
+            // 
+            // label33
+            // 
+            this.label33.AutoSize = true;
+            this.label33.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label33.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label33.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label33.Location = new System.Drawing.Point(29, 148);
+            this.label33.Name = "label33";
+            this.label33.Size = new System.Drawing.Size(108, 16);
+            this.label33.TabIndex = 15;
+            this.label33.Text = "Semester Name";
+            // 
+            // panel9
+            // 
+            this.panel9.BackColor = System.Drawing.Color.White;
+            this.panel9.Controls.Add(this.txtSemesterNameInput);
+            this.panel9.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.panel9.Location = new System.Drawing.Point(28, 173);
+            this.panel9.Name = "panel9";
+            this.panel9.Size = new System.Drawing.Size(250, 31);
+            this.panel9.TabIndex = 14;
+            // 
+            // txtSemesterNameInput
+            // 
+            this.txtSemesterNameInput.BackColor = System.Drawing.Color.White;
+            this.txtSemesterNameInput.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtSemesterNameInput.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtSemesterNameInput.Font = new System.Drawing.Font("Microsoft YaHei", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSemesterNameInput.ForeColor = System.Drawing.SystemColors.InfoText;
+            this.txtSemesterNameInput.Location = new System.Drawing.Point(8, 6);
+            this.txtSemesterNameInput.MaxLength = 25;
+            this.txtSemesterNameInput.Name = "txtSemesterNameInput";
+            this.txtSemesterNameInput.Size = new System.Drawing.Size(227, 18);
+            this.txtSemesterNameInput.TabIndex = 0;
+            // 
+            // label34
+            // 
+            this.label34.AutoSize = true;
+            this.label34.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label34.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label34.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label34.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label34.Location = new System.Drawing.Point(29, 31);
+            this.label34.Name = "label34";
+            this.label34.Size = new System.Drawing.Size(161, 16);
+            this.label34.TabIndex = 7;
+            this.label34.Text = "Start Date of a Semester";
+            // 
+            // label32
+            // 
+            this.label32.AutoSize = true;
+            this.label32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label32.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label32.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label32.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label32.Location = new System.Drawing.Point(29, 88);
+            this.label32.Name = "label32";
+            this.label32.Size = new System.Drawing.Size(156, 16);
+            this.label32.TabIndex = 7;
+            this.label32.Text = "End Date of a Semester";
+            // 
+            // btnCloseSemesterManager
+            // 
+            this.btnCloseSemesterManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnCloseSemesterManager.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnCloseSemesterManager.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnCloseSemesterManager.BorderRadius = 20;
+            this.btnCloseSemesterManager.BorderSize = 0;
+            this.btnCloseSemesterManager.FlatAppearance.BorderSize = 0;
+            this.btnCloseSemesterManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCloseSemesterManager.ForeColor = System.Drawing.Color.White;
+            this.btnCloseSemesterManager.Location = new System.Drawing.Point(28, 305);
+            this.btnCloseSemesterManager.Name = "btnCloseSemesterManager";
+            this.btnCloseSemesterManager.Size = new System.Drawing.Size(72, 35);
+            this.btnCloseSemesterManager.TabIndex = 2;
+            this.btnCloseSemesterManager.Text = "Close";
+            this.btnCloseSemesterManager.TextColor = System.Drawing.Color.White;
+            this.btnCloseSemesterManager.UseVisualStyleBackColor = false;
+            this.btnCloseSemesterManager.Click += new System.EventHandler(this.btnCloseSemesterManager_Click);
+            // 
+            // btnAddSemesterToRecords
+            // 
+            this.btnAddSemesterToRecords.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnAddSemesterToRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnAddSemesterToRecords.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnAddSemesterToRecords.BorderRadius = 20;
+            this.btnAddSemesterToRecords.BorderSize = 0;
+            this.btnAddSemesterToRecords.FlatAppearance.BorderSize = 0;
+            this.btnAddSemesterToRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddSemesterToRecords.ForeColor = System.Drawing.Color.White;
+            this.btnAddSemesterToRecords.Location = new System.Drawing.Point(28, 216);
+            this.btnAddSemesterToRecords.Name = "btnAddSemesterToRecords";
+            this.btnAddSemesterToRecords.Size = new System.Drawing.Size(252, 38);
+            this.btnAddSemesterToRecords.TabIndex = 2;
+            this.btnAddSemesterToRecords.Text = "Add Semester";
+            this.btnAddSemesterToRecords.TextColor = System.Drawing.Color.White;
+            this.btnAddSemesterToRecords.UseVisualStyleBackColor = false;
+            this.btnAddSemesterToRecords.Click += new System.EventHandler(this.btnAddSemesterToRecords_Click);
+            // 
+            // btnRemoveSelectedSemester
+            // 
+            this.btnRemoveSelectedSemester.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnRemoveSelectedSemester.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnRemoveSelectedSemester.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnRemoveSelectedSemester.BorderRadius = 20;
+            this.btnRemoveSelectedSemester.BorderSize = 0;
+            this.btnRemoveSelectedSemester.FlatAppearance.BorderSize = 0;
+            this.btnRemoveSelectedSemester.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRemoveSelectedSemester.ForeColor = System.Drawing.Color.White;
+            this.btnRemoveSelectedSemester.Location = new System.Drawing.Point(509, 307);
+            this.btnRemoveSelectedSemester.Name = "btnRemoveSelectedSemester";
+            this.btnRemoveSelectedSemester.Size = new System.Drawing.Size(252, 38);
+            this.btnRemoveSelectedSemester.TabIndex = 2;
+            this.btnRemoveSelectedSemester.Text = "Remove Selected Semester";
+            this.btnRemoveSelectedSemester.TextColor = System.Drawing.Color.White;
+            this.btnRemoveSelectedSemester.UseVisualStyleBackColor = false;
+            this.btnRemoveSelectedSemester.Click += new System.EventHandler(this.btnRemoveSelectedSemester_Click);
+            // 
+            // dateTimePickerForEndOfSem
+            // 
+            this.dateTimePickerForEndOfSem.Location = new System.Drawing.Point(27, 111);
+            this.dateTimePickerForEndOfSem.Name = "dateTimePickerForEndOfSem";
+            this.dateTimePickerForEndOfSem.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerForEndOfSem.TabIndex = 1;
+            // 
+            // dateTimePickerForStartOfSem
+            // 
+            this.dateTimePickerForStartOfSem.Location = new System.Drawing.Point(28, 56);
+            this.dateTimePickerForStartOfSem.Name = "dateTimePickerForStartOfSem";
+            this.dateTimePickerForStartOfSem.Size = new System.Drawing.Size(200, 20);
+            this.dateTimePickerForStartOfSem.TabIndex = 1;
+            // 
+            // dataGridForSemesterRecords
+            // 
+            this.dataGridForSemesterRecords.AllowUserToAddRows = false;
+            this.dataGridForSemesterRecords.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.dataGridForSemesterRecords.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridForSemesterRecords.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridForSemesterRecords.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.SemesterName,
+            this.StartingDate,
+            this.EndDate});
+            this.dataGridForSemesterRecords.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(73)))), ((int)(((byte)(141)))), ((int)(((byte)(158)))));
+            this.dataGridForSemesterRecords.Location = new System.Drawing.Point(312, 0);
+            this.dataGridForSemesterRecords.Name = "dataGridForSemesterRecords";
+            this.dataGridForSemesterRecords.Size = new System.Drawing.Size(461, 356);
+            this.dataGridForSemesterRecords.TabIndex = 13;
+            this.dataGridForSemesterRecords.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.SemesterRecordsCellClick);
+            // 
+            // SemesterName
+            // 
+            this.SemesterName.Frozen = true;
+            this.SemesterName.HeaderText = "Semester Name";
+            this.SemesterName.Name = "SemesterName";
+            this.SemesterName.ReadOnly = true;
+            this.SemesterName.Width = 180;
+            // 
+            // StartingDate
+            // 
+            this.StartingDate.Frozen = true;
+            this.StartingDate.HeaderText = "Starting Date";
+            this.StartingDate.Name = "StartingDate";
+            this.StartingDate.ReadOnly = true;
+            this.StartingDate.Width = 120;
+            // 
+            // EndDate
+            // 
+            this.EndDate.Frozen = true;
+            this.EndDate.HeaderText = "End Date";
+            this.EndDate.Name = "EndDate";
+            this.EndDate.ReadOnly = true;
+            this.EndDate.Width = 120;
+            // 
+            // label31
+            // 
+            this.label31.AutoSize = true;
+            this.label31.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label31.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label31.ForeColor = System.Drawing.Color.White;
+            this.label31.Location = new System.Drawing.Point(318, 13);
+            this.label31.Name = "label31";
+            this.label31.Size = new System.Drawing.Size(151, 18);
+            this.label31.TabIndex = 10;
+            this.label31.Text = "SEMESTER RECORDS";
+            // 
+            // pnlCustomReport
+            // 
+            this.pnlCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pnlCustomReport.Controls.Add(this.label19);
+            this.pnlCustomReport.Controls.Add(this.label18);
+            this.pnlCustomReport.Controls.Add(this.btnPreviewCustomReport);
+            this.pnlCustomReport.Controls.Add(this.btnPrintCustomReport);
+            this.pnlCustomReport.Controls.Add(this.dtpDateEnd);
+            this.pnlCustomReport.Controls.Add(this.dtpDateStart);
+            this.pnlCustomReport.Location = new System.Drawing.Point(984, 85);
+            this.pnlCustomReport.Name = "pnlCustomReport";
+            this.pnlCustomReport.Size = new System.Drawing.Size(443, 177);
+            this.pnlCustomReport.TabIndex = 15;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label19.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label19.Location = new System.Drawing.Point(222, 22);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(69, 16);
+            this.label19.TabIndex = 7;
+            this.label19.Text = "DATE END";
+            this.label19.Click += new System.EventHandler(this.placeholder7click);
+            this.label19.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label19.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label18.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label18.Location = new System.Drawing.Point(16, 22);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(80, 16);
+            this.label18.TabIndex = 7;
+            this.label18.Text = "DATE START";
+            this.label18.Click += new System.EventHandler(this.placeholder7click);
+            this.label18.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label18.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // btnPreviewCustomReport
+            // 
+            this.btnPreviewCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewCustomReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewCustomReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPreviewCustomReport.BorderRadius = 20;
+            this.btnPreviewCustomReport.BorderSize = 0;
+            this.btnPreviewCustomReport.FlatAppearance.BorderSize = 0;
+            this.btnPreviewCustomReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviewCustomReport.ForeColor = System.Drawing.Color.White;
+            this.btnPreviewCustomReport.Location = new System.Drawing.Point(16, 74);
+            this.btnPreviewCustomReport.Name = "btnPreviewCustomReport";
+            this.btnPreviewCustomReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPreviewCustomReport.TabIndex = 2;
+            this.btnPreviewCustomReport.Text = "Preview Custom Report";
+            this.btnPreviewCustomReport.TextColor = System.Drawing.Color.White;
+            this.btnPreviewCustomReport.UseVisualStyleBackColor = false;
+            this.btnPreviewCustomReport.Click += new System.EventHandler(this.btnPreviewCustomReport_Click);
+            // 
+            // btnPrintCustomReport
+            // 
+            this.btnPrintCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintCustomReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintCustomReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPrintCustomReport.BorderRadius = 20;
+            this.btnPrintCustomReport.BorderSize = 0;
+            this.btnPrintCustomReport.FlatAppearance.BorderSize = 0;
+            this.btnPrintCustomReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintCustomReport.ForeColor = System.Drawing.Color.White;
+            this.btnPrintCustomReport.Location = new System.Drawing.Point(16, 119);
+            this.btnPrintCustomReport.Name = "btnPrintCustomReport";
+            this.btnPrintCustomReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPrintCustomReport.TabIndex = 2;
+            this.btnPrintCustomReport.Text = "Print Custom Report";
+            this.btnPrintCustomReport.TextColor = System.Drawing.Color.White;
+            this.btnPrintCustomReport.UseVisualStyleBackColor = false;
+            this.btnPrintCustomReport.Click += new System.EventHandler(this.btnPrintCustomReport_Click);
+            // 
+            // dtpDateEnd
+            // 
+            this.dtpDateEnd.Location = new System.Drawing.Point(225, 41);
+            this.dtpDateEnd.Name = "dtpDateEnd";
+            this.dtpDateEnd.Size = new System.Drawing.Size(200, 20);
+            this.dtpDateEnd.TabIndex = 1;
+            // 
+            // dtpDateStart
+            // 
+            this.dtpDateStart.Location = new System.Drawing.Point(16, 41);
+            this.dtpDateStart.Name = "dtpDateStart";
+            this.dtpDateStart.Size = new System.Drawing.Size(200, 20);
+            this.dtpDateStart.TabIndex = 1;
+            // 
+            // pnlDayReport
+            // 
+            this.pnlDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pnlDayReport.Controls.Add(this.btnPreviewDayReport);
+            this.pnlDayReport.Controls.Add(this.label23);
+            this.pnlDayReport.Controls.Add(this.btnPrintDayReport);
+            this.pnlDayReport.Controls.Add(this.dtpDayReportSelect);
+            this.pnlDayReport.Location = new System.Drawing.Point(980, 396);
+            this.pnlDayReport.Name = "pnlDayReport";
+            this.pnlDayReport.Size = new System.Drawing.Size(443, 170);
+            this.pnlDayReport.TabIndex = 15;
+            // 
+            // btnPreviewDayReport
+            // 
+            this.btnPreviewDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewDayReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewDayReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPreviewDayReport.BorderRadius = 20;
+            this.btnPreviewDayReport.BorderSize = 0;
+            this.btnPreviewDayReport.FlatAppearance.BorderSize = 0;
+            this.btnPreviewDayReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviewDayReport.ForeColor = System.Drawing.Color.White;
+            this.btnPreviewDayReport.Location = new System.Drawing.Point(20, 64);
+            this.btnPreviewDayReport.Name = "btnPreviewDayReport";
+            this.btnPreviewDayReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPreviewDayReport.TabIndex = 2;
+            this.btnPreviewDayReport.Text = "Preview Day Report";
+            this.btnPreviewDayReport.TextColor = System.Drawing.Color.White;
+            this.btnPreviewDayReport.UseVisualStyleBackColor = false;
+            this.btnPreviewDayReport.Click += new System.EventHandler(this.btnPreviewDayReport_Click);
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label23.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label23.Location = new System.Drawing.Point(80, 29);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(39, 16);
+            this.label23.TabIndex = 7;
+            this.label23.Text = "DATE";
+            this.label23.Click += new System.EventHandler(this.placeholder7click);
+            this.label23.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label23.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // btnPrintDayReport
+            // 
+            this.btnPrintDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintDayReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintDayReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPrintDayReport.BorderRadius = 20;
+            this.btnPrintDayReport.BorderSize = 0;
+            this.btnPrintDayReport.FlatAppearance.BorderSize = 0;
+            this.btnPrintDayReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintDayReport.ForeColor = System.Drawing.Color.White;
+            this.btnPrintDayReport.Location = new System.Drawing.Point(20, 109);
+            this.btnPrintDayReport.Name = "btnPrintDayReport";
+            this.btnPrintDayReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPrintDayReport.TabIndex = 2;
+            this.btnPrintDayReport.Text = "Print Day Report";
+            this.btnPrintDayReport.TextColor = System.Drawing.Color.White;
+            this.btnPrintDayReport.UseVisualStyleBackColor = false;
+            this.btnPrintDayReport.Click += new System.EventHandler(this.btnPrintDayReport_Click);
+            // 
+            // dtpDayReportSelect
+            // 
+            this.dtpDayReportSelect.Location = new System.Drawing.Point(138, 28);
+            this.dtpDayReportSelect.Name = "dtpDayReportSelect";
+            this.dtpDayReportSelect.Size = new System.Drawing.Size(200, 20);
+            this.dtpDayReportSelect.TabIndex = 1;
+            // 
+            // pnlStudentSpecificReport
+            // 
+            this.pnlStudentSpecificReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
+            this.pnlStudentSpecificReport.Controls.Add(this.label29);
+            this.pnlStudentSpecificReport.Controls.Add(this.label26);
+            this.pnlStudentSpecificReport.Controls.Add(this.label28);
+            this.pnlStudentSpecificReport.Controls.Add(this.btnPreviewStudentSpecificReport);
+            this.pnlStudentSpecificReport.Controls.Add(this.cbxSelectedStudent);
+            this.pnlStudentSpecificReport.Controls.Add(this.btnPrintStudentSpecificReport);
+            this.pnlStudentSpecificReport.Controls.Add(this.dtpStudEndDate);
+            this.pnlStudentSpecificReport.Controls.Add(this.dtpStudStartDate);
+            this.pnlStudentSpecificReport.Location = new System.Drawing.Point(461, 290);
+            this.pnlStudentSpecificReport.Name = "pnlStudentSpecificReport";
+            this.pnlStudentSpecificReport.Size = new System.Drawing.Size(443, 260);
+            this.pnlStudentSpecificReport.TabIndex = 15;
+            // 
+            // label29
+            // 
+            this.label29.AutoSize = true;
+            this.label29.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label29.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label29.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label29.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label29.Location = new System.Drawing.Point(316, 81);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(77, 16);
+            this.label29.TabIndex = 7;
+            this.label29.Text = "STUDENT ID";
+            this.label29.Click += new System.EventHandler(this.placeholder7click);
+            this.label29.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label29.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // label26
+            // 
+            this.label26.AutoSize = true;
+            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label26.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label26.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label26.Location = new System.Drawing.Point(222, 19);
+            this.label26.Name = "label26";
+            this.label26.Size = new System.Drawing.Size(69, 16);
+            this.label26.TabIndex = 7;
+            this.label26.Text = "DATE END";
+            this.label26.Click += new System.EventHandler(this.placeholder7click);
+            this.label26.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label26.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // label28
+            // 
+            this.label28.AutoSize = true;
+            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label28.Cursor = System.Windows.Forms.Cursors.IBeam;
+            this.label28.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
+            this.label28.Location = new System.Drawing.Point(16, 19);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(80, 16);
+            this.label28.TabIndex = 7;
+            this.label28.Text = "DATE START";
+            this.label28.Click += new System.EventHandler(this.placeholder7click);
+            this.label28.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
+            this.label28.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
+            // 
+            // btnPreviewStudentSpecificReport
+            // 
+            this.btnPreviewStudentSpecificReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewStudentSpecificReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPreviewStudentSpecificReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPreviewStudentSpecificReport.BorderRadius = 20;
+            this.btnPreviewStudentSpecificReport.BorderSize = 0;
+            this.btnPreviewStudentSpecificReport.FlatAppearance.BorderSize = 0;
+            this.btnPreviewStudentSpecificReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPreviewStudentSpecificReport.ForeColor = System.Drawing.Color.White;
+            this.btnPreviewStudentSpecificReport.Location = new System.Drawing.Point(16, 162);
+            this.btnPreviewStudentSpecificReport.Name = "btnPreviewStudentSpecificReport";
+            this.btnPreviewStudentSpecificReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPreviewStudentSpecificReport.TabIndex = 2;
+            this.btnPreviewStudentSpecificReport.Text = "Preview Student Specific Report";
+            this.btnPreviewStudentSpecificReport.TextColor = System.Drawing.Color.White;
+            this.btnPreviewStudentSpecificReport.UseVisualStyleBackColor = false;
+            this.btnPreviewStudentSpecificReport.Click += new System.EventHandler(this.btnPreviewStudentSpecificReport_Click);
+            // 
+            // cbxSelectedStudent
+            // 
+            this.cbxSelectedStudent.AutoCompleteCustomSource.AddRange(new string[] {
+            "SEMESTRAL REPORT",
+            "MONTH REPORT",
+            "STUDENT SPECIFIC REPORT",
+            "WEEK REPORT",
+            "DAY REPORT"});
+            this.cbxSelectedStudent.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxSelectedStudent.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.cbxSelectedStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbxSelectedStudent.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxSelectedStudent.FormattingEnabled = true;
+            this.cbxSelectedStudent.Location = new System.Drawing.Point(16, 75);
+            this.cbxSelectedStudent.Name = "cbxSelectedStudent";
+            this.cbxSelectedStudent.Size = new System.Drawing.Size(265, 28);
+            this.cbxSelectedStudent.TabIndex = 14;
+            // 
+            // btnPrintStudentSpecificReport
+            // 
+            this.btnPrintStudentSpecificReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintStudentSpecificReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnPrintStudentSpecificReport.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnPrintStudentSpecificReport.BorderRadius = 20;
+            this.btnPrintStudentSpecificReport.BorderSize = 0;
+            this.btnPrintStudentSpecificReport.FlatAppearance.BorderSize = 0;
+            this.btnPrintStudentSpecificReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrintStudentSpecificReport.ForeColor = System.Drawing.Color.White;
+            this.btnPrintStudentSpecificReport.Location = new System.Drawing.Point(16, 206);
+            this.btnPrintStudentSpecificReport.Name = "btnPrintStudentSpecificReport";
+            this.btnPrintStudentSpecificReport.Size = new System.Drawing.Size(409, 38);
+            this.btnPrintStudentSpecificReport.TabIndex = 2;
+            this.btnPrintStudentSpecificReport.Text = "Print Student Specific Report";
+            this.btnPrintStudentSpecificReport.TextColor = System.Drawing.Color.White;
+            this.btnPrintStudentSpecificReport.UseVisualStyleBackColor = false;
+            this.btnPrintStudentSpecificReport.Click += new System.EventHandler(this.btnPrintStudentSpecificReport_Click);
+            // 
+            // dtpStudEndDate
+            // 
+            this.dtpStudEndDate.Location = new System.Drawing.Point(225, 38);
+            this.dtpStudEndDate.Name = "dtpStudEndDate";
+            this.dtpStudEndDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpStudEndDate.TabIndex = 1;
+            // 
+            // dtpStudStartDate
+            // 
+            this.dtpStudStartDate.Location = new System.Drawing.Point(16, 38);
+            this.dtpStudStartDate.Name = "dtpStudStartDate";
+            this.dtpStudStartDate.Size = new System.Drawing.Size(200, 20);
+            this.dtpStudStartDate.TabIndex = 1;
             // 
             // pnlSemesterReport
             // 
@@ -1014,10 +1608,11 @@
             this.pnlSemesterReport.Controls.Add(this.label30);
             this.pnlSemesterReport.Controls.Add(this.btnPreviewSemesterReport);
             this.pnlSemesterReport.Controls.Add(this.cbxSelectSemester);
+            this.pnlSemesterReport.Controls.Add(this.btnShowSemesterManager);
             this.pnlSemesterReport.Controls.Add(this.btnPrintSemesterReport);
             this.pnlSemesterReport.Location = new System.Drawing.Point(9, 13);
             this.pnlSemesterReport.Name = "pnlSemesterReport";
-            this.pnlSemesterReport.Size = new System.Drawing.Size(443, 171);
+            this.pnlSemesterReport.Size = new System.Drawing.Size(443, 212);
             this.pnlSemesterReport.TabIndex = 15;
             // 
             // label30
@@ -1027,7 +1622,7 @@
             this.label30.Cursor = System.Windows.Forms.Cursors.IBeam;
             this.label30.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label30.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label30.Location = new System.Drawing.Point(47, 37);
+            this.label30.Location = new System.Drawing.Point(47, 35);
             this.label30.Name = "label30";
             this.label30.Size = new System.Drawing.Size(68, 16);
             this.label30.TabIndex = 7;
@@ -1057,22 +1652,35 @@
             // 
             // cbxSelectSemester
             // 
-            this.cbxSelectSemester.AutoCompleteCustomSource.AddRange(new string[] {
-            "SEMESTRAL REPORT",
-            "MONTH REPORT",
-            "STUDENT SPECIFIC REPORT",
-            "WEEK REPORT",
-            "DAY REPORT"});
-            this.cbxSelectSemester.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.cbxSelectSemester.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.cbxSelectSemester.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.cbxSelectSemester.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxSelectSemester.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxSelectSemester.FormattingEnabled = true;
-            this.cbxSelectSemester.Location = new System.Drawing.Point(134, 31);
+            this.cbxSelectSemester.Location = new System.Drawing.Point(134, 28);
             this.cbxSelectSemester.Name = "cbxSelectSemester";
             this.cbxSelectSemester.Size = new System.Drawing.Size(265, 28);
             this.cbxSelectSemester.TabIndex = 14;
             this.cbxSelectSemester.Text = "SELECT SEMESTER";
-            this.cbxSelectSemester.SelectedIndexChanged += new System.EventHandler(this.cbxSelectForm_SelectedIndexChanged);
+            // 
+            // btnShowSemesterManager
+            // 
+            this.btnShowSemesterManager.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnShowSemesterManager.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
+            this.btnShowSemesterManager.BorderColor = System.Drawing.Color.PaleVioletRed;
+            this.btnShowSemesterManager.BorderRadius = 20;
+            this.btnShowSemesterManager.BorderSize = 0;
+            this.btnShowSemesterManager.FlatAppearance.BorderSize = 0;
+            this.btnShowSemesterManager.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnShowSemesterManager.ForeColor = System.Drawing.Color.White;
+            this.btnShowSemesterManager.Location = new System.Drawing.Point(17, 162);
+            this.btnShowSemesterManager.Name = "btnShowSemesterManager";
+            this.btnShowSemesterManager.Size = new System.Drawing.Size(409, 38);
+            this.btnShowSemesterManager.TabIndex = 2;
+            this.btnShowSemesterManager.Text = "Manage Semester Records";
+            this.btnShowSemesterManager.TextColor = System.Drawing.Color.White;
+            this.btnShowSemesterManager.UseVisualStyleBackColor = false;
+            this.btnShowSemesterManager.Click += new System.EventHandler(this.btnShowSemesterManager_Click);
             // 
             // btnPrintSemesterReport
             // 
@@ -1100,7 +1708,7 @@
             this.pnlMonthReport.Controls.Add(this.btnPreviewMonthReport);
             this.pnlMonthReport.Controls.Add(this.label27);
             this.pnlMonthReport.Controls.Add(this.btnPrintMonthReport);
-            this.pnlMonthReport.Location = new System.Drawing.Point(6, 190);
+            this.pnlMonthReport.Location = new System.Drawing.Point(9, 245);
             this.pnlMonthReport.Name = "pnlMonthReport";
             this.pnlMonthReport.Size = new System.Drawing.Size(443, 237);
             this.pnlMonthReport.TabIndex = 15;
@@ -1165,367 +1773,6 @@
             this.btnPrintMonthReport.UseVisualStyleBackColor = false;
             this.btnPrintMonthReport.Click += new System.EventHandler(this.btnPrintMonthReport_Click);
             // 
-            // pnlStudentSpecificReport
-            // 
-            this.pnlStudentSpecificReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.pnlStudentSpecificReport.Controls.Add(this.label26);
-            this.pnlStudentSpecificReport.Controls.Add(this.label28);
-            this.pnlStudentSpecificReport.Controls.Add(this.btnPreviewStudentSpecificReport);
-            this.pnlStudentSpecificReport.Controls.Add(this.cbxSelectedStudent);
-            this.pnlStudentSpecificReport.Controls.Add(this.btnPrintStudentSpecificReport);
-            this.pnlStudentSpecificReport.Controls.Add(this.dtpStudEndDate);
-            this.pnlStudentSpecificReport.Controls.Add(this.dtpStudStartDate);
-            this.pnlStudentSpecificReport.Location = new System.Drawing.Point(461, 290);
-            this.pnlStudentSpecificReport.Name = "pnlStudentSpecificReport";
-            this.pnlStudentSpecificReport.Size = new System.Drawing.Size(443, 260);
-            this.pnlStudentSpecificReport.TabIndex = 15;
-            // 
-            // label26
-            // 
-            this.label26.AutoSize = true;
-            this.label26.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label26.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label26.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label26.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label26.Location = new System.Drawing.Point(222, 19);
-            this.label26.Name = "label26";
-            this.label26.Size = new System.Drawing.Size(69, 16);
-            this.label26.TabIndex = 7;
-            this.label26.Text = "DATE END";
-            this.label26.Click += new System.EventHandler(this.placeholder7click);
-            this.label26.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
-            this.label26.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
-            // 
-            // label28
-            // 
-            this.label28.AutoSize = true;
-            this.label28.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label28.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label28.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label28.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label28.Location = new System.Drawing.Point(16, 19);
-            this.label28.Name = "label28";
-            this.label28.Size = new System.Drawing.Size(80, 16);
-            this.label28.TabIndex = 7;
-            this.label28.Text = "DATE START";
-            this.label28.Click += new System.EventHandler(this.placeholder7click);
-            this.label28.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
-            this.label28.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
-            // 
-            // btnPreviewStudentSpecificReport
-            // 
-            this.btnPreviewStudentSpecificReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPreviewStudentSpecificReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPreviewStudentSpecificReport.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPreviewStudentSpecificReport.BorderRadius = 20;
-            this.btnPreviewStudentSpecificReport.BorderSize = 0;
-            this.btnPreviewStudentSpecificReport.FlatAppearance.BorderSize = 0;
-            this.btnPreviewStudentSpecificReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreviewStudentSpecificReport.ForeColor = System.Drawing.Color.White;
-            this.btnPreviewStudentSpecificReport.Location = new System.Drawing.Point(16, 162);
-            this.btnPreviewStudentSpecificReport.Name = "btnPreviewStudentSpecificReport";
-            this.btnPreviewStudentSpecificReport.Size = new System.Drawing.Size(409, 38);
-            this.btnPreviewStudentSpecificReport.TabIndex = 2;
-            this.btnPreviewStudentSpecificReport.Text = "Preview Student Specific Report";
-            this.btnPreviewStudentSpecificReport.TextColor = System.Drawing.Color.White;
-            this.btnPreviewStudentSpecificReport.UseVisualStyleBackColor = false;
-            this.btnPreviewStudentSpecificReport.Click += new System.EventHandler(this.btnPreviewStudentSpecificReport_Click);
-            // 
-            // cbxSelectedStudent
-            // 
-            this.cbxSelectedStudent.AutoCompleteCustomSource.AddRange(new string[] {
-            "SEMESTRAL REPORT",
-            "MONTH REPORT",
-            "STUDENT SPECIFIC REPORT",
-            "WEEK REPORT",
-            "DAY REPORT"});
-            this.cbxSelectedStudent.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.cbxSelectedStudent.DataSource = this.studentsBindingSource1;
-            this.cbxSelectedStudent.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxSelectedStudent.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbxSelectedStudent.FormattingEnabled = true;
-            this.cbxSelectedStudent.Location = new System.Drawing.Point(16, 75);
-            this.cbxSelectedStudent.Name = "cbxSelectedStudent";
-            this.cbxSelectedStudent.Size = new System.Drawing.Size(265, 28);
-            this.cbxSelectedStudent.TabIndex = 14;
-            this.cbxSelectedStudent.SelectedIndexChanged += new System.EventHandler(this.cbxSelectForm_SelectedIndexChanged);
-            // 
-            // studentsBindingSource1
-            // 
-            this.studentsBindingSource1.DataMember = "Students";
-            // 
-            // btnPrintStudentSpecificReport
-            // 
-            this.btnPrintStudentSpecificReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPrintStudentSpecificReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPrintStudentSpecificReport.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPrintStudentSpecificReport.BorderRadius = 20;
-            this.btnPrintStudentSpecificReport.BorderSize = 0;
-            this.btnPrintStudentSpecificReport.FlatAppearance.BorderSize = 0;
-            this.btnPrintStudentSpecificReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrintStudentSpecificReport.ForeColor = System.Drawing.Color.White;
-            this.btnPrintStudentSpecificReport.Location = new System.Drawing.Point(16, 206);
-            this.btnPrintStudentSpecificReport.Name = "btnPrintStudentSpecificReport";
-            this.btnPrintStudentSpecificReport.Size = new System.Drawing.Size(409, 38);
-            this.btnPrintStudentSpecificReport.TabIndex = 2;
-            this.btnPrintStudentSpecificReport.Text = "Print Student Specific Report";
-            this.btnPrintStudentSpecificReport.TextColor = System.Drawing.Color.White;
-            this.btnPrintStudentSpecificReport.UseVisualStyleBackColor = false;
-            this.btnPrintStudentSpecificReport.Click += new System.EventHandler(this.btnPrintStudentSpecificReport_Click);
-            // 
-            // dtpStudEndDate
-            // 
-            this.dtpStudEndDate.Location = new System.Drawing.Point(225, 38);
-            this.dtpStudEndDate.Name = "dtpStudEndDate";
-            this.dtpStudEndDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpStudEndDate.TabIndex = 1;
-            // 
-            // dtpStudStartDate
-            // 
-            this.dtpStudStartDate.Location = new System.Drawing.Point(16, 38);
-            this.dtpStudStartDate.Name = "dtpStudStartDate";
-            this.dtpStudStartDate.Size = new System.Drawing.Size(200, 20);
-            this.dtpStudStartDate.TabIndex = 1;
-            // 
-            // pnlDayReport
-            // 
-            this.pnlDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.pnlDayReport.Controls.Add(this.label25);
-            this.pnlDayReport.Controls.Add(this.btnPreviewDayReport);
-            this.pnlDayReport.Controls.Add(this.label23);
-            this.pnlDayReport.Controls.Add(this.btnPrintDayReport);
-            this.pnlDayReport.Controls.Add(this.checkedListBox1);
-            this.pnlDayReport.Controls.Add(this.dtpDayReportSelect);
-            this.pnlDayReport.Location = new System.Drawing.Point(461, 13);
-            this.pnlDayReport.Name = "pnlDayReport";
-            this.pnlDayReport.Size = new System.Drawing.Size(443, 260);
-            this.pnlDayReport.TabIndex = 15;
-            // 
-            // label25
-            // 
-            this.label25.AutoSize = true;
-            this.label25.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label25.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label25.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label25.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label25.Location = new System.Drawing.Point(16, 18);
-            this.label25.Name = "label25";
-            this.label25.Size = new System.Drawing.Size(72, 16);
-            this.label25.TabIndex = 7;
-            this.label25.Text = "OPTIONAL";
-            this.label25.Click += new System.EventHandler(this.placeholder7click);
-            this.label25.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
-            this.label25.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
-            // 
-            // btnPreviewDayReport
-            // 
-            this.btnPreviewDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPreviewDayReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPreviewDayReport.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPreviewDayReport.BorderRadius = 20;
-            this.btnPreviewDayReport.BorderSize = 0;
-            this.btnPreviewDayReport.FlatAppearance.BorderSize = 0;
-            this.btnPreviewDayReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreviewDayReport.ForeColor = System.Drawing.Color.White;
-            this.btnPreviewDayReport.Location = new System.Drawing.Point(16, 160);
-            this.btnPreviewDayReport.Name = "btnPreviewDayReport";
-            this.btnPreviewDayReport.Size = new System.Drawing.Size(409, 38);
-            this.btnPreviewDayReport.TabIndex = 2;
-            this.btnPreviewDayReport.Text = "Preview Day Report";
-            this.btnPreviewDayReport.TextColor = System.Drawing.Color.White;
-            this.btnPreviewDayReport.UseVisualStyleBackColor = false;
-            this.btnPreviewDayReport.Click += new System.EventHandler(this.btnPreviewDayReport_Click);
-            // 
-            // label23
-            // 
-            this.label23.AutoSize = true;
-            this.label23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label23.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label23.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label23.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label23.Location = new System.Drawing.Point(21, 104);
-            this.label23.Name = "label23";
-            this.label23.Size = new System.Drawing.Size(39, 16);
-            this.label23.TabIndex = 7;
-            this.label23.Text = "DATE";
-            this.label23.Click += new System.EventHandler(this.placeholder7click);
-            this.label23.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
-            this.label23.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
-            // 
-            // btnPrintDayReport
-            // 
-            this.btnPrintDayReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPrintDayReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPrintDayReport.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPrintDayReport.BorderRadius = 20;
-            this.btnPrintDayReport.BorderSize = 0;
-            this.btnPrintDayReport.FlatAppearance.BorderSize = 0;
-            this.btnPrintDayReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrintDayReport.ForeColor = System.Drawing.Color.White;
-            this.btnPrintDayReport.Location = new System.Drawing.Point(16, 205);
-            this.btnPrintDayReport.Name = "btnPrintDayReport";
-            this.btnPrintDayReport.Size = new System.Drawing.Size(409, 38);
-            this.btnPrintDayReport.TabIndex = 2;
-            this.btnPrintDayReport.Text = "Print Day Report";
-            this.btnPrintDayReport.TextColor = System.Drawing.Color.White;
-            this.btnPrintDayReport.UseVisualStyleBackColor = false;
-            this.btnPrintDayReport.Click += new System.EventHandler(this.btnPrintDayReport_Click);
-            // 
-            // checkedListBox1
-            // 
-            this.checkedListBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.checkedListBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.checkedListBox1.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkedListBox1.ForeColor = System.Drawing.Color.White;
-            this.checkedListBox1.FormattingEnabled = true;
-            this.checkedListBox1.Items.AddRange(new object[] {
-            "Show student\'s number of sit ins",
-            "Show student\'s hour balance",
-            "Show student\'s total sit-in time"});
-            this.checkedListBox1.Location = new System.Drawing.Point(19, 39);
-            this.checkedListBox1.Name = "checkedListBox1";
-            this.checkedListBox1.Size = new System.Drawing.Size(305, 54);
-            this.checkedListBox1.TabIndex = 0;
-            // 
-            // dtpDayReportSelect
-            // 
-            this.dtpDayReportSelect.Location = new System.Drawing.Point(21, 123);
-            this.dtpDayReportSelect.Name = "dtpDayReportSelect";
-            this.dtpDayReportSelect.Size = new System.Drawing.Size(200, 20);
-            this.dtpDayReportSelect.TabIndex = 1;
-            // 
-            // pnlCustomReport
-            // 
-            this.pnlCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.pnlCustomReport.Controls.Add(this.label19);
-            this.pnlCustomReport.Controls.Add(this.label22);
-            this.pnlCustomReport.Controls.Add(this.label18);
-            this.pnlCustomReport.Controls.Add(this.btnPreviewCustomReport);
-            this.pnlCustomReport.Controls.Add(this.btnPrintCustomReport);
-            this.pnlCustomReport.Controls.Add(this.dtpDateEnd);
-            this.pnlCustomReport.Controls.Add(this.dtpDateStart);
-            this.pnlCustomReport.Controls.Add(this.ChosenOptional);
-            this.pnlCustomReport.Location = new System.Drawing.Point(999, 85);
-            this.pnlCustomReport.Name = "pnlCustomReport";
-            this.pnlCustomReport.Size = new System.Drawing.Size(443, 260);
-            this.pnlCustomReport.TabIndex = 15;
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label19.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label19.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label19.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label19.Location = new System.Drawing.Point(222, 108);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(69, 16);
-            this.label19.TabIndex = 7;
-            this.label19.Text = "DATE END";
-            this.label19.Click += new System.EventHandler(this.placeholder7click);
-            this.label19.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
-            this.label19.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
-            // 
-            // label22
-            // 
-            this.label22.AutoSize = true;
-            this.label22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label22.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label22.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label22.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label22.Location = new System.Drawing.Point(16, 18);
-            this.label22.Name = "label22";
-            this.label22.Size = new System.Drawing.Size(72, 16);
-            this.label22.TabIndex = 7;
-            this.label22.Text = "OPTIONAL";
-            this.label22.Click += new System.EventHandler(this.placeholder7click);
-            this.label22.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
-            this.label22.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label18.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.label18.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(154)))), ((int)(((byte)(214)))), ((int)(((byte)(230)))));
-            this.label18.Location = new System.Drawing.Point(16, 108);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(80, 16);
-            this.label18.TabIndex = 7;
-            this.label18.Text = "DATE START";
-            this.label18.Click += new System.EventHandler(this.placeholder7click);
-            this.label18.MouseEnter += new System.EventHandler(this.StudentIdNumberEffect);
-            this.label18.MouseLeave += new System.EventHandler(this.StudentIdNumberEffectEnd);
-            // 
-            // btnPreviewCustomReport
-            // 
-            this.btnPreviewCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPreviewCustomReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPreviewCustomReport.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPreviewCustomReport.BorderRadius = 20;
-            this.btnPreviewCustomReport.BorderSize = 0;
-            this.btnPreviewCustomReport.FlatAppearance.BorderSize = 0;
-            this.btnPreviewCustomReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPreviewCustomReport.ForeColor = System.Drawing.Color.White;
-            this.btnPreviewCustomReport.Location = new System.Drawing.Point(16, 160);
-            this.btnPreviewCustomReport.Name = "btnPreviewCustomReport";
-            this.btnPreviewCustomReport.Size = new System.Drawing.Size(409, 38);
-            this.btnPreviewCustomReport.TabIndex = 2;
-            this.btnPreviewCustomReport.Text = "Preview Custom Report";
-            this.btnPreviewCustomReport.TextColor = System.Drawing.Color.White;
-            this.btnPreviewCustomReport.UseVisualStyleBackColor = false;
-            this.btnPreviewCustomReport.Click += new System.EventHandler(this.btnPreviewCustomReport_Click);
-            // 
-            // btnPrintCustomReport
-            // 
-            this.btnPrintCustomReport.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPrintCustomReport.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(22)))), ((int)(((byte)(38)))));
-            this.btnPrintCustomReport.BorderColor = System.Drawing.Color.PaleVioletRed;
-            this.btnPrintCustomReport.BorderRadius = 20;
-            this.btnPrintCustomReport.BorderSize = 0;
-            this.btnPrintCustomReport.FlatAppearance.BorderSize = 0;
-            this.btnPrintCustomReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrintCustomReport.ForeColor = System.Drawing.Color.White;
-            this.btnPrintCustomReport.Location = new System.Drawing.Point(16, 205);
-            this.btnPrintCustomReport.Name = "btnPrintCustomReport";
-            this.btnPrintCustomReport.Size = new System.Drawing.Size(409, 38);
-            this.btnPrintCustomReport.TabIndex = 2;
-            this.btnPrintCustomReport.Text = "Print Custom Report";
-            this.btnPrintCustomReport.TextColor = System.Drawing.Color.White;
-            this.btnPrintCustomReport.UseVisualStyleBackColor = false;
-            this.btnPrintCustomReport.Click += new System.EventHandler(this.btnPrintCustomReport_Click);
-            // 
-            // dtpDateEnd
-            // 
-            this.dtpDateEnd.Location = new System.Drawing.Point(225, 127);
-            this.dtpDateEnd.Name = "dtpDateEnd";
-            this.dtpDateEnd.Size = new System.Drawing.Size(200, 20);
-            this.dtpDateEnd.TabIndex = 1;
-            // 
-            // dtpDateStart
-            // 
-            this.dtpDateStart.Location = new System.Drawing.Point(16, 127);
-            this.dtpDateStart.Name = "dtpDateStart";
-            this.dtpDateStart.Size = new System.Drawing.Size(200, 20);
-            this.dtpDateStart.TabIndex = 1;
-            // 
-            // ChosenOptional
-            // 
-            this.ChosenOptional.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(70)))), ((int)(((byte)(92)))));
-            this.ChosenOptional.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.ChosenOptional.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChosenOptional.ForeColor = System.Drawing.Color.White;
-            this.ChosenOptional.FormattingEnabled = true;
-            this.ChosenOptional.Items.AddRange(new object[] {
-            "Show student\'s number of sit ins",
-            "Show student\'s hour balance",
-            "Show student\'s total sit-in time"});
-            this.ChosenOptional.Location = new System.Drawing.Point(19, 39);
-            this.ChosenOptional.Name = "ChosenOptional";
-            this.ChosenOptional.Size = new System.Drawing.Size(305, 54);
-            this.ChosenOptional.TabIndex = 0;
-            // 
             // cbxSelectForm
             // 
             this.cbxSelectForm.AutoCompleteCustomSource.AddRange(new string[] {
@@ -1544,7 +1791,7 @@
             "STUDENT SPECIFIC REPORT",
             "DAY REPORT",
             "CUSTOM"});
-            this.cbxSelectForm.Location = new System.Drawing.Point(999, 41);
+            this.cbxSelectForm.Location = new System.Drawing.Point(984, 41);
             this.cbxSelectForm.Name = "cbxSelectForm";
             this.cbxSelectForm.Size = new System.Drawing.Size(265, 28);
             this.cbxSelectForm.TabIndex = 14;
@@ -1561,7 +1808,7 @@
             this.btnClosePrintSetUp.FlatAppearance.BorderSize = 0;
             this.btnClosePrintSetUp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClosePrintSetUp.ForeColor = System.Drawing.Color.Transparent;
-            this.btnClosePrintSetUp.Location = new System.Drawing.Point(1275, 36);
+            this.btnClosePrintSetUp.Location = new System.Drawing.Point(1260, 36);
             this.btnClosePrintSetUp.Name = "btnClosePrintSetUp";
             this.btnClosePrintSetUp.Size = new System.Drawing.Size(166, 38);
             this.btnClosePrintSetUp.TabIndex = 2;
@@ -2564,7 +2811,7 @@
             this.hideRecords.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
             this.hideRecords.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.hideRecords.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.hideRecords.Location = new System.Drawing.Point(1381, 0);
+            this.hideRecords.Location = new System.Drawing.Point(1373, 0);
             this.hideRecords.Name = "hideRecords";
             this.hideRecords.Size = new System.Drawing.Size(91, 40);
             this.hideRecords.TabIndex = 0;
@@ -2724,6 +2971,10 @@
             this.label9.TabIndex = 10;
             this.label9.Text = "RECORDS";
             // 
+            // studentsBindingSource1
+            // 
+            this.studentsBindingSource1.DataMember = "Students";
+            // 
             // pictureBoxBunifuItachi1
             // 
             this.pictureBoxBunifuItachi1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(237)))), ((int)(((byte)(251)))), ((int)(((byte)(255)))));
@@ -2749,7 +3000,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1467, 40);
+            this.panel1.Size = new System.Drawing.Size(1460, 40);
             this.panel1.TabIndex = 20;
             // 
             // exitButton
@@ -2760,7 +3011,7 @@
             this.exitButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(144)))), ((int)(((byte)(161)))));
             this.exitButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.exitButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.exitButton.Location = new System.Drawing.Point(1425, 0);
+            this.exitButton.Location = new System.Drawing.Point(1422, 0);
             this.exitButton.Name = "exitButton";
             this.exitButton.Size = new System.Drawing.Size(44, 40);
             this.exitButton.TabIndex = 11;
@@ -2839,9 +3090,10 @@
             this.contextMenuStrip1.Name = "contextMenuStrip1";
             this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
-            // studentsBindingSource
+            // fileSystemWatcher1
             // 
-            this.studentsBindingSource.DataMember = "Students";
+            this.fileSystemWatcher1.EnableRaisingEvents = true;
+            this.fileSystemWatcher1.SynchronizingObject = this;
             // 
             // SitInMonitoringForm
             // 
@@ -2850,19 +3102,18 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1467, 759);
+            this.ClientSize = new System.Drawing.Size(1460, 759);
             this.Controls.Add(this.pnlPleaseWait);
             this.Controls.Add(this.pnlAdminLock);
             this.Controls.Add(this.pnlRecords);
             this.Controls.Add(this.label8);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.pnlNotification);
             this.Controls.Add(this.pictureBoxBunifuItachi1);
             this.Controls.Add(this.pnlLoginFrame);
-            this.Controls.Add(this.tm2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.pnlStudsRec);
             this.Controls.Add(this.label2);
+            this.Controls.Add(this.tm2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
@@ -2884,6 +3135,8 @@
             this.l1.PerformLayout();
             this.pnlLoginBody.ResumeLayout(false);
             this.pnlLoginBody.PerformLayout();
+            this.panel8.ResumeLayout(false);
+            this.panel11.ResumeLayout(false);
             this.mrg3.ResumeLayout(false);
             this.l3.ResumeLayout(false);
             this.l3.PerformLayout();
@@ -2907,17 +3160,23 @@
             this.pnlRecords.ResumeLayout(false);
             this.pnlRecords.PerformLayout();
             this.pnlSetPrintOptions.ResumeLayout(false);
+            this.pnlSemesterManager.ResumeLayout(false);
+            this.pnlSemesterManager.PerformLayout();
+            this.pnlMainWindowForSemesterManagement.ResumeLayout(false);
+            this.pnlMainWindowForSemesterManagement.PerformLayout();
+            this.panel9.ResumeLayout(false);
+            this.panel9.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridForSemesterRecords)).EndInit();
+            this.pnlCustomReport.ResumeLayout(false);
+            this.pnlCustomReport.PerformLayout();
+            this.pnlDayReport.ResumeLayout(false);
+            this.pnlDayReport.PerformLayout();
+            this.pnlStudentSpecificReport.ResumeLayout(false);
+            this.pnlStudentSpecificReport.PerformLayout();
             this.pnlSemesterReport.ResumeLayout(false);
             this.pnlSemesterReport.PerformLayout();
             this.pnlMonthReport.ResumeLayout(false);
             this.pnlMonthReport.PerformLayout();
-            this.pnlStudentSpecificReport.ResumeLayout(false);
-            this.pnlStudentSpecificReport.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).EndInit();
-            this.pnlDayReport.ResumeLayout(false);
-            this.pnlDayReport.PerformLayout();
-            this.pnlCustomReport.ResumeLayout(false);
-            this.pnlCustomReport.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.PrintLayoutDataGrid)).EndInit();
             this.pnlEditUser.ResumeLayout(false);
             this.pnlEditUser.PerformLayout();
@@ -2963,12 +3222,14 @@
             this.l6.PerformLayout();
             this.pnltm2.ResumeLayout(false);
             this.pnltm2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxBunifuItachi1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.pnlNotification.ResumeLayout(false);
             this.pnlNotification.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chckicon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.studentsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.fileSystemWatcher1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -3140,10 +3401,8 @@
         private ItachiUIBunifu.ButtonBunifuItachi btnPreviewCustomReport;
         private ItachiUIBunifu.ButtonBunifuItachi btnPrintCustomReport;
         private System.Windows.Forms.Panel pnlDayReport;
-        private System.Windows.Forms.Label label25;
         private ItachiUIBunifu.ButtonBunifuItachi btnPreviewDayReport;
         private ItachiUIBunifu.ButtonBunifuItachi btnPrintDayReport;
-        private System.Windows.Forms.CheckedListBox checkedListBox1;
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.DateTimePicker dtpDayReportSelect;
         private ItachiUIBunifu.ButtonBunifuItachi btnClosePrintSetUp;
@@ -3163,8 +3422,6 @@
         private ItachiUIBunifu.ButtonBunifuItachi btnPreviewMonthReport;
         private System.Windows.Forms.Label label27;
         private ItachiUIBunifu.ButtonBunifuItachi btnPrintMonthReport;
-        private System.Windows.Forms.Label label22;
-        private System.Windows.Forms.CheckedListBox ChosenOptional;
         private System.Windows.Forms.Panel pnlSemesterReport;
         private System.Windows.Forms.Label label30;
         private ItachiUIBunifu.ButtonBunifuItachi btnPreviewSemesterReport;
@@ -3179,6 +3436,31 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_IN;
         private System.Windows.Forms.DataGridViewTextBoxColumn TIME_OUT;
         private System.Windows.Forms.DataGridViewButtonColumn LOG_OUT;
+        private System.IO.FileSystemWatcher fileSystemWatcher1;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.Panel pnlMainWindowForSemesterManagement;
+        private System.Windows.Forms.DataGridView dataGridForSemesterRecords;
+        private System.Windows.Forms.Label label32;
+        private ItachiUIBunifu.ButtonBunifuItachi btnAddSemesterToRecords;
+        private ItachiUIBunifu.ButtonBunifuItachi btnRemoveSelectedSemester;
+        private System.Windows.Forms.DateTimePicker dateTimePickerForEndOfSem;
+        private System.Windows.Forms.DateTimePicker dateTimePickerForStartOfSem;
+        private System.Windows.Forms.DataGridViewTextBoxColumn SemesterName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn StartingDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn EndDate;
+        private System.Windows.Forms.Label label33;
+        private System.Windows.Forms.Panel panel9;
+        private System.Windows.Forms.TextBox txtSemesterNameInput;
+        private System.Windows.Forms.Panel pnlSemesterManager;
+        private ItachiUIBunifu.ButtonBunifuItachi btnShowSemesterManager;
+        private System.Windows.Forms.Label label31;
+        private System.Windows.Forms.Label label34;
+        private ItachiUIBunifu.ButtonBunifuItachi btnCloseSemesterManager;
+        private System.Windows.Forms.Panel panel8;
+        private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.Panel panel10;
     }
 }
 

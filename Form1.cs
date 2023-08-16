@@ -1,5 +1,4 @@
-﻿using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -7,12 +6,17 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Sit_In_Monitoring
 {
     public partial class SitInMonitoringForm : Form
     {
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
+
+
+
         readonly SqlConnection conn = new SqlConnection("Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=C:\\Users\\user\\source\\repos\\denzeysenpai\\Sit_In_Monitoring_System\\db\\SitInMonitoring.mdf;Integrated Security=True;Connect Timeout=30");
         DataSet ds = new DataSet();
 
@@ -407,7 +411,7 @@ namespace Sit_In_Monitoring
         public void LogoutStudent(DataGridViewCellEventArgs e) //FIXED 6/20/23 NEED TO BE TESTED |> Mark
         {
             DateTime date = DateTime.Now;
-            string dateDb = dateToday.Value.ToString(" MM/dd/yyyy");
+            string dateDb = dateToday.Value.ToString("MM/dd/yyyy");
             string time1 = date.ToString("HH:mm:ss tt");
             DataGridViewRow row = this.DataGrid.Rows[e.RowIndex];
             string studentId = row.Cells["STUDENT_ID"].Value.ToString();
@@ -494,10 +498,12 @@ namespace Sit_In_Monitoring
             double minutes = Math.Floor((timeValue - hours) * 60);
 
             // Display Information
+            string s = hours > 1 ? "s" : "";
+            string es = minutes > 1 ? "s" : "";
             MessageBox.Show(
                 $"Student ID: {studentId}\n" +
                 $"Student Name: {GetValueOf("lastName")}, {GetValueOf("firstName")} {GetValueOf("middleInitial")}.\n" +
-                $"Remaining Balance: {hours} hours, {minutes} minutes",
+                $"Remaining Balance: {hours} hour{s}, {minutes} minute{es}",
                 "LOGOUT INFORMATION",
                 MessageBoxButtons.OK,
                 MessageBoxIcon.Information);
@@ -626,7 +632,7 @@ namespace Sit_In_Monitoring
             string mname = newMiddleInitialValue.Text == string.Empty ? ds.Tables[0].Rows[0]["middleInitial"].ToString() : newMiddleInitialValue.Text;
             string lname = newLastNameValue.Text == string.Empty ? ds.Tables[0].Rows[0]["lastName"].ToString() : newLastNameValue.Text;
             string section = newSectionValue.Text == string.Empty ? displaySection.Text : newSectionValue.Text;
-            // Short sumamry, string value is returned after checking if string is empty or not, if empty then return current name, if input detected then return input ;) hekhok |> Mark
+            // Short sumamry, string value is returned after checking if string is empty or not, if empty then return current existing string, if input detected then return input as new string;) hekhok |> Mark
 
 
             SqlCommand cmd = new SqlCommand("" +
@@ -696,7 +702,8 @@ namespace Sit_In_Monitoring
 
             Design.RoundCorner(pnlNotification, 50);
             Design.RoundCorner(pnlDateMargin, 15);
-            Design.RoundCorner(pnlLoginBody, 15);
+            Design.RoundCorner(pnlLoginBody, 17);
+            Design.RoundCorner(pnlLoginFrame, 17);
             Design.RoundCorner(pnltm2, 15);
 
             Design.RoundCorner(pnlAdminLock, 18);
@@ -719,7 +726,21 @@ namespace Sit_In_Monitoring
             Design.RoundCorner(n3, 18);
             Design.RoundCorner(n4, 18);
             Design.RoundCorner(n5, 18);
+
+            Design.RoundCorner(pnlSemesterManager, 16);
+            Design.RoundCorner(pnlMainWindowForSemesterManagement, 15);
+
             #endregion
+        }
+        System.Drawing.Point AlignInCenter(Control ctr) =>
+            new System.Drawing.Point((Width / 2) - (ctr.Width / 2), (Height / 2) - (ctr.Height / 2));
+        private void SetPanelsToCenter(List<Control> panels)
+        {
+            foreach (Control panel in panels)
+            {
+                panel.Location = AlignInCenter(panel);
+                panel.Hide();
+            }
         }
         private void SitInMonitoringForm_Load(object sender, EventArgs e) // Form Load
         {
@@ -727,6 +748,7 @@ namespace Sit_In_Monitoring
             {
                 MessageBox.Show("Hehe");
             }
+
             // Default values on first load, may or may not change during run time
             CheckForMissedLogOut();
             notClicked = Color.FromArgb(210, 242, 250);
@@ -738,19 +760,9 @@ namespace Sit_In_Monitoring
             DisplayForSessionLogs();
             ProcessingDataBase = false;
 
-
-            System.Drawing.Point AlignInCenter(Control ctr) =>
-                new System.Drawing.Point((Width / 2) - (ctr.Width / 2), (Height / 2) - (ctr.Height / 2));
+            pnlSemesterManager.Hide();
 
 
-            void SetPanelsToCenter(List<Control> panels)
-            {
-                foreach (Control panel in panels)
-                {
-                    panel.Location = AlignInCenter(panel);
-                    panel.Hide();
-                }
-            }
             List<Control> MainPanels = new List<Control>() { pnlRecords, pnlEditUser, pnlAdminLock, pnlSetPrintOptions, pnlPleaseWait };
             SetPanelsToCenter(MainPanels);
 
@@ -1018,7 +1030,17 @@ namespace Sit_In_Monitoring
                 ShowAdminPasswordInput();
             }
 
-            // Tab Switch Code - maki hekhok // HEHEHEHEHEHEHEHE MUGANA
+            if (Key == Keys.F9 && e.Control)
+            {
+                //AllocConsole();
+
+                //string message = "Test Case 1";
+
+                //Console.WriteLine(message);
+                //Console.ReadKey();
+            }
+
+            // Tab Switch Code - mark hekhok // HEHEHEHEHEHEHEHE MUGANA
             TabIndexCatch(txtStudentID, BtnSearch);
             TabIndexCatch(txtStudentLastName, txtStudentName);
             TabIndexCatch(txtStudentName, txtMiddleInitial);
@@ -1112,14 +1134,15 @@ namespace Sit_In_Monitoring
                     $"\n\nIt is possible that the program was not properly closed, or there were\n" +
                     $"current sessions that were closed without logging out, or the error was \n" +
                     $"by a power outage."
-                    ,"UH-OH...",
+                    , "UH-OH...",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
             catch (ArgumentNullException Ex)
             {
                 MessageBox.Show("" +
-                    "There seems to be a null reference somewhere, try checking your \n" +
+
+                    "There seems to be a null reference somewhere, try checking your\n" +
                     "input or contact a technical assistant if you think this is a mistake." +
                     $"Error: {Ex}"
                     , "UH-OH...",
@@ -1253,7 +1276,7 @@ namespace Sit_In_Monitoring
             placeholder7.ForeColor = Color.FromArgb(154, 214, 230);
         #endregion
 
-        #region GetTimeComputation |> M
+        #region GetTimeComputation |> Mark 
         private string GetApproximateTime(System.Data.DataSet dataTable)
         {
             double timeValue = Convert.ToDouble(dataTable.Tables[0].Rows[0]["RemainingTime"].ToString());
@@ -1403,6 +1426,57 @@ namespace Sit_In_Monitoring
             ShowPanelForSelected(pnlStudentSpecificReport, "student specific report");
             ShowPanelForSelected(pnlMonthReport, "month report");
             ShowPanelForSelected(pnlSemesterReport, "semestral report");
+
+            if (cbxSelectForm.Text.ToLower() == "semestral report")
+            {
+
+                string SqlCommand = "" +
+                    "SELECT semester " +
+                    "FROM SemestersAdded";
+
+                OpenSQL();
+                // Show Added Semesters
+                System.Data.SqlClient.SqlDataAdapter semesters = new System.Data.SqlClient.SqlDataAdapter(SqlCommand, conn);
+                System.Data.DataTable sem = new System.Data.DataTable();
+
+                sem.Clear();
+                semesters.Fill(sem);
+
+                if (cbxSelectSemester.Items.Count < sem.Rows.Count)
+                {
+                    cbxSelectSemester.Items.Clear();
+                    foreach (DataRow dr in sem.Rows)
+                    {
+                        cbxSelectSemester.Items.Add(dr[0].ToString());
+                    }
+                }
+                CloseSQL();
+            }
+
+
+            if (cbxSelectForm.Text.ToLower() == "student specific report")
+            {
+                string SqlCommand = "" +
+                    "SELECT studentId" +
+                    "FROM Students";
+
+                OpenSQL();
+                System.Data.SqlClient.SqlDataAdapter students = new System.Data.SqlClient.SqlDataAdapter(SqlCommand, conn);
+                System.Data.DataTable sem = new System.Data.DataTable();
+
+                sem.Clear();
+                students.Fill(sem);
+
+                if (cbxSelectedStudent.Items.Count < sem.Rows.Count)
+                {
+                    cbxSelectedStudent.Items.Clear();
+                    foreach (DataRow dr in sem.Rows)
+                    {
+                        cbxSelectedStudent.Items.Add(dr[0].ToString());
+                    }
+                }
+                CloseSQL();
+            }
         }
         #region !!UI NOTES!!
         /*      
@@ -1486,6 +1560,39 @@ namespace Sit_In_Monitoring
 
         #endregion
 
+        #region Can select custom records |> Jeorge Rey
+        public void CustomReport(DateTime dt1, DateTime dt2)
+        {
+            PrintLayoutDataGrid.Columns.Clear();
+            try
+            {
+                if (conn.State == ConnectionState.Closed)
+                {
+                    OpenSQL();
+                }
+                using (System.Data.DataTable dt = new System.Data.DataTable("currrentSession"))
+                {
+                    using (SqlCommand cmd = new SqlCommand("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date between @DateStart and @DateEnd ", conn))
+                    {
+                        cmd.Parameters.AddWithValue("@DateStart", dt1);
+                        cmd.Parameters.AddWithValue("@DateEnd", dt2);
+                        SqlDataAdapter dataAdapter = new SqlDataAdapter((cmd));
+                        dataAdapter.Fill(dt);
+                        PrintLayoutDataGrid.DataSource = dt;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            if (conn.State != ConnectionState.Closed)
+            {
+                CloseSQL();
+            }
+        }
+        #endregion
+
         #region General Function For Print Options |> Mark
         void GeneralFunctionForPrintOptions(string printingOptions)
         {
@@ -1537,16 +1644,17 @@ namespace Sit_In_Monitoring
                         else if (printingOptions == "studentspecific")
                         {
                             cmd.Parameters.Clear();
+
                             cmd.Parameters.AddWithValue("@studentId", cbxSelectedStudent.Text);
                             cmd.Parameters.AddWithValue("@DateStart", dtpStudStartDate.Value);
                             cmd.Parameters.AddWithValue("@DateEnd", dtpStudEndDate.Value);
                         }
-                        else if (printingOptions == "day") // NOT FINISHED |> MARK
+                        else if (printingOptions == "day") 
                         {
                             cmd.Parameters.Clear();
-                            cmd.Parameters.AddWithValue("@Date", dtpDayReportSelect.Value);
+                            cmd.Parameters.AddWithValue("@Date", dtpDayReportSelect.Value.ToString("MM/dd/yyyy"));
                         }
-                        else if (printingOptions == "semester") // NOT FINISHED |> MARK
+                        else if (printingOptions == "semester") 
                         {
                             cmd.Parameters.Clear();
 
@@ -1560,13 +1668,40 @@ namespace Sit_In_Monitoring
                                 $"FROM SemestersAdded " +
                                 $"WHERE semester = '{cbxSelectSemester.Text}'";
 
-                            cmd.Parameters.AddWithValue("@DateStart", startOfSem);
-                            cmd.Parameters.AddWithValue("@DateEnd", endOfSem);
-                        }                                      // NOT FINISHED |> MARK
+                            // Start of sem date
+                            SqlCommand getStartOfSem = new SqlCommand(startOfSem, conn);
+                            SqlDataReader readStartOfSem = getStartOfSem.ExecuteReader();
+                            readStartOfSem.Read();
+                            string DateStartOfSem = "";
+                            if (readStartOfSem.HasRows)
+                            {
+                                DateStartOfSem = readStartOfSem[0].ToString();
+                            }
+                            readStartOfSem.Close();
 
-                        SqlDataAdapter da = new SqlDataAdapter(cmd);
-                        da.Fill(dt);
-                        PrintLayoutDataGrid.DataSource = dt;
+                            // End of sem date
+                            SqlCommand getEndOfSem = new SqlCommand(endOfSem, conn);
+                            SqlDataReader readEndOfSem = getEndOfSem.ExecuteReader();
+                            readEndOfSem.Read();
+                            string DateEndOfSem = "";
+                            if (readEndOfSem.HasRows)
+                            {
+                                DateEndOfSem = readEndOfSem[0].ToString();
+                            }
+                            readEndOfSem.Close();
+
+                            DateTime dt1 = Convert.ToDateTime(DateStartOfSem);
+                            DateTime dt2 = Convert.ToDateTime(DateEndOfSem);
+
+                            CustomReport(dt1, dt2);
+                        }
+
+                        if (printingOptions != "semester")
+                        {
+                            SqlDataAdapter da = new SqlDataAdapter(cmd);
+                            da.Fill(dt);
+                            PrintLayoutDataGrid.DataSource = dt;
+                        }
                     }
                 }
             }
@@ -1577,38 +1712,7 @@ namespace Sit_In_Monitoring
         }
         #endregion
 
-        #region Can select custom records |> Jeorge Rey
-        public void CustomReport()
-        {
-            PrintLayoutDataGrid.Columns.Clear();
-            try
-            {
-                if (conn.State == ConnectionState.Closed)
-                {
-                    OpenSQL();
-                }
-                using (System.Data.DataTable dt = new System.Data.DataTable("currrentSession"))
-                {
-                    using (SqlCommand cmd = new SqlCommand("SELECT sl.Date, s.studentId, s.firstName, s.middleInitial ,s.lastname, s.section, sl.TimeIn, sl.timeout, sl.timeUsed FROM students s JOIN sessionLogs sl on s.studentid = sl.studentid where sl.Date between @DateStart and @DateEnd ", conn))
-                    {
-                        cmd.Parameters.AddWithValue("@DateStart", dtpDateStart.Value);
-                        cmd.Parameters.AddWithValue("@DateEnd", dtpDateEnd.Value);
-                        SqlDataAdapter dataAdapter = new SqlDataAdapter((cmd));
-                        dataAdapter.Fill(dt);
-                        PrintLayoutDataGrid.DataSource = dt;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            if (conn.State != ConnectionState.Closed)
-            {
-                CloseSQL();
-            }
-        }
-        #endregion
+
 
         #region Excel Import |> Jeorge Rey
         public void PrintRecordsToExcelFormat()
@@ -1638,7 +1742,7 @@ namespace Sit_In_Monitoring
         // CUSTOM REPORT BUTTON CLICKS
         private void btnPreviewCustomReport_Click(object sender, EventArgs e)
         {
-            CustomReport();
+            CustomReport(dtpDateStart.Value, dtpDateEnd.Value);
         }
         // CUSTOM REPORT PRINT BUTTON
         private void btnPrintCustomReport_Click(object sender, EventArgs e) =>
@@ -1676,6 +1780,200 @@ namespace Sit_In_Monitoring
         }
 
 
+
+
+        // ||                                  || //
+        // ||     SEMESTER RECORDS MANAGER     || //
+        // ||                                  || //
+
+
+
+        // Semestral Report Manager for Semestral Records in Database |> Mark
+
+        #region Notes For Semesters Manager
+        /* 
+         * Show Manager by clicking btnShowSemesterManager
+         * 
+         */
+        #endregion
+
+
+        private string selectedCell = "";
+        private void SemesterRecordsCellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            System.Data.DataTable dt = new System.Data.DataTable();
+            string GetRecordViewCellValueOf(string identifier) =>
+                dataGridForSemesterRecords.Rows[e.RowIndex].Cells[identifier].FormattedValue.ToString(); // Go to Expression of Value of specified identifier
+
+            selectedCell = GetRecordViewCellValueOf("SemesterName");
+        }
+
+        private void DisplayInDataGridForSemestermanager()
+        {
+            if (conn.State == ConnectionState.Closed)
+            {
+                conn.Open();
+            }
+            SqlDataAdapter s = new SqlDataAdapter("SELECT * FROM SemestersAdded", conn);
+
+            System.Data.DataTable dt = new System.Data.DataTable();
+            s.Fill(dt);
+            dataGridForSemesterRecords.Rows.Clear();
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                int cs = dataGridForSemesterRecords.Rows.Add();
+                for (int i = 0; i < 3; i++)
+                {
+                    dataGridForSemesterRecords.Rows[cs].Cells[i].Value = dr[i].ToString();
+                }
+            }
+
+            CloseSQL();
+
+        }
+        private void btnShowSemesterManager_Click(object sender, EventArgs e)
+        {
+            DisplayInDataGridForSemestermanager();
+            pnlSemesterManager.Show();
+            AlignInCenter(pnlSemesterManager);
+        }
+
+        private void btnCloseSemesterManager_Click(object sender, EventArgs e)
+        {
+            string SqlCommand = "" +
+                    "SELECT semester " +
+                    "FROM SemestersAdded";
+
+            OpenSQL();
+            // Show Added Semesters
+            System.Data.SqlClient.SqlDataAdapter semesters = new System.Data.SqlClient.SqlDataAdapter(SqlCommand, conn);
+            System.Data.DataTable sem = new System.Data.DataTable();
+
+            sem.Clear();
+            semesters.Fill(sem);
+
+            if (cbxSelectSemester.Items.Count < sem.Rows.Count)
+            {
+                cbxSelectSemester.Items.Clear();
+                foreach (DataRow dr in sem.Rows)
+                {
+                    cbxSelectSemester.Items.Add(dr[0].ToString());
+                }
+            }
+            CloseSQL();
+
+
+            pnlSemesterManager.Hide();
+        }
+
+        private void btnAddSemesterToRecords_Click(object sender, EventArgs e)
+        {
+            bool case1;
+            bool case2;
+            bool case3;
+
+            if (txtSemesterNameInput.Text == null || txtSemesterNameInput.Text == string.Empty)
+            {
+                MessageBox.Show(
+                    "Kindly check if all input are correct and not empty.",
+                    "Input Cannot Be Empty...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                case1 = false;
+            }
+            else
+                case1 = true;
+
+            CatchSQLInjection(txtSemesterNameInput);
+
+            if (dateTimePickerForEndOfSem.Value == null)
+            {
+                MessageBox.Show(
+                    "Kindly check if all input are correct and not empty.",
+                    "Input Cannot Be Empty...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                case2 = false;
+            }
+            else
+                case2 = true;
+
+            if (dateTimePickerForStartOfSem.Value == null)
+            {
+                MessageBox.Show(
+                    "Kindly check if all input are correct and not empty.",
+                    "Input Cannot Be Empty...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Exclamation);
+                case3 = false;
+            }
+            else
+                case3 = true;
+
+            if (case1 && case2 && case3)
+            {
+                if (conn.State == ConnectionState.Closed)
+                    conn.Open();
+
+                string AddSemester = "" +
+                    "INSERT INTO SemestersAdded " +
+                    $"VALUES('{txtSemesterNameInput.Text}','{dateTimePickerForStartOfSem.Value:MM/dd/yyyy}','{dateTimePickerForEndOfSem.Value:MM/dd/yyyy}');";
+
+                SqlCommand comm = new SqlCommand(AddSemester, conn);
+                comm.ExecuteNonQuery();
+
+                DisplayInDataGridForSemestermanager();
+                CloseSQL();
+            }
+        }
+
+        private void btnRemoveSelectedSemester_Click(object sender, EventArgs e)
+        {
+            DialogResult d = MessageBox.Show(
+                "It looks like you are trying to delete a record from the database Semesters, do you want to proceed?\n\n\n" +
+                "NOTE: ONCE YOU DELETE A RECORD DROM A DATABASE THERE IS NO WAY IF GETTING IT BACK BUT TO RE-ENTER IT AS NEW VALUE",
+                "Hmm, are you sure?",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Hand);
+            if (d.Equals(DialogResult.Yes))
+            {
+                if (selectedCell == "")
+                {
+                    MessageBox.Show(
+                    "The selected cell has returned null or an empty string value, this usually occurs " +
+                    "when you forget to click on a cell before clicking this button. Try clicking a cell in the " +
+                    "data grid before clicking this button.",
+                    "Something is a bit off...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
+                }
+                else
+                {
+                    if (conn.State == ConnectionState.Closed)
+                        conn.Open();
+
+                    string AddSemester = $"DELETE FROM SemestersAdded WHERE semester = '{selectedCell}';";
+
+
+                    SqlCommand comm = new SqlCommand(AddSemester, conn);
+                    comm.ExecuteNonQuery();
+
+                    DisplayInDataGridForSemestermanager();
+                    CloseSQL();
+                }
+            }
+            else
+            {
+                selectedCell = "";
+            }
+            MessageBox.Show(
+                    "Records sometimes require the program to close and re-opened in order to function properly as it tends to remain in the combo-box item lists." +
+                    "If deleted records still remains kindly close the application and re-open.",
+                    "Just a friendly reminder...",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Asterisk);
+        }
     }
 
     #region Round Corner |> Mark
