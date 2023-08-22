@@ -29,13 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SitInMonitoringForm));
             this.lblTime = new System.Windows.Forms.Label();
             this.tm2 = new System.Windows.Forms.Panel();
             this.tm1 = new System.Windows.Forms.Panel();
             this.dateToday = new ItachiUIBunifu.DateTimePickerBunifuItachi();
             this.pnlStudsRec = new System.Windows.Forms.Panel();
+            this.label3 = new System.Windows.Forms.Label();
             this.DataGrid = new System.Windows.Forms.DataGridView();
             this.DATE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.STUDENT_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -78,7 +79,6 @@
             this.placeholder2 = new System.Windows.Forms.Label();
             this.txtStudentName = new System.Windows.Forms.TextBox();
             this.BtnStart = new ItachiUIBunifu.ButtonBunifuItachi();
-            this.label3 = new System.Windows.Forms.Label();
             this.CLOCK = new System.Windows.Forms.Timer(this.components);
             this.UI = new System.Windows.Forms.Timer(this.components);
             this.pnlAdminLock = new System.Windows.Forms.Panel();
@@ -384,6 +384,18 @@
             this.pnlStudsRec.Size = new System.Drawing.Size(991, 683);
             this.pnlStudsRec.TabIndex = 15;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
+            this.label3.Location = new System.Drawing.Point(890, 663);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(88, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "@marksolante2023";
+            // 
             // DataGrid
             // 
             this.DataGrid.AllowUserToAddRows = false;
@@ -473,9 +485,9 @@
             // 
             // LOG_OUT
             // 
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.LOG_OUT.DefaultCellStyle = dataGridViewCellStyle1;
             this.LOG_OUT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.LOG_OUT.Frozen = true;
             this.LOG_OUT.HeaderText = "LOG OUT";
@@ -868,18 +880,6 @@
             this.BtnStart.TextColor = System.Drawing.Color.White;
             this.BtnStart.UseVisualStyleBackColor = false;
             this.BtnStart.Click += new System.EventHandler(this.BtnStart_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 6.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(250)))), ((int)(((byte)(248)))), ((int)(((byte)(250)))));
-            this.label3.Location = new System.Drawing.Point(890, 663);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 13);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "@marksolante2023";
             // 
             // CLOCK
             // 
@@ -3000,7 +3000,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1460, 40);
+            this.panel1.Size = new System.Drawing.Size(1386, 40);
             this.panel1.TabIndex = 20;
             // 
             // exitButton
@@ -3102,7 +3102,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(197)))), ((int)(((byte)(233)))), ((int)(((byte)(240)))));
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1460, 759);
+            this.ClientSize = new System.Drawing.Size(1386, 759);
             this.Controls.Add(this.pnlPleaseWait);
             this.Controls.Add(this.pnlAdminLock);
             this.Controls.Add(this.pnlRecords);
