@@ -1173,6 +1173,7 @@ namespace Sit_In_Monitoring
                 if (conn.State == ConnectionState.Open)
                     CloseSQL();
                 Update_Data();
+                // hello
             }
         }
 
